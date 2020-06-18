@@ -1,3 +1,7 @@
-# Pflanzy-mobile-app
+## Pflanzy-mobile-app
 
-Find relevant information on how to grow room plants correctly or let others benefit from your experience - All in one place
+# Slogan
+Give your home plants the care they deserve
+
+# Description
+Find useful information on how to grow home plants successfully or let others benefit from your experience - All in one place
