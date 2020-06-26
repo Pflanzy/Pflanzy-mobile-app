@@ -2,11 +2,13 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as React from 'react';
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+
+import SearchScreen from '../screens/SearchScreen';
+import MyGardenScreen from '../screens/MyGardenScreen';
+import ReminderScreen from '../screens/ReminderScreen';
 
 const BottomTab = createBottomTabNavigator();
-const INITIAL_ROUTE_NAME = 'Home';
+const INITIAL_ROUTE_NAME = 'Search';
 
 export default function BottomTabNavigator({ navigation, route }) {
   // Set the header title on the parent stack navigator depending on the
@@ -17,32 +19,55 @@ export default function BottomTabNavigator({ navigation, route }) {
   return (
     <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
       <BottomTab.Screen
-        name="Home"
-        component={HomeScreen}
+        name="Search"
+        component={SearchScreen}
         options={{
-          title: 'Get Started',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-code-working" />,
+          title: 'Search',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-search" />,
         }}
       />
       <BottomTab.Screen
-        name="Links"
-        component={LinksScreen}
+        name="MyGarden"
+        component={MyGardenScreen}
         options={{
-          title: 'Resources',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
+          title: 'My Garden',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-leaf" />,
         }}
       />
+      <BottomTab.Screen
+        name="Reminder"
+        component={ReminderScreen}
+        options={{
+          title: 'Set Reminder',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-timer" />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Today"
+        component={ReminderScreen}
+        options={{
+          title: 'Today Page',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-timer" />,
+        }}
+      />
+
     </BottomTab.Navigator>
   );
 }
 
 function getHeaderTitle(route) {
   const routeName = route.state?.routes[route.state.index]?.name ?? INITIAL_ROUTE_NAME;
+  //route.state.routes[route.state.index].name.INITIAL_ROUTE_NAME;
 
   switch (routeName) {
-    case 'Home':
-      return 'How to get started';
-    case 'Links':
-      return 'Links to learn more';
+    case 'Search':
+      return 'Search';
+    case 'MyGarden':
+      return 'My Garden';
+    case 'Reminder':
+      return 'Set Reminder';
+    case 'Today':
+      return 'See your tasks';
+
   }
 }
