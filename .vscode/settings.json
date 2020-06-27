@@ -1,6 +1,6 @@
 {
   "[javascript]": {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": false
   },
   // available through eslint plugin in vscode
   "eslint.alwaysShowStatus": true,
