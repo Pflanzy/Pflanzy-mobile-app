@@ -11,23 +11,23 @@ import LinkingConfiguration from './navigation/LinkingConfiguration';
 const Stack = createStackNavigator();
 
 export default function App(props) {
-  const isLoadingComplete = useCachedResources();
+  // const isLoadingComplete = useCachedResources();
 
-  if (!isLoadingComplete) {
-    return null;
-  } else {
-    return (
-      <View style={styles.container}>
-        <NavigationContainer linking={LinkingConfiguration}>
-          <Stack.Navigator>
-            <Stack.Screen name="Root" component={BottomTabNavigator} />
-          </Stack.Navigator>
-        </NavigationContainer>
-        <StatusBar style="auto" />
-      </View>
-    );
-  }
+  // if (!isLoadingComplete) {
+  //   return null;
+  // } else {
+  return (
+    <View style={styles.container}>
+      <NavigationContainer linking={LinkingConfiguration}>
+        <Stack.Navigator>
+          <Stack.Screen name="Root" component={BottomTabNavigator} />
+        </Stack.Navigator>
+      </NavigationContainer>
+      <StatusBar style="auto" />
+    </View>
+  );
 }
+// }
 
 const styles = StyleSheet.create({
   container: {

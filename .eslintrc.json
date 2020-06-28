@@ -1,0 +1,30 @@
+{
+  "extends": ["airbnb", "prettier", "prettier/react"],
+  "rules": {
+    "react-native/no-unused-styles": 2,
+    "react-native/no-color-literals": 2,
+    "no-use-before-define": [
+      "error",
+      { "functions": true, "classes": true, "variables": false }
+    ],
+    "global-require": "off",
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "trailingComma": "es5",
+        "singleQuote": true,
+        "printWidth": 100
+      }
+    ]
+  },
+  "plugins": ["prettier", "react-native"],
+  "env": {
+    "react-native/react-native": true // whitelist all browser-like globals
+  }
+}
