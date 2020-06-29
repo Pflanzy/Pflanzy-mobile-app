@@ -6,6 +6,7 @@ import { StyleSheet, View } from 'react-native';
 
 import useCachedResources from './hooks/useCachedResources';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
+import CameraScreen from './screens/CameraScreen';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
 
 const Stack = createStackNavigator();
@@ -18,9 +19,10 @@ export default function App(props) {
   // } else {
   return (
     <View style={styles.container}>
-      <NavigationContainer linking={LinkingConfiguration}>
+      <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Root" component={BottomTabNavigator} />
+          <Stack.Screen name="Camera" component={CameraScreen} />
         </Stack.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />
