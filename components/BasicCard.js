@@ -1,15 +1,17 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 
-function BasicCard() {
+function BasicCard(props) {
   return (
     <View style={styles.cardContainer}>
-      <Image source={require('../assets/images/robot-dev.png')} />
-      <View>
-        <Text>Rose</Text>
-        <Text>Scientific name</Text>
+      <View style={styles.imageContainer}>
+        <Image style={styles.cardImage} source={require('../assets/images/water-lilly.jpg')} />
       </View>
-      <View>
+      <View style={styles.nameContainer}>
+        <Text style={styles.boldName}>Water Lilly</Text>
+        <Text style={styles.scientificName}>Scientific name</Text>
+      </View>
+      <View style={styles.passedContent}>
         <Text>passed prop</Text>
       </View>
     </View>
@@ -18,9 +20,47 @@ function BasicCard() {
 
 const styles = StyleSheet.create({
   cardContainer: {
-    borderWidth: 2,
-    padding: 10,
-    borderRadius: 10,
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
+    height: 100,
+    width: '90%',
+    elevation: 3,
+    shadowColor: '#404040',
+    shadowOpacity: 0.4,
+    shadowOffset: { width: 1, height: 1 },
+    shadowRadius: 2,
+    marginVertical: 6,
+  },
+  imageContainer: {
+    borderTopLeftRadius: 50,
+    borderBottomLeftRadius: 50,
+    width: '30%',
+    backgroundColor: '#808000',
+  },
+  cardImage: {
+    width: '100%',
+    height: '100%',
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
+  },
+
+  nameContainer: {
+    alignSelf: 'center',
+    justifyContent: 'center',
+    marginLeft: 20,
+  },
+
+  boldName: {
+    fontWeight: 'bold',
+    fontSize: 22,
+  },
+
+  passedContent: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
   },
 });
 

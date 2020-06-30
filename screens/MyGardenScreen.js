@@ -1,14 +1,30 @@
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
+import BasicCard from '../components/BasicCard';
 
 const MyGardenScreen = () => {
   return (
-    <View style={styles.container}>
-      <Text> My Garden Screen </Text>
-    </View>
+    <ScrollView>
+      <View style={styles.container}>
+        <BasicCard />
+        <BasicCard />
+        <BasicCard />
+        <BasicCard />
+        <BasicCard />
+        <BasicCard />
+        <BasicCard />
+        <BasicCard />
+        <BasicCard />
+      </View>
+    </ScrollView>
   );
 };
 
 export default MyGardenScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+  },
+});
