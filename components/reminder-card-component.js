@@ -35,8 +35,8 @@ const ReminderCard = props => {
       shadowColor: '#404040',
       shadowOpacity: 0.4,
       shadowOffset: { width: 1, height: 1 },
-      shadowRadius: 2,
-      marginVertical: 8,
+      shadowRadius: 3,
+      marginVertical: 10,
 
     },
     imageContainer: {
@@ -54,6 +54,7 @@ const ReminderCard = props => {
     detailsContainer: {
         display: 'flex',
         flexDirection: 'row',
+        justifyContent: 'space-between',
         width: '70%',
         marginTop: 15,
     },
