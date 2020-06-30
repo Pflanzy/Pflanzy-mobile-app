@@ -7,6 +7,10 @@ import SearchScreen from '../screens/SearchScreen';
 import MyGardenScreen from '../screens/MyGardenScreen';
 import ReminderScreen from '../screens/ReminderScreen';
 
+// TEST Individual Page Component 
+import IndividualComponent from '../components/individualPage';
+
+
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Search';
 
@@ -20,7 +24,7 @@ export default function BottomTabNavigator({ navigation, route }) {
     <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
       <BottomTab.Screen
         name="Search"
-        component={SearchScreen}
+        component={IndividualComponent}
         options={{
           title: 'Search',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-search" />,
