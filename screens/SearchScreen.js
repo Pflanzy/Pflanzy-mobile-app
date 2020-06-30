@@ -7,8 +7,6 @@ const SearchScreen = () => {
     <View style={styles.container}>
       <Text> Search Screen </Text>
       <ReminderCard/>
-      <ReminderCard/>
-      <ReminderCard/>
     </View>
   );
 };
