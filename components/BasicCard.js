@@ -41,7 +41,6 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 50,
     borderBottomLeftRadius: 50,
     width: '30%',
-    backgroundColor: '#808000',
   },
   cardImage: {
     width: '100%',
