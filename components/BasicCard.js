@@ -1,9 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 function BasicCard(props) {
+  const pressHandler = () => {
+    console.log('Navigate to plant card');
+  };
+
   return (
-    <View style={styles.cardContainer}>
+    <TouchableOpacity style={styles.cardContainer} onPress={pressHandler}>
       <View style={styles.imageContainer}>
         <Image style={styles.cardImage} source={require('../assets/images/water-lilly.jpg')} />
       </View>
@@ -14,7 +18,7 @@ function BasicCard(props) {
       <View style={styles.passedContent}>
         <Text>passed prop</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
