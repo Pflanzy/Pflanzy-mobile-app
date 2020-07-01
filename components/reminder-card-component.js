@@ -1,9 +1,10 @@
 import React from 'react'
-import {View, Text, Image, StyleSheet } from 'react-native';
+import {View, Text, Image, StyleSheet, ScrollView } from 'react-native';
 import { Link } from '@react-navigation/native';
 
 const ReminderCard = props => {
     return (
+        <ScrollView>
             <View style={styles.cardContainer}>
                 <View style={styles.imageContainer}>
                     <Image style={styles.cardImage} source={{uri: 'https://picsum.photos/seed/picsum/200/200'}} />
@@ -19,6 +20,7 @@ const ReminderCard = props => {
                 </View>
                 </View>
             </View>
+        </ScrollView>
        );
       }
       
