@@ -19,6 +19,7 @@
     "@react-navigation/stack": "^5.6.2",
     "expo": "^38.0.4",
     "expo-asset": "~8.1.7",
+    "expo-camera": "~8.3.1",
     "expo-constants": "~9.1.1",
     "expo-font": "~8.2.1",
     "expo-linking": "^1.0.3",
@@ -30,7 +31,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.0.tar.gz",
     "react-native-gesture-handler": "~1.6.0",
     "react-native-ionicons": "^4.6.5",
-    "react-native-safe-area-context": "~3.0.7",
+    "react-native-safe-area-context": "^3.0.7",
     "react-native-screens": "~2.9.0",
     "react-native-vector-icons": "^6.6.0",
     "react-native-web": "~0.11.7"
