@@ -9,8 +9,8 @@ const SearchScreen = () => {
   );
 };
 
-export default SearchScreen;
-
 const styles = StyleSheet.create({
-  container:{}
+  container: {},
 });
+
+export default SearchScreen;
