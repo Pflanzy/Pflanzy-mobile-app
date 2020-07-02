@@ -8,7 +8,7 @@ import MyGardenScreen from '../screens/MyGardenScreen';
 import ReminderScreen from '../screens/ReminderScreen';
 
 // TEST Individual Page Component 
-import IndividualComponent from '../components/individualPage';
+import IndividualComponent from '../screens/individualPageScreen';
 
 
 const BottomTab = createBottomTabNavigator();
