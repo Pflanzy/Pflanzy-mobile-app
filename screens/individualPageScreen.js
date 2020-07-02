@@ -1,39 +1,50 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+// import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+// import { useNavigation } from '@react-navigation/native'
 import * as React from 'react';
-import { StyleSheet, Text, View, ImageBackground, TouchableOpacity, Button } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, TouchableOpacity } from 'react-native';
 
 const individualPage = () => {
 
-  const pressHandler = () => {
-    console.log('Back button pressed!')
-  }
+  // const pressHandler = () => {
+  //   console.log('Back button pressed!')
+  // }
 
   return (
     <View style={styles.container}>
       <ImageBackground source={require("../assets/images/TEST-flower-02.jpg")} style={styles.background}>
-        <View style={styles.header}>
+        {/* <View style={styles.header}>
           <TouchableOpacity onPress={pressHandler} style={styles.backIconBG}>
             <MaterialCommunityIcons name="backburger" size={30} color="black" />
           </TouchableOpacity>
-        </View>
+        </View> */}
       </ImageBackground>
       <View style={styles.contentWrapper}>  
           <View style={styles.content}>
-            <TouchableOpacity style={styles.btn}>
-              <Entypo name="drop" size={14} color="white" style={styles.waterDrop} />  
-              <Text style={styles.btnText}>
-                Set care reminder
+            <View>
+              <Text style={styles.nameGeneric}>
+                Name (Generic)
               </Text>
-            </TouchableOpacity>
+              <Text style={styles.nameScientific}>
+                Name (Scientific)
+              </Text>
+            </View>
+            <View style={styles.btnContainer}>
+              <TouchableOpacity style={styles.btnReminder}>
+                <Entypo name="drop" size={14} color="white" style={styles.waterDrop} />  
+                <Text style={styles.btnText}>
+                  Set care reminder
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.btnCalendar}>
+                <AntDesign name="calendar" size={24} color="white" />            
+              </TouchableOpacity> 
+            </View>
             <View style={styles.contentBody}>
               <Text style={styles.text}>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus sint id quis quaerat consequatur facere optio facilis neque, possimus eligendi officia, quidem et dicta cumque distinctio mollitia sunt illo nesciunt!
-              </Text>
-              <TouchableOpacity style={styles.btn}>
-              <AntDesign name="calendar" size={24} color="white" />            
-              </TouchableOpacity>                         
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus sint id quis quaerat consequatur facere optio facilis neque, possimus eligendi officia, quidem et nesciunt!
+              </Text>                                      
             </View>
           </View>        
       </View>
@@ -51,15 +62,15 @@ const styles = StyleSheet.create({
   background: {
     flex: 1,
   },
-  header: {
-    flexDirection: 'row',
-    padding: 10
-  },
-  backIconBG: {
-    backgroundColor: "#ffffff99",
-    borderRadius: 50,
-    padding: 4,
-  },
+  // header: {
+  //   flexDirection: 'row',
+  //   padding: 10
+  // },
+  // backIconBG: {
+  //   backgroundColor: "#ffffff99",
+  //   borderRadius: 50,
+  //   padding: 4,
+  // },
   contentWrapper: {
     position: "absolute",
     bottom: 0,
@@ -69,10 +80,20 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 80, 
     padding: 20,
   },
-  // contentBody: {
-  //   flexDirection: 'column'
-  // },
-  btn: {
+  nameGeneric: {
+    color: 'white',
+    fontSize: 26,
+    marginBottom: 10,
+  },
+  nameScientific: {
+    color: 'white',
+    marginBottom: 20,
+    fontStyle: 'italic',
+  },
+  btnContainer: {
+    flexDirection: 'row',
+  },
+  btnReminder: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -81,6 +102,17 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 20,
     borderRadius: 50,
+  },
+  btnCalendar: {
+    backgroundColor: "#004e57",
+    // borderColor: "#004e57",
+    // borderWidth: 1,
+    borderRadius: 50,
+    width: 46,
+    height: 46,
+    justifyContent: "center",
+    alignItems: "center",
+    marginLeft: 20,
   },
   btnText: {
     color: 'white',
