@@ -9,6 +9,6 @@ const ReminderScreen = () => {
   );
 };
 
-export default ReminderScreen;
-
 const styles = StyleSheet.create({});
+
+export default ReminderScreen;

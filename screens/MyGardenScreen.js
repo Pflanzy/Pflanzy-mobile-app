@@ -1,16 +1,25 @@
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View, ScrollView, Text } from 'react-native';
+import BasicCard from '../components/BasicCard';
 import CameraIcon from '../components/CameraIcon';
 
 const MyGardenScreen = () => {
   return (
-    <View style={styles.container}>
-      <Text> My Garden Screen </Text>
-      <CameraIcon />
-    </View>
+    <ScrollView>
+      <View style={styles.container}>
+        <Text> My Garden Screen </Text>
+        <BasicCard />
+        <CameraIcon />
+      </View>
+    </ScrollView>
   );
 };
 
-export default MyGardenScreen;
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+  },
+});
 
-const styles = StyleSheet.create({});
+export default MyGardenScreen;

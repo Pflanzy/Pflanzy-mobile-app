@@ -5,7 +5,8 @@ import TabBarIcon from '../components/TabBarIcon';
 
 import SearchScreen from '../screens/SearchScreen';
 import MyGardenScreen from '../screens/MyGardenScreen';
-import ReminderScreen from '../screens/ReminderScreen';
+import ExploreScreen from '../screens/ExploreScreen';
+import TodayScreen from '../screens/TodayScreen';
 
 // TEST Individual Page Component 
 import IndividualComponent from '../screens/individualPageScreen';
@@ -39,19 +40,19 @@ export default function BottomTabNavigator({ navigation, route }) {
         }}
       />
       <BottomTab.Screen
-        name="Reminder"
-        component={ReminderScreen}
+        name="Today"
+        component={TodayScreen}
         options={{
-          title: 'Set Reminder',
+          title: 'Today Page',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-timer" />,
         }}
       />
       <BottomTab.Screen
-        name="Today"
-        component={ReminderScreen}
+        name="Explore"
+        component={ExploreScreen}
         options={{
-          title: 'Today Page',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-timer" />,
+          title: 'Explore Page',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-book" />,
         }}
       />
 
