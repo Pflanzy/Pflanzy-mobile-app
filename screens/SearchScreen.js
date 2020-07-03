@@ -6,7 +6,7 @@ const SearchScreen = () => {
   return (
     <View style={styles.container}>
       <Text> Search Screen </Text>
-      <DailyTask/>
+      <DailyTask />
     </View>
   );
 };
