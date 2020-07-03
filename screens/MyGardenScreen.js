@@ -7,6 +7,7 @@ const MyGardenScreen = () => {
     <View style={styles.container}>
       <Text> My Garden Screen </Text>
       <CameraIcon />
+      
     </View>
   );
 };

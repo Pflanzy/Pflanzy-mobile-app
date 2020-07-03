@@ -1,9 +1,10 @@
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
-import { TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, Share, StyleSheet } from 'react-native';
+import { EvilIcons } from '@expo/vector-icons'; 
 
 
-const ShareIcon = () => {
+export default ShareIcon = () => {
         const onShare = async () => {
           try {
             const result = await Share.share({
@@ -24,13 +25,14 @@ const ShareIcon = () => {
           }
         };
         return (
-            <TouchableOpacity style={styles.wrapper} onPress={onShare}>
-                <View>
-                    <Ionicons name="ion:share" size={30} />
-                </View>
+            <TouchableOpacity onPress={onShare}>
+                    <EvilIcons style={styles.icon} name="share-apple" size={50} />
             </TouchableOpacity>
         );
       };
-      
 
-export default ShareIcon;
+const styles = StyleSheet.create({
+        icon: {
+            margin: 10
+        }
+    });
