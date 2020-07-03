@@ -5,10 +5,6 @@ const SearchScreen = () => {
   return (
     <View style={styles.container}>
       <Text> Search Screen </Text>
-<<<<<<< HEAD
-      <DailyTask />
-=======
->>>>>>> master
     </View>
   );
 };

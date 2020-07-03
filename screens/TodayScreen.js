@@ -1,10 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-<<<<<<< HEAD
-import ReminderCard from '../components/Reminder-card-component';
-=======
 import ReminderCard from '../components/ReminderCard';
->>>>>>> master
 
 const TodayScreen = () => {
   return (

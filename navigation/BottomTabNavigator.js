@@ -5,13 +5,8 @@ import TabBarIcon from '../components/TabBarIcon';
 
 import SearchScreen from '../screens/SearchScreen';
 import MyGardenScreen from '../screens/MyGardenScreen';
-<<<<<<< HEAD
-import TodayScreen from '../screens/TodayScreen';
-import ExploreScreen from '../screens/ExploreScreen';
-=======
 import ExploreScreen from '../screens/ExploreScreen';
 import TodayScreen from '../screens/TodayScreen';
->>>>>>> master
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Search';
@@ -52,11 +47,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         name="Explore"
         component={ExploreScreen}
         options={{
-<<<<<<< HEAD
-          title: 'Explore',
-=======
           title: 'Explore Page',
->>>>>>> master
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-book" />,
         }}
       />
