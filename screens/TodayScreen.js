@@ -9,6 +9,6 @@ const TodayScreen = () => {
   );
 };
 
-export default TodayScreen;
-
 const styles = StyleSheet.create({});
+
+export default TodayScreen;

@@ -1,16 +1,19 @@
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import ReminderCard from '../components/reminder-card-component'
+import DailyTask from '../components/DailyTask';
+
 
 const SearchScreen = () => {
   return (
     <View style={styles.container}>
       <Text> Search Screen </Text>
-      <ReminderCard/>
+      <DailyTask/>
     </View>
   );
 };
 
-export default SearchScreen;
+const styles = StyleSheet.create({
+  container: {},
+});
 
-const styles = StyleSheet.create({});
+export default SearchScreen;
