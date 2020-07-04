@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import ShareIcon from '../components/share-app-component;
+import ShareIcon from '../components/share-app-component';
 
 const SearchScreen = () => {
   return (

@@ -1,24 +1,13 @@
-// import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
-// import { useNavigation } from '@react-navigation/native'
 import * as React from 'react';
 import { StyleSheet, Text, View, ImageBackground, TouchableOpacity } from 'react-native';
 
 const individualPage = () => {
 
-  // const pressHandler = () => {
-  //   console.log('Back button pressed!')
-  // }
-
   return (
     <View style={styles.container}>
       <ImageBackground source={require("../assets/images/TEST-flower-02.jpg")} style={styles.background}>
-        {/* <View style={styles.header}>
-          <TouchableOpacity onPress={pressHandler} style={styles.backIconBG}>
-            <MaterialCommunityIcons name="backburger" size={30} color="black" />
-          </TouchableOpacity>
-        </View> */}
       </ImageBackground>
       <View style={styles.contentWrapper}>  
           <View style={styles.content}>
@@ -62,15 +51,6 @@ const styles = StyleSheet.create({
   background: {
     flex: 1,
   },
-  // header: {
-  //   flexDirection: 'row',
-  //   padding: 10
-  // },
-  // backIconBG: {
-  //   backgroundColor: "#ffffff99",
-  //   borderRadius: 50,
-  //   padding: 4,
-  // },
   contentWrapper: {
     position: "absolute",
     bottom: 0,
@@ -105,8 +85,6 @@ const styles = StyleSheet.create({
   },
   btnCalendar: {
     backgroundColor: "#004e57",
-    // borderColor: "#004e57",
-    // borderWidth: 1,
     borderRadius: 50,
     width: 46,
     height: 46,
