@@ -3,7 +3,7 @@ import { AntDesign } from '@expo/vector-icons';
 import * as React from 'react';
 import { StyleSheet, Text, View, ImageBackground, TouchableOpacity } from 'react-native';
 
-const individualPage = () => {
+const IndividualPage = () => {
 
   return (
     <View style={styles.container}>
@@ -41,7 +41,7 @@ const individualPage = () => {
   );
 };
 
-export default individualPage;
+export default IndividualPage;
 
 const styles = StyleSheet.create({
   container: {
