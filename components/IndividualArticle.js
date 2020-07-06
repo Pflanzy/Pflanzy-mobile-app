@@ -1,6 +1,7 @@
 import React from 'react';
-import {TouchableOpacity, Button, ScrollView, View, Text, Image, StyleSheet } from 'react-native';
+import {TouchableOpacity, ScrollView, View, Text, Image, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 const IndividualArticle = (props) => {
     return (
@@ -15,8 +16,8 @@ const IndividualArticle = (props) => {
                 <Text style={styles.headline}>Headline Headline</Text>
                 <Text style={styles.text}>Lorem ipsum dolor sit aet consectetur adipisicing elit. In error ut, pariatur minima, sit minus, assumenda suscipit distinctio iure cum impedit unde veniam ea vitae? Molestias reprehenderit nisi rerum obcaecati distinctio vitae placeat maiores accusantium provident reiciendis atque, error inventore consequatur ullam fugiat repellat voluptate consequuntur illo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit saepe vitae dolores iusto dignissimos debitis, ipsum minima assumenda hic libero? Magnam, numquam necessitatibus!</Text>
                 <TouchableOpacity style={styles.buttonWrapper}>
-                    <Button color="white" title='Add to my Garden'/>
-                    <Icon name="ios-leaf" size={30} color="white" style={{ textAlign: 'center' }} />
+                    <Text style={styles.buttonText} color="white">Add to my Garden</Text>
+                    <Icon name="ios-leaf" size={25} color="white" style={{ textAlign: 'center' }} />
                 </TouchableOpacity>
             </View>
         </ScrollView>
@@ -70,6 +71,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         padding: 5,
+        width: 250
+    },
+    buttonText: {
+        color: 'white',
+        fontSize: 18,
+        marginRight: 5
     }
 
 
