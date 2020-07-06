@@ -65,10 +65,9 @@ function getHeaderTitle(route) {
       return 'Search';
     case 'MyGarden':
       return 'My Garden';
-    case 'Reminder':
-      return 'Set Reminder';
     case 'Today':
       return 'See your tasks';
-
+    case 'Explore':
+      return 'Explore';
   }
 }
