@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import ShareIcon from '../components/share-app-component';
+import ExploreLabel from '../components/ExploreLabel';
 
-const SearchScreen = () => {
+const ReminderScreen = () => {
   return (
     <View style={styles.container}>
-      <Text> Search Screen </Text>
-      <ShareIcon/>
+      <Text> Explore Screen </Text>
+      <ExploreLabel />
     </View>
   );
 };
@@ -15,4 +15,4 @@ const styles = StyleSheet.create({
   container: {},
 });
 
-export default SearchScreen;
+export default ReminderScreen;
