@@ -1,6 +1,5 @@
 import React from 'react';
 import {TouchableOpacity, Button, ScrollView, View, Text, Image, StyleSheet } from 'react-native';
-import { withSafeAreaInsets } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const IndividualArticle = (props) => {
