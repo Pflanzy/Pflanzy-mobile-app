@@ -1,0 +1,46 @@
+[
+  {
+    "commonName": "",
+    "scientificName": "",
+    "category": "",
+    "maxGrowth": "",
+    "origin": "",
+    "poisonousForPets": "",
+    "images": {
+      "imagePrimary": "",
+      "imageSecondary": "",
+      "imageTernary": ""
+    },
+    "description": "",
+    "temperature": "",
+    "light": "",
+    "watering": "",
+    "soil": "",
+    "rePotting": "",
+    "fertilizer": "",
+    "humidity": "",
+    "propagation": ""
+  },
+  {
+    "commonName": "",
+    "scientificName": "",
+    "category": "",
+    "maxGrowth": "",
+    "origin": "",
+    "poisonousForPets": "",
+    "images": {
+      "imagePrimary": "",
+      "imageSecondary": "",
+      "imageTernary": ""
+    },
+    "description": "",
+    "temperature": "",
+    "light": "",
+    "watering": "",
+    "soil": "",
+    "rePotting": "",
+    "fertilizer": "",
+    "humidity": "",
+    "propagation": ""
+  }
+]
