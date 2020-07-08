@@ -1,7 +1,6 @@
 import React from 'react';
 import {TouchableOpacity, ScrollView, View, Text, Image, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 const IndividualArticle = (props) => {
     return (
