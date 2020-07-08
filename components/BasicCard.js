@@ -1,13 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 function BasicCard(props) {
-  const pressHandler = () => {
-    console.log('Navigate to plant card');
-  };
+  const navigation = useNavigation();
 
   return (
-    <TouchableOpacity style={styles.cardContainer} onPress={pressHandler}>
+    <TouchableOpacity
+      style={styles.cardContainer}
+      onPress={() => navigation.navigate('IndividualPlantPage')}>
       <View style={styles.imageContainer}>
         <Image style={styles.cardImage} source={require('../assets/images/water-lilly.jpg')} />
       </View>
