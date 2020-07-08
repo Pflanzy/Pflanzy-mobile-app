@@ -8,6 +8,7 @@ import useCachedResources from './hooks/useCachedResources';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import CameraScreen from './screens/CameraScreen';
 import DailyTasksScreen from './screens/DailyTasksScreen';
+import IndividualPageScreen from './screens/IndividualPageScreen';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
 
 const Stack = createStackNavigator();
@@ -25,6 +26,7 @@ export default function App(props) {
           <Stack.Screen name="Root" component={BottomTabNavigator} />
           <Stack.Screen name="Camera" component={CameraScreen} />
           <Stack.Screen name="DailyTasks" component={DailyTasksScreen} />
+          <Stack.Screen name="IndividualPlantPage" component={IndividualPageScreen} />
         </Stack.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />
