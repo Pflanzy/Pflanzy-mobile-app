@@ -68,7 +68,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
 
-  passedContent: {},
 });
 
 export default BasicCard;
