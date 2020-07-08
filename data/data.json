@@ -297,7 +297,7 @@
       "imageSecondary": "https://www.houseplantsexpert.com/image-files/phalaenopsis1.jpg",
       "imageTernary": "https://www.houseplantsexpert.com/image-files/phalaenopsis_pink.jpg"
     },
-    "description": "Moth orchid is the common name for the phalaenopsis orchid that's quickly become one of the most popular species from the orchidaceae family of flowering plants. Glorious colored blooms all year round and the "ease of growing" is what makes these a popular house plant choice.",
+    "description": "Moth orchid is the common name for the phalaenopsis orchid that's quickly become one of the most popular species from the orchidaceae family of flowering plants. Glorious colored blooms all year round and the \"ease of growing\" is what makes these a popular house plant choice.",
     "temperature": "Phals like their warmth during the day and cool during the night. Room temperatures of around 65 - 85°F (16 - 24°C) during the day and 60 - 65°F ( 16 - 18°C) at night, are ideal growing conditions.",
     "light": "Providing enough light can be a problem for some growers because the moth orchid prefers bright light conditions for more than 10 hours a day. An east or west facing window is best suited - away from direct sun, but bright. During the winter you may have to supplement the plant with artificial lighting.",
     "watering": "Once the orchid soil becomes dry to the touch, water thoroughly. Avoid allowing water to keep the soil soaked; you want it to drain away easily. Avoid watering the middle of the plants foliage (crown) because the water sitting here for a period of time may cause rot. Do not over-water!",
@@ -416,8 +416,8 @@
     "fertilizer": "During the main growing season (spring - fall) feed with a diluted cactus and succulent fertilizer once a month.",
     "humidity": "Average house humidity is advised - but this plant can tolerate dry air conditions and drafts.",
     "propagation": "Propagate by division when its re-potting time or when you see enough plant growth. You may also remove offsets that appear near the base of the plant or propagate 2 inch leaf tip cuttings. Dividing the plant seems to be the most successful approach."
-},
-{
+  },
+  {
     "commonName": "Amaryllis",
     "scientificName": "Hippeastrum",
     "category": "Bulbous Type Plants",
