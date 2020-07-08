@@ -28,7 +28,6 @@ const styles = StyleSheet.create({
     wrapper: {
         display: "flex"
     },
-    imageWrapper: {},
     image: {
         width: '100%',
         height: 300, 
@@ -78,8 +77,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
         marginRight: 5
     }
-
-
 })
 
 export default IndividualArticle;
