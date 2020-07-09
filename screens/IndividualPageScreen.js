@@ -43,6 +43,24 @@ const IndividualPage = () => {
               Temporibus sint id quis quaerat consequatur facere optio facilis
               neque, possimus eligendi officia, quidem et nesciunt!
             </Text>
+            <View style={styles.shortInfoContainer}>
+              <View style={styles.shortInfoElement}>
+                <Text style={styles.shortInfoHeadline}>Origin:</Text>
+                <Text style={styles.shortInfoText}>Africa</Text>
+              </View>
+              <View style={styles.shortInfoElement}>
+                <Text style={styles.shortInfoHeadline}>Category:</Text>
+                <Text style={styles.shortInfoText}>Flowering plants</Text>
+              </View>
+              <View style={styles.shortInfoElement}>
+                <Text style={styles.shortInfoHeadline}>Growth:</Text>
+                <Text style={styles.shortInfoText}>1,5-2 m</Text>
+              </View>
+              <View style={styles.shortInfoElement}>
+                <Text style={styles.shortInfoHeadline}>Poisonous:</Text>
+                <Text style={styles.shortInfoText}>Toxic to cats and dogs</Text>
+              </View>
+            </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
                 <MaterialCommunityIcons
@@ -233,7 +251,34 @@ const styles = StyleSheet.create({
   text: {
     color: 'white',
     lineHeight: 28,
+    marginBottom: 15,
+  },
+  shortInfoContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    width: '100%',
     marginBottom: 20,
+  },
+  shortInfoElement: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '44%',
+    backgroundColor: '#004e57',
+    height: 120,
+    borderRadius: 10,
+    margin: 10,
+  },
+  shortInfoHeadline: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 16,
+    marginBottom: 5,
+  },
+  shortInfoText: {
+    color: 'white',
   },
   infoWrapper: {
     display: 'flex',
