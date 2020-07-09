@@ -45,18 +45,44 @@ const IndividualPage = () => {
             </Text>
             <View style={styles.shortInfoContainer}>
               <View style={styles.shortInfoElement}>
+                <Entypo
+                  style={styles.shortInfoIcon}
+                  name="globe"
+                  size={80}
+                  color="#006772"
+                />
                 <Text style={styles.shortInfoHeadline}>Origin:</Text>
                 <Text style={styles.shortInfoText}>Africa</Text>
               </View>
               <View style={styles.shortInfoElement}>
+                <Entypo
+                  style={styles.shortInfoIcon}
+                  name="price-tag"
+                  size={80}
+                  color="#006772"
+                />
                 <Text style={styles.shortInfoHeadline}>Category:</Text>
-                <Text style={styles.shortInfoText}>Flowering plants</Text>
+                <Text style={styles.shortInfoText}>
+                  Flowering plants blabla blub blub
+                </Text>
               </View>
               <View style={styles.shortInfoElement}>
+                <Entypo
+                  style={styles.shortInfoIcon}
+                  name="tree"
+                  size={80}
+                  color="#006772"
+                />
                 <Text style={styles.shortInfoHeadline}>Growth:</Text>
                 <Text style={styles.shortInfoText}>1,5-2 m</Text>
               </View>
               <View style={styles.shortInfoElement}>
+                <AntDesign
+                  style={styles.shortInfoIcon}
+                  name="warning"
+                  size={80}
+                  color="#006772"
+                />
                 <Text style={styles.shortInfoHeadline}>Poisonous:</Text>
                 <Text style={styles.shortInfoText}>Toxic to cats and dogs</Text>
               </View>
@@ -270,6 +296,10 @@ const styles = StyleSheet.create({
     height: 120,
     borderRadius: 10,
     margin: 10,
+    position: 'relative',
+  },
+  shortInfoIcon: {
+    position: 'absolute',
   },
   shortInfoHeadline: {
     color: 'white',
@@ -279,6 +309,8 @@ const styles = StyleSheet.create({
   },
   shortInfoText: {
     color: 'white',
+    width: '90%',
+    textAlign: 'center',
   },
   infoWrapper: {
     display: 'flex',
