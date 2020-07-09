@@ -1,12 +1,15 @@
 import { Entypo, AntDesign } from '@expo/vector-icons';
 import * as React from 'react';
 import BottomSheet from 'reanimated-bottom-sheet';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import {
   StyleSheet,
   TouchableWithoutFeedback,
   Image,
   Text,
   View,
+  ScrollView,
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
@@ -31,16 +34,117 @@ const IndividualPage = () => {
               <Text style={styles.btnText}>Set care reminder</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.btnCalendar}>
-              <AntDesign name="calendar" size={24} color="white" />
+              <AntDesign name="calendar" size={22} color="white" />
             </TouchableOpacity>
           </View>
-          <View style={styles.contentBody}>
+          <ScrollView style={styles.contentBody}>
             <Text style={styles.text}>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               Temporibus sint id quis quaerat consequatur facere optio facilis
               neque, possimus eligendi officia, quidem et nesciunt!
             </Text>
-          </View>
+            <View style={styles.infoWrapper}>
+              <View style={styles.infoHeaderWrapper}>
+                <MaterialCommunityIcons
+                  name="temperature-celsius"
+                  size={20}
+                  color="white"
+                />
+                <Text style={styles.infoHeader}>Temperature</Text>
+              </View>
+              <Text style={styles.infoBody}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
+                rerum sapiente molestias laudantium.
+              </Text>
+            </View>
+            <View style={styles.infoWrapper}>
+              <View style={styles.infoHeaderWrapper}>
+                <Entypo name="light-up" size={20} color="white" />
+                <Text style={styles.infoHeader}>Light</Text>
+              </View>
+              <Text style={styles.infoBody}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
+                rerum sapiente molestias laudantium.
+              </Text>
+            </View>
+            <View style={styles.infoWrapper}>
+              <View style={styles.infoHeaderWrapper}>
+                <Entypo
+                  name="drop"
+                  size={14}
+                  color="white"
+                  style={styles.waterDrop}
+                />
+                <Text style={styles.infoHeader}>Water</Text>
+              </View>
+              <Text style={styles.infoBody}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
+                rerum sapiente molestias laudantium.
+              </Text>
+            </View>
+            <View style={styles.infoWrapper}>
+              <View style={styles.infoHeaderWrapper}>
+                <MaterialCommunityIcons name="pot" size={20} color="white" />
+                <Text style={styles.infoHeader}>Soil</Text>
+              </View>
+              <Text style={styles.infoBody}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
+                rerum sapiente molestias laudantium.
+              </Text>
+            </View>
+            <View style={styles.infoWrapper}>
+              <View style={styles.infoHeaderWrapper}>
+                <Entypo name="bucket" size={20} color="white" />
+                <Text style={styles.infoHeader}>Re-Potting</Text>
+              </View>
+              <Text style={styles.infoBody}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
+                rerum sapiente molestias laudantium.
+              </Text>
+            </View>
+            <View style={styles.infoWrapper}>
+              <View style={styles.infoHeaderWrapper}>
+                <MaterialCommunityIcons
+                  name="spray-bottle"
+                  size={20}
+                  color="white"
+                />
+                <Text style={styles.infoHeader}>Fertilizer</Text>
+              </View>
+              <Text style={styles.infoBody}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
+                rerum sapiente molestias laudantium.
+              </Text>
+            </View>
+            <View style={styles.infoWrapper}>
+              <View style={styles.infoHeaderWrapper}>
+                <Entypo name="water" size={20} color="white" />
+                <Text style={styles.infoHeader}>Humidity</Text>
+              </View>
+              <Text style={styles.infoBody}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
+                rerum sapiente molestias laudantium.
+              </Text>
+            </View>
+            <View style={styles.infoWrapper}>
+              <View style={styles.infoHeaderWrapper}>
+                <FontAwesome5 name="seedling" size={20} color="white" />
+                <Text style={styles.infoHeader}>Propagation</Text>
+              </View>
+              <Text style={styles.infoBody}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
+                rerum sapiente molestias laudantium.
+              </Text>
+            </View>
+          </ScrollView>
         </View>
       </View>
     );
@@ -52,7 +156,7 @@ const IndividualPage = () => {
     <View style={styles.container}>
       <BottomSheet
         ref={bs}
-        snapPoints={[750, 300, 100]}
+        snapPoints={[750, 300, 160]}
         initialSnap={1}
         renderContent={renderContent}
       />
@@ -85,10 +189,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#008080',
     borderTopRightRadius: 80,
     padding: 20,
-    height: 300,
     width: '100%',
     flex: 1,
-    zIndex: 100,
   },
   nameGeneric: {
     color: 'white',
@@ -102,6 +204,7 @@ const styles = StyleSheet.create({
   },
   btnContainer: {
     flexDirection: 'row',
+    alignItems: 'flex-start',
   },
   btnReminder: {
     flexDirection: 'row',
@@ -116,8 +219,8 @@ const styles = StyleSheet.create({
   btnCalendar: {
     backgroundColor: '#004e57',
     borderRadius: 50,
-    width: 46,
-    height: 46,
+    width: 43,
+    height: 43,
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: 20,
@@ -131,5 +234,30 @@ const styles = StyleSheet.create({
     color: 'white',
     lineHeight: 28,
     marginBottom: 20,
+  },
+  infoWrapper: {
+    display: 'flex',
+    alignItems: 'flex-start',
+  },
+  infoHeaderWrapper: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#004e57',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    flexShrink: 1,
+  },
+  infoHeader: {
+    fontSize: 20,
+    color: 'white',
+    marginLeft: 10,
+  },
+  infoBody: {
+    color: 'white',
+    lineHeight: 28,
+    marginTop: 10,
+    marginBottom: 25,
   },
 });
