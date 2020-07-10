@@ -9,4 +9,8 @@ const SearchScreen = () => {
   );
 };
 
+const styles = StyleSheet.create({
+  container: {},
+});
+
 export default SearchScreen;

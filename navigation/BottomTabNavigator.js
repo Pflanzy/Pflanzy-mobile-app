@@ -18,13 +18,16 @@ export default function BottomTabNavigator({ navigation, route }) {
   navigation.setOptions({ headerTitle: getHeaderTitle(route) });
 
   return (
-    <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
+    <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}
+      tabBarOptions={{activeTintColor: '#008080'}}
+    >
       <BottomTab.Screen
         name="Search"
         component={SearchScreen}
         options={{
           title: 'Search',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-search" />,
+        
         }}
       />
       <BottomTab.Screen
@@ -32,7 +35,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={MyGardenScreen}
         options={{
           title: 'My Garden',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-leaf" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-leaf"/>,
         }}
       />
       <BottomTab.Screen
@@ -40,7 +43,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={TodayScreen}
         options={{
           title: 'Today Page',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-timer" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-today" />,
         }}
       />
       <BottomTab.Screen
@@ -48,7 +51,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={ExploreScreen}
         options={{
           title: 'Explore Page',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-book" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-book"/>,
         }}
       />
 

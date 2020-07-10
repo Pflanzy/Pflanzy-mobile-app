@@ -1,8 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, SafeAreaView, StatusBar} from 'react-native';
 
 import useCachedResources from './hooks/useCachedResources';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
@@ -20,6 +19,9 @@ export default function App(props) {
   //   return null;
   // } else {
   return (
+<React.Fragment>
+    <SafeAreaView style={styles.safeAreaTop}/>
+    <StatusBar barStyle="light-content" />
     <View style={styles.container}>
       <NavigationContainer>
         <Stack.Navigator>
@@ -31,11 +33,16 @@ export default function App(props) {
       </NavigationContainer>
       <StatusBar style="auto" />
     </View>
+</React.Fragment>
   );
 }
 // }
 
 const styles = StyleSheet.create({
+  safeAreaTop: {
+    flex: 0,
+    backgroundColor: '#008080',
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
