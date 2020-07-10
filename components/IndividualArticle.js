@@ -8,7 +8,6 @@ const IndividualArticle = (props) => {
             <View style={styles.imageWrapper}>
                 <Image style={styles.image} source={{uri: 'https://picsum.photos/seed/picsum/200/200'}}/>
             </View>
-            <View style={styles.contentWrapper}>
             <View style={styles.content}>
                 <View style={styles.labelWrapper}>
                     <Text style={styles.label}> Category Label</Text>
@@ -19,7 +18,6 @@ const IndividualArticle = (props) => {
                     <Text style={styles.buttonText} color="white">Add to my Garden</Text>
                     <Icon name="ios-leaf" size={25} color="white" style={{ textAlign: 'center' }} />
                 </TouchableOpacity>
-            </View>
             </View>
         </ScrollView>
     )
@@ -35,9 +33,6 @@ const styles = StyleSheet.create({
     image: {
         width: '100%',
         height: 300, 
-        
-    },
-    contentWrapper: {
         
     },
     content: {
@@ -65,7 +60,8 @@ const styles = StyleSheet.create({
         fontSize: 28,
         marginBottom: 10,
         marginTop: 10,
-        color: 'white'
+        color: 'white',
+        
     },
     text: {
         fontSize: 16,
