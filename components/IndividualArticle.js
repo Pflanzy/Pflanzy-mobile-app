@@ -24,9 +24,6 @@ const IndividualArticle = (props) => {
 }
  
 const styles = StyleSheet.create({
-    mainWrapper: {
-        backgroundColor: '#008080'
-    },
     wrapper: {
         display: "flex",
     },
@@ -42,7 +39,7 @@ const styles = StyleSheet.create({
 
     },
     labelWrapper: {
-        backgroundColor: '#A1009D',
+        backgroundColor: 'green',
         marginTop: 10,
         paddingVertical: 5,
         paddingHorizontal: 10,
@@ -60,13 +57,11 @@ const styles = StyleSheet.create({
         fontSize: 28,
         marginBottom: 10,
         marginTop: 10,
-        color: 'white',
         
     },
     text: {
         fontSize: 16,
         lineHeight: 24,
-        color: 'white',
     },
     buttonWrapper: {
         backgroundColor: '#004e57',
