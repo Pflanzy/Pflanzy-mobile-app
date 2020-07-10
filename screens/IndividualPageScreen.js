@@ -62,9 +62,7 @@ const IndividualPage = () => {
                   color="#006772"
                 />
                 <Text style={styles.shortInfoHeadline}>Category:</Text>
-                <Text style={styles.shortInfoText}>
-                  Flowering plants blabla blub blub
-                </Text>
+                <Text style={styles.shortInfoText}>Flowering plants</Text>
               </View>
               <View style={styles.shortInfoElement}>
                 <Entypo
@@ -200,7 +198,7 @@ const IndividualPage = () => {
     <View style={styles.container}>
       <BottomSheet
         ref={bs}
-        snapPoints={[750, 300, 160]}
+        snapPoints={['85%', '39%', '17%']}
         initialSnap={1}
         renderContent={renderContent}
       />
@@ -222,7 +220,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#eee',
   },
   background: {
-    height: '100%',
+    height: '95%',
     width: '100%',
   },
   contentWrapper: {
@@ -259,15 +257,19 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 20,
     borderRadius: 50,
+    borderWidth: 2,
+    borderColor: '#79C3CA',
   },
   btnCalendar: {
     backgroundColor: '#004e57',
     borderRadius: 50,
-    width: 43,
-    height: 43,
+    width: 42,
+    height: 42,
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: 20,
+    borderWidth: 2,
+    borderColor: '#79C3CA',
   },
   btnText: {
     color: 'white',
