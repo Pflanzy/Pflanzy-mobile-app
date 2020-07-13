@@ -4,15 +4,13 @@ import IndividualArticle from '../components/IndividualArticle'
 
 const SearchScreen = () => {
   return (
-    <View style={styles.container}>
+    <View>
       <Text> Search Screen </Text>
       <IndividualArticle/>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {},
-});
+
 
 export default SearchScreen;
