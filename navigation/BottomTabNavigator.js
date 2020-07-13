@@ -20,7 +20,7 @@ export default function BottomTabNavigator({ navigation, route }) {
     headerStyle:{
       backgroundColor: "#008080",
     },
-    headerTintColor: '#fff',
+    headerTintColor: '#ffffff',
   });
 
   return (
@@ -76,7 +76,7 @@ function getHeaderTitle(route) {
     case 'MyGarden':
       return 'My Garden';
     case 'Today':
-      return 'See your tasks';
+      return 'Your tasks';
     case 'Explore':
       return 'Explore';
   }

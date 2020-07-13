@@ -24,7 +24,7 @@ export default function App(props) {
     <StatusBar barStyle="light-content" />
     <View style={styles.container}>
       <NavigationContainer>
-        <Stack.Navigator >
+        <Stack.Navigator screenOptions={{ headerStyle: {backgroundColor: '#008080'}, headerTintColor: '#fff'}}>
           <Stack.Screen name="Root" component={BottomTabNavigator} />
           <Stack.Screen name="Camera" component={CameraScreen} />
           <Stack.Screen name="DailyTasks" component={DailyTasksScreen} />
