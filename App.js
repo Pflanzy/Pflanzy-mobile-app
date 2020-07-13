@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import { StyleSheet, View, SafeAreaView, StatusBar} from 'react-native';
+import Colors from './constants/Colors'
 
 import useCachedResources from './hooks/useCachedResources';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
@@ -25,7 +26,7 @@ export default function App(props) {
     <StatusBar barStyle="light-content" />
     <View style={styles.container}>
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerStyle: {backgroundColor: '#008080'}, headerTintColor: '#fff'}}>
+        <Stack.Navigator screenOptions={{ headerStyle: {backgroundColor: Colors.tintColor}, headerTintColor: Colors.defaultWhite}}>
           <Stack.Screen name="Root" component={BottomTabNavigator} />
           <Stack.Screen name="Camera" component={CameraScreen} />
           <Stack.Screen name="DailyTasks" component={DailyTasksScreen} />
@@ -43,11 +44,10 @@ export default function App(props) {
 const styles = StyleSheet.create({
   safeAreaTop: {
     flex: 0,
-    // height: 50,
-    backgroundColor: '#008080',
+    backgroundColor: Colors.tintColor,
   },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.defaultWhite,
   },
 });
