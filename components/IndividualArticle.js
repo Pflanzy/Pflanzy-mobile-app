@@ -8,7 +8,7 @@ const IndividualArticle = (props) => {
             <View style={styles.imageWrapper}>
                 <Image style={styles.image} source={{uri: 'https://picsum.photos/seed/picsum/200/200'}}/>
             </View>
-            <View style={styles.contentWrapper}>
+            <View style={styles.content}>
                 <View style={styles.labelWrapper}>
                     <Text style={styles.label}> Category Label</Text>
                 </View>
@@ -25,18 +25,21 @@ const IndividualArticle = (props) => {
  
 const styles = StyleSheet.create({
     wrapper: {
-        display: "flex"
+        display: "flex",
     },
     image: {
         width: '100%',
         height: 300, 
         
     },
-    contentWrapper: {
-        margin: 20,
+    content: {
+        marginHorizontal: 20,
+        marginBottom: 20,
+        marginTop: 10,
+
     },
     labelWrapper: {
-        backgroundColor: '#006400',
+        backgroundColor: 'green',
         marginTop: 10,
         paddingVertical: 5,
         paddingHorizontal: 10,
@@ -51,16 +54,17 @@ const styles = StyleSheet.create({
         fontSize: 12,
     },
     headline: {
-        fontSize: 26,
+        fontSize: 28,
         marginBottom: 10,
         marginTop: 10,
+        
     },
     text: {
         fontSize: 16,
-        lineHeight: 22
+        lineHeight: 24,
     },
     buttonWrapper: {
-        backgroundColor: '#008000',
+        backgroundColor: '#004e57',
         borderRadius: 25,
         marginTop: 20,
         marginBottom: 20,
@@ -69,7 +73,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         padding: 5,
-        width: 250
+        width: 250,
+        borderWidth: 2,
+        borderColor: '#79C3CA',
     },
     buttonText: {
         color: 'white',
