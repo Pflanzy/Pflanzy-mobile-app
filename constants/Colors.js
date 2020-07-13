@@ -12,7 +12,7 @@ export default {
   noticeBackground: tintColor,
   noticeText: '#fff',
   basicShadows: '#404040',
-  collectionLabel: '#c98264',
-  tipsLabel: '#64c757',
+  collectionLabel: '#CCAD0A',
+  tipsLabel: '#802F00',
   defaultWhite: '#fff',
 };

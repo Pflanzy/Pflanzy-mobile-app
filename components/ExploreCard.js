@@ -1,14 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import ExploreLabel from './ExploreLabel';
+import { useNavigation } from '@react-navigation/native';
 
 function ExploreCard({ type }) {
-  const pressHandler = () => {
-    console.log('Navigate to explore more');
-  };
-
+  const navigation = useNavigation();
   return (
-    <TouchableOpacity style={styles.cardContainer} onPress={pressHandler}>
+    <TouchableOpacity style={styles.cardContainer} onPress={() => navigation.navigate('IndividualArticle')}>
       <View style={styles.imageContainer}>
         <Image style={styles.cardImage} source={require('../assets/images/water-lilly.jpg')} />
       </View>
@@ -18,7 +16,7 @@ function ExploreCard({ type }) {
           <Text style={styles.scientificName}>Scientific name</Text>
         </View>
         <View style={styles.passedContent}>
-          <ExploreLabel type={type} />
+          <ExploreLabel type={type} style={styles.label} />
         </View>
       </View>
     </TouchableOpacity>
@@ -32,7 +30,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 10,
     borderBottomRightRadius: 10,
     height: 130,
-    width: '90%',
+    width: '92%',
     elevation: 3,
     shadowColor: '#404040',
     shadowOpacity: 0.3,
@@ -51,13 +49,16 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 10,
     borderBottomRightRadius: 10,
   },
-
+  label: {
+    marginTop: 20,
+  },
   detailsContainer: {
     display: 'flex',
     flexDirection: 'column-reverse',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
     width: '70%',
-    padding: 5,
+    padding: 15,
   },
 
   nameContainer: {

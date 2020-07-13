@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
     height: 100,
-    width: '90%',
+    width: '92%',
     elevation: 3,
     shadowColor: '#404040',
     shadowOpacity: 0.3,
