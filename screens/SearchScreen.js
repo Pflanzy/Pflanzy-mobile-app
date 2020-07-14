@@ -5,12 +5,10 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 const SearchScreen = () => {
   return (
-      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <View style={styles.wrapper}>
           <Text> Search Screen </Text>
           <SearchField/>
         </View>
-      </TouchableWithoutFeedback>
   );
 };
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Keyboard} from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import Colors from '../constants/Colors'
 
@@ -9,7 +9,6 @@ const SearchField = props => {
     const updateSearch = (searchValue) => {
         setSearchValue(searchValue)
     }
-    
 
     return (
         <View style={styles.wrapper}>
@@ -19,12 +18,13 @@ const SearchField = props => {
                 containerStyle={{backgroundColor: 'none', width: '90%', borderTopWidth: 0, borderBottomWidth: 0}}
                 cancelButtonTitle={{paddingHorizontal: 10}}
                 searchIcon={{paddingLeft: 10, size: 24, paddingRight: 0, color: Colors.defaultWhite}}
-                clearIcon={{color: Colors.defaultWhite, paddingHorizontal: 15}}
+                clearIcon={{color: Colors.defaultWhite, size: 24, paddingHorizontal: 10}}
                 rightIconContainerStyle={{paddingLeft: 5}}
 
                 placeholder="Enter plant name"
                 onChangeText={updateSearch}
                 value={searchValue}
+                onClear={() => Keyboard.dismiss()}
             />
         </View>
     )
