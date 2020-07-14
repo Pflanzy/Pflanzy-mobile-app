@@ -15,7 +15,7 @@ const SearchField = props => {
             <SearchBar
                 inputStyle={{backgroundColor: 'white', borderRadius: 20, paddingHorizontal: 10}}
                 inputContainerStyle={{backgroundColor: Colors.tintColor , borderRadius: 32, height: 65}}
-                containerStyle={{backgroundColor: 'none', width: '90%', borderTopWidth: 0, borderBottomWidth: 0}}
+                containerStyle={{backgroundColor: 'none', width: '90%', borderTopWidth: 0, borderBottomWidth: 0, margin: 10}}
                 cancelButtonTitle={{paddingHorizontal: 10}}
                 searchIcon={{paddingLeft: 10, size: 24, paddingRight: 0, color: Colors.defaultWhite}}
                 clearIcon={{color: Colors.defaultWhite, size: 24, paddingHorizontal: 10}}
