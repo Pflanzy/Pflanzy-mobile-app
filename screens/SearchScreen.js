@@ -1,18 +1,16 @@
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import ShareIcon from '../components/share-app-component';
+import IndividualArticle from '../components/IndividualArticle'
 
 const SearchScreen = () => {
   return (
-    <View style={styles.container}>
+    <View>
       <Text> Search Screen </Text>
-      <ShareIcon/>
+      <IndividualArticle/>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {},
-});
+
 
 export default SearchScreen;
