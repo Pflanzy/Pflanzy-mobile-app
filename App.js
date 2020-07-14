@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
-import { StyleSheet, View, SafeAreaView, StatusBar} from 'react-native';
+import { StyleSheet, View, SafeAreaView, StatusBar } from 'react-native';
 
 import useCachedResources from './hooks/useCachedResources';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
@@ -19,21 +19,25 @@ export default function App(props) {
   //   return null;
   // } else {
   return (
-<React.Fragment>
-    <SafeAreaView style={styles.safeAreaTop}/>
-    <StatusBar barStyle="light-content" />
-    <View style={styles.container}>
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerStyle: {backgroundColor: '#008080'}, headerTintColor: '#fff'}}>
-          <Stack.Screen name="Root" component={BottomTabNavigator} />
-          <Stack.Screen name="Camera" component={CameraScreen} />
-          <Stack.Screen name="DailyTasks" component={DailyTasksScreen} />
-          <Stack.Screen name="IndividualPlantPage" component={IndividualPageScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
-      <StatusBar style="auto" />
-    </View>
-</React.Fragment>
+    <>
+      <SafeAreaView style={styles.safeAreaTop} />
+      <StatusBar barStyle="light-content" />
+      <View style={styles.container}>
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={{
+              headerStyle: { backgroundColor: '#008080' },
+              headerTintColor: '#fff',
+            }}>
+            <Stack.Screen name="Root" component={BottomTabNavigator} />
+            <Stack.Screen name="Camera" component={CameraScreen} />
+            <Stack.Screen name="DailyTasks" component={DailyTasksScreen} />
+            <Stack.Screen name="IndividualPlantPage" component={IndividualPageScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
+        <StatusBar style="auto" />
+      </View>
+    </>
   );
 }
 // }
