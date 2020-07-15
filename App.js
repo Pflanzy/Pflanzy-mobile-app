@@ -9,7 +9,7 @@ import CameraScreen from './screens/CameraScreen';
 import DailyTasksScreen from './screens/DailyTasksScreen';
 import IndividualPageScreen from './screens/IndividualPageScreen';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
-import FirebaseExample from './screens/FireBaseExample';
+import NotificationExample from './screens/NotificationExample';
 
 const Stack = createStackNavigator();
 
@@ -24,7 +24,7 @@ export default function App(props) {
     <>
       <SafeAreaView style={styles.safeAreaTop} />
       <StatusBar barStyle="light-content" />
-      <FirebaseExample />
+      <NotificationExample />
     </>
   );
 
