@@ -3,23 +3,27 @@ import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import { StyleSheet, View, SafeAreaView, StatusBar } from 'react-native';
 
+import { Provider } from 'react-redux';
+import store from './store';
+
 import useCachedResources from './hooks/useCachedResources';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import CameraScreen from './screens/CameraScreen';
 import DailyTasksScreen from './screens/DailyTasksScreen';
 import IndividualPageScreen from './screens/IndividualPageScreen';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
+import ExampleReduxScreen from './screens/ExampleReduxScreen';
 
 const Stack = createStackNavigator();
 
-export default function App(props) {
+export default function App() {
   // const isLoadingComplete = useCachedResources();
 
   // if (!isLoadingComplete) {
   //   return null;
   // } else {
   return (
-    <>
+    <Provider store={store}>
       <SafeAreaView style={styles.safeAreaTop} />
       <StatusBar barStyle="light-content" />
       <View style={styles.container}>
@@ -29,7 +33,7 @@ export default function App(props) {
               headerStyle: { backgroundColor: '#008080' },
               headerTintColor: '#fff',
             }}>
-            <Stack.Screen name="Root" component={BottomTabNavigator} />
+            <Stack.Screen name="Root" component={ExampleReduxScreen} />
             <Stack.Screen name="Camera" component={CameraScreen} />
             <Stack.Screen name="DailyTasks" component={DailyTasksScreen} />
             <Stack.Screen name="IndividualPlantPage" component={IndividualPageScreen} />
@@ -37,7 +41,7 @@ export default function App(props) {
         </NavigationContainer>
         <StatusBar style="auto" />
       </View>
-    </>
+    </Provider>
   );
 }
 // }
