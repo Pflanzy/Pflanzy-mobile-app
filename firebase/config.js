@@ -1,6 +1,5 @@
 import * as firebase from 'firebase';
 import 'firebase/auth';
-import 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBXgsXNuvScz2WhJYGh6XdWVnL1w5fSCaI',
@@ -15,9 +14,3 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 export default firebase;
-
-{
-    provider: "facebook | google | twitter | microsoft.com",
-    type: "popup | redirect", // popup is default
-    scopes: Array // email is default
-  }
