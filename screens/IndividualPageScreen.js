@@ -14,14 +14,16 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-const IndividualPage = () => {
+const IndividualPage = ({ route }) => {
+  const plant = route.params.element;
+  console.log(plant.commonName);
   const renderContent = () => {
     return (
       <View style={styles.contentWrapper}>
         <View style={styles.content}>
           <View>
-            <Text style={styles.nameGeneric}>Name (Generic)</Text>
-            <Text style={styles.nameScientific}>Name (Scientific)</Text>
+            <Text style={styles.nameGeneric}>{plant.commonName}</Text>
+            <Text style={styles.nameScientific}>{plant.scientificName}</Text>
           </View>
           <View style={styles.btnContainer}>
             <TouchableOpacity style={styles.btnReminder}>
@@ -38,11 +40,7 @@ const IndividualPage = () => {
             </TouchableOpacity>
           </View>
           <ScrollView style={styles.contentBody}>
-            <Text style={styles.text}>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Temporibus sint id quis quaerat consequatur facere optio facilis
-              neque, possimus eligendi officia, quidem et nesciunt!
-            </Text>
+            <Text style={styles.text}>{plant.description}</Text>
             <View style={styles.shortInfoContainer}>
               <View style={styles.shortInfoElement}>
                 <Entypo
@@ -52,7 +50,7 @@ const IndividualPage = () => {
                   color="#006772"
                 />
                 <Text style={styles.shortInfoHeadline}>Origin:</Text>
-                <Text style={styles.shortInfoText}>Africa</Text>
+                <Text style={styles.shortInfoText}>{plant.origin}</Text>
               </View>
               <View style={styles.shortInfoElement}>
                 <Entypo
@@ -62,7 +60,7 @@ const IndividualPage = () => {
                   color="#006772"
                 />
                 <Text style={styles.shortInfoHeadline}>Category:</Text>
-                <Text style={styles.shortInfoText}>Flowering plants</Text>
+                <Text style={styles.shortInfoText}>{plant.category}</Text>
               </View>
               <View style={styles.shortInfoElement}>
                 <Entypo
@@ -72,7 +70,7 @@ const IndividualPage = () => {
                   color="#006772"
                 />
                 <Text style={styles.shortInfoHeadline}>Growth:</Text>
-                <Text style={styles.shortInfoText}>1,5-2 m</Text>
+                <Text style={styles.shortInfoText}>{plant.maxGrowth}</Text>
               </View>
               <View style={styles.shortInfoElement}>
                 <AntDesign
@@ -82,7 +80,9 @@ const IndividualPage = () => {
                   color="#006772"
                 />
                 <Text style={styles.shortInfoHeadline}>Poisonous:</Text>
-                <Text style={styles.shortInfoText}>Toxic to cats and dogs</Text>
+                <Text style={styles.shortInfoText}>
+                  {plant.poisonousForPets}
+                </Text>
               </View>
             </View>
             <View style={styles.infoWrapper}>
@@ -94,22 +94,14 @@ const IndividualPage = () => {
                 />
                 <Text style={styles.infoHeader}>Temperature</Text>
               </View>
-              <Text style={styles.infoBody}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
-                rerum sapiente molestias laudantium.
-              </Text>
+              <Text style={styles.infoBody}>{plant.temperature}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
                 <Entypo name="light-up" size={20} color="white" />
                 <Text style={styles.infoHeader}>Light</Text>
               </View>
-              <Text style={styles.infoBody}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
-                rerum sapiente molestias laudantium.
-              </Text>
+              <Text style={styles.infoBody}>{plant.light}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
@@ -121,33 +113,21 @@ const IndividualPage = () => {
                 />
                 <Text style={styles.infoHeader}>Water</Text>
               </View>
-              <Text style={styles.infoBody}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
-                rerum sapiente molestias laudantium.
-              </Text>
+              <Text style={styles.infoBody}>{plant.watering}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
                 <MaterialCommunityIcons name="pot" size={20} color="white" />
                 <Text style={styles.infoHeader}>Soil</Text>
               </View>
-              <Text style={styles.infoBody}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
-                rerum sapiente molestias laudantium.
-              </Text>
+              <Text style={styles.infoBody}>{plant.soil}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
                 <Entypo name="bucket" size={20} color="white" />
                 <Text style={styles.infoHeader}>Re-Potting</Text>
               </View>
-              <Text style={styles.infoBody}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
-                rerum sapiente molestias laudantium.
-              </Text>
+              <Text style={styles.infoBody}>{plant.rePotting}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
@@ -158,33 +138,21 @@ const IndividualPage = () => {
                 />
                 <Text style={styles.infoHeader}>Fertilizer</Text>
               </View>
-              <Text style={styles.infoBody}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
-                rerum sapiente molestias laudantium.
-              </Text>
+              <Text style={styles.infoBody}>{plant.fertilizer}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
                 <Entypo name="water" size={20} color="white" />
                 <Text style={styles.infoHeader}>Humidity</Text>
               </View>
-              <Text style={styles.infoBody}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
-                rerum sapiente molestias laudantium.
-              </Text>
+              <Text style={styles.infoBody}>{plant.humidity}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
                 <FontAwesome5 name="seedling" size={20} color="white" />
                 <Text style={styles.infoHeader}>Propagation</Text>
               </View>
-              <Text style={styles.infoBody}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
-                rerum sapiente molestias laudantium.
-              </Text>
+              <Text style={styles.infoBody}>{plant.propagation}</Text>
             </View>
           </ScrollView>
         </View>
@@ -205,7 +173,7 @@ const IndividualPage = () => {
       <TouchableWithoutFeedback onPress={() => bs.current.snapTo(0)}>
         <Image
           style={styles.background}
-          source={require('../assets/images/TEST-flower-02.jpg')}
+          source={{uri: plant.images.imagePrimary}}
         />
       </TouchableWithoutFeedback>
     </View>

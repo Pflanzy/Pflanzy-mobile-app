@@ -2,26 +2,28 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const ReminderCard = (props) => {
+const ReminderCard = ({element}) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
       style={styles.cardContainer}
-      onPress={() => navigation.navigate('DailyTasks')}>
+      onPress={() => navigation.navigate('IndividualPlantPage', {
+        element:element
+      })}>
       <View style={styles.imageContainer}>
         <Image
           style={styles.cardImage}
-          source={{ uri: 'https://picsum.photos/seed/picsum/200/200' }}
+          source={{uri:element.images.imagePrimary}}
         />
       </View>
       <View style={styles.detailsContainer}>
         <View style={styles.nameContainer}>
-          <Text style={styles.title}>UserPlantName</Text>
-          <Text style={styles.text}>Scientific name which can be pretty long</Text>
+          <Text style={styles.title}>{element.commonName}</Text>
+          <Text style={styles.text}>{element.scientificName}</Text>
         </View>
         <View style={styles.passedContent}>
-          <Text style={styles.title}>Today:</Text>
-          <Text style={styles.text}>passed prop</Text>
+  <Text style={styles.title}>Origin</Text>
+          <Text style={styles.text}>{element.origin}</Text>
         </View>
       </View>
     </TouchableOpacity>
