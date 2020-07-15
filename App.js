@@ -9,6 +9,7 @@ import CameraScreen from './screens/CameraScreen';
 import DailyTasksScreen from './screens/DailyTasksScreen';
 import IndividualPageScreen from './screens/IndividualPageScreen';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
+import FirebaseExample from './screens/FireBaseExample';
 
 const Stack = createStackNavigator();
 
@@ -18,27 +19,36 @@ export default function App(props) {
   // if (!isLoadingComplete) {
   //   return null;
   // } else {
+
   return (
     <>
       <SafeAreaView style={styles.safeAreaTop} />
       <StatusBar barStyle="light-content" />
-      <View style={styles.container}>
-        <NavigationContainer>
-          <Stack.Navigator
-            screenOptions={{
-              headerStyle: { backgroundColor: '#008080' },
-              headerTintColor: '#fff',
-            }}>
-            <Stack.Screen name="Root" component={BottomTabNavigator} />
-            <Stack.Screen name="Camera" component={CameraScreen} />
-            <Stack.Screen name="DailyTasks" component={DailyTasksScreen} />
-            <Stack.Screen name="IndividualPlantPage" component={IndividualPageScreen} />
-          </Stack.Navigator>
-        </NavigationContainer>
-        <StatusBar style="auto" />
-      </View>
+      <FirebaseExample />
     </>
   );
+
+  // return (
+  //   <>
+  //     <SafeAreaView style={styles.safeAreaTop} />
+  //     <StatusBar barStyle="light-content" />
+  //     <View style={styles.container}>
+  //       <NavigationContainer>
+  //         <Stack.Navigator
+  //           screenOptions={{
+  //             headerStyle: { backgroundColor: '#008080' },
+  //             headerTintColor: '#fff',
+  //           }}>
+  //           <Stack.Screen name="Root" component={BottomTabNavigator} />
+  //           <Stack.Screen name="Camera" component={CameraScreen} />
+  //           <Stack.Screen name="DailyTasks" component={DailyTasksScreen} />
+  //           <Stack.Screen name="IndividualPlantPage" component={IndividualPageScreen} />
+  //         </Stack.Navigator>
+  //       </NavigationContainer>
+  //       <StatusBar style="auto" />
+  //     </View>
+  //   </>
+  // );
 }
 // }
 
