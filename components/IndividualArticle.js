@@ -1,6 +1,7 @@
 import React from 'react';
 import {TouchableOpacity, ScrollView, View, Text, Image, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import ExploreLabelComponent from '../components/ExploreLabel'
 
 const IndividualArticle = (props) => {
     return (
@@ -10,7 +11,7 @@ const IndividualArticle = (props) => {
             </View>
             <View style={styles.content}>
                 <View style={styles.labelWrapper}>
-                    <Text style={styles.label}> Category Label</Text>
+                    <ExploreLabelComponent/>
                 </View>
                 <Text style={styles.headline}>Headline Headline</Text>
                 <Text style={styles.text}>Lorem ipsum dolor sit aet consectetur adipisicing elit. In error ut, pariatur minima, sit minus, assumenda suscipit distinctio iure cum impedit unde veniam ea vitae? Molestias reprehenderit nisi rerum obcaecati distinctio vitae placeat maiores accusantium provident reiciendis atque, error inventore consequatur ullam fugiat repellat voluptate consequuntur illo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit saepe vitae dolores iusto dignissimos debitis, ipsum minima assumenda hic libero? Magnam, numquam necessitatibus!</Text>
@@ -39,19 +40,8 @@ const styles = StyleSheet.create({
 
     },
     labelWrapper: {
-        backgroundColor: 'green',
         marginTop: 10,
-        paddingVertical: 5,
-        paddingHorizontal: 10,
-        minWidth: '25%',
-        alignSelf: "flex-end",
-        borderRadius: 15,
-    },
-    label: {
-        color: 'white',
-        textAlign: 'center',
-        fontWeight: '600',
-        fontSize: 12,
+        alignSelf: "flex-start",
     },
     headline: {
         fontSize: 28,
