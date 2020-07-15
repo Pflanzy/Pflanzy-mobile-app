@@ -1,14 +1,28 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, Keyboard } from 'react-native';
 import SearchField from '../components/SearchField';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-
+import { TouchableWithoutFeedback, ScrollView } from 'react-native-gesture-handler';
+import data from "../data/data.json"
+import ReminderCard from '../components/ReminderCard';
 const SearchScreen = () => {
+
+  
+  const plantList = () => {
+return data.map(element => {
   return (
-    <View >
+    <View>
+        <ReminderCard element={element}/>  
+    </View>
+  )
+    })
+  }
+
+  return (
+    <View>
       <SearchField/>
         <TouchableWithoutFeedback style={styles.wrapper} onPress={() => Keyboard.dismiss()}>
-          <Text> Search Screen - You can tap somewhere here to dismiss the keyboard</Text>
+          <Text>Search Screen - You can tap somewhere here to dismiss the keyboard</Text>
+          <ScrollView>{plantList()}</ScrollView>
         </TouchableWithoutFeedback>
     </View>
   );
@@ -16,7 +30,7 @@ const SearchScreen = () => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    height: '100%'
+    height: '100%',
   }
 })
 
