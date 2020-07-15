@@ -1,10 +1,128 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
-import Icon from 'react-native-vector-icons/Entypo';
-import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, Button } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
+import Colors from '../constants/Colors'
+import { useNavigation } from '@react-navigation/native';
+
+const myDate = new Date();
+let myDateString;
+myDate.setDate(myDate.getDate());
+myDateString = ('0' + myDate.getDate()).slice(-2) + '.' + ('0' + (myDate.getMonth() + 1)).slice(-2) + '.' + myDate.getFullYear();
+
 
 const DailyTask = (props) => {
+  const navigation = useNavigation();
+
+  return (
+    <ScrollView style={styles.dailyTaskContainer}>
+      <View>
+        <Image
+          style={styles.image}
+          source={{
+            uri: 'https://picsum.photos/200',
+          }}
+          />
+      </View>
+        <Text style={styles.date}>{myDateString}</Text>
+      <Text style={styles.header}>Relevant information for</Text>
+      <View style={styles.plantNameWrapper}>
+        {/* <TouchableOpacity onPress={() => navigation.navigate('IndividualPlantPage')}>>
+          <Text style={styles.plantName}>Swiss Cheese Plant</Text>
+        </TouchableOpacity> */}
+      <TouchableOpacity onPress={() => navigation.navigate('IndividualPlantPage')}>
+        <View style={styles.plantName} >
+          <Text style={styles.plantName}>Swiss Cheese Plant</Text>
+        </View>
+      </TouchableOpacity>
+      </View>
+
+      <View style={styles.plantInfoWrapper}>
+        <View style={styles.infoWrapper}>
+          <View style={styles.infoHeaderWrapper}>
+            <Entypo
+              name="drop"
+              size={14}
+              color="white"
+              style={styles.waterDrop}
+            />
+            <Text style={styles.infoHeader}>Water</Text>
+          </View>
+          <Text style={styles.infoBody}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
+            rerum sapiente molestias laudantium.
+          </Text>
+        </View>
+        <View style={styles.infoWrapper}>
+          <View style={styles.infoHeaderWrapper}>
+            <Entypo name="light-up" size={20} color="white" />
+            <Text style={styles.infoHeader}>Light</Text>
+          </View>
+          <Text style={styles.infoBody}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
+            rerum sapiente molestias laudantium.
+          </Text>
+        </View>
+        <View style={styles.infoWrapper}>
+          <View style={styles.infoHeaderWrapper}>
+            <MaterialCommunityIcons
+              name="temperature-celsius"
+              size={20}
+              color="white"
+            />
+            <Text style={styles.infoHeader}>Temperature</Text>
+          </View>
+          <Text style={styles.infoBody}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
+            rerum sapiente molestias laudantium.
+          </Text>
+        </View>
+        <View style={styles.infoWrapper}>
+          <View style={styles.infoHeaderWrapper}>
+            <Entypo name="bucket" size={20} color="white" />
+            <Text style={styles.infoHeader}>Re-Potting</Text>
+          </View>
+          <Text style={styles.infoBody}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
+            rerum sapiente molestias laudantium.
+          </Text>
+        </View>
+        <View style={styles.infoWrapper}>
+          <View style={styles.infoHeaderWrapper}>
+            <MaterialCommunityIcons name="pot" size={20} color="white" />
+            <Text style={styles.infoHeader}>Soil</Text>
+          </View>
+          <Text style={styles.infoBody}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
+            rerum sapiente molestias laudantium.
+          </Text>
+        </View>
+        <View style={styles.infoWrapper}>
+          <View style={styles.infoHeaderWrapper}>
+            <MaterialCommunityIcons
+              name="spray-bottle"
+              size={20}
+              color="white"
+            />
+            <Text style={styles.infoHeader}>Fertilizer</Text>
+          </View>
+          <Text style={styles.infoBody}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
+            rerum sapiente molestias laudantium.
+          </Text>
+        </View>
+      </View>
+    </ScrollView>
+  );
+  };
+
+
   const styles = StyleSheet.create({
     dailyTaskContainer: {
       display: 'flex',
@@ -14,108 +132,69 @@ const DailyTask = (props) => {
       width: '100%',
       height: 300,
     },
-    detailCard: {
+    header: {
+      color: Colors.defaultWhite,
+      fontSize: 24,
+      textAlign: 'center',
+      backgroundColor: Colors.darkGreen,
+      paddingTop: 15,
+
+    },
+    plantNameWrapper: {
+      backgroundColor: Colors.darkGreen,
+      display: 'flex',
       alignItems: 'center',
+      paddingBottom: 10, 
+    },
+    plantName: {
+      paddingHorizontal: 10,
+      fontSize: 16,
+      backgroundColor: Colors.tintColor,
+      color: Colors.defaultWhite,
       margin: 10,
-      width: '90%',
-      alignSelf: 'center',
-    },
-    taskHeader: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      width: '100%',
-      alignItems: 'center',
-    },
-    iconContainer: {
-      backgroundColor: '#fff',
-      borderRadius: 15,
-      padding: 10,
-      alignItems: 'center',
-      margin: 5,
-    },
-    taskName: {
-      justifyContent: 'space-evenly',
-    },
-    taskBody: {
       borderRadius: 10,
-      padding: 10,
+      overflow: 'hidden',
+      fontWeight: '600',
     },
-    taskExtra: {
-      margin: 10,
-    },
-    bottomText: {
-      backgroundColor: '#9DBCD4',
-      borderRadius: 15,
+    date: {
       padding: 5,
+      backgroundColor: Colors.tintColor,
+      color: 'white',
+      textAlign: 'center',
+      fontSize: 20,
+      fontWeight: '600',
     },
-    mainText: {
-      textAlign: 'justify',
+    plantInfoWrapper: {
+      margin: 30,
+    },
+    infoWrapper: {
+      display: 'flex',
+      alignItems: 'center',
+    },
+    infoHeaderWrapper: {
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: '100%',
+      backgroundColor: Colors.darkGreen,
+      paddingVertical: 10,
+      borderRadius: 5,
+      flexShrink: 1,
+    },
+    infoHeader: {
+      fontSize: 20,
+      color: 'white',
+      marginLeft: 10,
+    },
+    infoBody: {
+      lineHeight: 28,
+      marginTop: 10,
+      marginBottom: 25,
+      textAlign: 'center',
+      width: '95%',
+      color: Colors.textGrey
     },
   });
-  return (
-    <ScrollView style={styles.dailyTaskContainer}>
-      <View>
-        <Image
-          style={styles.image}
-          source={{
-            uri: 'https://picsum.photos/200',
-          }}
-        />
-        <View style={styles.detailCard}>
-          <View style={styles.taskHeader}>
-            <View style={styles.iconContainer}>
-              <Ionicons name="ios-construct" size={30} color="#9DBCD4" />
-              <Text>Care</Text>
-              <View style={styles.bottomText}>
-                <Text>Low</Text>
-              </View>
-            </View>
-            <View style={styles.iconContainer}>
-              <Icon name="water" size={30} color="#9DBCD4" />
-              <Text>Water</Text>
-              <View style={styles.bottomText}>
-                <Text>Every 2-3 weeks</Text>
-              </View>
-            </View>
-            <View style={styles.iconContainer}>
-              <Ionicons name="ios-sunny" size={30} color="#9DBCD4" />
-              <Text>Sun</Text>
-              <View style={styles.bottomText}>
-                <Text>Full sun</Text>
-              </View>
-            </View>
-          </View>
-          <View style={styles.taskExtra}>
-            <Text style={styles.mainText}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
-              laudantium pariatur aliquid, ratione dolorem placeat eligendi vero
-              unde sapiente maiores dignissimos ea nulla ducimus modi, quas quis
-              totam id laborum cum eos commodi sint iste! Velit fugit ratione
-              tenetur saepe expedita illum quis dolorem harum, aliquam at sed et
-              exercitationem, porro sunt quae labore est? Repudiandae nam saepe
-              doloribus dolorem? Eaque architecto vel quae, exercitationem sint
-              qui eligendi deserunt incidunt corrupti fugit magni saepe, vitae
-              tempore rem velit omnis illum sunt itaque quasi aut minima cumque
-              alias porro. Nisi repellat, dolor quaerat delectus ullam obcaecati
-              eius et quasi quidem quae accusamus laboriosam reprehenderit neque
-              quas amet maxime numquam quia laborum iusto? Totam nisi dolorum
-              sapiente neque necessitatibus eaque error ipsam? Saepe error
-              placeat dignissimos ipsam cumque deserunt itaque eos iure
-              consequuntur minima, dolores recusandae aut commodi sint tempora
-              suscipit ullam qui, voluptas blanditiis repudiandae odit
-              similique. Dignissimos accusamus dolor quisquam necessitatibus
-              aperiam fugit magni odit temporibus autem, ratione neque iusto
-              sunt unde culpa. Sequi dolores culpa, nulla rerum obcaecati omnis.
-              Quibusdam voluptatibus nostrum iure doloremque! Nulla, molestiae?
-              Nesciunt enim at nam! Voluptas, eligendi provident beatae nihil
-              molestiae, iure quasi soluta dolorum nemo, ad blanditiis rem
-              itaque maiores officiis! Animi, perferendis!
-            </Text>
-          </View>
-        </View>
-      </View>
-    </ScrollView>
-  );
-};
 
 export default DailyTask;
