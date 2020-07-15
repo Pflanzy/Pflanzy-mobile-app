@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import ExploreCard from '../components/ExploreCard';
 
-const ReminderScreen = () => {
+const ExploreScreen = () => {
   return (
     <View style={styles.container}>
       <Text> Explore Screen </Text>
@@ -16,4 +16,4 @@ const styles = StyleSheet.create({
   container: {},
 });
 
-export default ReminderScreen;
+export default ExploreScreen;

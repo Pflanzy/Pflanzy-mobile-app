@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as React from 'react';
 
 import TabBarIcon from '../components/TabBarIcon';
+import Colors from '../constants/Colors'
 
 import SearchScreen from '../screens/SearchScreen';
 import MyGardenScreen from '../screens/MyGardenScreen';
@@ -15,16 +16,26 @@ export default function BottomTabNavigator({ navigation, route }) {
   // Set the header title on the parent stack navigator depending on the
   // currently active tab. Learn more in the documentation:
   // https://reactnavigation.org/docs/en/screen-options-resolution.html
-  navigation.setOptions({ headerTitle: getHeaderTitle(route) });
+  navigation.setOptions({
+    headerTitle: getHeaderTitle(route),
+    headerStyle:{
+      backgroundColor: Colors.tintColor,
+    },
+    headerTintColor: Colors.defaultWhite,
+  });
 
   return (
-    <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
+    <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}
+      tabBarOptions={{activeTintColor: Colors.tintColor}}
+    
+    >
       <BottomTab.Screen
         name="Search"
         component={SearchScreen}
         options={{
           title: 'Search',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-search" />,
+        
         }}
       />
       <BottomTab.Screen
@@ -32,7 +43,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={MyGardenScreen}
         options={{
           title: 'My Garden',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-leaf" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-leaf"/>,
         }}
       />
       <BottomTab.Screen
@@ -40,7 +51,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={TodayScreen}
         options={{
           title: 'Today Page',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-timer" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-today" />,
         }}
       />
       <BottomTab.Screen
@@ -48,7 +59,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={ExploreScreen}
         options={{
           title: 'Explore Page',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-book" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-book"/>,
         }}
       />
 
@@ -66,7 +77,7 @@ function getHeaderTitle(route) {
     case 'MyGarden':
       return 'My Garden';
     case 'Today':
-      return 'See your tasks';
+      return 'Your tasks';
     case 'Explore':
       return 'Explore';
   }

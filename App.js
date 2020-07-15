@@ -1,14 +1,15 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, SafeAreaView, StatusBar} from 'react-native';
+import Colors from './constants/Colors'
 
 import useCachedResources from './hooks/useCachedResources';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import CameraScreen from './screens/CameraScreen';
 import DailyTasksScreen from './screens/DailyTasksScreen';
 import IndividualPageScreen from './screens/IndividualPageScreen';
+import IndividualArticle from './components/IndividualArticle';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
 
 const Stack = createStackNavigator();
@@ -20,24 +21,33 @@ export default function App(props) {
   //   return null;
   // } else {
   return (
+<React.Fragment>
+    <SafeAreaView style={styles.safeAreaTop}/>
+    <StatusBar barStyle="light-content" />
     <View style={styles.container}>
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{ headerStyle: {backgroundColor: Colors.tintColor}, headerTintColor: Colors.defaultWhite}}>
           <Stack.Screen name="Root" component={BottomTabNavigator} />
           <Stack.Screen name="Camera" component={CameraScreen} />
           <Stack.Screen name="DailyTasks" component={DailyTasksScreen} />
           <Stack.Screen name="IndividualPlantPage" component={IndividualPageScreen} />
+          <Stack.Screen name="IndividualArticle" component={IndividualArticle} />
         </Stack.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />
     </View>
+</React.Fragment>
   );
 }
 // }
 
 const styles = StyleSheet.create({
+  safeAreaTop: {
+    flex: 0,
+    backgroundColor: Colors.tintColor,
+  },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.defaultWhite,
   },
 });
