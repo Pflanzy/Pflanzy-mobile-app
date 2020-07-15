@@ -1,9 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 function SelectNotification() {
+  const sun = () => {
+    console.log('Your plant needs sunlight');
+  };
+  const water = () => {
+    console.log('Water your plant');
+  };
+  const fertilize = () => {
+    console.log('Change fertilizer');
+  };
   return (
-    <View style={styles.mainContainer}>
+    <SafeAreaView style={styles.mainContainer}>
+      <Text style={styles.plantName}>Plant name</Text>
+
       <View style={styles.imageContainer}>
         <Image
           style={styles.notificationImage}
@@ -11,30 +23,44 @@ function SelectNotification() {
         />
       </View>
       <View style={styles.selectorContainer}>
-        <ScrollView horizontal>
-          <Text>Sunlight</Text>
-          <Text>Water</Text>
-          <Text>Fertilize</Text>
-        </ScrollView>
+        <TouchableOpacity style={styles.notificationBtn} onPress={sun}>
+          <Text style={styles.btnText}>Sunlight</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.notificationBtn} onPress={water}>
+          <Text style={styles.btnText}>Water</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.notificationBtn} onPress={fertilize}>
+          <Text style={styles.btnText}>Fertilizer</Text>
+        </TouchableOpacity>
       </View>
-      <svg height="500" width="500">
-        <polygon points="50,20 30,80 40,60" stroke="cadetblue" strokeWidth="5" />
-      </svg>
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   mainContainer: {
-    borderWidth: 1,
-    height: '60%',
+    height: '50%',
     width: '100%',
     flexDirection: 'column',
     alignItems: 'center',
+    backgroundColor: '#fff',
+    elevation: 3,
+    shadowColor: '#404040',
+    shadowOpacity: 0.3,
+    shadowOffset: { height: 3 },
+    shadowRadius: 2,
+    borderBottomLeftRadius: 50,
+    borderBottomRightRadius: 50,
+  },
+
+  plantName: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    height: '10%',
   },
   imageContainer: {
     width: '100%',
-    height: '70%',
+    height: '60%',
     flexDirection: 'row',
     justifyContent: 'center',
   },
@@ -43,12 +69,22 @@ const styles = StyleSheet.create({
     width: '50%',
   },
   selectorContainer: {
-    // flexDirection: 'row',
-    // justifyContent: 'space-between',
-    // alignItems: 'center',
-    width: '60%',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    width: '100%',
     height: '30%',
-    borderWidth: 1,
+  },
+
+  notificationBtn: {
+    backgroundColor: '#004e57',
+    paddingHorizontal: 15,
+    paddingVertical: 5,
+    borderRadius: 50,
+  },
+  btnText: {
+    color: 'white',
+    fontSize: 18,
   },
 });
 
