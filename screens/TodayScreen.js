@@ -6,7 +6,6 @@ const TodayScreen = () => {
   return (
     <View style={styles.container}>
       <Text> Today Screen </Text>
-      <ReminderCard />
     </View>
   );
 };

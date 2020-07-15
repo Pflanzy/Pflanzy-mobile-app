@@ -1,29 +1,38 @@
-import * as React from 'react';
+import  React,{ useState } from 'react';
 import { StyleSheet, Text, View, Keyboard } from 'react-native';
 import SearchField from '../components/SearchField';
-import { TouchableWithoutFeedback, ScrollView } from 'react-native-gesture-handler';
-import data from "../data/data.json"
+import {
+  TouchableWithoutFeedback,
+  ScrollView,
+} from 'react-native-gesture-handler';
+import data from '../data/data.json';
 import ReminderCard from '../components/ReminderCard';
+
 const SearchScreen = () => {
-
-  
+  const [plantData, setPlantData] = useState(data);
   const plantList = () => {
-return data.map(element => {
+    return plantData.length >=1 ? plantData.map((element) => {
+      return (
+        <View>
+          <ReminderCard element={element} />
+        </View>
+      );
+    }) : <Text> asdsadasdsa</Text>
+  };
+const getData = (val) => {
+    setPlantData(val)
+}
   return (
     <View>
-        <ReminderCard element={element}/>  
-    </View>
-  )
-    })
-  }
-
-  return (
-    <View>
-      <SearchField/>
-        <TouchableWithoutFeedback style={styles.wrapper} onPress={() => Keyboard.dismiss()}>
-          <Text>Search Screen - You can tap somewhere here to dismiss the keyboard</Text>
-          <ScrollView>{plantList()}</ScrollView>
-        </TouchableWithoutFeedback>
+      <SearchField sendData={getData}/>
+      <TouchableWithoutFeedback
+        style={styles.wrapper}
+        onPress={() => Keyboard.dismiss()}>
+        <Text>
+          Search Screen - You can tap somewhere here to dismiss the keyboard
+        </Text>
+        <ScrollView>{plantList()}</ScrollView>
+      </TouchableWithoutFeedback>
     </View>
   );
 };
@@ -31,7 +40,7 @@ return data.map(element => {
 const styles = StyleSheet.create({
   wrapper: {
     height: '100%',
-  }
-})
+  },
+});
 
 export default SearchScreen;

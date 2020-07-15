@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-function BasicCard({element}) {
+function BasicCard(props) {
   const navigation = useNavigation();
 
   return (
@@ -10,12 +10,12 @@ function BasicCard({element}) {
       style={styles.cardContainer}
       onPress={() => navigation.navigate('IndividualPlantPage')}>
       <View style={styles.imageContainer}>
-        <Image style={styles.cardImage} source={{uri:element.images.imagePrimary}} />
+        <Image style={styles.cardImage} source={require('../assets/images/water-lilly.jpg')} />
       </View>
       <View style={styles.detailsContainer}>
         <View style={styles.nameContainer}>
-  <Text style={styles.boldName}>{element.commonName}</Text>
-          <Text style={styles.scientificName}>{element.scientificName}</Text>
+          <Text style={styles.boldName}>Water Lilly</Text>
+          <Text style={styles.scientificName}>Scientific name</Text>
         </View>
         <View style={styles.passedContent}>
           <Text>passed prop</Text>
