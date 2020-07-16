@@ -10,6 +10,7 @@ import CameraScreen from './screens/CameraScreen';
 import DailyTasksScreen from './screens/DailyTasksScreen';
 import IndividualPageScreen from './screens/IndividualPageScreen';
 import IndividualArticle from './components/IndividualArticle';
+import AuthScreen from './screens/AuthScreen';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
 import { signIn as SignInAnonymous, onAuthStateChanged } from './firebase';
 
@@ -56,6 +57,7 @@ export default function App(props) {
             <Stack.Screen name="DailyTasks" component={DailyTasksScreen} />
             <Stack.Screen name="IndividualPlantPage" component={IndividualPageScreen} />
             <Stack.Screen name="IndividualArticle" component={IndividualArticle} />
+            <Stack.Screen name="Auth" component={AuthScreen} />
           </Stack.Navigator>
         </NavigationContainer>
         <StatusBar style="auto" />
