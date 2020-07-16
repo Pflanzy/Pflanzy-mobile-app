@@ -1,9 +1,9 @@
 import React from 'react';
 import {TouchableOpacity, ScrollView, View, Text, Image, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import ExploreLabelComponent from '../components/ExploreLabel'
+import ExploreLabel from './ExploreLabel'
 
-const IndividualArticle = (props) => {
+const IndividualArticle = ({type}) => {
     return (
         <ScrollView style={styles.mainWrapper}>
             <View style={styles.imageWrapper}>
@@ -11,7 +11,7 @@ const IndividualArticle = (props) => {
             </View>
             <View style={styles.content}>
                 <View style={styles.labelWrapper}>
-                    <ExploreLabelComponent/>
+                    <ExploreLabel type={type}/>
                 </View>
                 <Text style={styles.headline}>Headline Headline</Text>
                 <Text style={styles.text}>Lorem ipsum dolor sit aet consectetur adipisicing elit. In error ut, pariatur minima, sit minus, assumenda suscipit distinctio iure cum impedit unde veniam ea vitae? Molestias reprehenderit nisi rerum obcaecati distinctio vitae placeat maiores accusantium provident reiciendis atque, error inventore consequatur ullam fugiat repellat voluptate consequuntur illo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit saepe vitae dolores iusto dignissimos debitis, ipsum minima assumenda hic libero? Magnam, numquam necessitatibus!</Text>
