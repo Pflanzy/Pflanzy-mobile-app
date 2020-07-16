@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Image, Text, TextInput, TouchableOpacity, View, StyleSheet } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import firebase from '../firebase';
 
 const AuthScreen = ({ navigation }) => {
+  const dispatch = useDispatch();
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -45,7 +47,7 @@ const AuthScreen = ({ navigation }) => {
               return;
             }
             const user = firestoreDocument.data();
-            console.log(user);
+            dispatch({ type: 'ADD_USER', payload: { user } });
             navigation.navigate('Auth', { screen: 'Account', params: { user } });
           })
           .catch((error) => {
