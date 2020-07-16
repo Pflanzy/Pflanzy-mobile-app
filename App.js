@@ -7,7 +7,7 @@ import Colors from './constants/Colors';
 import useCachedResources from './hooks/useCachedResources';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import CameraScreen from './screens/CameraScreen';
-import DailyTasksScreen from './screens/DailyTasksScreen';
+import DailyTaskScreen from './screens/DailyTaskScreen';
 import IndividualPageScreen from './screens/IndividualPageScreen';
 import IndividualArticle from './components/IndividualArticle';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
@@ -33,7 +33,7 @@ export default function App(props) {
             }}>
             <Stack.Screen name="Root" component={BottomTabNavigator} />
             <Stack.Screen name="Camera" component={CameraScreen} />
-            <Stack.Screen name="DailyTasks" component={DailyTasksScreen} />
+            <Stack.Screen name="DailyTask" component={DailyTaskScreen} />
             <Stack.Screen name="IndividualPlantPage" component={IndividualPageScreen} />
             <Stack.Screen name="IndividualArticle" component={IndividualArticle} />
           </Stack.Navigator>
