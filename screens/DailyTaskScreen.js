@@ -8,6 +8,7 @@ import Animated from 'react-native-reanimated';
 import Colors from '../constants/Colors';
 
 const { width, height } = Dimensions.get('window');
+
 const reminder = () => {
   console.log('reminder');
 };
@@ -15,103 +16,224 @@ const reminder = () => {
 const DailyTask = (props) => {
   const navigation = useNavigation();
 
-  return (
-    <View style={styles.mainContainer}>
-      <TouchableOpacity style={styles.plantSettings} onPress={reminder}>
-        <Entypo name="dots-three-vertical" size={25} color="#e0ebe2" />
+  const renderInner = () => (
+    <View style={styles.settingsContainer}>
+      <TouchableOpacity style={styles.settingsBtns} onPress={() => navigation.navigate('Camera')}>
+        <Text style={styles.settingsBtnTitle}>Take Photo</Text>
       </TouchableOpacity>
-      <View style={styles.imageContainer}>
-        <Svg height="85%" width="100%">
-          <ClipPath id="clip">
-            <Circle r="83%" cx="50%" />
-          </ClipPath>
-          <Image
-            href={require('../assets/images/water-lilly.jpg')}
-            width="100%"
-            height="100%"
-            preserveAspectRatio="xMidYMid slice"
-            clipPath="url(#clip)"
-          />
-        </Svg>
-        <View style={styles.nameContainer}>
-          <View style={styles.commonNameContainer}>
-            <Text style={styles.commonName}>Common name/Given name</Text>
-          </View>
-          <View>
-            <Text style={styles.botName}>
-              Botanical name: <Text style={styles.botNameInner}>Spathiphyllum Wallisii</Text>
-            </Text>
-          </View>
-        </View>
-      </View>
-
-      <ScrollView style={styles.dailyTaskContainer}>
-        <View style={styles.buttonsWrapper}>
-          <TouchableOpacity onPress={reminder}>
-            <View style={styles.plantReminder}>
-              <Text style={styles.plantReminder}>Set Reminder</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('IndividualPlantPage')}>
-            <View style={styles.moreInfo}>
-              <Text style={styles.moreInfo}>More info</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.plantInfoWrapper}>
-          <View style={styles.smallContainer}>
-            <View style={styles.smallInfoWrapper}>
-              <View style={styles.smallInfoHeaderWrapper}>
-                <AntDesign style={styles.smallInfoIcon} name="warning" size={35} color="#006772" />
-                <Text style={styles.infoHeader}>Poisonous</Text>
-              </View>
-              <Text style={styles.smallInfoBody}>Not poisonous for cats and dogs.</Text>
-            </View>
-            <View style={styles.smallInfoWrapper}>
-              <View style={styles.smallInfoHeaderWrapper}>
-                <Entypo style={styles.smallInfoIcon} name="tree" size={35} color="#006772" />
-                <Text style={styles.infoHeader}>Growth</Text>
-              </View>
-              <Text style={styles.smallInfoBody}>10-20 cm</Text>
-            </View>
-          </View>
-          <View style={styles.infoWrapper}>
-            <View style={styles.infoHeaderWrapper}>
-              <Entypo name="drop" size={14} color="white" style={styles.waterDrop} />
-              <Text style={styles.infoHeader}>Water</Text>
-            </View>
-            <Text style={styles.infoBody}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam exercitationem
-              ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
-            </Text>
-          </View>
-          <View style={styles.infoWrapper}>
-            <View style={styles.infoHeaderWrapper}>
-              <Entypo name="light-up" size={20} color="white" />
-              <Text style={styles.infoHeader}>Light</Text>
-            </View>
-            <Text style={styles.infoBody}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam exercitationem
-              ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
-            </Text>
-          </View>
-        </View>
-      </ScrollView>
+      <TouchableOpacity style={styles.settingsBtns}>
+        <Text style={styles.settingsBtnTitle}>Rename Plant</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.deleteSettingsBtns}>
+        <Text style={styles.settingsBtnDelete}>Delete Plant</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.CancelSettingsBtns} onPress={() => bs.current.snapTo(1)}>
+        <Text style={styles.settingsBtnTitle}>Cancel</Text>
+      </TouchableOpacity>
     </View>
+  );
+
+  const renderHeader = () => (
+    <View style={styles.settingsHandleContainer}>
+      <View style={styles.settingsHeader}>
+        <View style={styles.settingsHandle} />
+      </View>
+    </View>
+  );
+
+  const bs = React.createRef();
+  const fall = new Animated.Value(1);
+
+  return (
+    <>
+      <BottomSheet
+        ref={bs}
+        snapPoints={[330, 0]}
+        renderContent={renderInner}
+        renderHeader={renderHeader}
+        initialSnap={1}
+        callbackNode={fall}
+        enabledGestureInteraction
+      />
+      <Animated.View
+        style={{
+          height: '100%',
+          backgroundColor: '#f0fff5',
+          opacity: Animated.add(0.4, Animated.multiply(fall, 1.0)),
+        }}>
+        <TouchableOpacity style={styles.plantSettings} onPress={() => bs.current.snapTo(0)}>
+          <Entypo name="dots-three-vertical" size={25} color="#e0ebe2" />
+        </TouchableOpacity>
+        <View style={styles.imageContainer}>
+          <Svg height="85%" width="100%">
+            <ClipPath id="clip">
+              <Circle r="83%" cx="50%" />
+            </ClipPath>
+            <Image
+              href={require('../assets/images/water-lilly.jpg')}
+              width="100%"
+              height="100%"
+              preserveAspectRatio="xMidYMid slice"
+              clipPath="url(#clip)"
+            />
+          </Svg>
+          <View style={styles.nameContainer}>
+            <View style={styles.commonNameContainer}>
+              <Text style={styles.commonName}>Common name/Given name</Text>
+            </View>
+            <View>
+              <Text style={styles.botName}>
+                Botanical name: <Text style={styles.botNameInner}>Spathiphyllum Wallisii</Text>
+              </Text>
+            </View>
+          </View>
+        </View>
+
+        <ScrollView style={styles.dailyTaskContainer}>
+          <View style={styles.buttonsWrapper}>
+            <TouchableOpacity onPress={reminder}>
+              <View style={styles.plantReminder}>
+                <Text style={styles.plantReminder}>Set Reminder</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('IndividualPlantPage')}>
+              <View style={styles.moreInfo}>
+                <Text style={styles.moreInfo}>More info</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.plantInfoWrapper}>
+            <View style={styles.smallContainer}>
+              <View style={styles.smallInfoWrapper}>
+                <View style={styles.smallInfoHeaderWrapper}>
+                  <AntDesign
+                    style={styles.smallInfoIcon}
+                    name="warning"
+                    size={35}
+                    color="#006772"
+                  />
+                  <Text style={styles.infoHeader}>Poisonous</Text>
+                </View>
+                <Text style={styles.smallInfoBody}>Not poisonous for cats and dogs.</Text>
+              </View>
+              <View style={styles.smallInfoWrapper}>
+                <View style={styles.smallInfoHeaderWrapper}>
+                  <Entypo style={styles.smallInfoIcon} name="tree" size={35} color="#006772" />
+                  <Text style={styles.infoHeader}>Growth</Text>
+                </View>
+                <Text style={styles.smallInfoBody}>10-20 cm</Text>
+              </View>
+            </View>
+            <View style={styles.infoWrapper}>
+              <View style={styles.infoHeaderWrapper}>
+                <Entypo name="drop" size={14} color="white" style={styles.waterDrop} />
+                <Text style={styles.infoHeader}>Water</Text>
+              </View>
+              <Text style={styles.infoBody}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam
+                exercitationem ex ad, possimus sed? Sit accusamus rerum sapiente molestias
+                laudantium.
+              </Text>
+            </View>
+            <View style={styles.infoWrapper}>
+              <View style={styles.infoHeaderWrapper}>
+                <Entypo name="light-up" size={20} color="white" />
+                <Text style={styles.infoHeader}>Light</Text>
+              </View>
+              <Text style={styles.infoBody}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam
+                exercitationem ex ad, possimus sed? Sit accusamus rerum sapiente molestias
+                laudantium.
+              </Text>
+            </View>
+          </View>
+        </ScrollView>
+      </Animated.View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  mainContainer: {
+  // mainContainer: {
+  //   height: '100%',
+  //   backgroundColor: '#f0fff5',
+  //   opacity: Animated.add(0.1, Animated.multiply(fall, 1.0)),
+  // },
+
+  settingsContainer: {
+    padding: 20,
+    backgroundColor: '#fff',
     height: '100%',
-    backgroundColor: '#f0fff5',
+    // alignItems: 'center',
+  },
+
+  settingsBtns: {
+    borderRadius: 10,
+    backgroundColor: Colors.tintColor,
+    margin: 5,
+  },
+
+  settingsBtnTitle: {
+    textAlign: 'center',
+    paddingVertical: 15,
+    fontSize: 16,
+    color: Colors.defaultWhite,
+    fontWeight: '600',
+  },
+
+  deleteSettingsBtns: {
+    borderRadius: 10,
+    backgroundColor: '#c7c5c4',
+    margin: 5,
+  },
+
+  settingsBtnDelete: {
+    textAlign: 'center',
+    paddingVertical: 15,
+    fontSize: 16,
+    color: '#c4392d',
+    fontWeight: '600',
+  },
+
+  CancelSettingsBtns: {
+    borderRadius: 10,
+    backgroundColor: Colors.tintColor,
+    margin: 5,
+    marginTop: 40,
+  },
+
+  settingsHandleContainer: {
+    backgroundColor: Colors.defaultWhite,
+    shadowColor: '#333',
+    shadowOffset: { width: -1, height: -3 },
+    shadowRadius: 2,
+    shadowOpacity: 0.4,
+    paddingTop: 20,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+  },
+
+  settingsHeader: {
+    alignItems: 'center',
+  },
+
+  settingsHandle: {
+    width: 40,
+    height: 6,
+    borderRadius: 4,
+    backgroundColor: '#00000040',
+    marginBottom: 10,
   },
 
   plantSettings: {
     position: 'absolute',
-    top: 20,
-    right: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 50,
+    width: 50,
+    top: 10,
+    right: 5,
     zIndex: 100,
   },
   imageContainer: {
