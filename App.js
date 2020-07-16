@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, View, SafeAreaView, StatusBar } from 'react-native';
 import Colors from './constants/Colors';
 
@@ -11,6 +11,7 @@ import DailyTasksScreen from './screens/DailyTasksScreen';
 import IndividualPageScreen from './screens/IndividualPageScreen';
 import IndividualArticle from './components/IndividualArticle';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
+import { signIn as SignInAnonymous, onAuthStateChanged } from './firebase';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,25 @@ export default function App(props) {
   // if (!isLoadingComplete) {
   //   return null;
   // } else {
+
+  useEffect(() => {
+    SignInAnonymous();
+    onAuthStateChanged(function (user) {
+      if (user) {
+        // TODO: Save User Info To Redux
+        // User is signed in.
+        const { isAnonymous } = user;
+        const { uid } = user;
+        console.log(uid);
+        // ...
+      } else {
+        // User is signed out.
+        // ...
+      }
+      // ...
+    });
+  }, []);
+
   return (
     <>
       <SafeAreaView style={styles.safeAreaTop} />
