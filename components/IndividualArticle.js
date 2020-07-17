@@ -17,14 +17,14 @@ const IndividualArticle = ({route}) => {
                 </View>
                 <Text style={styles.headline}>{article.headline}</Text>
                 <Text style={styles.author}>Author: {article.author}</Text>
-                <Text style={styles.subHeader}>{article.firstSubheader}</Text>
-                <Text style={styles.paragraph}>{article.firstParagraph}</Text>
-                <Image style={styles.imageInText} source={{uri: article.images.imageSecondary}}/>
-                <Text style={styles.subHeader}>{article.secondSubheader}</Text>
-                <Text style={styles.paragraph}>{article.secondParagraph}</Text>
-                <Image style={styles.imageInText} source={{uri: article.images.imageTernary}}/>
-                <Text style={styles.subHeader}>{article.thirdSubheader}</Text>
-                <Text style={styles.paragraph}>{article.thirdParagraph}</Text>
+                <Text style={article.firstSubheader ? styles.subHeader : styles.none}>{article.firstSubheader}</Text>
+                <Text style={article.firstParagraph ? styles.paragraph : styles.none}>{article.firstParagraph}</Text>
+                <Image style={article.images.imageSecondary ? styles.imageInText : styles.none} source={article.images.imageSecondary ? {uri: article.images.imageSecondary} : null}/>
+                <Text style={article.secondSubheader ? styles.subHeader : styles.none}>{article.secondSubheader}</Text>
+                <Text style={article.secondParagraph ? styles.paragraph : styles.none}>{article.secondParagraph}</Text>
+                <Image style={article.images.imageSecondary ? styles.imageInText : styles.none} source={article.images.imageTernary ? {uri: article.images.imageTernary} : null}/>
+                <Text style={article.thirdSubheader ? styles.subHeader : styles.none}>{article.thirdSubheader}</Text>
+                <Text style={article.thirdParagraph ? styles.paragraph : styles.none}>{article.thirdParagraph}</Text>
             </View>
         </ScrollView>
     )
@@ -33,6 +33,9 @@ const IndividualArticle = ({route}) => {
 const styles = StyleSheet.create({
     wrapper: {
         display: "flex",
+    },
+    none: {
+        display: "none"
     },
     image: {
         width: '100%',
@@ -63,12 +66,12 @@ const styles = StyleSheet.create({
     subHeader: {
         fontSize: 18,
         marginBottom: 10,
+        marginTop: 20,
         lineHeight: 24
     },
     author: {
         fontSize: 14,
-        color: 'grey',
-        marginBottom: 10,
+        color: 'grey'
     },
     paragraph: {
         fontSize: 16,
