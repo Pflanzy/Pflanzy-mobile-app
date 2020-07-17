@@ -16,7 +16,7 @@ const MyGardenScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
-    alignItems: 'flex-end',
+    alignItems: 'center',
   },
 });
 
