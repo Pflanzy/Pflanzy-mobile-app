@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 10,
     borderBottomRightRadius: 10,
     height: 130,
-    width: '92%',
+    width: '93%',
     elevation: 3,
     shadowColor: '#404040',
     shadowOpacity: 0.4,
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   imageContainer: {
     borderTopRightRadius: 50,
     borderBottomRightRadius: 50,
-    width: '30%',
+    width: '33%',
   },
   cardImage: {
     width: '100%',
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column-reverse',
     justifyContent: 'flex-end',
     alignItems: 'flex-start',
-    width: '70%',
+    width: '67%',
     padding: 15,
   },
   nameContainer: {

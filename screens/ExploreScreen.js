@@ -27,8 +27,6 @@ const ExploreScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 15,
-    marginBottom: 20
   },
 });
 
