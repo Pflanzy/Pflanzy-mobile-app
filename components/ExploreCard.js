@@ -3,20 +3,19 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import ExploreLabel from './ExploreLabel';
 import { useNavigation } from '@react-navigation/native';
 
-function ExploreCard({ type }) {
+function ExploreCard({article}) {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity style={styles.cardContainer} onPress={() => navigation.navigate('IndividualArticle')}>
+    <TouchableOpacity style={styles.cardContainer} onPress={() => navigation.navigate('IndividualArticle', {article:article})}>
       <View style={styles.imageContainer}>
-        <Image style={styles.cardImage} source={require('../assets/images/water-lilly.jpg')} />
+        <Image style={styles.cardImage} source={{uri: article.images.imagePrimary}} />
       </View>
       <View style={styles.detailsContainer}>
         <View style={styles.nameContainer}>
-          <Text style={styles.boldName}>3 reasons your houseplants die</Text>
-          <Text style={styles.scientificName}>Scientific name</Text>
-        </View>
+        <Text style={styles.headline}>{article.headline}</Text>
+      </View>
         <View style={styles.passedContent}>
-          <ExploreLabel type={type} style={styles.label} />
+          <ExploreLabel style={styles.label} />
         </View>
       </View>
     </TouchableOpacity>
@@ -55,22 +54,18 @@ const styles = StyleSheet.create({
   detailsContainer: {
     display: 'flex',
     flexDirection: 'column-reverse',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignItems: 'flex-start',
     width: '70%',
     padding: 15,
   },
-
   nameContainer: {
     paddingTop: 5,
   },
-
-  boldName: {
-    fontWeight: 'bold',
-    fontSize: 20,
-  },
-
-  passedContent: {},
+  headline: {
+    fontWeight: '300',
+    fontSize: 18,
+  }
 });
 
 export default ExploreCard;

@@ -3,7 +3,8 @@ import {TouchableOpacity, ScrollView, View, Text, Image, StyleSheet } from 'reac
 import Icon from 'react-native-vector-icons/Ionicons';
 import ExploreLabelComponent from '../components/ExploreLabel'
 
-const IndividualArticle = (props) => {
+const IndividualArticle = ({route}) => {
+    const article = route.params.element;
     return (
         <ScrollView style={styles.mainWrapper}>
             <View style={styles.imageWrapper}>
@@ -13,7 +14,7 @@ const IndividualArticle = (props) => {
                 <View style={styles.labelWrapper}>
                     <ExploreLabelComponent/>
                 </View>
-                <Text style={styles.headline}>Headline Headline</Text>
+                <Text style={styles.headline}>{article.headline}</Text>
                 <Text style={styles.text}>Lorem ipsum dolor sit aet consectetur adipisicing elit. In error ut, pariatur minima, sit minus, assumenda suscipit distinctio iure cum impedit unde veniam ea vitae? Molestias reprehenderit nisi rerum obcaecati distinctio vitae placeat maiores accusantium provident reiciendis atque, error inventore consequatur ullam fugiat repellat voluptate consequuntur illo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit saepe vitae dolores iusto dignissimos debitis, ipsum minima assumenda hic libero? Magnam, numquam necessitatibus!</Text>
                 <TouchableOpacity style={styles.buttonWrapper}>
                     <Text style={styles.buttonText} color="white">Add to my Garden</Text>
