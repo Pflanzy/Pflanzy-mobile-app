@@ -58,7 +58,7 @@ const MyGardenPlant = (props) => {
       <Animated.View
         style={{
           height: '100%',
-          backgroundColor: '#f0fff5',
+          backgroundColor: '#e0ffea',
           opacity: Animated.add(0.4, Animated.multiply(fall, 1.0)),
         }}>
         <TouchableOpacity style={styles.plantSettings} onPress={() => bs.current.snapTo(0)}>
@@ -155,12 +155,6 @@ const MyGardenPlant = (props) => {
 };
 
 const styles = StyleSheet.create({
-  // mainContainer: {
-  //   height: '100%',
-  //   backgroundColor: '#f0fff5',
-  //   opacity: Animated.add(0.1, Animated.multiply(fall, 1.0)),
-  // },
-
   settingsContainer: {
     padding: 20,
     backgroundColor: '#fff',
@@ -199,8 +193,11 @@ const styles = StyleSheet.create({
   CancelSettingsBtns: {
     borderRadius: 10,
     backgroundColor: Colors.tintColor,
-    margin: 5,
-    marginTop: 40,
+    margin: 10,
+    position: 'absolute',
+    bottom: 0,
+    alignSelf: 'center',
+    width: '100%',
   },
 
   settingsHandleContainer: {
