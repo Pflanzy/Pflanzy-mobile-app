@@ -13,7 +13,7 @@ const reminder = () => {
   console.log('reminder');
 };
 
-const DailyTask = (props) => {
+const MyGardenPlant = (props) => {
   const navigation = useNavigation();
 
   const renderInner = () => (
@@ -388,4 +388,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DailyTask;
+export default MyGardenPlant;

@@ -8,7 +8,7 @@ function BasicCard(props) {
   return (
     <TouchableOpacity
       style={styles.cardContainer}
-      onPress={() => navigation.navigate('IndividualPlantPage')}>
+      onPress={() => navigation.navigate('MyGardenPlant')}>
       <View style={styles.imageContainer}>
         <Image style={styles.cardImage} source={require('../assets/images/water-lilly.jpg')} />
       </View>
@@ -68,7 +68,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
   },
-
 });
 
 export default BasicCard;
