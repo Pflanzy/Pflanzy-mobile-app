@@ -32,7 +32,6 @@ export default function App(props) {
             }}>
             <Stack.Screen name="Root" component={BottomTabNavigator} />
             <Stack.Screen name="Camera" component={CameraScreen} />
-
             <Stack.Screen name="IndividualPlantPage" component={IndividualPageScreen} />
             <Stack.Screen name="IndividualArticle" component={IndividualArticle} />
           </Stack.Navigator>
