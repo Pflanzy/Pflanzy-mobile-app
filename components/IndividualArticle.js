@@ -1,6 +1,5 @@
 import React from 'react';
-import {TouchableOpacity, ScrollView, View, Text, Image, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { ScrollView, View, Text, Image, StyleSheet } from 'react-native';
 import ExploreLabelComponent from '../components/ExploreLabel'
 import Colors from '../constants/Colors'
 
@@ -22,7 +21,7 @@ const IndividualArticle = ({route}) => {
                 <Image style={article.images.imageSecondary ? styles.imageInText : styles.none} source={article.images.imageSecondary ? {uri: article.images.imageSecondary} : null}/>
                 <Text style={article.secondSubheader ? styles.subHeader : styles.none}>{article.secondSubheader}</Text>
                 <Text style={article.secondParagraph ? styles.paragraph : styles.none}>{article.secondParagraph}</Text>
-                <Image style={article.images.imageSecondary ? styles.imageInText : styles.none} source={article.images.imageTernary ? {uri: article.images.imageTernary} : null}/>
+                <Image style={article.images.imageTernary ? styles.imageInText : styles.none} source={article.images.imageTernary ? {uri: article.images.imageTernary} : null}/>
                 <Text style={article.thirdSubheader ? styles.subHeader : styles.none}>{article.thirdSubheader}</Text>
                 <Text style={article.thirdParagraph ? styles.paragraph : styles.none}>{article.thirdParagraph}</Text>
             </View>
@@ -42,12 +41,12 @@ const styles = StyleSheet.create({
         height: 300, 
     },
     imageInText: {
-        width: '80%',
+        width: '85%',
         height: 200,
         alignSelf: 'center',
         marginTop: 20,
         marginBottom: 20,
-        borderRadius: 10
+        borderRadius: 5
     },
     content: {
         marginHorizontal: 20,
@@ -76,7 +75,8 @@ const styles = StyleSheet.create({
     paragraph: {
         fontSize: 16,
         lineHeight: 24,
-        color: Colors.textGrey
+        color: Colors.textGrey,
+        marginBottom: 20,
     },
     buttonWrapper: {
         backgroundColor: '#004e57',
