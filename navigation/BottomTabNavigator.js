@@ -7,7 +7,7 @@ import Colors from '../constants/Colors'
 import SearchScreen from '../screens/SearchScreen';
 import MyGardenScreen from '../screens/MyGardenScreen';
 import ExploreScreen from '../screens/ExploreScreen';
-import TodayScreen from '../screens/TodayScreen';
+// import TodayScreen from '../screens/TodayScreen';
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Search';
@@ -46,14 +46,7 @@ export default function BottomTabNavigator({ navigation, route }) {
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-leaf"/>,
         }}
       />
-      <BottomTab.Screen
-        name="Today"
-        component={TodayScreen}
-        options={{
-          title: 'Today Page',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-today" />,
-        }}
-      />
+    
       <BottomTab.Screen
         name="Explore"
         component={ExploreScreen}
@@ -76,8 +69,6 @@ function getHeaderTitle(route) {
       return 'Search';
     case 'MyGarden':
       return 'My Garden';
-    case 'Today':
-      return 'Your tasks';
     case 'Explore':
       return 'Explore';
   }
