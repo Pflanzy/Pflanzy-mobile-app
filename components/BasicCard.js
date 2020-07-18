@@ -8,7 +8,7 @@ function BasicCard(props) {
   return (
     <TouchableOpacity
       style={styles.cardContainer}
-      onPress={() => navigation.navigate('IndividualPlantPage')}>
+      onPress={() => navigation.navigate('MyGardenPlant')}>
       <View style={styles.imageContainer}>
         <Image style={styles.cardImage} source={require('../assets/images/water-lilly.jpg')} />
       </View>
@@ -29,14 +29,13 @@ const styles = StyleSheet.create({
   cardContainer: {
     flexDirection: 'row',
     backgroundColor: '#fff',
-    borderTopLeftRadius: 10,
-    borderBottomLeftRadius: 10,
+    borderRadius: 10,
     height: 100,
     width: '92%',
     elevation: 3,
     shadowColor: '#404040',
     shadowOpacity: 0.4,
-    shadowOffset: { width: 2, height: 2 },
+    shadowOffset: { height: 2 },
     shadowRadius: 3,
     marginVertical: 10,
   },
@@ -65,10 +64,14 @@ const styles = StyleSheet.create({
   },
 
   boldName: {
-    fontWeight: 'bold',
-    fontSize: 20,
+    fontWeight: '400',
+    fontSize: 18,
   },
 
+  scientificName: {
+    fontWeight: '200',
+    fontSize: 14,
+  },
 });
 
 export default BasicCard;
