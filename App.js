@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
 import { StyleSheet, View, SafeAreaView, StatusBar } from 'react-native';
 import store from './store';
@@ -14,7 +14,6 @@ import IndividualPageScreen from './screens/IndividualPageScreen';
 import IndividualArticle from './components/IndividualArticle';
 import AuthScreen from './screens/AuthScreen';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
-import { signIn as SignInAnonymous, onAuthStateChanged } from './firebase';
 
 const Stack = createStackNavigator();
 
@@ -24,24 +23,6 @@ export default function App(props) {
   // if (!isLoadingComplete) {
   //   return null;
   // } else {
-
-  useEffect(() => {
-    SignInAnonymous();
-    onAuthStateChanged(function (user) {
-      if (user) {
-        // TODO: Save User Info To Redux
-        // User is signed in.
-        const { isAnonymous } = user;
-        const { uid } = user;
-        console.log(uid);
-        // ...
-      } else {
-        // User is signed out.
-        // ...
-      }
-      // ...
-    });
-  }, []);
 
   return (
     <>
