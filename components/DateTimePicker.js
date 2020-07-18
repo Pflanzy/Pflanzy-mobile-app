@@ -21,7 +21,7 @@ const DateTimePicker = () => {
 
   return (
     <View>
-      <Button title="Show Date Picker" onPress={showDatePicker} />
+      <Button title="Set reminder" onPress={showDatePicker} />
       <DateTimePickerModal
         isVisible={isDatePickerVisible}
         mode="datetime"
