@@ -7,11 +7,10 @@ import Colors from './constants/Colors';
 import useCachedResources from './hooks/useCachedResources';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import CameraScreen from './screens/CameraScreen';
-import DailyTaskScreen from './screens/DailyTaskScreen';
+import MyPlantScreen from './screens/MyPlantScreen';
 import IndividualPageScreen from './screens/IndividualPageScreen';
 import IndividualArticle from './components/IndividualArticle';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
-import DateTimePicker from './components/DateTimePicker';
 
 const Stack = createStackNavigator();
 
@@ -25,21 +24,22 @@ export default function App(props) {
     <>
       <SafeAreaView style={styles.safeAreaTop} />
       <StatusBar barStyle="light-content" />
-
-      <DateTimePicker />
-
-      {/* <View style={styles.container}>
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerStyle: {backgroundColor: Colors.tintColor}, headerTintColor: Colors.defaultWhite}}>
-          <Stack.Screen name="Root" component={BottomTabNavigator} />
-          <Stack.Screen name="Camera" component={CameraScreen} />
-          <Stack.Screen name="DailyTask" component={DailyTaskScreen} />
-          <Stack.Screen name="IndividualPlantPage" component={IndividualPageScreen} />
-          <Stack.Screen name="IndividualArticle" component={IndividualArticle} />
-        </Stack.Navigator>
-      </NavigationContainer>
-      <StatusBar style="auto" />
-    </View> */}
+      <View style={styles.container}>
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={{
+              headerStyle: { backgroundColor: Colors.tintColor },
+              headerTintColor: Colors.defaultWhite,
+            }}>
+            <Stack.Screen name="Root" component={BottomTabNavigator} />
+            <Stack.Screen name="Camera" component={CameraScreen} />
+            <Stack.Screen name="MyGardenPlant" component={MyPlantScreen} />
+            <Stack.Screen name="IndividualPlantPage" component={IndividualPageScreen} />
+            <Stack.Screen name="IndividualArticle" component={IndividualArticle} />
+          </Stack.Navigator>
+        </NavigationContainer>
+        <StatusBar style="auto" />
+      </View>
     </>
   );
 }
