@@ -48,16 +48,16 @@ const MyGardenPlant = (props) => {
 
   const renderMainInfo = () => (
     <View style={styles.myPlantContainer}>
-      {/* <View style={styles.buttonsWrapper}> */}
-      <TouchableOpacity onPress={reminder}>
-        <View style={styles.plantReminderContainer}>
-          <Text style={styles.plantReminder}>Set Reminder</Text>
-        </View>
-      </TouchableOpacity>
+      <View style={styles.contentHandle} />
+      <View style={styles.buttonWrapper}>
+        <TouchableOpacity onPress={reminder}>
+          <View style={styles.reminderBtnContainer}>
+            <Text style={styles.reminderBtn}>Set Reminder</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
 
-      {/* </View> */}
-
-      <View style={styles.plantInfoWrapper}>
+      <ScrollView style={styles.plantInfoWrapper}>
         <View style={styles.smallContainer}>
           <View style={styles.smallInfoWrapper}>
             <View style={styles.smallInfoHeaderWrapper}>
@@ -94,23 +94,12 @@ const MyGardenPlant = (props) => {
             ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
           </Text>
         </View>
-        <View style={styles.infoWrapper}>
-          <View style={styles.infoHeaderWrapper}>
-            <Entypo name="light-up" size={20} color="white" />
-            <Text style={styles.infoHeader}>Light</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('IndividualPlantPage')}>
+          <View style={styles.infoBtnContainer}>
+            <Text style={styles.infoBtn}>More info</Text>
           </View>
-          <Text style={styles.infoBody}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam exercitationem
-            ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
-          </Text>
-        </View>
-      </View>
-
-      <TouchableOpacity onPress={() => navigation.navigate('IndividualPlantPage')}>
-        <View style={styles.moreInfo}>
-          <Text style={styles.moreInfo}>More info</Text>
-        </View>
-      </TouchableOpacity>
+        </TouchableOpacity>
+      </ScrollView>
     </View>
   );
 
@@ -256,6 +245,16 @@ const styles = StyleSheet.create({
     right: 5,
     zIndex: 100,
   },
+
+  contentHandle: {
+    width: 40,
+    height: 4,
+    borderRadius: 4,
+    backgroundColor: '#e6e2de',
+    marginTop: 3,
+    alignSelf: 'center',
+  },
+
   imageContainer: {
     height: '48%',
   },
@@ -309,45 +308,40 @@ const styles = StyleSheet.create({
     fontWeight: '400',
   },
 
-  // buttonsWrapper: {
-  //   width: '100%',
-  //   display: 'flex',
-  //   flexDirection: 'row',
-  //   justifyContent: 'space-around',
-  //   marginBottom: 20,
-  // },
-  moreInfo: {
-    // paddingHorizontal: 5,
-    textAlign: 'center',
-    fontSize: 16,
-    backgroundColor: Colors.tintColor,
-    color: Colors.defaultWhite,
-    margin: 10,
-    borderRadius: 10,
-    overflow: 'hidden',
-    fontWeight: '600',
+  buttonWrapper: {
+    width: '100%',
+    marginTop: 30,
   },
-
-  plantReminderContainer: {
+  infoBtnContainer: {
     borderRadius: 50,
     backgroundColor: Colors.tintColor,
     padding: 10,
     marginBottom: 30,
   },
 
-  plantReminder: {
-    // paddingHorizontal: 25,
+  infoBtn: {
     textAlign: 'center',
     fontSize: 16,
-
     color: Colors.defaultWhite,
-    // marginBottom: 10,
+    fontWeight: '600',
+  },
 
+  reminderBtnContainer: {
+    borderRadius: 50,
+    backgroundColor: Colors.tintColor,
+    padding: 10,
+    marginBottom: 30,
+  },
+
+  reminderBtn: {
+    textAlign: 'center',
+    fontSize: 16,
+    color: Colors.defaultWhite,
     fontWeight: '600',
   },
 
   plantInfoWrapper: {
-    // padding: 20,
+    paddingVertical: 10,
   },
   infoWrapper: {
     display: 'flex',
@@ -404,8 +398,7 @@ const styles = StyleSheet.create({
   },
   infoHeader: {
     fontSize: 20,
-    color: 'white',
-    // marginLeft: 10,
+    color: Colors.defaultWhite,
   },
   infoBody: {
     lineHeight: 28,
