@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, View, Text, Image, StyleSheet } from 'react-native';
-import ExploreLabelComponent from '../components/ExploreLabel'
+import ExploreLabel from '../components/ExploreLabel'
 import Colors from '../constants/Colors'
 
 const IndividualArticle = ({route}) => {
@@ -12,7 +12,7 @@ const IndividualArticle = ({route}) => {
             </View>
             <View style={styles.content}>
                 <View style={styles.labelWrapper}>
-                    <ExploreLabelComponent/>
+                    <ExploreLabel label={article.label}/>
                 </View>
                 <Text style={styles.headline}>{article.headline}</Text>
                 <Text style={styles.author}>Author: {article.author}</Text>

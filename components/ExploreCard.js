@@ -15,7 +15,7 @@ function ExploreCard({article}) {
         <Text style={styles.headline}>{article.headline}</Text>
       </View>
         <View style={styles.passedContent}>
-          <ExploreLabel style={styles.label} />
+          <ExploreLabel label={article.label} style={styles.label} />
         </View>
       </View>
     </TouchableOpacity>
