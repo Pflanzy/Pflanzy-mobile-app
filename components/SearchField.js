@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {View, StyleSheet, Keyboard} from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import Colors from '../constants/Colors'
@@ -6,16 +6,12 @@ import data from "../data/data.json"
 const SearchField = props => {
     const [searchValue, setSearchValue] = useState('')
 
-    const updateSearch = (searchValue) => {
-        setSearchValue(searchValue)
-        
-       const filteredResult= data.filter(element => {
-            return element.commonName.toLowerCase().includes(searchValue.toLowerCase());
-        }).sort((a, b) => a.commonName > b.commonName ? 1 : -1)
-        console.log(filteredResult);
-        props.sendData(filteredResult)
+    const updateSearch = (query) => {
+        setSearchValue(query)
     }
-
+    useEffect(() => {
+        props.sendData(searchValue)
+    }, [searchValue]);
     return (
         <View style={styles.wrapper}>
             <SearchBar
