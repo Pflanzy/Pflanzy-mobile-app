@@ -7,11 +7,11 @@ const ReminderCard = ({element}) => {
   return (
     <TouchableOpacity
       style={styles.cardContainer}
-      onPress={() => navigation.navigate('DailyTask')}>
+      onPress={() => navigation.navigate('IndividualPlant', {element})}>
       <View style={styles.imageContainer}>
         <Image
           style={styles.cardImage}
-          source={{uri:element.images.imagePrimary}}
+          source={{ uri:element?.images?.imagePrimary}}
         />
       </View>
       <View style={styles.detailsContainer}>
