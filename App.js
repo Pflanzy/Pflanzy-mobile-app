@@ -28,7 +28,6 @@ export default function App(props) {
       <SafeAreaView style={styles.safeAreaTop} />
       <StatusBar barStyle="light-content" />
       <View style={styles.container}>
-        agumusay/firebase-redux
         <Provider store={store}>
           <NavigationContainer>
             <Stack.Navigator
@@ -38,7 +37,6 @@ export default function App(props) {
               }}>
               <Stack.Screen name="Root" component={BottomTabNavigator} />
               <Stack.Screen name="Camera" component={CameraScreen} />
-              <Stack.Screen name="DailyTasks" component={DailyTasksScreen} />
               <Stack.Screen name="IndividualPlantPage" component={IndividualPageScreen} />
               <Stack.Screen name="IndividualArticle" component={IndividualArticle} />
               <Stack.Screen name="Auth" component={AuthScreen} />
