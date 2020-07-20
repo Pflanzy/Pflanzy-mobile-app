@@ -8,8 +8,6 @@ import Colors from '../constants/Colors'
 import SearchScreen from '../screens/SearchScreen';
 import MyGardenScreen from '../screens/MyGardenScreen';
 import ExploreScreen from '../screens/ExploreScreen';
-// import TodayScreen from '../screens/TodayScreen';
-import TodayScreen from '../screens/TodayScreen';
 import firebase from "firebase"
 import  { signIn as SignInAnonymous, onAuthStateChanged } from '../firebase';
 
