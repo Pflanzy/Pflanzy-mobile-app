@@ -1,9 +1,28 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, Keyboard } from 'react-native';
+import { useDispatch } from 'react-redux';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import firebase from '../firebase';
 import SearchField from '../components/SearchField';
 
 const SearchScreen = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    firebase
+      .firestore()
+      .collection('plants')
+      .get()
+      .then((data) => {
+        const plants = [];
+
+        data.forEach((element) => {
+          plants.push({ id: element.id, ...element.data() });
+        });
+        console.log(plants);
+        dispatch({ type: 'ADD_PLANTS', payload: { plants } });
+      });
+  }, []);
   return (
     <View>
       <SearchField />
