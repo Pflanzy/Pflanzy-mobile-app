@@ -1,31 +1,64 @@
-import React from 'react';
-import { ScrollView, View, Text, Image, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { ScrollView, View, Text, Image, StyleSheet, Modal, Button } from 'react-native';
 import ExploreLabel from '../components/ExploreLabel'
 import Colors from '../constants/Colors'
+import ImageViewer from 'react-native-image-zoom-viewer';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Entypo } from '@expo/vector-icons';
+
+
 
 const IndividualArticle = ({route}) => {
     const article = route.params.article;
-    return (
-        <ScrollView style={styles.mainWrapper}>
-            <View style={styles.imageWrapper}>
-                <Image style={styles.image} source={{uri: article.images.imagePrimary}}/>
-            </View>
-            <View style={styles.content}>
-                <View style={styles.labelWrapper}>
-                    <ExploreLabel label={article.label}/>
+    let imagesURLs = Object.values(article.images);
+    const modalImages = imagesURLs.map((image) => {
+        return {
+            url: image
+        }
+    })
+
+
+    const [visible, setVisibility] = useState(false)
+    const [currentIndex, setCurrentIndex] = useState(0)
+      
+      
+      return (
+        <>
+            <Modal visible={visible} transparent={false}  onRequestClose={() => setVisibility(false)}>
+                <ImageViewer enableSwipeDown={true} onSwipeDown={() => setVisibility(false)}  swipeDownThreshold={10} imageUrls={modalImages} index={currentIndex}/>
+                <TouchableOpacity activeOpacity={1} style={styles.closeButton} onPress={() => setVisibility(false)}>
+                    <Entypo name="circle-with-cross" size={24} color="white" />
+                </TouchableOpacity>
+            </Modal>
+            <ScrollView style={styles.mainWrapper}>
+                <View style={styles.imageWrapper}>
+                    <TouchableOpacity onPress={() => {setVisibility(true); setCurrentIndex(0)}}>
+                        <Image style={styles.image} source={{uri: article.images.imagePrimary}}/>
+                    </TouchableOpacity>
                 </View>
-                <Text style={styles.headline}>{article.headline}</Text>
-                <Text style={styles.author}>Author: {article.author}</Text>
-                <Text style={article.firstSubheader ? styles.subHeader : styles.none}>{article.firstSubheader}</Text>
-                <Text style={article.firstParagraph ? styles.paragraph : styles.none}>{article.firstParagraph}</Text>
-                <Image style={article.images.imageSecondary ? styles.imageInText : styles.none} source={article.images.imageSecondary ? {uri: article.images.imageSecondary} : null}/>
-                <Text style={article.secondSubheader ? styles.subHeader : styles.none}>{article.secondSubheader}</Text>
-                <Text style={article.secondParagraph ? styles.paragraph : styles.none}>{article.secondParagraph}</Text>
-                <Image style={article.images.imageTernary ? styles.imageInText : styles.none} source={article.images.imageTernary ? {uri: article.images.imageTernary} : null}/>
-                <Text style={article.thirdSubheader ? styles.subHeader : styles.none}>{article.thirdSubheader}</Text>
-                <Text style={article.thirdParagraph ? styles.paragraph : styles.none}>{article.thirdParagraph}</Text>
-            </View>
-        </ScrollView>
+                <View style={styles.content}>
+                    <View style={styles.labelWrapper}>
+                        <ExploreLabel label={article.label}/>
+                    </View>
+                    <Text style={styles.headline}>{article.headline}</Text>
+                    <Text style={styles.author}>Author: {article.author}</Text>
+                    <Text style={article.firstSubheader ? styles.subHeader : styles.none}>{article.firstSubheader}</Text>
+                    <Text style={article.firstParagraph ? styles.paragraph : styles.none}>{article.firstParagraph}</Text>
+                    <TouchableOpacity onPress={() => {setVisibility(true); setCurrentIndex(1)}}>
+                        <Image 
+                        style={article.images.imageSecondary ? styles.imageInText : styles.none} source={article.images.imageSecondary ? {uri: article.images.imageSecondary} : null}
+                        />
+                    </TouchableOpacity>
+                    <Text style={article.secondSubheader ? styles.subHeader : styles.none}>{article.secondSubheader}</Text>
+                    <Text style={article.secondParagraph ? styles.paragraph : styles.none}>{article.secondParagraph}</Text>
+                    <TouchableOpacity onPress={() => {setVisibility(true); setCurrentIndex(2)}}>
+                        <Image style={article.images.imageTernary ? styles.imageInText : styles.none} source={article.images.imageTernary ? {uri: article.images.imageTernary} : null}/>
+                    </TouchableOpacity>
+                    <Text style={article.thirdSubheader ? styles.subHeader : styles.none}>{article.thirdSubheader}</Text>
+                    <Text style={article.thirdParagraph ? styles.paragraph : styles.none}>{article.thirdParagraph}</Text>
+                </View>
+            </ScrollView>
+        </>
     )
 }
  
@@ -47,6 +80,15 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 20,
         borderRadius: 5
+    },
+    modal: {
+        backgroundColor: 'black'
+    },
+    closeButton: {
+        backgroundColor: 'black',
+        display: 'flex',
+        alignItems: 'center',
+        paddingBottom: '10%',
     },
     content: {
         marginHorizontal: 20,
