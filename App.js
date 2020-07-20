@@ -43,19 +43,6 @@ export default function App(props) {
             </Stack.Navigator>
           </NavigationContainer>
         </Provider>
-        <NavigationContainer>
-          <Stack.Navigator
-            screenOptions={{
-              headerStyle: { backgroundColor: Colors.tintColor },
-              headerTintColor: Colors.defaultWhite,
-            }}>
-            <Stack.Screen name="Root" component={BottomTabNavigator} />
-            <Stack.Screen name="Camera" component={CameraScreen} />
-            <Stack.Screen name="MyGardenPlant" component={MyPlantScreen} />
-            <Stack.Screen name="IndividualPlantPage" component={IndividualPageScreen} />
-            <Stack.Screen name="IndividualArticle" component={IndividualArticle} />
-          </Stack.Navigator>
-        </NavigationContainer>
         <StatusBar style="auto" />
       </View>
     </>

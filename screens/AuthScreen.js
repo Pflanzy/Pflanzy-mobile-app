@@ -48,7 +48,7 @@ const AuthScreen = ({ navigation }) => {
             }
             const user = firestoreDocument.data();
             dispatch({ type: 'ADD_USER', payload: { user } });
-            navigation.navigate('Auth', { screen: 'Account', params: { user } });
+            navigation.navigate('Root');
           })
           .catch((error) => {
             alert(error);
@@ -79,7 +79,7 @@ const AuthScreen = ({ navigation }) => {
           .doc(uid)
           .set(data)
           .then(() => {
-            navigation.navigate('AuthStack', { screen: 'Account', params: { user: data } });
+            navigation.navigate('Root');
           })
           .catch((error) => {
             alert(error);
