@@ -11,20 +11,17 @@ import { Entypo } from '@expo/vector-icons';
 const IndividualArticle = ({route}) => {
     const article = route.params.article;
     let imagesURLs = Object.values(article.images);
-    const modalImages = imagesURLs.map((image) => {
-        return {
-            url: image
-        }
+    const modalImages = imagesURLs
+        .map((image) => {return {url: image}})
+        .filter((image) => {return image.url != null && image.url != '';
     })
-
 
     const [visible, setVisibility] = useState(false)
     const [currentIndex, setCurrentIndex] = useState(0)
       
-      
       return (
         <>
-            <Modal visible={visible} transparent={false}  onRequestClose={() => setVisibility(false)}>
+            <Modal visible={visible} transparent={false}>
                 <ImageViewer enableSwipeDown={true} onSwipeDown={() => setVisibility(false)}  swipeDownThreshold={10} imageUrls={modalImages} index={currentIndex}/>
                 <TouchableOpacity activeOpacity={1} style={styles.closeButton} onPress={() => setVisibility(false)}>
                     <Entypo name="circle-with-cross" size={24} color="white" />
@@ -81,14 +78,11 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         borderRadius: 5
     },
-    modal: {
-        backgroundColor: 'black'
-    },
     closeButton: {
         backgroundColor: 'black',
         display: 'flex',
         alignItems: 'center',
-        paddingBottom: '10%',
+        paddingBottom: '7%',
     },
     content: {
         marginHorizontal: 20,
