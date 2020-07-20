@@ -12,7 +12,7 @@ import firebase from "firebase"
 import  { signIn as SignInAnonymous, onAuthStateChanged } from '../firebase';
 
 const BottomTab = createBottomTabNavigator();
-const INITIAL_ROUTE_NAME = 'Search';
+const INITIAL_ROUTE_NAME = 'Root';
 
 export default function BottomTabNavigator({ navigation, route }) {
   // Set the header title on the parent stack navigator depending on the
@@ -101,7 +101,6 @@ export default function BottomTabNavigator({ navigation, route }) {
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-book"/>,
         }}
       />
-
     </BottomTab.Navigator>
   );
 }
