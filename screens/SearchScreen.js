@@ -1,13 +1,14 @@
-import React, { useEffect,useState } from 'react';
-import { StyleSheet, Text, View, Keyboard,ScrollView } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, Text, View, Keyboard, ScrollView } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import firebase from '../firebase';
 import SearchField from '../components/SearchField';
-import ReminderCard from "../components/ReminderCard"
+import ReminderCard from '../components/ReminderCard';
 const SearchScreen = () => {
   const dispatch = useDispatch();
-  const [data, setData] = useState();
+  const [initialData, setInitialData] = useState();
+  const [filteredData, setFilteredData] = useState();
   useEffect(() => {
     firebase
       .firestore()
@@ -15,41 +16,44 @@ const SearchScreen = () => {
       .get()
       .then((data) => {
         const plants = [];
-
         data.forEach((element) => {
           plants.push({ id: element.id, ...element.data() });
-        });
-        setData(plants)
+        })
+        setInitialData(plants);
+        setFilteredData(initialData);
         dispatch({ type: 'ADD_PLANTS', payload: { plants } });
       });
-  }, []);
+  }, [initialData]);
 
- 
   const plantList = () => {
-    return data.map((element) => {
+    return filteredData.map((element) => {
       return (
         <View>
-          <ReminderCard element={element}/>
+          <ReminderCard element={element} />
         </View>
       );
-    }) 
+    });
   };
-  
-const getData = (val) => {
-    setPlantData(val)
-}
- 
+
+  const getData = (val) => {
+    if (initialData) {
+      const filteredResult = initialData
+        .filter((element) => {
+          return element.commonName.toLowerCase().includes(val.toLowerCase());
+        })
+        .sort((a, b) => (a.commonName > b.commonName ? 1 : -1));
+      setFilteredData(filteredResult);
+    }
+  };
+
   return (
     <View>
       <SearchField sendData={getData} />
       <TouchableWithoutFeedback
         style={styles.wrapper}
         onPress={() => Keyboard.dismiss()}>
-        <Text>
-          Search Screen - You can tap somewhere here to dismiss the keyboard
-        </Text>
-  <ScrollView>{data && plantList()}</ScrollView>
-        </TouchableWithoutFeedback>
+        <ScrollView>{filteredData ? plantList() : <Text> dsfdsfds</Text>}</ScrollView>
+      </TouchableWithoutFeedback>
     </View>
   );
 };
