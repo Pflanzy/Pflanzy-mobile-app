@@ -11,20 +11,20 @@ import ReminderCard from '../components/ReminderCard';
 const SearchScreen = () => {
   const [plantData, setPlantData] = useState(data);
   const plantList = () => {
-    return plantData.length >=1 ? plantData.map((element) => {
+    return  plantData.map((element) => {
       return (
         <View>
-          <ReminderCard element={element} />
+          <ReminderCard element={element}/>
         </View>
       );
-    }) : <Text> asdsadasdsa</Text>
+    }) 
   };
 const getData = (val) => {
     setPlantData(val)
 }
   return (
     <View>
-      <SearchField sendData={getData}/>
+      <SearchField sendData={getData} plantData={plantData}/>
       <TouchableWithoutFeedback
         style={styles.wrapper}
         onPress={() => Keyboard.dismiss()}>

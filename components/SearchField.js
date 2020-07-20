@@ -8,6 +8,7 @@ const SearchField = props => {
 
     const updateSearch = (searchValue) => {
         setSearchValue(searchValue)
+        
        const filteredResult= data.filter(element => {
             return element.commonName.toLowerCase().includes(searchValue.toLowerCase());
         }).sort((a, b) => a.commonName > b.commonName ? 1 : -1)
