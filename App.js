@@ -4,10 +4,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { StyleSheet, View, SafeAreaView, StatusBar } from 'react-native';
 import store from './store';
-import * as React from 'react';
-import { StyleSheet, View, SafeAreaView, StatusBar } from 'react-native';
 import Colors from './constants/Colors';
-
 import useCachedResources from './hooks/useCachedResources';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import CameraScreen from './screens/CameraScreen';
@@ -31,7 +28,7 @@ export default function App(props) {
       <SafeAreaView style={styles.safeAreaTop} />
       <StatusBar barStyle="light-content" />
       <View style={styles.container}>
- agumusay/firebase-redux
+        agumusay/firebase-redux
         <Provider store={store}>
           <NavigationContainer>
             <Stack.Navigator
@@ -48,7 +45,6 @@ export default function App(props) {
             </Stack.Navigator>
           </NavigationContainer>
         </Provider>
-
         <NavigationContainer>
           <Stack.Navigator
             screenOptions={{
