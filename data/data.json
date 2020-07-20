@@ -206,7 +206,7 @@
     "scientificName": "Phalaenopsis",
     "category": "Flowering plants",
     "maxGrowth": "Height 3ft.",
-    "origin": "Southeast Asia, Taiwan, Australia and elsewhere",
+    "origin": "Southeast Asia",
     "poisonousForPets": "Non-toxic to cats and dogs.",
     "images": {
       "imagePrimary": "https://www.houseplantsexpert.com/image-files/moth_orchid_white.jpg",
@@ -693,7 +693,7 @@
     "scientificName": "Croton variegatum",
     "category": "Foliage Plants",
     "maxGrowth": "Height 3 ft.",
-    "origin": "South India, Sri Lanka, Malaysia, Western Pacific Islands",
+    "origin": "South India",
     "poisonousForPets": "Toxic to cats and dogs.",
     "images": {
       "imagePrimary": "https://www.houseplantsexpert.com/image-files/Codiaeum_Variegatum.png",
@@ -821,7 +821,7 @@
     "propagation": "From seeds, this cactus takes 12-15 years to mature to the blooming stage. Propagation of a flowering plant takes one year, and is achieved by breaking off sections at least two leaf segments long. Permit the cuttings to harden for one week, then plant exactly two leaf serrations deep in soil. Water sparingly but regularly."
   },
   {
-    "commonName": "Golden barrel or ball cactus",
+    "commonName": "Golden barrel",
     "scientificName": "Echinocactus Grusonii",
     "category": "Cactus house plants",
     "maxGrowth": "Height 60in (24cm). Diameter 36in (91cm).",
@@ -847,7 +847,7 @@
     "scientificName": "Howea belmoreana",
     "category": "Indoor palm plants",
     "maxGrowth": "Height 10ft (much more in the wild).",
-    "origin": "Lord Howe Island (Australia - New South Wales State)",
+    "origin": "Lord Howe Island",
     "poisonousForPets": "Non-toxic to cats and dogs.",
     "images": {
       "imagePrimary": "https://www.houseplantsexpert.com/image-files/sentrypalm-plant.jpg",
@@ -865,7 +865,7 @@
     "propagation": "These are Propagated by seed at 80°f / 26.6°c which is not appropriate for the average grower to propagate."
   },
   {
-    "commonName": "Pygmy date or Miniature date palm",
+    "commonName": "Pygmy date",
     "scientificName": "Phoenix roebelenii",
     "category": "Indoor palm plants",
     "maxGrowth": "Height 6ft.",
@@ -887,7 +887,7 @@
     "propagation": "These are propagated by seed at approximately 80ฐf / 26.6ฐc. Usually professional growers propagate these because of the conditions (light and temperature) needed for several weeks or so, before they germinate."
   },
   {
-    "commonName": "European or Dwarf fan palm",
+    "commonName": "European fan palm",
     "scientificName": "Chamaerops humilis",
     "category": ["Indoor palm plants", "Foliage Plants"],
     "maxGrowth": "4ft tall and 3ft spread, small tree (much more outdoors).",
@@ -997,7 +997,7 @@
     "propagation": "Propagate from seed. Temperatures of approximately 80°F (27°C) are required - making propagation difficult for the average grower."
   },
   {
-    "commonName": "Spider or airplane",
+    "commonName": "Spider",
     "scientificName": "Chlorophytum comosum vittatum",
     "category": "Hanging basket plants (Indoors)",
     "maxGrowth": "Height 60 cm - leaves 45 cm.",
@@ -1019,7 +1019,7 @@
     "propagation": "Propagate by dividing the main plant or replant the plant-lets that grow from the main plant any time between spring - fall."
   },
   {
-    "commonName": "Donkey's or Burro's Tail",
+    "commonName": "Donkey's Tail",
     "scientificName": "Sedum Morganianum",
     "category": [
       "succulent house plants grown indoors",
@@ -1121,7 +1121,7 @@
     "scientificName": "Epipremnum aureum",
     "category": ["Climbers and trailing plants", "Foliage Plants"],
     "maxGrowth": "Height 6ft.",
-    "origin": "Australia, Indonesia, China, Japan and India",
+    "origin": "Australia",
     "poisonousForPets": "Toxic to cats, dogs and horses.",
     "images": {
       "imagePrimary": "https://www.houseplantsexpert.com/image-files/golden_pothos1.jpg",
@@ -1140,7 +1140,7 @@
   },
   {
     "commonName": "Arrowhead Vine",
-    "scientificName": "Syngonium or Nephthytis Podophyllum",
+    "scientificName": "Syngonium Podophyllum",
     "category": ["Climbers and trailing plants", "Foliage Plants"],
     "maxGrowth": "Height 6ft indoors (much higher outdoors when climbing).",
     "origin": "South America",
@@ -1162,7 +1162,7 @@
   },
   {
     "commonName": "Creeping fig",
-    "scientificName": "Ficus pumila, or ficus repens",
+    "scientificName": "Ficus pumila",
     "category": [
       "Climbers and trailing plants",
       "Hanging basket plants (Indoors)"
@@ -1187,7 +1187,7 @@
   },
   {
     "commonName": "Lucky Bamboo",
-    "scientificName": "Dracaena Braunii or Dracaena Sanderiana",
+    "scientificName": "Dracaena Braunii",
     "category": [
       "Selection of office plants",
       "Easy and low light plants",
@@ -1260,7 +1260,7 @@
     "propagation": "When the plant is being re-potted the main plant can be divided and potted, to grow smaller plants."
   },
   {
-    "commonName": "Bunny ear or polka-dot cactus",
+    "commonName": "Bunny ear",
     "scientificName": "Opuntia Microdasys",
     "category": ["Selection of office plants", "Cactus house plants"],
     "maxGrowth": "Height 12 - 18in/30.5 - 45.5cm.",
@@ -1438,7 +1438,7 @@
   },
   {
     "commonName": "Mother of Thousands",
-    "scientificName": "Bryophyllum or Kalanchoe Daigremontianum",
+    "scientificName": "Kalanchoe Daigremontianum",
     "category": ["succulent house plants grown indoors", "Foliage Plants"],
     "maxGrowth": "2 - 3ft.",
     "origin": "Madagascar",
@@ -1486,7 +1486,7 @@
   },
   {
     "commonName": "Green Velvet Alocasia",
-    "scientificName": "Alocasia Micholitziana 'Frydek'",
+    "scientificName": "Alocasia Micholitziana",
     "category": "Foliage Plants",
     "maxGrowth": "Height 2 - 3ft.",
     "origin": "Southeast Asia",
@@ -1508,7 +1508,7 @@
   },
   {
     "commonName": "Fiddle leaf fig tree",
-    "scientificName": "Ficus lyrata or pandurata",
+    "scientificName": "Ficus lyrata",
     "category": "Tree Type Plants",
     "maxGrowth": "Height 10ft (3m).",
     "origin": "Western Africa",
@@ -1537,7 +1537,7 @@
       "Large House Plants"
     ],
     "maxGrowth": "Height 10ft (3m).",
-    "origin": "India, Nepal, Myanmar, China, Malaysia & others",
+    "origin": "India",
     "poisonousForPets": "Toxic to cats and dogs.",
     "images": {
       "imagePrimary": "https://www.houseplantsexpert.com/assets/images/rubber_plant.jpg",
@@ -1577,7 +1577,7 @@
     "propagation": "The F. benjamina is easy to propagate during summer with a few inches of good branch cuttings (from the tip), placed into soil."
   },
   {
-    "commonName": "Queensland or Umbrella Plant",
+    "commonName": "Queensland Plant",
     "scientificName": "Schefflera or Heptapleurum Arboricolum",
     "category": "Tree Type Plants",
     "maxGrowth": "Height 10ft tall.",
@@ -1603,7 +1603,7 @@
     "scientificName": "Eurphorbia lactea crest",
     "category": ["succulent house plants grown indoors", "Unusual Plants"],
     "maxGrowth": "Height 9 in - 15 in.",
-    "origin": "Africa and then developed in Thailand to the Lactea crest",
+    "origin": "Africa",
     "poisonousForPets": "Toxic to cats and dogs.",
     "images": {
       "imagePrimary": "https://www.houseplantsexpert.com/image-files/coral-cactus-orig.jpg",
@@ -1621,7 +1621,7 @@
     "propagation": "These are propagated with cuttings taken in spring, which need to be dried out for a couple of weeks before potting (source; EwaterPlant Bangkok). Do remember that the sap from the Coral is poisonous, so take precautions (gloves - protective eye-wear)."
   },
   {
-    "commonName": "Urn and pink or silver vase plant",
+    "commonName": "Silver vase plant",
     "scientificName": "Aechmea Fasciata",
     "category": "Unusual Plants",
     "maxGrowth": "Height 18 in/45.7 cm, diameter 26 in/66 cm.",
@@ -1833,7 +1833,7 @@
   },
   {
     "commonName": "Not known",
-    "scientificName": "Lithops optica 'Rubra' ",
+    "scientificName": "Lithops optica",
     "category": "Selection of living stones plants",
     "maxGrowth": "Height 5cm - max.",
     "origin": "Africa",
@@ -1945,7 +1945,7 @@
     "propagation": "These are easily propagated after the offsets have grown over 5 inches tall, and a few months old. They need to be separated from the container they have been growing inside with roots attached and then placed into a suitable sized container with a moist soil mix."
   },
   {
-    "commonName": "Coral bead or pin cushion plant",
+    "commonName": "Coral bead",
     "scientificName": "Nertera granadensis",
     "category": "Unusual Plants",
     "maxGrowth": "Height 5 in/13 cm, diameter depends on pot size and plant maturity.",
@@ -1967,7 +1967,7 @@
     "propagation": "For Nertera granadensis, propagation is best achieved by division. In the spring, pull a clump of the plant away from the mother plant and pot it its own location. Seed and tip cuttings are other propagation methods, but require years to reach maturity."
   },
   {
-    "commonName": "Elephant's ear or Alocasia polly",
+    "commonName": "Elephant's ear",
     "scientificName": "Alocasia Amazonica",
     "category": "Unusual Plants",
     "maxGrowth": "Height 1 - 2 ft.",
