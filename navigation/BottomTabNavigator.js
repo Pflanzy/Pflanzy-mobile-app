@@ -58,7 +58,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         name="Explore"
         component={ExploreScreen}
         options={{
-          title: 'Explore Page',
+          title: 'Explore',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-book"/>,
         }}
       />
