@@ -57,10 +57,7 @@ export default function App(props) {
             }}>
             <Stack.Screen name="Root" component={BottomTabNavigator} />
             <Stack.Screen name="Camera" component={CameraScreen} />
-<<<<<<< HEAD
             <Stack.Screen name="MyGardenPlant" component={MyPlantScreen} />
-=======
->>>>>>> b39b904713a722de005534dc5249323dd151c199
             <Stack.Screen name="IndividualPlantPage" component={IndividualPageScreen} />
             <Stack.Screen name="IndividualArticle" component={IndividualArticle} />
           </Stack.Navigator>
