@@ -7,6 +7,7 @@ import BottomSheet from 'reanimated-bottom-sheet';
 import Animated from 'react-native-reanimated';
 // import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import Colors from '../constants/Colors';
+import DateTimePicker from '../components/DateTimePicker';
 
 const reminder = () => {
   console.log('reminder');
@@ -46,16 +47,25 @@ const MyGardenPlant = (props) => {
     </View>
   );
 
+  const renderMainInfoHeader = () => (
+    <View style={styles.settingsMainInfo}>
+      <View style={styles.settingsHeader}>
+        <View style={styles.contentHandle} />
+        <DateTimePicker />
+      </View>
+    </View>
+  );
+
   const renderMainInfo = () => (
     <View style={styles.myPlantContainer}>
-      <View style={styles.contentHandle} />
-      <View style={styles.buttonWrapper}>
+      {/* <View style={styles.contentHandle} /> */}
+      {/* <View style={styles.buttonWrapper}>
         <TouchableOpacity onPress={reminder}>
           <View style={styles.reminderBtnContainer}>
             <Text style={styles.reminderBtn}>Set Reminder</Text>
           </View>
         </TouchableOpacity>
-      </View>
+      </View> */}
 
       <ScrollView style={styles.plantInfoWrapper}>
         <View style={styles.smallContainer}>
@@ -114,6 +124,7 @@ const MyGardenPlant = (props) => {
         callbackNode={fall}
         enabledGestureInteraction
       />
+
       <Animated.View
         style={{
           height: '100%',
@@ -159,6 +170,7 @@ const MyGardenPlant = (props) => {
           ref={bsInfo}
           snapPoints={['45%', '75%']}
           renderContent={renderMainInfo}
+          renderHeader={renderMainInfoHeader}
           initialSnap={0}
           enabledGestureInteraction
         />
@@ -223,6 +235,17 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
   },
 
+  settingsMainInfo: {
+    backgroundColor: Colors.defaultWhite,
+    paddingTop: 20,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+  },
+
+  settingMainInfoSeparator: {
+    paddingBottom: 20,
+  },
+
   settingsHeader: {
     alignItems: 'center',
   },
@@ -252,6 +275,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     backgroundColor: '#e6e2de',
     marginTop: 3,
+    marginBottom: 20,
     alignSelf: 'center',
   },
 
@@ -263,8 +287,8 @@ const styles = StyleSheet.create({
     display: 'flex',
     height: '100%',
     backgroundColor: '#fff',
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
+    // borderTopLeftRadius: 25,
+    // borderTopRightRadius: 25,
     padding: 10,
   },
 
@@ -302,6 +326,7 @@ const styles = StyleSheet.create({
   botName: {
     color: Colors.darkGreen,
     fontWeight: '300',
+    alignSelf: 'center',
   },
   botNameInner: {
     marginLeft: 5,
