@@ -7,9 +7,7 @@ const ReminderCard = ({element}) => {
   return (
     <TouchableOpacity
       style={styles.cardContainer}
-      onPress={() => navigation.navigate('IndividualPlantPage', {
-        element:element
-      })}>
+      onPress={() => navigation.navigate('DailyTask')}>
       <View style={styles.imageContainer}>
         <Image
           style={styles.cardImage}
@@ -42,7 +40,7 @@ const styles = StyleSheet.create({
     elevation: 3,
     shadowColor: '#404040',
     shadowOpacity: 0.4,
-    shadowOffset: { width: 1, height: 1 },
+    shadowOffset: { width: 2, height: 2 },
     shadowRadius: 3,
     marginVertical: 10,
   },

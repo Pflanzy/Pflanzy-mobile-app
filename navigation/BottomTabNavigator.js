@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as React from 'react';
 
 import TabBarIcon from '../components/TabBarIcon';
+import Colors from '../constants/Colors'
 
 import SearchScreen from '../screens/SearchScreen';
 import MyGardenScreen from '../screens/MyGardenScreen';
@@ -18,14 +19,14 @@ export default function BottomTabNavigator({ navigation, route }) {
   navigation.setOptions({
     headerTitle: getHeaderTitle(route),
     headerStyle:{
-      backgroundColor: "#008080",
+      backgroundColor: Colors.tintColor,
     },
-    headerTintColor: '#ffffff',
+    headerTintColor: Colors.defaultWhite,
   });
 
   return (
     <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}
-      tabBarOptions={{activeTintColor: '#008080'}}
+      tabBarOptions={{activeTintColor: Colors.tintColor}}
     
     >
       <BottomTab.Screen
