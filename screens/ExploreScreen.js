@@ -18,11 +18,11 @@ const ExploreScreen = () => {
 
   return (
     <View style={styles.container}>
-      <ScrollView>
-        {articleList()}
-      </ScrollView>
-    </View>
-  );
+        <ScrollView style={styles.scrollContainer}>
+          {articleList()}
+        </ScrollView>
+      </View>
+    );
 };
 
 const styles = StyleSheet.create({

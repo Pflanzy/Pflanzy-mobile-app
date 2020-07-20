@@ -29,7 +29,7 @@ const IndividualArticle = ({route}) => {
             </Modal>
             <ScrollView style={styles.mainWrapper}>
                 <View style={styles.imageWrapper}>
-                    <TouchableOpacity onPress={() => {setVisibility(true); setCurrentIndex(0)}}>
+                    <TouchableOpacity activeOpacity={0.7} onPress={() => {setVisibility(true); setCurrentIndex(0)}}>
                         <Image style={styles.image} source={{uri: article.images.imagePrimary}}/>
                     </TouchableOpacity>
                 </View>
@@ -41,18 +41,23 @@ const IndividualArticle = ({route}) => {
                     <Text style={styles.author}>Author: {article.author}</Text>
                     <Text style={article.firstSubheader ? styles.subHeader : styles.none}>{article.firstSubheader}</Text>
                     <Text style={article.firstParagraph ? styles.paragraph : styles.none}>{article.firstParagraph}</Text>
-                    <TouchableOpacity onPress={() => {setVisibility(true); setCurrentIndex(1)}}>
+                    <TouchableOpacity activeOpacity={0.7} onPress={() => {setVisibility(true); setCurrentIndex(1)}}>
                         <Image 
                         style={article.images.imageSecondary ? styles.imageInText : styles.none} source={article.images.imageSecondary ? {uri: article.images.imageSecondary} : null}
                         />
                     </TouchableOpacity>
                     <Text style={article.secondSubheader ? styles.subHeader : styles.none}>{article.secondSubheader}</Text>
                     <Text style={article.secondParagraph ? styles.paragraph : styles.none}>{article.secondParagraph}</Text>
-                    <TouchableOpacity onPress={() => {setVisibility(true); setCurrentIndex(2)}}>
+                    <TouchableOpacity activeOpacity={0.7} onPress={() => {setVisibility(true); setCurrentIndex(2)}}>
                         <Image style={article.images.imageTernary ? styles.imageInText : styles.none} source={article.images.imageTernary ? {uri: article.images.imageTernary} : null}/>
                     </TouchableOpacity>
                     <Text style={article.thirdSubheader ? styles.subHeader : styles.none}>{article.thirdSubheader}</Text>
                     <Text style={article.thirdParagraph ? styles.paragraph : styles.none}>{article.thirdParagraph}</Text>
+                    <TouchableOpacity activeOpacity={0.7} onPress={() => {setVisibility(true); setCurrentIndex(3)}}>
+                        <Image style={article.images.imageFour ? styles.imageInText : styles.none} source={article.images.imageFour ? {uri: article.images.imageFour} : null}/>
+                    </TouchableOpacity>
+                    <Text style={article.forthSubheader ? styles.subHeader : styles.none}>{article.forthSubheader}</Text>
+                    <Text style={article.forthParagraph ? styles.paragraph : styles.none}>{article.forthParagraph}</Text>
                 </View>
             </ScrollView>
         </>

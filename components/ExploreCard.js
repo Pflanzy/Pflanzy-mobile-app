@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 function ExploreCard({article}) {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity style={styles.cardContainer} onPress={() => navigation.navigate('IndividualArticle', {article:article})}>
+    <TouchableOpacity activeOpacity={0.7} style={styles.cardContainer} onPress={() => navigation.navigate('IndividualArticle', {article:article})}>
       <View style={styles.imageContainer}>
         <Image style={styles.cardImage} source={{uri: article.images.imagePrimary}} />
       </View>
