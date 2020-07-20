@@ -1,7 +1,7 @@
 [
   {
     "commonName": "Spider Plant",
-    "scientificName": "Chlorophytum comosum vittatum and variegatum",
+    "scientificName": "Chlorophytum comosum vittatum",
     "category": "common house plants",
     "maxGrowth": "Height 60 cm - leaves 45 cm",
     "origin": "South Africa",
@@ -67,7 +67,7 @@
   },
   {
     "commonName": "Jade Plant",
-    "scientificName": "Crassula Ovata, C.portulacea, C.argentea",
+    "scientificName": "Crassula Ovata",
     "category": "common house plants",
     "maxGrowth": "Height = 3ft or much less, as a bonsai.",
     "origin": "South Africa",
@@ -114,7 +114,7 @@
     "scientificName": "Ficus Benjamina",
     "category": "common house plants",
     "maxGrowth": "Height up-to 10ft and miniature grown types 3ft.",
-    "origin": "South East Asia and Australia",
+    "origin": "South East Asia",
     "poisonousForPets": "Toxic to cats and dogs",
     "images": {
       "imagePrimary": "https://www.houseplantsexpert.com/image-files/ficus-benjamina.jpg",
@@ -290,14 +290,14 @@
     "scientificName": "Phalaenopsis",
     "category": "Flowering plants",
     "maxGrowth": "Height 3ft.",
-    "origin": "Southeast Asia, Taiwan, Australia and elsewhere",
+    "origin": "Southeast Asia",
     "poisonousForPets": "Non-toxic to cats and dogs",
     "images": {
       "imagePrimary": "https://www.houseplantsexpert.com/image-files/moth_orchid_white.jpg",
       "imageSecondary": "https://www.houseplantsexpert.com/image-files/phalaenopsis1.jpg",
       "imageTernary": "https://www.houseplantsexpert.com/image-files/phalaenopsis_pink.jpg"
     },
-    "description": "Moth orchid is the common name for the phalaenopsis orchid that's quickly become one of the most popular species from the orchidaceae family of flowering plants. Glorious colored blooms all year round and the "ease of growing" is what makes these a popular house plant choice.",
+    "description": "Moth orchid is the common name for the phalaenopsis orchid that's quickly become one of the most popular species from the orchidaceae family of flowering plants. Glorious colored blooms all year round and the `ease of growing` is what makes these a popular house plant choice.",
     "temperature": "Phals like their warmth during the day and cool during the night. Room temperatures of around 65 - 85°F (16 - 24°C) during the day and 60 - 65°F ( 16 - 18°C) at night, are ideal growing conditions.",
     "light": "Providing enough light can be a problem for some growers because the moth orchid prefers bright light conditions for more than 10 hours a day. An east or west facing window is best suited - away from direct sun, but bright. During the winter you may have to supplement the plant with artificial lighting.",
     "watering": "Once the orchid soil becomes dry to the touch, water thoroughly. Avoid allowing water to keep the soil soaked; you want it to drain away easily. Avoid watering the middle of the plants foliage (crown) because the water sitting here for a period of time may cause rot. Do not over-water!",
@@ -485,7 +485,7 @@
   },
   {
     "commonName": "Lucky Bamboo Plant",
-    "scientificName": "Dracaena Braunii or Dracaena Sanderiana",
+    "scientificName": "Dracaena Brauni",
     "category": "Easy and low light plants",
     "maxGrowth": "Height 3ft.",
     "origin": "Africa",
@@ -507,7 +507,7 @@
   },
   {
     "commonName": "Spider Plant",
-    "scientificName": "Chlorophytum comosum vittatum and variegatum",
+    "scientificName": "Chlorophytum comosum vittatum",
     "category": "Easy and low light plants",
     "maxGrowth": "Height 60 cm - leaves 45 cm",
     "origin": "South Africa",
@@ -595,7 +595,7 @@
   },
   {
     "commonName": "Chinese Evergreen Plant",
-    "scientificName": "A. commutatum, A modestum, A pictum and others",
+    "scientificName": "A commutatum",
     "category": "Foliage Plants",
     "maxGrowth": "Height 3ft.",
     "origin": "Tropics and subtropics of Asia",
@@ -620,7 +620,7 @@
     "scientificName": "Croton variegatum",
     "category": "Foliage Plants",
     "maxGrowth": "Height 3 ft.",
-    "origin": "South India, Sri Lanka, Malaysia, Western Pacific Islands",
+    "origin": "South India",
     "poisonousForPets": "Toxic to cats and dogs.",
     "images": {
       "imagePrimary": "https://www.houseplantsexpert.com/image-files/Codiaeum_Variegatum.png",
@@ -686,7 +686,7 @@
     "scientificName": "Epipremnum aureum",
     "category": "Foliage Plants",
     "maxGrowth": "Height 6ft.",
-    "origin": "Australia, Indonesia, China, Japan and India",
+    "origin": "Australia",
     "poisonousForPets": "Toxic to cats, dogs and horses",
     "images": {
       "imagePrimary": "https://www.houseplantsexpert.com/image-files/golden_pothos1.jpg",
@@ -708,7 +708,7 @@
     "scientificName": "Howea forsteriana",
     "category": "Foliage Plants",
     "maxGrowth": "Height 10ft.",
-    "origin": "Lord Howe Island (Australia - New South Wales State)",
+    "origin": "Lord Howe Island",
     "poisonousForPets": "Non-toxic to cats and dogs",
     "images": {
       "imagePrimary": "https://www.houseplantsexpert.com/image-files/kentia-palm-houseplant.jpg",
@@ -727,7 +727,7 @@
   },
   {
     "commonName": "Lucky Bamboo Plant",
-    "scientificName": "Dracaena Braunii or Dracaena Sanderiana",
+    "scientificName": "Dracaena Brauni",
     "category": "Foliage Plants",
     "maxGrowth": "Height 3ft.",
     "origin": "Africa",
@@ -814,7 +814,7 @@
     "propagation": "Propagate from a mature stem tip cuttings during summer below an aerial root at the node. Place the stem cutting about 1 or 2 inches deep in moist potting soil and water moderately. It should begin rooting within the first couple of weeks or so."
   },
   {
-    "commonName": "Mexican Fortune or Braided Money Tree",
+    "commonName": "Mexican Fortune",
     "scientificName": "Pachira Aquatica",
     "category": "Foliage Plants",
     "maxGrowth": "10ft tall.",
@@ -928,7 +928,7 @@
     "scientificName": "Asplenium Nidus",
     "category": "Foliage Plants",
     "maxGrowth": "Height 2ft.",
-    "origin": "South East Asia and East Australia",
+    "origin": "South East Asia",
     "poisonousForPets": "Non toxic for cats, dogs",
     "images": {
       "imagePrimary": "https://www.houseplantsexpert.com/images/a.nidus.jpg",
@@ -947,7 +947,7 @@
   },
   {
     "commonName": "Mother of Thousands",
-    "scientificName": "Bryophyllum Daigremontianum and Kalanchoe Daigremontianum",
+    "scientificName": "Bryophyllum Daigremontianum",
     "category": "Foliage Plants",
     "maxGrowth": "2 - 3ft.",
     "origin": "Madagascar",
@@ -991,7 +991,7 @@
   },
   {
     "commonName": "Arrowhead Plant",
-    "scientificName": "Syngonium Podophyllum or Nephthytis Podophyllum",
+    "scientificName": "Syngonium Podophyllum",
     "category": "Foliage Plants",
     "maxGrowth": "Height 6ft indoors (much higher outdoors when climbing).",
     "origin": "South America",
