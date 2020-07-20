@@ -1,30 +1,91 @@
+import { Button } from "react-native"
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import * as React from 'react';
-
+import React, { useEffect } from 'react';
+import { useDispatch } from "react-redux"
 import TabBarIcon from '../components/TabBarIcon';
+import Colors from '../constants/Colors'
 
 import SearchScreen from '../screens/SearchScreen';
 import MyGardenScreen from '../screens/MyGardenScreen';
 import ExploreScreen from '../screens/ExploreScreen';
 import TodayScreen from '../screens/TodayScreen';
+import firebase from "firebase"
+import  { signIn as SignInAnonymous, onAuthStateChanged } from '../firebase';
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Search';
+
+
+
 
 export default function BottomTabNavigator({ navigation, route }) {
   // Set the header title on the parent stack navigator depending on the
   // currently active tab. Learn more in the documentation:
   // https://reactnavigation.org/docs/en/screen-options-resolution.html
-  navigation.setOptions({ headerTitle: getHeaderTitle(route) });
+  const dispatch = useDispatch();
+  useEffect(() => {
+    SignInAnonymous()
+      .then((response) => {
+        const { uid } = response.user;
+        const data = {
+          id: uid,
+          name: 'guest',
+          plants: [],
+          isAnonymous: true,
+        };
+
+        const usersRef = firebase.firestore().collection('users');
+        usersRef
+          .doc(uid)
+          .set(data)
+          .then(() => {
+            dispatch({ type: 'ADD_USER', payload: { user: data } });
+          })
+          .catch((error) => {
+            alert(error);
+          });
+      })
+      .catch((error) => {
+        alert(error);
+      });
+    onAuthStateChanged(function (user) {
+      if (user) {
+        // TODO: Save User Info To Redux
+        // User is signed in.
+        // ...
+      } else {
+        // User is signed out.
+        // ...
+      }
+      // ...
+    });
+  }, []);
+  navigation.setOptions({
+    headerTitle: getHeaderTitle(route),
+    headerStyle:{
+      backgroundColor: Colors.tintColor,
+    },
+    headerTintColor: Colors.defaultWhite,
+    headerRight: () => (
+      <Button
+        onPress={() => { navigation.navigate('Auth')}}
+        title="SIGN UP" />
+      
+    ),
+  });
 
   return (
-    <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
+    <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}
+      tabBarOptions={{activeTintColor: Colors.tintColor}}
+    
+    >
       <BottomTab.Screen
         name="Search"
         component={SearchScreen}
         options={{
           title: 'Search',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-search" />,
+        
         }}
       />
       <BottomTab.Screen
@@ -32,7 +93,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={MyGardenScreen}
         options={{
           title: 'My Garden',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-leaf" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-leaf"/>,
         }}
       />
       <BottomTab.Screen
@@ -40,7 +101,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={TodayScreen}
         options={{
           title: 'Today Page',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-timer" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-today" />,
         }}
       />
       <BottomTab.Screen
@@ -48,7 +109,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={ExploreScreen}
         options={{
           title: 'Explore Page',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-book" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-book"/>,
         }}
       />
 
@@ -66,7 +127,7 @@ function getHeaderTitle(route) {
     case 'MyGarden':
       return 'My Garden';
     case 'Today':
-      return 'See your tasks';
+      return 'Your tasks';
     case 'Explore':
       return 'Explore';
   }

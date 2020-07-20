@@ -1,24 +1,22 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import ExploreLabel from './ExploreLabel';
 import { useNavigation } from '@react-navigation/native';
 
-function BasicCard(props) {
+function ExploreCard({ type }) {
   const navigation = useNavigation();
-
   return (
-    <TouchableOpacity
-      style={styles.cardContainer}
-      onPress={() => navigation.navigate('MyGardenPlant')}>
+    <TouchableOpacity style={styles.cardContainer} onPress={() => navigation.navigate('IndividualArticle')}>
       <View style={styles.imageContainer}>
         <Image style={styles.cardImage} source={require('../assets/images/water-lilly.jpg')} />
       </View>
       <View style={styles.detailsContainer}>
         <View style={styles.nameContainer}>
-          <Text style={styles.boldName}>Water Lilly</Text>
+          <Text style={styles.boldName}>3 reasons your houseplants die</Text>
           <Text style={styles.scientificName}>Scientific name</Text>
         </View>
         <View style={styles.passedContent}>
-          <Text>passed prop</Text>
+          <ExploreLabel type={type} style={styles.label} />
         </View>
       </View>
     </TouchableOpacity>
@@ -27,51 +25,52 @@ function BasicCard(props) {
 
 const styles = StyleSheet.create({
   cardContainer: {
-    flexDirection: 'row',
+    flexDirection: 'row-reverse',
     backgroundColor: '#fff',
-    borderRadius: 10,
-    height: 100,
+    borderTopRightRadius: 10,
+    borderBottomRightRadius: 10,
+    height: 130,
     width: '92%',
     elevation: 3,
     shadowColor: '#404040',
     shadowOpacity: 0.4,
-    shadowOffset: { height: 2 },
+    shadowOffset: { width: 2, height: 2 },
     shadowRadius: 3,
     marginVertical: 10,
   },
   imageContainer: {
-    borderTopLeftRadius: 50,
-    borderBottomLeftRadius: 50,
+    borderTopRightRadius: 50,
+    borderBottomRightRadius: 50,
     width: '30%',
   },
   cardImage: {
     width: '100%',
     height: '100%',
-    borderTopLeftRadius: 10,
-    borderBottomLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomRightRadius: 10,
   },
-
+  label: {
+    marginTop: 20,
+  },
   detailsContainer: {
     display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: 'column-reverse',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
     width: '70%',
-    padding: 10,
+    padding: 15,
   },
 
   nameContainer: {
-    justifyContent: 'center',
+    paddingTop: 5,
   },
 
   boldName: {
-    fontWeight: '400',
-    fontSize: 18,
+    fontWeight: 'bold',
+    fontSize: 20,
   },
 
-  scientificName: {
-    fontWeight: '200',
-    fontSize: 14,
-  },
+  passedContent: {},
 });
 
-export default BasicCard;
+export default ExploreCard;
