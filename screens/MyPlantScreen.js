@@ -59,11 +59,7 @@ const MyGardenPlant = (props) => {
   const renderMainInfo = () => (
     <View style={styles.myPlantContainer}>
       {/* <View style={styles.contentHandle} /> */}
-<<<<<<< HEAD
-      <View style={styles.buttonWrapper}>
-=======
       {/* <View style={styles.buttonWrapper}>
->>>>>>> master
         <TouchableOpacity onPress={reminder}>
           <View style={styles.reminderBtnContainer}>
             <Text style={styles.reminderBtn}>Set Reminder</Text>
@@ -273,7 +269,6 @@ const styles = StyleSheet.create({
     zIndex: 100,
   },
 
-<<<<<<< HEAD
   // contentHandle: {
   //   width: 40,
   //   height: 4,
@@ -282,17 +277,6 @@ const styles = StyleSheet.create({
   //   marginTop: 3,
   //   alignSelf: 'center',
   // },
-=======
-  contentHandle: {
-    width: 40,
-    height: 4,
-    borderRadius: 4,
-    backgroundColor: '#e6e2de',
-    marginTop: 3,
-    marginBottom: 20,
-    alignSelf: 'center',
-  },
->>>>>>> master
 
   imageContainer: {
     height: '48%',
