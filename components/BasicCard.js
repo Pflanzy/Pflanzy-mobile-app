@@ -6,9 +6,7 @@ function BasicCard(props) {
   const navigation = useNavigation();
 
   return (
-    <TouchableOpacity
-      style={styles.cardContainer}
-      onPress={() => navigation.navigate('MyGardenPlant')}>
+    <TouchableOpacity style={styles.cardContainer} onPress={() => navigation.navigate('MyPlant')}>
       <View style={styles.imageContainer}>
         <Image style={styles.cardImage} source={require('../assets/images/water-lilly.jpg')} />
       </View>
