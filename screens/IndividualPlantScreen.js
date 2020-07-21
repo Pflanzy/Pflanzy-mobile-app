@@ -1,8 +1,6 @@
 import { Entypo, AntDesign, FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
 import * as React from 'react';
 import BottomSheet from 'reanimated-bottom-sheet';
-import { FontAwesome5 } from '@expo/vector-icons';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Colors from '../constants/Colors'
 import {
   StyleSheet,
