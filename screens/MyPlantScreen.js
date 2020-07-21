@@ -1,41 +1,37 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity as DefaultTouch } from 'react-native';
+
 import { MaterialCommunityIcons, Entypo, AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import Svg, { Image, Circle, ClipPath } from 'react-native-svg';
 import BottomSheet from 'reanimated-bottom-sheet';
 import Animated from 'react-native-reanimated';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import Colors from '../constants/Colors';
 import DateTimePicker from '../components/DateTimePicker';
 
-const reminder = () => {
-  console.log('reminder');
-};
+import PflanzyOpacity from '../components/PflanzyOpacity';
 
 const MyGardenPlant = (props) => {
   const navigation = useNavigation();
-
   const bsSettings = React.createRef();
   const bsInfo = React.createRef();
   const fall = new Animated.Value(1);
 
   const renderInner = () => (
     <View style={styles.settingsContainer}>
-      <TouchableOpacity style={styles.settingsBtns} onPress={() => navigation.navigate('Camera')}>
+      <PflanzyOpacity style={styles.settingsBtns} onPress={() => navigation.navigate('Camera')}>
         <Text style={styles.settingsBtnTitle}>Take Photo</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.settingsBtns}>
+      </PflanzyOpacity>
+      <PflanzyOpacity style={styles.settingsBtns}>
         <Text style={styles.settingsBtnTitle}>Rename Plant</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.deleteSettingsBtns}>
+      </PflanzyOpacity>
+      <PflanzyOpacity style={styles.deleteSettingsBtns}>
         <Text style={styles.settingsBtnDelete}>Delete Plant</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.cancelSettingsBtn}
-        onPress={() => bsSettings.current.snapTo(1)}>
+      </PflanzyOpacity>
+      <PflanzyOpacity style={styles.cancelSettingsBtn} onPress={() => bsSettings.current.snapTo(1)}>
         <Text style={styles.settingsBtnTitle}>Cancel</Text>
-      </TouchableOpacity>
+      </PflanzyOpacity>
     </View>
   );
 
@@ -104,17 +100,17 @@ const MyGardenPlant = (props) => {
             ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
           </Text>
         </View>
-        <TouchableOpacity onPress={() => navigation.navigate('IndividualPlantPage')}>
+        <PflanzyOpacity onPress={() => navigation.navigate('IndividualPlantPage')}>
           <View style={styles.infoBtnContainer}>
             <Text style={styles.infoBtn}>More info</Text>
           </View>
-        </TouchableOpacity>
+        </PflanzyOpacity>
       </ScrollView>
     </View>
   );
 
   return (
-    <>
+    <View style={styles.blackContainer}>
       <BottomSheet
         ref={bsSettings}
         snapPoints={[330, 0]}
@@ -131,11 +127,11 @@ const MyGardenPlant = (props) => {
           backgroundColor: '#e0ffea',
           opacity: Animated.add(0.4, Animated.multiply(fall, 1.0)),
         }}>
-        <TouchableOpacity style={styles.plantSettings} onPress={() => bsSettings.current.snapTo(0)}>
+        <DefaultTouch style={styles.plantSettings} onPress={() => bsSettings.current.snapTo(0)}>
           <Entypo name="dots-three-vertical" size={25} color="#e0ebe2" />
-        </TouchableOpacity>
+        </DefaultTouch>
 
-        <TouchableOpacity
+        <DefaultTouch
           style={styles.imageContainer}
           onPress={() => {
             bsInfo.current.snapTo(0);
@@ -164,7 +160,7 @@ const MyGardenPlant = (props) => {
               </Text>
             </View>
           </View>
-        </TouchableOpacity>
+        </DefaultTouch>
 
         <BottomSheet
           ref={bsInfo}
@@ -175,11 +171,14 @@ const MyGardenPlant = (props) => {
           enabledGestureInteraction
         />
       </Animated.View>
-    </>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  blackContainer: {
+    backgroundColor: '#2c2c2f',
+  },
   settingsContainer: {
     padding: 20,
     backgroundColor: Colors.tintColor,
@@ -217,11 +216,12 @@ const styles = StyleSheet.create({
   cancelSettingsBtn: {
     borderRadius: 10,
     backgroundColor: '#d1cfce',
-    margin: 10,
-    position: 'absolute',
-    bottom: 0,
-    alignSelf: 'center',
-    width: '100%',
+    marginHorizontal: 5,
+    // alignSelf: 'flex-start',
+    // position: 'absolute',
+    // bottom: 0,
+    // alignSelf: 'center',
+    // width: '100%',
   },
 
   settingsHandleContainer: {

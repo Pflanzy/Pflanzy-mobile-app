@@ -253,7 +253,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '44%',
+    width: '40%',
     backgroundColor: '#004e57',
     height: 120,
     borderRadius: 10,
