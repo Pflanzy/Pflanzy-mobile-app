@@ -1,4 +1,4 @@
-import { Entypo, AntDesign } from '@expo/vector-icons';
+import { Entypo, AntDesign, FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
 import * as React from 'react';
 import BottomSheet from 'reanimated-bottom-sheet';
 import { FontAwesome5 } from '@expo/vector-icons';
@@ -10,10 +10,10 @@ import {
   Image,
   Text,
   View,
-  ScrollView,
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const IndividualPage = () => {
   const renderContent = () => {
@@ -26,12 +26,7 @@ const IndividualPage = () => {
           </View>
           <View style={styles.btnContainer}>
             <TouchableOpacity style={styles.btnReminder}>
-              <Entypo
-                name="drop"
-                size={14}
-                color="white"
-                style={styles.waterDrop}
-              />
+              <Entypo name="drop" size={14} color="white" style={styles.waterDrop} />
               <Text style={styles.btnText}>Set care reminder</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.btnCalendar}>
@@ -40,65 +35,41 @@ const IndividualPage = () => {
           </View>
           <ScrollView style={styles.contentBody}>
             <Text style={styles.text}>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Temporibus sint id quis quaerat consequatur facere optio facilis
-              neque, possimus eligendi officia, quidem et nesciunt!
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus sint id quis
+              quaerat consequatur facere optio facilis neque, possimus eligendi officia, quidem et
+              nesciunt!
             </Text>
             <View style={styles.shortInfoContainer}>
               <View style={styles.shortInfoElement}>
-                <Entypo
-                  style={styles.shortInfoIcon}
-                  name="globe"
-                  size={80}
-                  color="#006772"
-                />
+                <Entypo style={styles.shortInfoIcon} name="globe" size={80} color="#006772" />
                 <Text style={styles.shortInfoHeadline}>Origin:</Text>
                 <Text style={styles.shortInfoText}>Africa</Text>
               </View>
               <View style={styles.shortInfoElement}>
-                <Entypo
-                  style={styles.shortInfoIcon}
-                  name="price-tag"
-                  size={80}
-                  color="#006772"
-                />
+                <Entypo style={styles.shortInfoIcon} name="price-tag" size={80} color="#006772" />
                 <Text style={styles.shortInfoHeadline}>Category:</Text>
                 <Text style={styles.shortInfoText}>Flowering plants</Text>
               </View>
               <View style={styles.shortInfoElement}>
-                <Entypo
-                  style={styles.shortInfoIcon}
-                  name="tree"
-                  size={80}
-                  color="#006772"
-                />
+                <Entypo style={styles.shortInfoIcon} name="tree" size={80} color="#006772" />
                 <Text style={styles.shortInfoHeadline}>Growth:</Text>
                 <Text style={styles.shortInfoText}>1,5-2 m</Text>
               </View>
               <View style={styles.shortInfoElement}>
-                <AntDesign
-                  style={styles.shortInfoIcon}
-                  name="warning"
-                  size={80}
-                  color="#006772"
-                />
+                <AntDesign style={styles.shortInfoIcon} name="warning" size={80} color="#006772" />
                 <Text style={styles.shortInfoHeadline}>Poisonous:</Text>
                 <Text style={styles.shortInfoText}>Toxic to cats and dogs</Text>
               </View>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
-                <MaterialCommunityIcons
-                  name="temperature-celsius"
-                  size={20}
-                  color="white"
-                />
+                <MaterialCommunityIcons name="temperature-celsius" size={20} color="white" />
                 <Text style={styles.infoHeader}>Temperature</Text>
               </View>
               <Text style={styles.infoBody}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
-                rerum sapiente molestias laudantium.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam
+                exercitationem ex ad, possimus sed? Sit accusamus rerum sapiente molestias
+                laudantium.
               </Text>
             </View>
             <View style={styles.infoWrapper}>
@@ -107,25 +78,20 @@ const IndividualPage = () => {
                 <Text style={styles.infoHeader}>Light</Text>
               </View>
               <Text style={styles.infoBody}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
-                rerum sapiente molestias laudantium.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam
+                exercitationem ex ad, possimus sed? Sit accusamus rerum sapiente molestias
+                laudantium.
               </Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
-                <Entypo
-                  name="drop"
-                  size={14}
-                  color="white"
-                  style={styles.waterDrop}
-                />
+                <Entypo name="drop" size={14} color="white" style={styles.waterDrop} />
                 <Text style={styles.infoHeader}>Water</Text>
               </View>
               <Text style={styles.infoBody}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
-                rerum sapiente molestias laudantium.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam
+                exercitationem ex ad, possimus sed? Sit accusamus rerum sapiente molestias
+                laudantium.
               </Text>
             </View>
             <View style={styles.infoWrapper}>
@@ -134,9 +100,9 @@ const IndividualPage = () => {
                 <Text style={styles.infoHeader}>Soil</Text>
               </View>
               <Text style={styles.infoBody}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
-                rerum sapiente molestias laudantium.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam
+                exercitationem ex ad, possimus sed? Sit accusamus rerum sapiente molestias
+                laudantium.
               </Text>
             </View>
             <View style={styles.infoWrapper}>
@@ -145,24 +111,20 @@ const IndividualPage = () => {
                 <Text style={styles.infoHeader}>Re-Potting</Text>
               </View>
               <Text style={styles.infoBody}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
-                rerum sapiente molestias laudantium.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam
+                exercitationem ex ad, possimus sed? Sit accusamus rerum sapiente molestias
+                laudantium.
               </Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
-                <MaterialCommunityIcons
-                  name="spray-bottle"
-                  size={20}
-                  color="white"
-                />
+                <MaterialCommunityIcons name="spray-bottle" size={20} color="white" />
                 <Text style={styles.infoHeader}>Fertilizer</Text>
               </View>
               <Text style={styles.infoBody}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
-                rerum sapiente molestias laudantium.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam
+                exercitationem ex ad, possimus sed? Sit accusamus rerum sapiente molestias
+                laudantium.
               </Text>
             </View>
             <View style={styles.infoWrapper}>
@@ -171,9 +133,9 @@ const IndividualPage = () => {
                 <Text style={styles.infoHeader}>Humidity</Text>
               </View>
               <Text style={styles.infoBody}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
-                rerum sapiente molestias laudantium.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam
+                exercitationem ex ad, possimus sed? Sit accusamus rerum sapiente molestias
+                laudantium.
               </Text>
             </View>
             <View style={styles.infoWrapper}>
@@ -182,9 +144,9 @@ const IndividualPage = () => {
                 <Text style={styles.infoHeader}>Propagation</Text>
               </View>
               <Text style={styles.infoBody}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Architecto nam exercitationem ex ad, possimus sed? Sit accusamus
-                rerum sapiente molestias laudantium.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam
+                exercitationem ex ad, possimus sed? Sit accusamus rerum sapiente molestias
+                laudantium.
               </Text>
             </View>
           </ScrollView>
@@ -204,10 +166,7 @@ const IndividualPage = () => {
         renderContent={renderContent}
       />
       <TouchableWithoutFeedback onPress={() => bs.current.snapTo(0)}>
-        <Image
-          style={styles.background}
-          source={require('../assets/images/TEST-flower-02.jpg')}
-        />
+        <Image style={styles.background} source={require('../assets/images/TEST-flower-02.jpg')} />
       </TouchableWithoutFeedback>
     </View>
   );
