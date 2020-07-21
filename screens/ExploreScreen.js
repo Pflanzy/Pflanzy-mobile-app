@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import ExploreCard from '../components/ExploreCard';
 import exploreData from '../data/browse.json'
 import { ScrollView } from 'react-native-gesture-handler';
+import Colors from '../constants/Colors'
 
 const ExploreScreen = () => {
   const articleList = () => {
@@ -16,18 +17,22 @@ const ExploreScreen = () => {
   }
 
 
+// return articleList.map((article, i) => {
   return (
     <View style={styles.container}>
-        <ScrollView style={styles.scrollContainer}>
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
           {articleList()}
         </ScrollView>
       </View>
     );
+// })
 };
 
 const styles = StyleSheet.create({
-  container: {
-  },
+  scrollContainer: {
+    paddingVertical: 12
+  }
+
 });
 
 export default ExploreScreen;
