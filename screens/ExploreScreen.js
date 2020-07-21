@@ -15,8 +15,6 @@ const ExploreScreen = () => {
     })
   }
 
-
-// return articleList.map((article, i) => {
   return (
     <View style={styles.container}>
         <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -24,7 +22,6 @@ const ExploreScreen = () => {
         </ScrollView>
       </View>
     );
-// })
 };
 
 const styles = StyleSheet.create({

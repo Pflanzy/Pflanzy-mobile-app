@@ -9,10 +9,6 @@ import Animated from 'react-native-reanimated';
 import Colors from '../constants/Colors';
 import DateTimePicker from '../components/DateTimePicker';
 
-const reminder = () => {
-  console.log('reminder');
-};
-
 const MyGardenPlant = (props) => {
   const navigation = useNavigation();
 

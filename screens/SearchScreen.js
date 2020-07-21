@@ -19,7 +19,6 @@ const SearchScreen = () => {
         data.forEach((element) => {
           plants.push({ id: element.id, ...element.data() });
         });
-        console.log(plants);
         dispatch({ type: 'ADD_PLANTS', payload: { plants } });
       });
   }, []);
