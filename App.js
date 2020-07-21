@@ -23,13 +23,12 @@ export default function App(props) {
   // if (!isLoadingComplete) {
   //   return null;
   // } else {
+  SetReminderNotification();
 
   return (
     <>
       <SafeAreaView style={styles.safeAreaTop} />
       <StatusBar barStyle="light-content" />
-      <SetReminderNotification />
-
       <View style={styles.container}>
         <Provider store={store}>
           <NavigationContainer>

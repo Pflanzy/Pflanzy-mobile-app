@@ -16,7 +16,7 @@ export default function SetReminderNotification() {
   Notifications.scheduleNotificationAsync({
     content: {
       title: "Time's up!",
-      body: 'WTF is going on!?',
+      body: 'OK, it looks better...',
     },
     trigger: {
       seconds: 30,
@@ -28,7 +28,7 @@ export default function SetReminderNotification() {
 
   Notifications.cancelAllScheduledNotificationsAsync();
 
-  return <Text />;
+  // return <View />;
 }
 
 // export default function SetReminderNotification() {
