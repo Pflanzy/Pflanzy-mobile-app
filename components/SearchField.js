@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {View, StyleSheet, Keyboard} from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import Colors from '../constants/Colors'
-
+import data from "../data/data.json"
 const SearchField = props => {
     const [searchValue, setSearchValue] = useState('')
 
-    const updateSearch = (searchValue) => {
-        setSearchValue(searchValue)
+    const updateSearch = (query) => {
+        setSearchValue(query)
     }
-
+    useEffect(() => {
+        props.sendData(searchValue)
+    }, [searchValue]);
     return (
         <View style={styles.wrapper}>
             <SearchBar
@@ -20,7 +22,6 @@ const SearchField = props => {
                 searchIcon={{paddingLeft: 10, size: 24, paddingRight: 0, color: Colors.defaultWhite}}
                 clearIcon={{color: Colors.defaultWhite, size: 24, paddingHorizontal: 10}}
                 rightIconContainerStyle={{paddingLeft: 5}}
-
                 placeholder="Enter plant name"
                 onChangeText={updateSearch}
                 value={searchValue}

@@ -1,13 +1,13 @@
 const firebase = require('firebase');
 
-const firebaseConfig = {
-  apiKey: 'AIzaSyBXgsXNuvScz2WhJYGh6XdWVnL1w5fSCaI',
-  authDomain: 'pflanzy-mobile-app.firebaseapp.com',
-  databaseURL: 'https://pflanzy-mobile-app.firebaseio.com',
-  projectId: 'pflanzy-mobile-app',
-  storageBucket: 'pflanzy-mobile-app.appspot.com',
-  messagingSenderId: '780877043159',
-  appId: '1:780877043159:web:8ce33b6cfe7a5cd9eae792',
+var firebaseConfig = {
+  apiKey: "AIzaSyBYNHUcL0xX5g8wq2NghtK5kXRQzCidZqY",
+  authDomain: "pflanzy-dummy-data.firebaseapp.com",
+  databaseURL: "https://pflanzy-dummy-data.firebaseio.com",
+  projectId: "pflanzy-dummy-data",
+  storageBucket: "pflanzy-dummy-data.appspot.com",
+  messagingSenderId: "839394745708",
+  appId: "1:839394745708:web:48ba429577b13a112fa749"
 };
 
 const db = firebase.initializeApp(firebaseConfig);
