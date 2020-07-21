@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import Svg, { Image, Circle, ClipPath } from 'react-native-svg';
 import BottomSheet from 'reanimated-bottom-sheet';
 import Animated from 'react-native-reanimated';
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native-gesture-handler';
 import Colors from '../constants/Colors';
 import DateTimePicker from '../components/DateTimePicker';
 
@@ -54,15 +54,6 @@ const MyGardenPlant = (props) => {
 
   const renderMainInfo = () => (
     <View style={styles.myPlantContainer}>
-      {/* <View style={styles.contentHandle} /> */}
-      {/* <View style={styles.buttonWrapper}>
-        <TouchableOpacity onPress={reminder}>
-          <View style={styles.reminderBtnContainer}>
-            <Text style={styles.reminderBtn}>Set Reminder</Text>
-          </View>
-        </TouchableOpacity>
-      </View> */}
-
       <ScrollView style={styles.plantInfoWrapper}>
         <View style={styles.smallContainer}>
           <View style={styles.smallInfoWrapper}>
@@ -269,15 +260,6 @@ const styles = StyleSheet.create({
     zIndex: 100,
   },
 
-  // contentHandle: {
-  //   width: 40,
-  //   height: 4,
-  //   borderRadius: 4,
-  //   backgroundColor: '#e6e2de',
-  //   marginTop: 3,
-  //   alignSelf: 'center',
-  // },
-
   imageContainer: {
     height: '48%',
   },
@@ -286,8 +268,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     height: '100%',
     backgroundColor: '#fff',
-    // borderTopLeftRadius: 25,
-    // borderTopRightRadius: 25,
     padding: 10,
   },
 
@@ -378,7 +358,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: '100%',
     marginBottom: 20,
-    // borderWidth: 1,
   },
   smallInfoWrapper: {
     display: 'flex',
