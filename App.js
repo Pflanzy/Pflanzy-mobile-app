@@ -13,6 +13,7 @@ import IndividualPageScreen from './screens/IndividualPageScreen';
 import IndividualArticle from './components/IndividualArticle';
 import AuthScreen from './screens/AuthScreen';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
+import SetReminderNotification from './components/SetReminderNotification';
 
 const Stack = createStackNavigator();
 
@@ -27,6 +28,8 @@ export default function App(props) {
     <>
       <SafeAreaView style={styles.safeAreaTop} />
       <StatusBar barStyle="light-content" />
+      <SetReminderNotification />
+
       <View style={styles.container}>
         <Provider store={store}>
           <NavigationContainer>
