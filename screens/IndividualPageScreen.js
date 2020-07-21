@@ -1,7 +1,9 @@
 import { Entypo, AntDesign, FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
 import * as React from 'react';
 import BottomSheet from 'reanimated-bottom-sheet';
-
+import { FontAwesome5 } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import Colors from '../constants/Colors'
 import {
   StyleSheet,
   TouchableWithoutFeedback,
@@ -186,7 +188,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   content: {
-    backgroundColor: '#008080',
+    backgroundColor: Colors.tintColor,
     borderTopRightRadius: 80,
     padding: 20,
     width: '100%',
@@ -210,7 +212,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#004e57',
+    backgroundColor: Colors.darkGreen,
     width: 240,
     padding: 10,
     marginBottom: 20,
@@ -219,7 +221,7 @@ const styles = StyleSheet.create({
     borderColor: '#79C3CA',
   },
   btnCalendar: {
-    backgroundColor: '#004e57',
+    backgroundColor: Colors.darkGreen,
     borderRadius: 50,
     width: 44,
     height: 44,
@@ -253,8 +255,8 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '40%',
-    backgroundColor: '#004e57',
+    width: '44%',
+    backgroundColor: Colors.darkGreen,
     height: 120,
     borderRadius: 10,
     margin: 10,
@@ -282,7 +284,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#004e57',
+    backgroundColor: Colors.darkGreen,
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,

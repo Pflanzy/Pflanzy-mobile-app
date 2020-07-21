@@ -9,7 +9,6 @@ import Animated from 'react-native-reanimated';
 import { ScrollView } from 'react-native-gesture-handler';
 import Colors from '../constants/Colors';
 import DateTimePicker from '../components/DateTimePicker';
-
 import PflanzyOpacity from '../components/PflanzyOpacity';
 
 const MyGardenPlant = (props) => {
