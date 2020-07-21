@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
-    height: 100,
+    maxHeight: 110,
     width: '92%',
     elevation: 3,
     shadowColor: '#404040',
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   text: {
     fontWeight: '200',
     fontSize: 12,
-    width: 120,
+    width: 100,
   },
 });
 export default ReminderCard;

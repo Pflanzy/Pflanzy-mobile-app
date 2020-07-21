@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Keyboard, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Keyboard, ScrollView, ActivityIndicator } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import firebase from '../firebase';
@@ -7,12 +7,12 @@ import SearchField from '../components/SearchField';
 import ReminderCard from '../components/ReminderCard';
 const SearchScreen = () => {
   const dispatch = useDispatch();
-  const [initialData, setInitialData] = useState();
-  const [filteredData, setFilteredData] = useState();
+  const [initialData, setInitialData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   useEffect(() => {
     firebase
       .firestore()
-      .collection('plants')
+      .collection('plants').orderBy("commonName","asc")
       .get()
       .then((data) => {
         const plants = [];
@@ -20,11 +20,13 @@ const SearchScreen = () => {
           plants.push({ id: element.id, ...element.data() });
         })
         setInitialData(plants);
-        setFilteredData(initialData);
         dispatch({ type: 'ADD_PLANTS', payload: { plants } });
       });
-  }, [initialData]);
+  }, []);
 
+  useEffect(() => {
+    setFilteredData(initialData)
+  }, [initialData]);
   const plantList = () => {
     return filteredData.map((element) => {
       return (
@@ -35,6 +37,13 @@ const SearchScreen = () => {
     });
   };
 
+  const showLoading = () => {
+    return (
+      <View style={styles.loadingContainer}>
+<ActivityIndicator size="large" color="#0000ff"/>
+      </View>
+    )
+  }
   const getData = (val) => {
     if (initialData) {
       const filteredResult = initialData
@@ -47,12 +56,13 @@ const SearchScreen = () => {
   };
 
   return (
-    <View>
+    <View style={styles.parentWrapper}>
       <SearchField sendData={getData} />
       <TouchableWithoutFeedback
         style={styles.wrapper}
         onPress={() => Keyboard.dismiss()}>
-        <ScrollView>{filteredData ? plantList() : <Text> dsfdsfds</Text>}</ScrollView>
+          {showLoading()}
+        <ScrollView></ScrollView>
       </TouchableWithoutFeedback>
     </View>
   );
@@ -60,8 +70,12 @@ const SearchScreen = () => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    height: '100%',
+    height: '88%',
   },
+  loadingContainer: {
+    justifyContent:"flex-start",
+    borderWidth:2,
+  }
 });
 
 export default SearchScreen;
