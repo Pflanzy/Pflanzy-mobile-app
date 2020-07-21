@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from 'react-native';
 import ExploreCard from '../components/ExploreCard';
 import exploreData from '../data/browse.json'
 import { ScrollView } from 'react-native-gesture-handler';
-import Colors from '../constants/Colors'
 
 const ExploreScreen = () => {
   const articleList = () => {

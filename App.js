@@ -14,7 +14,7 @@ import LinkingConfiguration from './navigation/LinkingConfiguration';
 
 const Stack = createStackNavigator();
 
-export default function App(props) {
+export default function App(params) {
   // const isLoadingComplete = useCachedResources();
 
   // if (!isLoadingComplete) {
@@ -31,7 +31,7 @@ export default function App(props) {
           <Stack.Screen name="Camera" component={CameraScreen} />
           <Stack.Screen name="DailyTask" component={DailyTaskScreen} />
           <Stack.Screen name="IndividualPlantPage" component={IndividualPageScreen} />
-          <Stack.Screen name="IndividualArticle" component={IndividualArticle} />
+          <Stack.Screen name="IndividualArticle" component={IndividualArticle} options={({route}) => ({title: route.params.article.label})}/>
         </Stack.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />
