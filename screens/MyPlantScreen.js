@@ -1,11 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Dimensions } from 'react-native';
 import { MaterialCommunityIcons, Entypo, AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import Svg, { Image, Circle, ClipPath } from 'react-native-svg';
 import BottomSheet from 'reanimated-bottom-sheet';
 import Animated from 'react-native-reanimated';
-// import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native-gesture-handler';
 import Colors from '../constants/Colors';
 import DateTimePicker from '../components/DateTimePicker';
 
