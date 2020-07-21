@@ -1,54 +1,56 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Keyboard, ScrollView, ActivityIndicator } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Keyboard,
+  ScrollView,
+  ActivityIndicator,
+  Image,
+} from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import firebase from '../firebase';
 import SearchField from '../components/SearchField';
-import ReminderCard from '../components/ReminderCard';
-const SearchScreen = () => {
-  const dispatch = useDispatch();
-  const [initialData, setInitialData] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
-  useEffect(() => {
-    firebase
-      .firestore()
-      .collection('plants').orderBy("commonName","asc")
-      .get()
-      .then((data) => {
-        const plants = [];
-        data.forEach((element) => {
-          plants.push({ id: element.id, ...element.data() });
-        })
-        setInitialData(plants);
-        dispatch({ type: 'ADD_PLANTS', payload: { plants } });
-      });
-  }, []);
+import IndividualCard from '../components/IndividualCard';
+import plantData from '../data/data.json';
+import cactus from '../assets/images/cactus.png';
 
+const SearchScreen = () => {
+  const [initialData, setInitialData] = useState(
+    plantData.sort((a, b) => (a.commonName > b.commonName ? 1 : -1)),
+  );
+  const [filteredData, setFilteredData] = useState([]);
+  const [showLoading, setShowLoading] = useState(true);
   useEffect(() => {
-    setFilteredData(initialData)
-  }, [initialData]);
+    setFilteredData(initialData);
+    const myTimeOut = setTimeout(() => {
+      setShowLoading(false);
+    }, 500);
+    return () => {
+      clearTimeout(myTimeOut);
+    };
+  }, []);
   const plantList = () => {
     return filteredData.map((element) => {
       return (
-        <View>
-          <ReminderCard element={element} />
+        <View key={element.scientificName}>
+          <IndividualCard element={element} />
         </View>
       );
     });
   };
 
-  const showLoading = () => {
+  const loadingFunction = () => {
     return (
       <View style={styles.loadingContainer}>
-<ActivityIndicator size="large" color="#0000ff"/>
+        <ActivityIndicator size="large" color="#048243" />
       </View>
-    )
-  }
+    );
+  };
   const getData = (val) => {
     if (initialData) {
       const filteredResult = initialData
         .filter((element) => {
-          return element.commonName.toLowerCase().includes(val.toLowerCase());
+          return element.commonName.toLowerCase().startsWith(val.toLowerCase());
         })
         .sort((a, b) => (a.commonName > b.commonName ? 1 : -1));
       setFilteredData(filteredResult);
@@ -58,12 +60,24 @@ const SearchScreen = () => {
   return (
     <View style={styles.parentWrapper}>
       <SearchField sendData={getData} />
-      <TouchableWithoutFeedback
-        style={styles.wrapper}
-        onPress={() => Keyboard.dismiss()}>
-          {showLoading()}
-        <ScrollView></ScrollView>
-      </TouchableWithoutFeedback>
+      {showLoading ? (
+        loadingFunction()
+      ) : (
+        <TouchableWithoutFeedback
+          style={styles.wrapper}
+          onPress={() => Keyboard.dismiss()}>
+          <ScrollView>
+            {filteredData.length >0 ? (
+              plantList()
+            ) : (
+              <View style={styles.cactusWrapper}>
+                <Image source={cactus} style={styles.cactusIcon} />
+                <Text style={styles.errorMsg}>Sorry, no matching plants :)</Text>
+              </View>
+            )}
+          </ScrollView>
+        </TouchableWithoutFeedback>
+      )}
     </View>
   );
 };
@@ -73,9 +87,23 @@ const styles = StyleSheet.create({
     height: '88%',
   },
   loadingContainer: {
-    justifyContent:"flex-start",
-    borderWidth:2,
-  }
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    height: '55%',
+  },
+  cactusWrapper: {
+    justifyContent: 'center',
+    height: 400,
+    alignItems: 'center',
+  },
+  cactusIcon: {
+    height: 100,
+    width: 100,
+  },
+  errorMsg: {
+    fontSize: 20,
+    marginTop: 10,
+  },
 });
 
 export default SearchScreen;
