@@ -13,7 +13,8 @@ import IndividualPageScreen from './screens/IndividualPageScreen';
 import IndividualArticle from './components/IndividualArticle';
 import AuthScreen from './screens/AuthScreen';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
-import SetReminderNotification from './components/SetReminderNotification';
+// import SetReminderNotification from './components/SetReminderNotification';
+import DateTimePicker from './components/DateTimePicker';
 
 const Stack = createStackNavigator();
 
@@ -23,12 +24,13 @@ export default function App(props) {
   // if (!isLoadingComplete) {
   //   return null;
   // } else {
-  SetReminderNotification();
+  // SetReminderNotification();
 
   return (
     <>
       <SafeAreaView style={styles.safeAreaTop} />
       <StatusBar barStyle="light-content" />
+
       <View style={styles.container}>
         <Provider store={store}>
           <NavigationContainer>
@@ -43,6 +45,7 @@ export default function App(props) {
               <Stack.Screen name="IndividualArticle" component={IndividualArticle} />
               <Stack.Screen name="Auth" component={AuthScreen} />
             </Stack.Navigator>
+            <DateTimePicker />
           </NavigationContainer>
         </Provider>
         <StatusBar style="auto" />

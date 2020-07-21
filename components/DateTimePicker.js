@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Button, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import Colors from '../constants/Colors';
+import SetReminderNotification from './SetReminderNotification';
 
 const DateTimePicker = () => {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
@@ -16,13 +17,14 @@ const DateTimePicker = () => {
 
   const handleConfirm = (date) => {
     console.warn('A date has been picked: ', date);
+    const dateParsedToNum = date.toString();
+    SetReminderNotification(dateParsedToNum);
 
     hideDatePicker();
   };
 
   return (
     <TouchableOpacity onPress={showDatePicker}>
-      {/* <Button title="Set reminder" onPress={showDatePicker} /> */}
       <View style={styles.datePickerBtnContainer}>
         <Text style={styles.datePickerBtn}>Set reminder</Text>
       </View>
