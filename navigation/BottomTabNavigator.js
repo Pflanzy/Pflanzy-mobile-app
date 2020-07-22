@@ -63,7 +63,7 @@ export default function BottomTabNavigator({ navigation, route }) {
     },
     headerTintColor: Colors.defaultWhite,
     headerRight: () => (
-      <TouchableOpacity style={styles.signUpButton} onPress={() => { navigation.navigate('Auth')}}>
+      <TouchableOpacity activeOpacity={0.7} style={styles.signUpButton} onPress={() => { navigation.navigate('Auth')}}>
         <Text style={styles.signUpButtonText}>SIGN UP</Text>
       </TouchableOpacity>
     ),
