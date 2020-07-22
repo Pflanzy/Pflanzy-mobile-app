@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     wrapper: {
         display: 'flex',
         alignItems: 'flex-end',
-        width: '102%'
+        width: '103%'
         
     }
 })
