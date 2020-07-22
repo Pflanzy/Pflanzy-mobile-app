@@ -1,7 +1,11 @@
 import * as Notifications from 'expo-notifications';
 
+// Receives date info from DateTimePicker & sends notification
 export default function SetReminderNotification(dateInfo) {
   console.warn('A data sent from DateTimePicker!', dateInfo);
+
+  allowsNotificationsAsync()
+  requestPermissionsAsync()
 
   Notifications.setNotificationHandler({
     handleNotification: async () => ({
@@ -11,22 +15,16 @@ export default function SetReminderNotification(dateInfo) {
     }),
   });
 
-  // const trigger = new Date(Date.now() + 60 * 60 * 1000);
-  // trigger.setMinutes(0);
-  // trigger.setSeconds(0);
-  // trigger.seconds = 30;
   console.warn('A data formatted into milliseconds', Date.parse(dateInfo));
-  const dataIntoMillisec = Date.parse(dateInfo);
-  const dateInSeconds = dataIntoMillisec / 1000;
+  const dateInSec = (Date.parse(dateInfo) - Date.now()) / 1000;
 
   Notifications.scheduleNotificationAsync({
     content: {
       title: 'Water time!',
       body: "I'm so thirsty🌵...",
     },
-    // trigger,
     trigger: {
-      seconds: dateInSeconds + 30,
+      seconds: dateInSec,
       // repeats: true,
     },
   });
@@ -34,4 +32,23 @@ export default function SetReminderNotification(dateInfo) {
   Notifications.dismissAllNotificationsAsync();
 
   // Notifications.cancelAllScheduledNotificationsAsync();
+}
+
+// Fetching information about notifications-related permissions
+async function allowsNotificationsAsync() {
+  const settings = await Notifications.getPermissionsAsync();
+  return (
+    settings.granted || settings.ios?.status === Notifications.IosAuthorizationStatus.PROVISIONAL
+  );
+}
+
+async function requestPermissionsAsync() {
+  return await Notifications.requestPermissionsAsync({
+    ios: {
+      allowAlert: true,
+      allowBadge: true,
+      allowSound: true,
+      allowAnnouncements: true,
+    },
+  });
 }
