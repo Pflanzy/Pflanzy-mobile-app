@@ -24,7 +24,7 @@ export default function SetReminderNotification(dateInfo) {
       body: "I'm so thirsty🌵...",
     },
     trigger: {
-      seconds: dateInSec,
+      seconds: 30,
       // repeats: true,
     },
   });
