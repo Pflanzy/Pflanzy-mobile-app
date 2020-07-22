@@ -13,8 +13,8 @@ export default function SetReminderNotification(dateInfo) {
 
   Notifications.scheduleNotificationAsync({
     content: {
-      title: "Time's up!",
-      body: 'OK, it looks better...',
+      title: 'Water time!',
+      body: "I'm so thirsty🌵...",
     },
     trigger: {
       seconds: 30,
