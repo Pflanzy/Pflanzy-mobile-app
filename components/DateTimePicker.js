@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import Colors from '../constants/Colors';
+import PflanzyOpacity from './PflanzyOpacity';
 
 const DateTimePicker = () => {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
@@ -21,7 +22,7 @@ const DateTimePicker = () => {
   };
 
   return (
-    <TouchableOpacity onPress={showDatePicker}>
+    <PflanzyOpacity onPress={showDatePicker}>
       {/* <Button title="Set reminder" onPress={showDatePicker} /> */}
       <View style={styles.datePickerBtnContainer}>
         <Text style={styles.datePickerBtn}>Set reminder</Text>
@@ -32,7 +33,7 @@ const DateTimePicker = () => {
         onConfirm={handleConfirm}
         onCancel={hideDatePicker}
       />
-    </TouchableOpacity>
+    </PflanzyOpacity>
   );
 };
 

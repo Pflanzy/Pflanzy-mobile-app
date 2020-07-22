@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity as DefaultTouch } from 'react-native';
 
-import { MaterialCommunityIcons, Entypo, AntDesign } from '@expo/vector-icons';
+import { MaterialCommunityIcons, Entypo, AntDesign, Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import Svg, { Image, Circle, ClipPath } from 'react-native-svg';
 import BottomSheet from 'reanimated-bottom-sheet';
@@ -13,9 +13,11 @@ import PflanzyOpacity from '../components/PflanzyOpacity';
 
 const MyGardenPlant = ({ navigation }) => {
   // const navigation = useNavigation();
+
   const bsSettings = React.createRef();
   const bsInfo = React.createRef();
   const fall = new Animated.Value(1);
+  const transArrow = new Animated.Value(0);
 
   const renderInner = () => (
     <View style={styles.settingsContainer}>
@@ -42,17 +44,35 @@ const MyGardenPlant = ({ navigation }) => {
     </View>
   );
 
-  const renderMainInfoHeader = () => (
-    <View style={styles.settingsMainInfo}>
-      <View style={styles.settingsHeader}>
-        <View style={styles.contentHandle} />
-        <DateTimePicker />
-      </View>
-    </View>
-  );
+  // const renderMainInfoHeader = () => (
+  //   <View style={styles.settingsMainInfo}>
+  //     <View style={styles.settingsHeader}>
+  //       <View style={styles.contentHandle} />
+  //       <DateTimePicker />
+  //     </View>
+  //   </View>
+  // );
+  // reanimated node which holds position of bottom sheet's content (in dp)
 
   const renderMainInfo = () => (
     <View style={styles.myPlantContainer}>
+      <Animated.View
+        style={{
+          alignItems: 'center',
+          // transform: [
+          //   {
+          //     rotateX: transArrow.interpolate({
+          //       inputRange: [0, 180],
+          //       outputRange: [0, 180],
+          //     }),
+          //   },
+          // ],
+        }}>
+        <Ionicons name="ios-arrow-up" size={24} color="grey" />
+      </Animated.View>
+      <View style={styles.reminderBtnContainer}>
+        <DateTimePicker />
+      </View>
       <ScrollView style={styles.plantInfoWrapper}>
         <View style={styles.smallContainer}>
           <View style={styles.smallInfoWrapper}>
@@ -90,17 +110,29 @@ const MyGardenPlant = ({ navigation }) => {
             ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
           </Text>
         </View>
-        <PflanzyOpacity onPress={() => navigation.navigate('IndividualPlant')}>
-          <View style={styles.infoBtnContainer}>
-            <Text style={styles.infoBtn}>More info</Text>
+        <View style={styles.infoWrapper}>
+          <View style={styles.infoHeaderWrapper}>
+            <MaterialCommunityIcons name="temperature-celsius" size={20} color="white" />
+            <Text style={styles.infoHeader}>Temperature</Text>
           </View>
-        </PflanzyOpacity>
+          <Text style={styles.infoBody}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam exercitationem
+            ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
+          </Text>
+        </View>
+        <View style={styles.infoBtnContainer}>
+          <PflanzyOpacity onPress={() => navigation.navigate('IndividualPlant')}>
+            <View style={styles.infoBtn}>
+              <Text style={styles.infoBtnTxt}>More info</Text>
+            </View>
+          </PflanzyOpacity>
+        </View>
       </ScrollView>
     </View>
   );
 
   return (
-    <View style={styles.blackContainer}>
+    <View style={styles.opacityContainer}>
       <BottomSheet
         ref={bsSettings}
         snapPoints={[330, 0]}
@@ -156,8 +188,9 @@ const MyGardenPlant = ({ navigation }) => {
           ref={bsInfo}
           snapPoints={['45%', '75%']}
           renderContent={renderMainInfo}
-          renderHeader={renderMainInfoHeader}
+          // renderHeader={renderMainInfoHeader}
           initialSnap={0}
+          callbackNode={transArrow}
           enabledGestureInteraction
         />
       </Animated.View>
@@ -166,7 +199,14 @@ const MyGardenPlant = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  blackContainer: {
+  // arrowDown: {
+  //   transform: [{ rotateX: '180deg' }],
+  // },
+
+  // arrowUp: {
+  //   transform: [{ rotateX: '0deg' }],
+  // },
+  opacityContainer: {
     backgroundColor: '#2c2c2f',
   },
   settingsContainer: {
@@ -228,8 +268,8 @@ const styles = StyleSheet.create({
   settingsMainInfo: {
     backgroundColor: Colors.defaultWhite,
     paddingTop: 20,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    // borderTopLeftRadius: 20,
+    // borderTopRightRadius: 20,
   },
 
   settingMainInfoSeparator: {
@@ -268,7 +308,15 @@ const styles = StyleSheet.create({
     height: '100%',
     backgroundColor: '#fff',
     padding: 10,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
+  arrowContainer: {
+    alignItems: 'center',
+  },
+  // arrow: {
+  //   transform: [{ rotateX: '0deg' }],
+  // },
 
   nameContainer: {
     width: '80%',
@@ -316,13 +364,20 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   infoBtnContainer: {
+    width: '100%',
+    alignItems: 'center',
+  },
+
+  infoBtn: {
+    width: 240,
     borderRadius: 50,
     backgroundColor: Colors.tintColor,
     padding: 10,
     marginBottom: 30,
+    // alignItems: 'center',
   },
 
-  infoBtn: {
+  infoBtnTxt: {
     textAlign: 'center',
     fontSize: 16,
     color: Colors.defaultWhite,
@@ -330,25 +385,12 @@ const styles = StyleSheet.create({
   },
 
   reminderBtnContainer: {
-    borderRadius: 50,
-    backgroundColor: Colors.tintColor,
-    padding: 10,
-    marginBottom: 30,
-  },
-
-  reminderBtn: {
-    textAlign: 'center',
-    fontSize: 16,
-    color: Colors.defaultWhite,
-    fontWeight: '600',
+    alignItems: 'center',
+    marginTop: 10,
   },
 
   plantInfoWrapper: {
     paddingVertical: 10,
-  },
-  infoWrapper: {
-    display: 'flex',
-    alignItems: 'center',
   },
 
   smallContainer: {
@@ -376,38 +418,45 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     backgroundColor: Colors.darkGreen,
-    paddingVertical: 10,
+    paddingVertical: 15,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
   },
 
   smallInfoBody: {
     textAlign: 'center',
-    color: Colors.textGrey,
-    margin: 5,
+    color: Colors.defaultWhite,
+    paddingVertical: 15,
+    paddingHorizontal: 5,
+  },
+  infoWrapper: {
+    display: 'flex',
+    alignItems: 'flex-start',
   },
 
   infoHeaderWrapper: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
+    // justifyContent: 'center',
+    // width: '100%',
     backgroundColor: Colors.darkGreen,
     paddingVertical: 10,
+    paddingHorizontal: 15,
     borderRadius: 5,
     flexShrink: 1,
   },
   infoHeader: {
     fontSize: 20,
     color: Colors.defaultWhite,
+    paddingHorizontal: 10,
   },
   infoBody: {
     lineHeight: 28,
     marginTop: 10,
     marginBottom: 25,
-    textAlign: 'center',
-    width: '95%',
+    // textAlign: 'center',
+    // width: '95%',
     color: Colors.textGrey,
   },
 });
