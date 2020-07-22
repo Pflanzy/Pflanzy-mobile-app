@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity as DefaultTouch } from 'react-native';
 
-import { MaterialCommunityIcons, Entypo, AntDesign } from '@expo/vector-icons';
+import { Entypo, AntDesign } from '@expo/vector-icons';
+
 import { useNavigation } from '@react-navigation/native';
 import Svg, { Image, Circle, ClipPath } from 'react-native-svg';
 import BottomSheet from 'reanimated-bottom-sheet';
@@ -16,7 +17,6 @@ const MyGardenPlant = (props) => {
   const bsSettings = React.createRef();
   const bsInfo = React.createRef();
   const fall = new Animated.Value(1);
-
   const renderInner = () => (
     <View style={styles.settingsContainer}>
       <PflanzyOpacity style={styles.settingsBtns} onPress={() => navigation.navigate('Camera')}>

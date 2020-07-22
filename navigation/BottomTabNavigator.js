@@ -34,12 +34,6 @@ export default function BottomTabNavigator({ navigation, route }) {
         usersRef
           .doc(uid)
           .set(data)
-          .then(() => {
-            dispatch({ type: 'ADD_USER', payload: { user: data } });
-          })
-          .catch((error) => {
-            alert(error);
-          });
       })
       .catch((error) => {
         alert(error);
@@ -47,8 +41,9 @@ export default function BottomTabNavigator({ navigation, route }) {
     onAuthStateChanged(function (user) {
       if (user) {
         // TODO: Save User Info To Redux
-        // User is signed in.
-        // ...
+        usersRef.doc(uid).onSnapShot(function (doc) {
+          console.log("Current data: " , doc.data())
+        })
       } else {
         // User is signed out.
         // ...

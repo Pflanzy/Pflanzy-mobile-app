@@ -16,7 +16,7 @@ import cactus from '../assets/images/cactus.png';
 
 const SearchScreen = () => {
   const [initialData, setInitialData] = useState(
-    plantData.sort((a, b) => (a.commonName > b.commonName ? 1 : -1)),
+    plantData.sort((a, b) => (a.commonName > b.commonName ? 1 : -1))
   );
   const [filteredData, setFilteredData] = useState([]);
   const [showLoading, setShowLoading] = useState(true);
@@ -63,11 +63,9 @@ const SearchScreen = () => {
       {showLoading ? (
         loadingFunction()
       ) : (
-        <TouchableWithoutFeedback
-          style={styles.wrapper}
-          onPress={() => Keyboard.dismiss()}>
+        <TouchableWithoutFeedback style={styles.wrapper} onPress={() => Keyboard.dismiss()}>
           <ScrollView>
-            {filteredData.length >0 ? (
+            {filteredData.length > 0 ? (
               plantList()
             ) : (
               <View style={styles.cactusWrapper}>
