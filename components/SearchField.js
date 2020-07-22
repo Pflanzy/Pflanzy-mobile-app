@@ -15,9 +15,9 @@ const SearchField = props => {
     return (
         <View style={styles.wrapper}>
             <SearchBar
-                inputStyle={{backgroundColor: 'white', borderRadius: 20, paddingHorizontal: 10}}
-                inputContainerStyle={{backgroundColor: Colors.tintColor , borderRadius: 32, height: 65}}
-                containerStyle={{backgroundColor: 'none', width: '90%', borderTopWidth: 0, borderBottomWidth: 0, margin: 10}}
+                inputStyle={{backgroundColor: 'white', borderRadius: 12, paddingHorizontal: 10, }}
+                inputContainerStyle={{backgroundColor: Colors.tintColor , borderTopLeftRadius: 19, borderBottomLeftRadius: 19, height: 65}}
+                containerStyle={{backgroundColor: 'none', width: '98%', borderTopWidth: 0, borderBottomWidth: 0, marginTop: 10, paddingBottom: 0}}
                 cancelButtonTitle={{paddingHorizontal: 10}}
                 searchIcon={{paddingLeft: 10, size: 24, paddingRight: 0, color: Colors.defaultWhite}}
                 clearIcon={{color: Colors.defaultWhite, size: 24, paddingHorizontal: 10}}
@@ -34,8 +34,8 @@ const SearchField = props => {
 const styles = StyleSheet.create({
     wrapper: {
         display: 'flex',
-        alignItems: 'center',
-        width: '100%'
+        alignItems: 'flex-end',
+        width: '103%'
         
     }
 })
