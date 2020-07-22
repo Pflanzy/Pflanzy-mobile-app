@@ -997,28 +997,6 @@
     "propagation": "Propagate from seed. Temperatures of approximately 80°F (27°C) are required - making propagation difficult for the average grower."
   },
   {
-    "commonName": "Spider",
-    "scientificName": "Chlorophytum comosum vittatum",
-    "category": "Hanging basket plants (Indoors)",
-    "maxGrowth": "Height 60 cm - leaves 45 cm.",
-    "origin": "South Africa.",
-    "poisonousForPets": "Non-toxic to cats and dogs.",
-    "images": {
-      "imagePrimary": "https://www.houseplantsexpert.com/image-files/spiderplant_2.jpg",
-      "imageSecondary": "https://www.houseplantsexpert.com/image-files/chlorophytum-variegatum.jpg",
-      "imageTernary": "https://www.houseplantsexpert.com/image-files/chlorophytum-vittatum.jpg"
-    },
-    "description": "The spider plant is very popular and can be found in many homes or offices. Most people have owned or lived with one (or many) at some point. These are easy-to-care for types that grow quickly, making them a great beginner's plant. This plant can survive with minimal care/attention and can manage low temperatures. However, they will start to look very unattractive and create mess (leaves falling and browning) without enough water and light or too much of either. When they're taken care of properly they look great.",
-    "temperature": "Minimum temperature should be no lower than 45°F (7°C). Ideal is approximately 60° - 75°F (15° - 24°C).",
-    "light": "Nicely lit room without direct sunlight.",
-    "watering": "They like plenty of water, between spring and summer. In the winter they should need a lot less.",
-    "soil": "Any decent potting mix.",
-    "rePotting": "Re-pot in spring, if needed (outgrown its pot). Look for roots growing out of the drainage holes of the current pot.",
-    "fertilizer": "Feed during spring and summer with a diluted liquid fertilizer.",
-    "humidity": "Avoid too much hot air as this will affect the leaves. Spraying a water mist in the summer and within a warm artificially heated room will help.",
-    "propagation": "Propagate by dividing the main plant or replant the plant-lets that grow from the main plant any time between spring - fall."
-  },
-  {
     "commonName": "Donkey's Tail",
     "scientificName": "Sedum Morganianum",
     "category": [
@@ -1236,28 +1214,6 @@
     "fertilizer": "",
     "humidity": "Normal household humidity is fine and misting the leaves is advised. They do like fresh air during the summer from an open window, and do not like stuffy hot rooms from central heating systems.",
     "propagation": "Cutting and re-planting stem cuttings a couple of inches long is an easy method used. Apply root hormones and give it a few weeks for them to begin rooting."
-  },
-  {
-    "commonName": "P. lily or Spathe flower",
-    "scientificName": "Spathiphyllum Wallisii",
-    "category": "Selection of office plants",
-    "maxGrowth": "Height 18-24 in. (45-60 cm).",
-    "origin": "South America",
-    "poisonousForPets": "Toxic to cats and dogs.",
-    "images": {
-      "imagePrimary": "https://www.houseplantsexpert.com/image-files/p_lily.jpg",
-      "imageSecondary": "https://www.houseplantsexpert.com/assets/images/peace_lily_plant.JPG",
-      "imageTernary": "https://www.houseplantsexpert.com/image-files/p_lily2.jpg"
-    },
-    "description": "The peace lily plant is very popular and easy enough for most growers to care for and maintain, which is one of the reason's it has become so favored. The simplistic look of the glossy leaves and the fantastic white lily that sits above the foliage provides a minimalistic room with an added touch of simplicity.",
-    "temperature": "Average room temperature’s are fine. Avoid lower than 55°F/12°C in the winter.",
-    "light": "As mentioned above they like light, however, direct sunshine can damage plant leaves. A mixture of light and shade is great, if you can provide it. If you see the leaves yellowing this could be caused by too much sunlight.",
-    "watering": "This plant does drink a lot of water in the summer. Keeping the soil moist (not over watered) and allowing it to dry slightly near the top is a good idea. If in the winter the soil stays slightly damp for a couple of weeks or more, that's ok , dont water any more. Your plant will let you know when it needs more.",
-    "soil": "A peat based potting mix with perlite is ideal or other peat based mixes.",
-    "rePotting": "Re-potting each spring is the usual drill.",
-    "fertilizer": "Feed every 2 weeks with a diluted liquid plant food from spring until fall.",
-    "humidity": "Misting leaves regularly will improve humidity and keep it happy.",
-    "propagation": "When the plant is being re-potted the main plant can be divided and potted, to grow smaller plants."
   },
   {
     "commonName": "Bunny ear",
@@ -1782,7 +1738,7 @@
     "propagation": "It propagates dividing 2 inch sections of a rhizome and include at least one stem with a frond. You will have to pin the rhizome within moist potting soil using strong wire or toothpicks. Once you see new growth, new plants are growing."
   },
   {
-    "commonName": "Not known",
+    "commonName": "Argyroderma testiculare",
     "scientificName": "Argyroderma testiculare",
     "category": [
       "succulent house plants grown indoors",
@@ -1807,7 +1763,7 @@
     "propagation": "Grown from seed, during the winter sowing will have to be place in vented containers or an unheated greenhouse. Seeds can be sown indoors prior to the last frost and germinated in a damp paper towel. Another option is to separate by division if clumps have formed ."
   },
   {
-    "commonName": "Not known",
+    "commonName": "Lithops fulleri",
     "scientificName": "Lithops fulleri",
     "category": [
       "succulent house plants grown indoors",
@@ -1832,7 +1788,7 @@
     "propagation": "It is possible to propagate dividing the offsets grown from the parent plant. The best method is to propagate by seed sown at a temperature of around 19°C - 21°C. The best time to propagate is during the months."
   },
   {
-    "commonName": "Not known",
+    "commonName": "Lithops optica",
     "scientificName": "Lithops optica",
     "category": "Selection of living stones plants",
     "maxGrowth": "Height 5cm - max.",
@@ -1879,7 +1835,7 @@
     "propagation": "It is possible to use cuttings but this is not always worthwhile as old plants can become tired looking. Therefore, it is best to propagate by seed that is sown at a temperature of 66-70 °F during the early spring."
   },
   {
-    "commonName": "Not known",
+    "commonName": "Conophytum ficiforme",
     "scientificName": "Conophytum ficiforme",
     "category": "Selection of living stones plants",
     "maxGrowth": "Height and length 2.5cm - max.",

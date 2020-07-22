@@ -9,7 +9,7 @@ import useCachedResources from './hooks/useCachedResources';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import CameraScreen from './screens/CameraScreen';
 import MyPlantScreen from './screens/MyPlantScreen';
-import IndividualPageScreen from './screens/IndividualPageScreen';
+import IndividualPlantScreen from './screens/IndividualPlantScreen';
 import IndividualArticle from './components/IndividualArticle';
 import AuthScreen from './screens/AuthScreen';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
@@ -18,7 +18,7 @@ import DateTimePicker from './components/DateTimePicker';
 
 const Stack = createStackNavigator();
 
-export default function App(props) {
+export default function App(params) {
   // const isLoadingComplete = useCachedResources();
 
   // if (!isLoadingComplete) {
@@ -41,8 +41,9 @@ export default function App(props) {
               }}>
               <Stack.Screen name="Root" component={BottomTabNavigator} />
               <Stack.Screen name="Camera" component={CameraScreen} />
-              <Stack.Screen name="IndividualPlantPage" component={IndividualPageScreen} />
-              <Stack.Screen name="IndividualArticle" component={IndividualArticle} />
+              <Stack.Screen name="IndividualPlant" component={IndividualPlantScreen} />
+              <Stack.Screen name="IndividualArticle" component={IndividualArticle} options={({route}) => ({title: route.params.article.label})}/>
+              <Stack.Screen name="MyPlant" component={MyPlantScreen} />
               <Stack.Screen name="Auth" component={AuthScreen} />
             </Stack.Navigator>
             <DateTimePicker />
