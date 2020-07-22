@@ -13,8 +13,6 @@ import IndividualPlantScreen from './screens/IndividualPlantScreen';
 import IndividualArticle from './components/IndividualArticle';
 import AuthScreen from './screens/AuthScreen';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
-// import SetReminderNotification from './components/SetReminderNotification';
-import DateTimePicker from './components/DateTimePicker';
 
 const Stack = createStackNavigator();
 
@@ -24,7 +22,6 @@ export default function App(params) {
   // if (!isLoadingComplete) {
   //   return null;
   // } else {
-  // SetReminderNotification();
 
   return (
     <>
@@ -42,11 +39,14 @@ export default function App(params) {
               <Stack.Screen name="Root" component={BottomTabNavigator} />
               <Stack.Screen name="Camera" component={CameraScreen} />
               <Stack.Screen name="IndividualPlant" component={IndividualPlantScreen} />
-              <Stack.Screen name="IndividualArticle" component={IndividualArticle} options={({route}) => ({title: route.params.article.label})}/>
+              <Stack.Screen
+                name="IndividualArticle"
+                component={IndividualArticle}
+                options={({ route }) => ({ title: route.params.article.label })}
+              />
               <Stack.Screen name="MyPlant" component={MyPlantScreen} />
               <Stack.Screen name="Auth" component={AuthScreen} />
             </Stack.Navigator>
-            <DateTimePicker />
           </NavigationContainer>
         </Provider>
         <StatusBar style="auto" />
