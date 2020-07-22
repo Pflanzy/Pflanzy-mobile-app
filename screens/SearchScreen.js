@@ -50,9 +50,8 @@ const SearchScreen = () => {
     if (initialData) {
       const filteredResult = initialData
         .filter((element) => {
-          return element.commonName.toLowerCase().startsWith(val.toLowerCase());
+          return element.commonName.toLowerCase().startsWith(val.toLowerCase()) || element.scientificName.toLowerCase().startsWith(val.toLowerCase());;
         })
-        .sort((a, b) => (a.commonName > b.commonName ? 1 : -1));
       setFilteredData(filteredResult);
     }
   };
