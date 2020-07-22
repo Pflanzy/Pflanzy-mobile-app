@@ -11,8 +11,8 @@ import Colors from '../constants/Colors';
 import DateTimePicker from '../components/DateTimePicker';
 import PflanzyOpacity from '../components/PflanzyOpacity';
 
-const MyGardenPlant = (props) => {
-  const navigation = useNavigation();
+const MyGardenPlant = ({ navigation }) => {
+  // const navigation = useNavigation();
   const bsSettings = React.createRef();
   const bsInfo = React.createRef();
   const fall = new Animated.Value(1);
@@ -90,7 +90,7 @@ const MyGardenPlant = (props) => {
             ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
           </Text>
         </View>
-        <PflanzyOpacity onPress={() => navigation.navigate('IndividualPlantPage')}>
+        <PflanzyOpacity onPress={() => navigation.navigate('IndividualPlant')}>
           <View style={styles.infoBtnContainer}>
             <Text style={styles.infoBtn}>More info</Text>
           </View>

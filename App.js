@@ -38,7 +38,11 @@ export default function App(params) {
               <Stack.Screen name="Root" component={BottomTabNavigator} />
               <Stack.Screen name="Camera" component={CameraScreen} />
               <Stack.Screen name="IndividualPlant" component={IndividualPlantScreen} />
-              <Stack.Screen name="IndividualArticle" component={IndividualArticle} options={({route}) => ({title: route.params.article.label})}/>
+              <Stack.Screen
+                name="IndividualArticle"
+                component={IndividualArticle}
+                options={({ route }) => ({ title: route.params.article.label })}
+              />
               <Stack.Screen name="MyPlant" component={MyPlantScreen} />
               <Stack.Screen name="Auth" component={AuthScreen} />
             </Stack.Navigator>
