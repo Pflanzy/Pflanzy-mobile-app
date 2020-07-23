@@ -1,7 +1,8 @@
-import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity as DefaultTouch } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity as DefaultTouch, Switch } from 'react-native';
 
-import { MaterialCommunityIcons, Entypo, AntDesign } from '@expo/vector-icons';
+import { MaterialCommunityIcons, MaterialIcons, Entypo, AntDesign } from '@expo/vector-icons';
+import Modal from 'react-native-modal';
 import { useNavigation } from '@react-navigation/native';
 import Svg, { Image, Circle, ClipPath } from 'react-native-svg';
 import BottomSheet from 'reanimated-bottom-sheet';
@@ -12,6 +13,10 @@ import DateTimePicker from '../components/DateTimePicker';
 import PflanzyOpacity from '../components/PflanzyOpacity';
 
 const MyGardenPlant = (props) => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [isEnabled, setSwitchEnabled] = useState(false);
+  const toggleSwitch = () => setSwitchEnabled((previousState) => !previousState);
+
   const navigation = useNavigation();
   const bsSettings = React.createRef();
   const bsInfo = React.createRef();
@@ -47,6 +52,12 @@ const MyGardenPlant = (props) => {
       <View style={styles.settingsHeader}>
         <View style={styles.contentHandle} />
         <DateTimePicker />
+        <MaterialIcons
+          name="add-alert"
+          size={24}
+          color="green"
+          onPress={() => setModalOpen(true)}
+        />
       </View>
     </View>
   );
@@ -101,6 +112,24 @@ const MyGardenPlant = (props) => {
 
   return (
     <View style={styles.blackContainer}>
+      <Modal visible={modalOpen} animationType="slide">
+        {/* <View>
+          <Text>Cancel</Text>
+          <Text>New Reminder</Text>
+          <Text>Done</Text>
+        </View> */}
+        <View style={styles.modalContent}>
+          <MaterialIcons
+            name="add-alert"
+            size={24}
+            color="red"
+            onPress={() => setModalOpen(false)}
+          />
+          <Text>Hello worrrrrrrrrrrlllld!!!!!!</Text>
+          <Switch onValueChange={toggleSwitch} value={isEnabled} />
+        </View>
+      </Modal>
+
       <BottomSheet
         ref={bsSettings}
         snapPoints={[330, 0]}
@@ -398,10 +427,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     flexShrink: 1,
   },
+
   infoHeader: {
     fontSize: 20,
     color: Colors.defaultWhite,
   },
+
   infoBody: {
     lineHeight: 28,
     marginTop: 10,
@@ -409,6 +440,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     width: '95%',
     color: Colors.textGrey,
+  },
+
+  modalContent: {
+    backgroundColor: 'lightgray',
+    flex: 1,
   },
 });
 
