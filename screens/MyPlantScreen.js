@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity as DefaultTouch, Switch } from 'react-native';
 
-import { MaterialCommunityIcons, MaterialIcons, Entypo, AntDesign } from '@expo/vector-icons';
+import {
+  MaterialCommunityIcons,
+  MaterialIcons,
+  FontAwesome5,
+  Ionicons,
+  Entypo,
+  AntDesign,
+} from '@expo/vector-icons';
 import Modal from 'react-native-modal';
 import { useNavigation } from '@react-navigation/native';
 import Svg, { Image, Circle, ClipPath } from 'react-native-svg';
 import BottomSheet from 'reanimated-bottom-sheet';
 import Animated from 'react-native-reanimated';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import Colors from '../constants/Colors';
 import DateTimePicker from '../components/DateTimePicker';
 import PflanzyOpacity from '../components/PflanzyOpacity';
@@ -112,20 +119,40 @@ const MyGardenPlant = (props) => {
 
   return (
     <View style={styles.blackContainer}>
-      <Modal visible={modalOpen} animationType="slide">
-        {/* <View>
-          <Text>Cancel</Text>
-          <Text>New Reminder</Text>
-          <Text>Done</Text>
-        </View> */}
+      <Modal
+        isVisible={modalOpen}
+        onBackdropPress={() => setModalOpen(false)}
+        onSwipeComplete={() => setModalOpen(false)}
+        swipeDirection="left">
         <View style={styles.modalContent}>
-          <MaterialIcons
-            name="add-alert"
-            size={24}
-            color="red"
-            onPress={() => setModalOpen(false)}
-          />
-          <Text>Hello worrrrrrrrrrrlllld!!!!!!</Text>
+          <View style={styles.headerOptions}>
+            {/* <MaterialIcons
+                name="add-alert"
+                size={24}
+                color="red"
+                onPress={() => setModalOpen(false)}
+              /> */}
+            <Text onPress={() => setModalOpen(false)}>Cancel</Text>
+            <Text>New Reminder</Text>
+            <Text>Done</Text>
+          </View>
+          <View style={(styles.plantName, styles.modalRows)}>
+            <Ionicons name="md-flower" size={24} color="black" />
+            <Text>Tree Africanus</Text>
+          </View>
+          <View style={(styles.plantName, styles.modalRows)}>
+            <MaterialCommunityIcons name="bell-outline" size={24} color="black" />
+            <Text>Tree Africanus</Text>
+          </View>
+          <View style={(styles.plantName, styles.modalRows)}>
+            <AntDesign name="calendar" size={24} color="black" />
+            <Text>Tree Africanus</Text>
+          </View>
+          <View style={(styles.plantName, styles.modalRows)}>
+            <FontAwesome5 name="clock" size={24} color="black" />
+            <Text>Tree Africanus</Text>
+          </View>
+
           <Switch onValueChange={toggleSwitch} value={isEnabled} />
         </View>
       </Modal>
@@ -444,7 +471,19 @@ const styles = StyleSheet.create({
 
   modalContent: {
     backgroundColor: 'lightgray',
-    flex: 1,
+    height: '50%',
+    borderRadius: 10,
+    padding: 20,
+  },
+
+  headerOptions: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingBottom: 30,
+  },
+
+  modalRows: {
+    flexDirection: 'row',
   },
 });
 
