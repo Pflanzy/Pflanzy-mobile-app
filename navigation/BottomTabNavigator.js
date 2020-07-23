@@ -41,9 +41,7 @@ export default function BottomTabNavigator({ navigation, route }) {
     onAuthStateChanged(function (user) {
       if (user) {
         // TODO: Save User Info To Redux
-        usersRef.doc(uid).onSnapShot(function (doc) {
-          console.log("Current data: " , doc.data())
-        })
+        
       } else {
         // User is signed out.
         // ...
