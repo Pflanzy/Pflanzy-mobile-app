@@ -1,4 +1,4 @@
-import { Button } from "react-native"
+import { Button, TouchableOpacity, Text, StyleSheet } from "react-native"
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React, { useEffect } from 'react';
 import { useDispatch } from "react-redux"
@@ -56,10 +56,9 @@ export default function BottomTabNavigator({ navigation, route }) {
     },
     headerTintColor: Colors.defaultWhite,
     headerRight: () => (
-      <Button
-        onPress={() => { navigation.navigate('Auth')}}
-        title="SIGN UP" />
-      
+      <TouchableOpacity activeOpacity={0.7} style={styles.signUpButton} onPress={() => { navigation.navigate('Auth')}}>
+        <Text style={styles.signUpButtonText}>SIGN UP</Text>
+      </TouchableOpacity>
     ),
   });
 
@@ -111,3 +110,16 @@ function getHeaderTitle(route) {
       return 'Explore';
   }
 }
+
+const styles = StyleSheet.create({
+  signUpButton: {
+    backgroundColor: Colors.darkGreen,
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    marginRight: 15
+  },
+  signUpButtonText: {
+    color: Colors.defaultWhite,
+  }
+})

@@ -48,46 +48,53 @@ const SearchScreen = () => {
   };
   const getData = (val) => {
     if (initialData) {
-      const filteredResult = initialData
-        .filter((element) => {
-          return element.commonName.toLowerCase().startsWith(val.toLowerCase());
-        })
-        .sort((a, b) => (a.commonName > b.commonName ? 1 : -1));
+      const filteredResult = initialData.filter((element) => {
+        return (
+          element.commonName.toLowerCase().startsWith(val.toLowerCase()) ||
+          element.scientificName.toLowerCase().startsWith(val.toLowerCase())
+        );
+      });
       setFilteredData(filteredResult);
     }
   };
 
   return (
-    <View style={styles.parentWrapper}>
+    <>
       <SearchField sendData={getData} />
-      {showLoading ? (
-        loadingFunction()
-      ) : (
-        <TouchableWithoutFeedback style={styles.wrapper} onPress={() => Keyboard.dismiss()}>
-          <ScrollView>
-            {filteredData.length > 0 ? (
-              plantList()
-            ) : (
-              <View style={styles.cactusWrapper}>
-                <Image source={cactus} style={styles.cactusIcon} />
-                <Text style={styles.errorMsg}>Sorry, no matching plants :)</Text>
-              </View>
-            )}
-          </ScrollView>
-        </TouchableWithoutFeedback>
-      )}
-    </View>
+      <ScrollView contentContainerStyle={styles.parentWrapper}>
+        {showLoading ? (
+          loadingFunction()
+        ) : (
+          <TouchableWithoutFeedback style={styles.wrapper} onPress={() => Keyboard.dismiss()}>
+            <ScrollView>
+              {filteredData.length > 0 ? (
+                plantList()
+              ) : (
+                <View style={styles.cactusWrapper}>
+                  <Image source={cactus} style={styles.cactusIcon} />
+                  <Text style={styles.errorMsg}>Sorry, no matching plants :)</Text>
+                </View>
+              )}
+            </ScrollView>
+          </TouchableWithoutFeedback>
+        )}
+      </ScrollView>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
   wrapper: {
-    height: '88%',
+    paddingTop: 10,
+    paddingBottom: 20,
   },
   loadingContainer: {
     alignItems: 'center',
     justifyContent: 'flex-end',
     height: '55%',
+  },
+  plantList: {
+    paddingBottom: -20,
   },
   cactusWrapper: {
     justifyContent: 'center',

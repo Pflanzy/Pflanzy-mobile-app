@@ -6,6 +6,7 @@ const ReminderCard = ({element}) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
+      activeOpacity={0.7} 
       style={styles.cardContainer}
       onPress={() => navigation.navigate('IndividualPlant', {element})}>
       <View style={styles.imageContainer}>

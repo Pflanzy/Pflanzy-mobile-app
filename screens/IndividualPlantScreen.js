@@ -45,7 +45,7 @@ const IndividualPlantScreen = (navigation) => {
               <Ionicons name="ios-basket" size={14} color="white" style={styles.waterDrop}  />
               <Text style={styles.btnText}>Add To My Garden</Text>
             </TouchableOpacity>
-          </View>
+          </View> 
           <ScrollView style={styles.contentBody}>
             <Text style={styles.text}>{plant.description}</Text>
             <View style={styles.shortInfoContainer}>
@@ -140,7 +140,7 @@ const IndividualPlantScreen = (navigation) => {
     <View style={styles.container}>
       <BottomSheet
         ref={bs}
-        snapPoints={['85%', '39%', '17%']}
+        snapPoints={['85%', '39%', '14%']}
         initialSnap={1}
         renderContent={renderContent}
       />
@@ -178,12 +178,13 @@ const styles = StyleSheet.create({
   },
   nameGeneric: {
     color: 'white',
-    fontSize: 26,
+    fontSize: 28,
     marginBottom: 10,
   },
   nameScientific: {
     color: 'white',
     marginBottom: 20,
+    fontSize: 16,
     fontStyle: 'italic',
   },
   btnContainer: {
@@ -221,7 +222,7 @@ const styles = StyleSheet.create({
     paddingLeft: 6,
   },
   text: {
-    color: 'white',
+    color: Colors.defaultWhite,
     lineHeight: 28,
     marginBottom: 15,
   },
@@ -241,7 +242,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.darkGreen,
     height: 120,
     borderRadius: 10,
-    margin: 10,
+    margin: 9,
     position: 'relative',
   },
   shortInfoIcon: {
