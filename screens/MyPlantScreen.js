@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity as DefaultTouch } from 'react-native';
 
 import { MaterialCommunityIcons, Entypo, AntDesign, Ionicons } from '@expo/vector-icons';
@@ -17,7 +17,12 @@ const MyGardenPlant = ({ navigation }) => {
   const bsSettings = React.createRef();
   const bsInfo = React.createRef();
   const fall = new Animated.Value(1);
-  const transArrow = new Animated.Value(0);
+  // const transArrow = new Animated.Value(0);
+  const rotateAnim = useRef(new Animated.Value(0)).current;
+  const rotateInterpolatedAnim = rotateAnim.interpolate({
+    inputRange: [0, 180],
+    outputRange: ['0deg', '180deg'],
+  });
 
   const renderInner = () => (
     <View style={styles.settingsContainer}>
@@ -59,16 +64,9 @@ const MyGardenPlant = ({ navigation }) => {
       <Animated.View
         style={{
           alignItems: 'center',
-          // transform: [
-          //   {
-          //     rotateX: transArrow.interpolate({
-          //       inputRange: [0, 180],
-          //       outputRange: [0, 180],
-          //     }),
-          //   },
-          // ],
+          transform: [{ rotate: rotateInterpolatedAnim }],
         }}>
-        <Ionicons name="ios-arrow-up" size={24} color="grey" />
+        <Ionicons name="ios-arrow-down" size={24} color="grey" />
       </Animated.View>
       <View style={styles.reminderBtnContainer}>
         <DateTimePicker />
@@ -190,8 +188,22 @@ const MyGardenPlant = ({ navigation }) => {
           renderContent={renderMainInfo}
           // renderHeader={renderMainInfoHeader}
           initialSnap={0}
-          callbackNode={transArrow}
+          // callbackNode={transArrow}
           enabledGestureInteraction
+          onOpenEnd={() => {
+            console.log(rotateAnim);
+            Animated.timing(rotateAnim, {
+              toValue: 0,
+              duration: 500,
+            }).start();
+          }}
+          onCloseEnd={() => {
+            console.log('fullyClosed');
+            Animated.timing(rotateAnim, {
+              toValue: 180,
+              duration: 500,
+            }).start();
+          }}
         />
       </Animated.View>
     </View>
@@ -218,7 +230,8 @@ const styles = StyleSheet.create({
   settingsBtns: {
     borderRadius: 10,
     backgroundColor: Colors.defaultWhite,
-    margin: 5,
+    marginVertical: 3,
+    marginHorizontal: 5,
   },
 
   settingsBtnTitle: {
@@ -232,7 +245,8 @@ const styles = StyleSheet.create({
   deleteSettingsBtns: {
     borderRadius: 10,
     backgroundColor: Colors.defaultWhite,
-    margin: 5,
+    marginVertical: 3,
+    marginHorizontal: 5,
   },
 
   settingsBtnDelete: {
@@ -247,6 +261,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#d1cfce',
     marginHorizontal: 5,
+    marginVertical: 25,
     // alignSelf: 'flex-start',
     // position: 'absolute',
     // bottom: 0,
@@ -428,6 +443,7 @@ const styles = StyleSheet.create({
     color: Colors.defaultWhite,
     paddingVertical: 15,
     paddingHorizontal: 5,
+    // alignItems: 'center',
   },
   infoWrapper: {
     display: 'flex',
