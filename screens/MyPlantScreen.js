@@ -18,11 +18,11 @@ const MyGardenPlant = ({ navigation }) => {
   const bsInfo = React.createRef();
   const fall = new Animated.Value(1);
   // const transArrow = new Animated.Value(0);
-  const rotateAnim = useRef(new Animated.Value(0)).current;
-  const rotateInterpolatedAnim = rotateAnim.interpolate({
-    inputRange: [0, 180],
-    outputRange: ['0deg', '180deg'],
-  });
+  // const rotateAnim = useRef(new Animated.Value(0)).current;
+  // const rotateInterpolatedAnim = rotateAnim.interpolate({
+  //   inputRange: [0, 180],
+  //   outputRange: ['0deg', '180deg'],
+  // });
 
   const renderInner = () => (
     <View style={styles.settingsContainer}>
@@ -64,7 +64,7 @@ const MyGardenPlant = ({ navigation }) => {
       <Animated.View
         style={{
           alignItems: 'center',
-          transform: [{ rotate: rotateInterpolatedAnim }],
+          // transform: [{ rotate: rotateInterpolatedAnim }],
         }}>
         <Ionicons name="ios-arrow-down" size={24} color="grey" />
       </Animated.View>
@@ -190,20 +190,20 @@ const MyGardenPlant = ({ navigation }) => {
           initialSnap={0}
           // callbackNode={transArrow}
           enabledGestureInteraction
-          onOpenEnd={() => {
-            console.log(rotateAnim);
-            Animated.timing(rotateAnim, {
-              toValue: 0,
-              duration: 500,
-            }).start();
-          }}
-          onCloseEnd={() => {
-            console.log('fullyClosed');
-            Animated.timing(rotateAnim, {
-              toValue: 180,
-              duration: 500,
-            }).start();
-          }}
+          // onOpenEnd={() => {
+          //   console.log(rotateAnim);
+          //   Animated.timing(rotateAnim, {
+          //     toValue: 0,
+          //     duration: 500,
+          //   }).start();
+          // }}
+          // onCloseEnd={() => {
+          //   console.log('fullyClosed');
+          //   Animated.timing(rotateAnim, {
+          //     toValue: 180,
+          //     duration: 500,
+          //   }).start();
+          // }}
         />
       </Animated.View>
     </View>
