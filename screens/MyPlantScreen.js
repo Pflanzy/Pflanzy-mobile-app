@@ -1,15 +1,7 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity as DefaultTouch, Switch } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View, TouchableOpacity as DefaultTouch } from 'react-native';
 
-import {
-  MaterialCommunityIcons,
-  MaterialIcons,
-  FontAwesome5,
-  Ionicons,
-  Entypo,
-  AntDesign,
-} from '@expo/vector-icons';
-import Modal from 'react-native-modal';
+import { Entypo, AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import Svg, { Image, Circle, ClipPath } from 'react-native-svg';
 import BottomSheet from 'reanimated-bottom-sheet';
@@ -18,12 +10,9 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import Colors from '../constants/Colors';
 import DateTimePicker from '../components/DateTimePicker';
 import PflanzyOpacity from '../components/PflanzyOpacity';
+import ModalConfigPopup from '../components/ModalConfigPopup';
 
 const MyGardenPlant = (props) => {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [isEnabled, setSwitchEnabled] = useState(false);
-  const toggleSwitch = () => setSwitchEnabled((previousState) => !previousState);
-
   const navigation = useNavigation();
   const bsSettings = React.createRef();
   const bsInfo = React.createRef();
@@ -59,12 +48,7 @@ const MyGardenPlant = (props) => {
       <View style={styles.settingsHeader}>
         <View style={styles.contentHandle} />
         <DateTimePicker />
-        <MaterialIcons
-          name="add-alert"
-          size={24}
-          color="green"
-          onPress={() => setModalOpen(true)}
-        />
+        <ModalConfigPopup />
       </View>
     </View>
   );
@@ -119,44 +103,6 @@ const MyGardenPlant = (props) => {
 
   return (
     <View style={styles.blackContainer}>
-      <Modal
-        isVisible={modalOpen}
-        onBackdropPress={() => setModalOpen(false)}
-        onSwipeComplete={() => setModalOpen(false)}
-        swipeDirection="left">
-        <View style={styles.modalContent}>
-          <View style={styles.headerOptions}>
-            {/* <MaterialIcons
-                name="add-alert"
-                size={24}
-                color="red"
-                onPress={() => setModalOpen(false)}
-              /> */}
-            <Text onPress={() => setModalOpen(false)}>Cancel</Text>
-            <Text>New Reminder</Text>
-            <Text>Done</Text>
-          </View>
-          <View style={(styles.plantName, styles.modalRows)}>
-            <Ionicons name="md-flower" size={24} color="black" />
-            <Text>Tree Africanus</Text>
-          </View>
-          <View style={(styles.plantName, styles.modalRows)}>
-            <MaterialCommunityIcons name="bell-outline" size={24} color="black" />
-            <Text>Tree Africanus</Text>
-          </View>
-          <View style={(styles.plantName, styles.modalRows)}>
-            <AntDesign name="calendar" size={24} color="black" />
-            <Text>Tree Africanus</Text>
-          </View>
-          <View style={(styles.plantName, styles.modalRows)}>
-            <FontAwesome5 name="clock" size={24} color="black" />
-            <Text>Tree Africanus</Text>
-          </View>
-
-          <Switch onValueChange={toggleSwitch} value={isEnabled} />
-        </View>
-      </Modal>
-
       <BottomSheet
         ref={bsSettings}
         snapPoints={[330, 0]}
@@ -467,23 +413,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     width: '95%',
     color: Colors.textGrey,
-  },
-
-  modalContent: {
-    backgroundColor: 'lightgray',
-    height: '50%',
-    borderRadius: 10,
-    padding: 20,
-  },
-
-  headerOptions: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingBottom: 30,
-  },
-
-  modalRows: {
-    flexDirection: 'row',
   },
 });
 
