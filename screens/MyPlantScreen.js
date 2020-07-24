@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity as DefaultTouch } from 'react-native';
-
 import { MaterialCommunityIcons, Entypo, AntDesign, Ionicons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import { LinearGradient } from 'expo-linear-gradient';
+// import { useNavigation } from '@react-navigation/native';
 import Svg, { Image, Circle, ClipPath } from 'react-native-svg';
 import BottomSheet from 'reanimated-bottom-sheet';
 import Animated from 'react-native-reanimated';
@@ -17,6 +17,30 @@ const MyGardenPlant = ({ navigation }) => {
   const bsSettings = React.createRef();
   const bsInfo = React.createRef();
   const fall = new Animated.Value(1);
+
+  // const fadeAnim = useRef(new Animated.Value(1)).current;
+
+  // const fadeOut = () => {
+  //   Animated.timing(fadeAnim, {
+  //     toValue: 0,
+  //     duration: 500,
+  //   }).start();
+  // };
+
+  // const fadeIn = () => {
+  //   Animated.timing(fadeAnim, {
+  //     toValue: 1,
+  //     duration: 500,
+  //   }).start();
+  // };
+
+  const NeuMorph = ({ children }) => {
+    return (
+      <View style={styles.topShadow}>
+        <View style={styles.bottomShadow}>{children}</View>
+      </View>
+    );
+  };
 
   const renderInner = () => (
     <View style={styles.settingsContainer}>
@@ -45,6 +69,14 @@ const MyGardenPlant = ({ navigation }) => {
 
   const renderMainInfo = () => (
     <View style={styles.myPlantContainer}>
+      <Animated.View
+        style={{
+          alignItems: 'center',
+          // opacity: fadeAnim,
+        }}>
+        <Ionicons name="ios-arrow-up" size={24} color="#dbd7d3" />
+      </Animated.View>
+
       <View style={styles.reminderBtnContainer}>
         <DateTimePicker />
       </View>
@@ -52,54 +84,69 @@ const MyGardenPlant = ({ navigation }) => {
         <View style={styles.smallContainer}>
           <View style={styles.smallInfoWrapper}>
             <View style={styles.smallInfoHeaderWrapper}>
-              <AntDesign style={styles.smallInfoIcon} name="warning" size={35} color="#006772" />
               <Text style={styles.smallInfoHeader}>Poisonous</Text>
             </View>
             <Text style={styles.smallInfoBody}>Not poisonous for cats and dogs.</Text>
+            <AntDesign style={styles.smallInfoIcon} name="warning" size={50} />
           </View>
           <View style={styles.smallInfoWrapper}>
             <View style={styles.smallInfoHeaderWrapper}>
-              <Entypo style={styles.smallInfoIcon} name="tree" size={35} color="#006772" />
               <Text style={styles.smallInfoHeader}>Growth</Text>
             </View>
+            <Entypo style={styles.smallInfoIcon} name="tree" size={50} />
             <Text style={styles.smallInfoBody}>10-20 cm</Text>
           </View>
         </View>
-        <View style={styles.infoWrapper}>
-          <View style={styles.infoHeaderWrapper}>
-            <Entypo name="drop" size={14} color={Colors.darkGreen} style={styles.waterDrop} />
-            <Text style={styles.infoHeader}>Water</Text>
+
+        <View style={styles.infoContainer}>
+          <View style={styles.infoWrapper}>
+            <View style={styles.infoHeaderWrapper}>
+              <Entypo name="drop" size={14} color={Colors.darkGreen} style={styles.waterDrop} />
+              <Text style={styles.infoHeader}>Water</Text>
+            </View>
+            <Text style={styles.infoBody}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam exercitationem
+              ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
+            </Text>
           </View>
-          <Text style={styles.infoBody}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam exercitationem
-            ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
-          </Text>
-        </View>
-        <View style={styles.infoWrapper}>
-          <View style={styles.infoHeaderWrapper}>
-            <Entypo name="light-up" size={20} color={Colors.darkGreen} />
-            <Text style={styles.infoHeader}>Light</Text>
+          <View style={styles.infoWrapper}>
+            <View style={styles.infoHeaderWrapper}>
+              <Entypo name="light-up" size={20} color={Colors.darkGreen} />
+              <Text style={styles.infoHeader}>Light</Text>
+            </View>
+            <Text style={styles.infoBody}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam exercitationem
+              ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
+            </Text>
           </View>
-          <Text style={styles.infoBody}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam exercitationem
-            ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
-          </Text>
-        </View>
-        <View style={styles.infoWrapper}>
-          <View style={styles.infoHeaderWrapper}>
-            <MaterialCommunityIcons name="temperature-celsius" size={20} color={Colors.darkGreen} />
-            <Text style={styles.infoHeader}>Temperature</Text>
+          <View style={styles.infoWrapper}>
+            <View style={styles.infoHeaderWrapper}>
+              <MaterialCommunityIcons
+                name="temperature-celsius"
+                size={20}
+                color={Colors.darkGreen}
+              />
+              <Text style={styles.infoHeader}>Temperature</Text>
+            </View>
+            <Text style={styles.infoBody}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam exercitationem
+              ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
+            </Text>
           </View>
-          <Text style={styles.infoBody}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam exercitationem
-            ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
-          </Text>
         </View>
         <View style={styles.infoBtnContainer}>
           <PflanzyOpacity onPress={() => navigation.navigate('IndividualPlant')}>
-            <View style={styles.infoBtn}>
-              <Text style={styles.infoBtnTxt}>More info</Text>
-            </View>
+            <NeuMorph>
+              <View style={styles.infoBtn}>
+                <LinearGradient
+                  colors={['#004e57', '#008080', '#004e57']}
+                  start={[0.0, 0.0]}
+                  end={[1.0, 1.0]}
+                  style={{ width: 240, borderRadius: 17, padding: 10 }}>
+                  <Text style={styles.infoBtnTxt}>More info</Text>
+                </LinearGradient>
+              </View>
+            </NeuMorph>
           </PflanzyOpacity>
         </View>
       </ScrollView>
@@ -165,6 +212,8 @@ const MyGardenPlant = ({ navigation }) => {
           renderContent={renderMainInfo}
           initialSnap={0}
           enabledGestureInteraction
+          // onOpenEnd={fadeOut}
+          // onCloseEnd={fadeIn}
         />
       </Animated.View>
     </View>
@@ -172,6 +221,36 @@ const MyGardenPlant = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
+  // Button styling neumorph
+
+  // inner: {
+  //   backgroundColor: '#dee9f7',
+  //   alignItems: 'center',
+  //   justifyContent: 'center',
+  //   borderColor: '#e2ecfd',
+  //   borderWidth: 1,
+  // },
+
+  topShadow: {
+    shadowOffset: {
+      width: -2,
+      height: -2,
+    },
+    shadowOpacity: 1,
+    shadowRadius: 3,
+    shadowColor: '#d0d1c5',
+  },
+
+  bottomShadow: {
+    shadowOffset: {
+      width: 2,
+      height: 2,
+    },
+    shadowOpacity: 1,
+    shadowRadius: 3,
+    shadowColor: '#909188',
+  },
+
   opacityContainer: {
     backgroundColor: '#2c2c2f',
   },
@@ -216,11 +295,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#d1cfce',
     marginHorizontal: 5,
     marginVertical: 25,
-    // alignSelf: 'flex-start',
-    // position: 'absolute',
-    // bottom: 0,
-    // alignSelf: 'center',
-    // width: '100%',
   },
 
   settingsHandleContainer: {
@@ -237,8 +311,6 @@ const styles = StyleSheet.create({
   settingsMainInfo: {
     backgroundColor: Colors.defaultWhite,
     paddingTop: 20,
-    // borderTopLeftRadius: 20,
-    // borderTopRightRadius: 20,
   },
 
   settingMainInfoSeparator: {
@@ -275,7 +347,7 @@ const styles = StyleSheet.create({
   myPlantContainer: {
     display: 'flex',
     height: '100%',
-    backgroundColor: '#fff',
+    backgroundColor: '#fafafa',
     padding: 10,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -317,27 +389,19 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     alignSelf: 'center',
   },
+
   botNameInner: {
     marginLeft: 5,
     fontWeight: '400',
   },
 
-  buttonWrapper: {
-    width: '100%',
-    marginTop: 30,
-  },
   infoBtnContainer: {
     width: '100%',
     alignItems: 'center',
   },
 
   infoBtn: {
-    width: 240,
-    borderRadius: 50,
-    backgroundColor: Colors.tintColor,
-    padding: 10,
     marginBottom: 30,
-    // alignItems: 'center',
   },
 
   infoBtnTxt: {
@@ -366,19 +430,22 @@ const styles = StyleSheet.create({
   smallInfoWrapper: {
     display: 'flex',
     alignItems: 'center',
-    backgroundColor: Colors.tintColor,
+    backgroundColor: Colors.defaultWhite,
     borderRadius: 15,
     width: '48%',
   },
 
   smallInfoHeader: {
-    color: Colors.defaultWhite,
+    color: Colors.tintColor,
     fontSize: 20,
     paddingHorizontal: 10,
   },
 
   smallInfoIcon: {
     position: 'absolute',
+    top: '40%',
+    opacity: 0.2,
+    color: Colors.tintColor,
   },
 
   smallInfoHeaderWrapper: {
@@ -387,19 +454,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    backgroundColor: Colors.darkGreen,
-    paddingVertical: 15,
+    backgroundColor: Colors.defaultWhite,
+    paddingVertical: 10,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
   },
 
   smallInfoBody: {
     textAlign: 'center',
-    color: Colors.defaultWhite,
+    color: Colors.tintColor,
     paddingVertical: 15,
     paddingHorizontal: 5,
     // alignItems: 'center',
   },
+
+  infoContainer: {
+    marginVertical: 25,
+  },
+
   infoWrapper: {
     display: 'flex',
     alignItems: 'flex-start',
