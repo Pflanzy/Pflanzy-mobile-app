@@ -47,8 +47,8 @@ const MyGardenPlant = (props) => {
     <View style={styles.settingsMainInfo}>
       <View style={styles.settingsHeader}>
         <View style={styles.contentHandle} />
-        <DateTimePicker />
         <ModalConfigPopup />
+        <DateTimePicker />
       </View>
     </View>
   );

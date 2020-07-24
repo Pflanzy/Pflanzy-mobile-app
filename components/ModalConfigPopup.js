@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Switch, TextInput } from 'react-native';
-import {
-  MaterialCommunityIcons,
-  MaterialIcons,
-  FontAwesome5,
-  Fontisto,
-  AntDesign,
-} from '@expo/vector-icons';
+import { MaterialCommunityIcons, FontAwesome5, Fontisto, AntDesign } from '@expo/vector-icons';
 import Modal from 'react-native-modal';
 import Colors from '../constants/Colors';
 import DatePicker from './DatePicker';
@@ -17,21 +11,29 @@ const ModalConfigPopup = () => {
   const [isEnabled, setSwitchEnabled] = useState(false);
   const toggleSwitch = () => setSwitchEnabled((previousState) => !previousState);
 
+  const [reminderItem, setReminderItem] = useState('');
+  // console.warn(reminderItem);
+
   return (
     <View>
-      <View>
-        <MaterialIcons
-          name="add-alert"
-          size={24}
-          color="green"
-          onPress={() => setModalOpen(true)}
-        />
-      </View>
+      <TouchableOpacity onPress={() => setModalOpen(true)}>
+        <Text
+          style={{
+            marginBottom: 30,
+            paddingHorizontal: 20,
+            paddingVertical: 10,
+            backgroundColor: 'orangered',
+            borderRadius: 50,
+            color: 'white',
+          }}>
+          TEST REMINDER MODAL LAUNCHER!
+        </Text>
+      </TouchableOpacity>
 
       <Modal
         isVisible={modalOpen}
         onBackdropPress={() => setModalOpen(false)}
-        backdropTransitionOutTiming={100}>
+        backdropTransitionOutTiming={40}>
         <View style={styles.modalContent}>
           <View style={styles.headerOptions}>
             <TouchableOpacity style={styles.cancelDoneText} onPress={() => setModalOpen(false)}>
@@ -51,12 +53,29 @@ const ModalConfigPopup = () => {
             <TextInput
               style={[styles.modalFields, styles.reminderTextInput]}
               placeholder="Remind me to..."
+              value={reminderItem}
+              editable={false}
             />
           </View>
           <View style={[styles.modalRows, styles.careBtnAlign]}>
-            <Text style={styles.careOptions}>Water</Text>
-            <Text style={styles.careOptions}>Fertilize</Text>
-            <Text style={styles.careOptions}>Repot</Text>
+            <TouchableOpacity
+              onPress={() => {
+                setReminderItem('water');
+              }}>
+              <Text style={styles.careOptions}>Water</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setReminderItem('fertilize');
+              }}>
+              <Text style={styles.careOptions}>Fertilize</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setReminderItem('repot');
+              }}>
+              <Text style={styles.careOptions}>Repot</Text>
+            </TouchableOpacity>
           </View>
           <View style={styles.modalRows}>
             <AntDesign name="calendar" size={18} color={Colors.tintColor} />
