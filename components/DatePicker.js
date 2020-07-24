@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import SetReminderNotification from './SetReminderNotification';
+import moment from 'moment';
 
-const DatePicker = () => {
+const DatePicker = ({ dateInput }) => {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
   const showDatePicker = () => {
@@ -15,11 +15,19 @@ const DatePicker = () => {
   };
 
   const handleConfirm = (date) => {
-    console.warn('A date has been picked: ', date);
-    const dateParsedToNum = date.toString();
-    SetReminderNotification(dateParsedToNum);
-
     hideDatePicker();
+
+    date.setHours(0);
+    date.setMinutes(0);
+    date.setSeconds(0);
+    date.setMilliseconds(0);
+
+    const dateInMillisec = date.getTime();
+
+    // const dateFormatted = moment(date).format('MMMM Do');
+
+    // const dateParsedToNum = date.toString();
+    dateInput(dateInMillisec);
   };
 
   return (

@@ -12,7 +12,11 @@ const ModalConfigPopup = () => {
   const toggleSwitch = () => setSwitchEnabled((previousState) => !previousState);
 
   const [reminderItem, setReminderItem] = useState('');
+  const [reminderDataset, setReminderDataset] = useState({});
+  const dateRetriever = (data) => setReminderDataset(data);
+
   // console.warn(reminderItem);
+  console.warn(reminderDataset);
 
   return (
     <View>
@@ -60,31 +64,39 @@ const ModalConfigPopup = () => {
           <View style={[styles.modalRows, styles.careBtnAlign]}>
             <TouchableOpacity
               onPress={() => {
-                setReminderItem('water');
+                setReminderItem('Water');
               }}>
               <Text style={styles.careOptions}>Water</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-                setReminderItem('fertilize');
+                setReminderItem('Fertilize');
               }}>
               <Text style={styles.careOptions}>Fertilize</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-                setReminderItem('repot');
+                setReminderItem('Repot');
               }}>
               <Text style={styles.careOptions}>Repot</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.modalRows}>
             <AntDesign name="calendar" size={18} color={Colors.tintColor} />
-            <DatePicker />
+            <DatePicker
+              dateInput={(data) => {
+                dateRetriever(data);
+              }}
+            />
             {/* <Text style={styles.modalFields}>{new Date().toLocaleDateString()}</Text> */}
           </View>
           <View style={styles.modalRows}>
             <FontAwesome5 name="clock" size={18} color={Colors.tintColor} />
-            <TimePicker />
+            <TimePicker
+              timeInput={(data) => {
+                dateRetriever(data);
+              }}
+            />
             {/* <Text style={styles.modalFields}>{new Date().toLocaleTimeString()}</Text> */}
           </View>
           <View style={[styles.repeater, styles.modalRows]}>
