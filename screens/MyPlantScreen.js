@@ -17,12 +17,6 @@ const MyGardenPlant = ({ navigation }) => {
   const bsSettings = React.createRef();
   const bsInfo = React.createRef();
   const fall = new Animated.Value(1);
-  // const transArrow = new Animated.Value(0);
-  // const rotateAnim = useRef(new Animated.Value(0)).current;
-  // const rotateInterpolatedAnim = rotateAnim.interpolate({
-  //   inputRange: [0, 180],
-  //   outputRange: ['0deg', '180deg'],
-  // });
 
   const renderInner = () => (
     <View style={styles.settingsContainer}>
@@ -49,25 +43,8 @@ const MyGardenPlant = ({ navigation }) => {
     </View>
   );
 
-  // const renderMainInfoHeader = () => (
-  //   <View style={styles.settingsMainInfo}>
-  //     <View style={styles.settingsHeader}>
-  //       <View style={styles.contentHandle} />
-  //       <DateTimePicker />
-  //     </View>
-  //   </View>
-  // );
-  // reanimated node which holds position of bottom sheet's content (in dp)
-
   const renderMainInfo = () => (
     <View style={styles.myPlantContainer}>
-      <Animated.View
-        style={{
-          alignItems: 'center',
-          // transform: [{ rotate: rotateInterpolatedAnim }],
-        }}>
-        <Ionicons name="ios-arrow-down" size={24} color="grey" />
-      </Animated.View>
       <View style={styles.reminderBtnContainer}>
         <DateTimePicker />
       </View>
@@ -76,21 +53,21 @@ const MyGardenPlant = ({ navigation }) => {
           <View style={styles.smallInfoWrapper}>
             <View style={styles.smallInfoHeaderWrapper}>
               <AntDesign style={styles.smallInfoIcon} name="warning" size={35} color="#006772" />
-              <Text style={styles.infoHeader}>Poisonous</Text>
+              <Text style={styles.smallInfoHeader}>Poisonous</Text>
             </View>
             <Text style={styles.smallInfoBody}>Not poisonous for cats and dogs.</Text>
           </View>
           <View style={styles.smallInfoWrapper}>
             <View style={styles.smallInfoHeaderWrapper}>
               <Entypo style={styles.smallInfoIcon} name="tree" size={35} color="#006772" />
-              <Text style={styles.infoHeader}>Growth</Text>
+              <Text style={styles.smallInfoHeader}>Growth</Text>
             </View>
             <Text style={styles.smallInfoBody}>10-20 cm</Text>
           </View>
         </View>
         <View style={styles.infoWrapper}>
           <View style={styles.infoHeaderWrapper}>
-            <Entypo name="drop" size={14} color="white" style={styles.waterDrop} />
+            <Entypo name="drop" size={14} color={Colors.darkGreen} style={styles.waterDrop} />
             <Text style={styles.infoHeader}>Water</Text>
           </View>
           <Text style={styles.infoBody}>
@@ -100,7 +77,7 @@ const MyGardenPlant = ({ navigation }) => {
         </View>
         <View style={styles.infoWrapper}>
           <View style={styles.infoHeaderWrapper}>
-            <Entypo name="light-up" size={20} color="white" />
+            <Entypo name="light-up" size={20} color={Colors.darkGreen} />
             <Text style={styles.infoHeader}>Light</Text>
           </View>
           <Text style={styles.infoBody}>
@@ -110,7 +87,7 @@ const MyGardenPlant = ({ navigation }) => {
         </View>
         <View style={styles.infoWrapper}>
           <View style={styles.infoHeaderWrapper}>
-            <MaterialCommunityIcons name="temperature-celsius" size={20} color="white" />
+            <MaterialCommunityIcons name="temperature-celsius" size={20} color={Colors.darkGreen} />
             <Text style={styles.infoHeader}>Temperature</Text>
           </View>
           <Text style={styles.infoBody}>
@@ -186,24 +163,8 @@ const MyGardenPlant = ({ navigation }) => {
           ref={bsInfo}
           snapPoints={['45%', '75%']}
           renderContent={renderMainInfo}
-          // renderHeader={renderMainInfoHeader}
           initialSnap={0}
-          // callbackNode={transArrow}
           enabledGestureInteraction
-          // onOpenEnd={() => {
-          //   console.log(rotateAnim);
-          //   Animated.timing(rotateAnim, {
-          //     toValue: 0,
-          //     duration: 500,
-          //   }).start();
-          // }}
-          // onCloseEnd={() => {
-          //   console.log('fullyClosed');
-          //   Animated.timing(rotateAnim, {
-          //     toValue: 180,
-          //     duration: 500,
-          //   }).start();
-          // }}
         />
       </Animated.View>
     </View>
@@ -211,13 +172,6 @@ const MyGardenPlant = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  // arrowDown: {
-  //   transform: [{ rotateX: '180deg' }],
-  // },
-
-  // arrowUp: {
-  //   transform: [{ rotateX: '0deg' }],
-  // },
   opacityContainer: {
     backgroundColor: '#2c2c2f',
   },
@@ -326,12 +280,6 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },
-  arrowContainer: {
-    alignItems: 'center',
-  },
-  // arrow: {
-  //   transform: [{ rotateX: '0deg' }],
-  // },
 
   nameContainer: {
     width: '80%',
@@ -422,6 +370,13 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     width: '48%',
   },
+
+  smallInfoHeader: {
+    color: Colors.defaultWhite,
+    fontSize: 20,
+    paddingHorizontal: 10,
+  },
+
   smallInfoIcon: {
     position: 'absolute',
   },
@@ -456,23 +411,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     // justifyContent: 'center',
     // width: '100%',
-    backgroundColor: Colors.darkGreen,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    borderRadius: 5,
+    // paddingHorizontal: 10,
+    // borderRadius: 5,
+    borderBottomColor: Colors.tintColor,
+    borderBottomWidth: 1,
+    paddingVertical: 3,
     flexShrink: 1,
   },
+
   infoHeader: {
     fontSize: 20,
-    color: Colors.defaultWhite,
+    color: Colors.tintColor,
     paddingHorizontal: 10,
+    fontWeight: '500',
   },
   infoBody: {
     lineHeight: 28,
     marginTop: 10,
     marginBottom: 25,
-    // textAlign: 'center',
-    // width: '95%',
     color: Colors.textGrey,
   },
 });
