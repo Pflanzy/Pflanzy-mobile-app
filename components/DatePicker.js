@@ -5,6 +5,7 @@ import moment from 'moment';
 
 const DatePicker = ({ dateInput }) => {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [reminderDateInput, setReminderDateInput] = useState('');
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -24,16 +25,15 @@ const DatePicker = ({ dateInput }) => {
 
     const dateInMillisec = date.getTime();
 
-    // const dateFormatted = moment(date).format('MMMM Do');
-
-    // const dateParsedToNum = date.toString();
     dateInput(dateInMillisec);
+
+    setReminderDateInput(moment(dateInMillisec).format('MMMM Do YYYY'));
   };
 
   return (
     <TouchableOpacity onPress={showDatePicker}>
       <View style={styles.datePickerBtnContainer}>
-        <Text style={styles.datePickerBtn}>__ /__</Text>
+        <Text style={styles.datePickerBtn}>{reminderDateInput || '__ /__'}</Text>
       </View>
       <DateTimePickerModal
         isVisible={isDatePickerVisible}
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   },
 
   datePickerBtn: {
-    color: 'lightgray',
-    fontSize: 16,
+    color: 'gray',
+    fontSize: 14,
   },
 });

@@ -5,6 +5,7 @@ import moment from 'moment';
 
 const TimePicker = ({ timeInput }) => {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [reminderTimeInput, setReminderTimeInput] = useState('');
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -17,19 +18,24 @@ const TimePicker = ({ timeInput }) => {
   const handleConfirm = (time) => {
     hideDatePicker();
 
-    const timeFormatted = moment(time).format('h:mm');
+    const now = new Date();
+    now.setHours(0);
+    now.setMinutes(0);
+    now.setSeconds(0);
+    now.setMilliseconds(0);
 
-    // const timeObj = new Date(time);
-    // const timeInMillisec = timeObj.getTime();
-    // const difInMillisec = timeInMillisec - Date.now();
-    // const dateParsedToNum = time.toString();
-    timeInput(timeFormatted);
+    const timeOnlyInMillisec = time - now;
+    // console.warn(timeOnlyInMillisec);
+
+    timeInput(timeOnlyInMillisec);
+
+    setReminderTimeInput(moment(time).format('h:mm a'));
   };
 
   return (
     <TouchableOpacity onPress={showDatePicker}>
       <View style={styles.timePickerBtnContainer}>
-        <Text style={styles.timePickerBtn}>__ : __</Text>
+        <Text style={styles.timePickerBtn}>{reminderTimeInput || '__ : __'}</Text>
       </View>
       <DateTimePickerModal
         isVisible={isDatePickerVisible}
@@ -50,7 +56,7 @@ const styles = StyleSheet.create({
   },
 
   timePickerBtn: {
-    color: 'lightgray',
-    fontSize: 16,
+    color: 'gray',
+    fontSize: 14,
   },
 });

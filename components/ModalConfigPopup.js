@@ -5,6 +5,7 @@ import Modal from 'react-native-modal';
 import Colors from '../constants/Colors';
 import DatePicker from './DatePicker';
 import TimePicker from './TimePicker';
+import SetReminderNotification from './SetReminderNotification';
 
 const ModalConfigPopup = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -12,11 +13,15 @@ const ModalConfigPopup = () => {
   const toggleSwitch = () => setSwitchEnabled((previousState) => !previousState);
 
   const [reminderItem, setReminderItem] = useState('');
-  const [reminderDataset, setReminderDataset] = useState({});
-  const dateRetriever = (data) => setReminderDataset(data);
+  const [reminderDateInput, setReminderDateInput] = useState();
+  const [reminderTimeInput, setReminderTimeInput] = useState();
 
-  // console.warn(reminderItem);
-  console.warn(reminderDataset);
+  const dateRetriever = (data) => setReminderDateInput(data);
+  const timeRetriever = (data) => setReminderTimeInput(data);
+
+  const notificationInputInMillisec = new Date(reminderDateInput + reminderTimeInput).getTime();
+
+  SetReminderNotification(notificationInputInMillisec);
 
   return (
     <View>
@@ -88,16 +93,14 @@ const ModalConfigPopup = () => {
                 dateRetriever(data);
               }}
             />
-            {/* <Text style={styles.modalFields}>{new Date().toLocaleDateString()}</Text> */}
           </View>
           <View style={styles.modalRows}>
             <FontAwesome5 name="clock" size={18} color={Colors.tintColor} />
             <TimePicker
               timeInput={(data) => {
-                dateRetriever(data);
+                timeRetriever(data);
               }}
             />
-            {/* <Text style={styles.modalFields}>{new Date().toLocaleTimeString()}</Text> */}
           </View>
           <View style={[styles.repeater, styles.modalRows]}>
             <View style={styles.repeatInputSnippet}>
