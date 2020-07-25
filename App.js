@@ -27,6 +27,7 @@ export default function App(params) {
     <>
       <SafeAreaView style={styles.safeAreaTop} />
       <StatusBar barStyle="light-content" />
+
       <View style={styles.container}>
         <Provider store={store}>
           <NavigationContainer>
