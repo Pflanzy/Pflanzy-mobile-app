@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity as DefaultTouch } from 'react-native';
-
 import { Entypo, AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import Svg, { Image, Circle, ClipPath } from 'react-native-svg';
