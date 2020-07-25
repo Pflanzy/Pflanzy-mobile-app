@@ -1,7 +1,7 @@
 import { Entypo, AntDesign, FontAwesome5, MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import * as React from 'react';
 import BottomSheet from 'reanimated-bottom-sheet';
-import firebase from "../firebase"
+import firebase, { updateUser } from "../firebase"
 import { useDispatch, useSelector} from "react-redux"
 import Colors from '../constants/Colors'
 import TouchableOpacity from "../components/PflanzyOpacity"
@@ -18,14 +18,14 @@ import { ScrollView } from 'react-native-gesture-handler';
 const IndividualPlantScreen = (navigation) => {
   const dispatch = useDispatch()
   const userID = useSelector(state => state.id)
-  
+
   const plant = navigation.route.params.element;
 
   const addPlantHandler = (selectedPlant) => {
-
-    firebase.firestore().collection("users").doc(userID).update({
+    firebase.firestore().collection("plants").doc(userID).set({
       plants: firebase.firestore.FieldValue.arrayUnion(selectedPlant)
-  });
+    }, { merge: true })
+    dispatch(updateUser(userID));
     // console.log('adding plant', selectedPlant)
     //  return dispatch({
     //     type: "ADD_PLANT", payload: {
