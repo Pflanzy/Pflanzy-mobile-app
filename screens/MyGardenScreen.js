@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { StyleSheet, View, ScrollView, Text } from 'react-native';
 import { useSelector } from 'react-redux';
 import BasicCard from '../components/BasicCard';
@@ -12,7 +12,7 @@ const MyGardenScreen = () => {
       <View style={styles.container}>
         <Text> My Garden Screen </Text>
         <BasicCard />
-        <Text>{user.plants}</Text>
+        <Text>{}</Text>
       </View>
     </ScrollView>
   );
