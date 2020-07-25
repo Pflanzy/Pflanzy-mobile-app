@@ -1,8 +1,8 @@
 import * as Notifications from 'expo-notifications';
 
 // Receives date info from DateTimePicker & sends notification
-export default function SetReminderNotification(notificationInputInMillisec) {
-  // console.warn('A data sent from DateTimePicker!', notificationInputInMillisec);
+export default function SetReminderNotification(dateInputInString) {
+  // console.warn('A data sent from DateTimePicker!', dateInputInString);
 
   allowsNotificationsAsync()
   requestPermissionsAsync()
@@ -15,7 +15,8 @@ export default function SetReminderNotification(notificationInputInMillisec) {
     }),
   });
 
-  const dateInSec = (notificationInputInMillisec - Date.now()) / 1000;
+  const timeLeftInSec = (new Date(dateInputInString).getTime() - Date.now()) / 1000;
+  // console.warn(timeLeftInSec)
 
   Notifications.scheduleNotificationAsync({
     content: {
@@ -23,7 +24,7 @@ export default function SetReminderNotification(notificationInputInMillisec) {
       body: "I'm so thirsty🌵...",
     },
     trigger: {
-      seconds: dateInSec,
+      seconds: timeLeftInSec,
       // repeats: true,
     },
   });

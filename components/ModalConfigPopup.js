@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Switch, TextInput } from 'react-native';
-import { MaterialCommunityIcons, FontAwesome5, Fontisto, AntDesign } from '@expo/vector-icons';
+import { MaterialCommunityIcons, Fontisto, AntDesign } from '@expo/vector-icons';
 import Modal from 'react-native-modal';
 import Colors from '../constants/Colors';
-import DatePicker from './DatePicker';
-import TimePicker from './TimePicker';
-import SetReminderNotification from './SetReminderNotification';
+import DateTimePicker from './DateTimePicker';
 
 const ModalConfigPopup = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -13,15 +11,6 @@ const ModalConfigPopup = () => {
   const toggleSwitch = () => setSwitchEnabled((previousState) => !previousState);
 
   const [reminderItem, setReminderItem] = useState('');
-  const [reminderDateInput, setReminderDateInput] = useState();
-  const [reminderTimeInput, setReminderTimeInput] = useState();
-
-  const dateRetriever = (data) => setReminderDateInput(data);
-  const timeRetriever = (data) => setReminderTimeInput(data);
-
-  const sumMilliSec = reminderDateInput + reminderTimeInput;
-
-  SetReminderNotification(sumMilliSec || '');
 
   return (
     <View>
@@ -45,12 +34,12 @@ const ModalConfigPopup = () => {
         backdropTransitionOutTiming={40}>
         <View style={styles.modalContent}>
           <View style={styles.headerOptions}>
-            <TouchableOpacity style={styles.cancelDoneText} onPress={() => setModalOpen(false)}>
+            <TouchableOpacity onPress={() => setModalOpen(false)}>
               <Text>Cancel</Text>
             </TouchableOpacity>
             <Text>New Reminder</Text>
-            <TouchableOpacity style={styles.cancelDoneText} onPress={() => setModalOpen(false)}>
-              <Text>Done</Text>
+            <TouchableOpacity onPress={() => setModalOpen(false)}>
+              <Text style={styles.doneTextColor}>Done</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.modalRows}>
@@ -88,19 +77,7 @@ const ModalConfigPopup = () => {
           </View>
           <View style={styles.modalRows}>
             <AntDesign name="calendar" size={18} color={Colors.tintColor} />
-            <DatePicker
-              dateInput={(data) => {
-                dateRetriever(data);
-              }}
-            />
-          </View>
-          <View style={styles.modalRows}>
-            <FontAwesome5 name="clock" size={18} color={Colors.tintColor} />
-            <TimePicker
-              timeInput={(data) => {
-                timeRetriever(data);
-              }}
-            />
+            <DateTimePicker />
           </View>
           <View style={[styles.repeater, styles.modalRows]}>
             <View style={styles.repeatInputSnippet}>
@@ -120,7 +97,7 @@ export default ModalConfigPopup;
 const styles = StyleSheet.create({
   modalContent: {
     backgroundColor: 'white',
-    height: 320,
+    height: 280,
     borderRadius: 10,
     padding: 20,
   },
@@ -178,7 +155,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
 
-  cancelDoneText: {
-    color: 'gray',
+  doneTextColor: {
+    color: Colors.tintColor,
   },
 });
