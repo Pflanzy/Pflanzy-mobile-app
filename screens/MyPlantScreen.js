@@ -2,15 +2,15 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity as DefaultTouch } from 'react-native';
 
 import { Entypo, AntDesign } from '@expo/vector-icons';
-
 import { useNavigation } from '@react-navigation/native';
 import Svg, { Image, Circle, ClipPath } from 'react-native-svg';
 import BottomSheet from 'reanimated-bottom-sheet';
 import Animated from 'react-native-reanimated';
 import { ScrollView } from 'react-native-gesture-handler';
 import Colors from '../constants/Colors';
-import DateTimePicker from '../components/DateTimePicker';
+// import DateTimePicker from '../components/DateTimePicker';
 import PflanzyOpacity from '../components/PflanzyOpacity';
+import ModalConfigPopup from '../components/ModalConfigPopup';
 
 const MyGardenPlant = (props) => {
   const navigation = useNavigation();
@@ -46,7 +46,8 @@ const MyGardenPlant = (props) => {
     <View style={styles.settingsMainInfo}>
       <View style={styles.settingsHeader}>
         <View style={styles.contentHandle} />
-        <DateTimePicker />
+        <ModalConfigPopup />
+        {/* <DateTimePicker /> */}
       </View>
     </View>
   );
@@ -398,10 +399,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     flexShrink: 1,
   },
+
   infoHeader: {
     fontSize: 20,
     color: Colors.defaultWhite,
   },
+
   infoBody: {
     lineHeight: 28,
     marginTop: 10,
