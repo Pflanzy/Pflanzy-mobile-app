@@ -10,7 +10,9 @@ import {
 } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import firebase from '../firebase';
-import { formValidation } from '../helpers/formValidation';
+import { signInValidation, signUpValidation } from '../helpers/formValidation';
+import visibleIcon from '../assets/images/visible.png';
+import invisibleIcon from '../assets/images/invisible.png';
 
 const AuthScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -19,7 +21,8 @@ const AuthScreen = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [displaySignup, setDisplaySignup] = useState(false);
-
+  const [passwordVisible, setPasswordVisible]= useState(false);
+  const [confirmVisible, setConfirmVisible] = useState(false);
   const onFooterLinkPress = () => {
     setDisplaySignup(!displaySignup);
   };
@@ -63,7 +66,7 @@ const AuthScreen = ({ navigation }) => {
           });
       })
       .catch((error) => {
-       formValidation(error,password,email)
+        signInValidation(error, password, email);
       });
   };
 
@@ -94,10 +97,16 @@ const AuthScreen = ({ navigation }) => {
           });
       })
       .catch((error) => {
-        formValidation(error,password,email,fullName)
+        signUpValidation(error, password, email, fullName);
       });
   };
 
+  const toggleVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+  const toggleConfirmVisibility = () =>  {
+    setConfirmVisible(!confirmVisible)
+  }
   return (
     <View style={styles.container}>
       <KeyboardAwareScrollView
@@ -115,6 +124,7 @@ const AuthScreen = ({ navigation }) => {
             autoCapitalize="none"
           />
         )}
+
         <TextInput
           style={styles.input}
           placeholder="E-mail"
@@ -124,27 +134,57 @@ const AuthScreen = ({ navigation }) => {
           underlineColorAndroid="transparent"
           autoCapitalize="none"
         />
-        <TextInput
-          style={styles.input}
-          placeholderTextColor="#aaaaaa"
-          secureTextEntry
-          placeholder="Password"
-          onChangeText={(text) => setPassword(text)}
-          value={password}
-          underlineColorAndroid="transparent"
-          autoCapitalize="none"
-        />
-        {displaySignup && (
+        <View style={styles.passwordContainer}>
           <TextInput
             style={styles.input}
             placeholderTextColor="#aaaaaa"
-            secureTextEntry
+            secureTextEntry={!passwordVisible}
+            placeholder="Password"
+            onChangeText={(text) => setPassword(text)}
+            value={password}
+            underlineColorAndroid="transparent"
+            autoCapitalize="none"
+          />
+          <TouchableOpacity
+            activeOpacity={0.8}
+            style={styles.visibilityBtn}
+            onPress={toggleVisibility}>
+            <Image
+              source={
+                passwordVisible
+                  ? visibleIcon
+                  : invisibleIcon
+              }
+              style={styles.btnImage}
+            />
+          </TouchableOpacity>
+        </View>
+        {displaySignup && (
+          <View style={styles.passwordContainer}>
+          <TextInput
+            style={styles.input}
+            placeholderTextColor="#aaaaaa"
+            secureTextEntry={!confirmVisible}
             placeholder="Confirm Password"
             onChangeText={(text) => setConfirmPassword(text)}
             value={confirmPassword}
             underlineColorAndroid="transparent"
             autoCapitalize="none"
           />
+          <TouchableOpacity
+            activeOpacity={0.8}
+            style={styles.visibilityBtn}
+            onPress={toggleConfirmVisibility}>
+            <Image
+              source={
+                confirmVisible
+                  ? visibleIcon
+                  : invisibleIcon
+              }
+              style={styles.btnImage}
+            />
+          </TouchableOpacity>
+          </View>
         )}
         <TouchableOpacity
           style={styles.button}
@@ -211,6 +251,23 @@ const styles = StyleSheet.create({
   footerLink: {
     color: '#788eec',
     fontSize: 16,
+  },
+  passwordContainer: {
+    position: 'relative',
+    alignSelf: 'stretch',
+  },
+  btnImage: {
+    position: 'absolute',
+    right: 35,
+    width: 30,
+    resizeMode: 'contain',
+  },
+  visibilityBtn: {
+    position: 'absolute',
+    top: -12,
+    right: 3,
+    height: 70,
+    width: 35
   },
 });
 
