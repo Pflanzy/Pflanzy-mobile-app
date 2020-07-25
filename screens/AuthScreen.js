@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Image, Text, TextInput, TouchableOpacity, View, StyleSheet } from 'react-native';
+import {
+  Image,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+  StyleSheet,
+} from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import firebase from '../firebase';
+import { formValidation } from '../helpers/formValidation';
 
 const AuthScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -55,7 +63,7 @@ const AuthScreen = ({ navigation }) => {
           });
       })
       .catch((error) => {
-        alert(error);
+       formValidation(error,password,email)
       });
   };
 
@@ -86,7 +94,7 @@ const AuthScreen = ({ navigation }) => {
           });
       })
       .catch((error) => {
-        alert(error);
+        formValidation(error,password,email,fullName)
       });
   };
 
@@ -138,8 +146,12 @@ const AuthScreen = ({ navigation }) => {
             autoCapitalize="none"
           />
         )}
-        <TouchableOpacity style={styles.button} onPress={() => buttonPress(displaySignup)}>
-          <Text style={styles.buttonTitle}>{displaySignup ? 'SIGN UP' : 'SIGN IN'}</Text>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => buttonPress(displaySignup)}>
+          <Text style={styles.buttonTitle}>
+            {displaySignup ? 'SIGN UP' : 'SIGN IN'}
+          </Text>
         </TouchableOpacity>
         <View style={styles.footerView}>
           <Text style={styles.footerText}>{authFooterText(displaySignup)}</Text>
