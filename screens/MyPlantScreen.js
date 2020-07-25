@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity as DefaultTouch } from 'react-native';
+
 import { MaterialCommunityIcons, Entypo, AntDesign, Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-// import { useNavigation } from '@react-navigation/native';
+
 import Svg, { Image, Circle, ClipPath } from 'react-native-svg';
 import BottomSheet from 'reanimated-bottom-sheet';
 import Animated from 'react-native-reanimated';
@@ -10,6 +11,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import Colors from '../constants/Colors';
 import DateTimePicker from '../components/DateTimePicker';
 import PflanzyOpacity from '../components/PflanzyOpacity';
+import ModalConfigPopup from '../components/ModalConfigPopup';
 
 const MyGardenPlant = ({ navigation }) => {
   // const navigation = useNavigation();
@@ -67,6 +69,14 @@ const MyGardenPlant = ({ navigation }) => {
     </View>
   );
 
+  const renderMainInfoHeader = () => (
+    <View style={styles.settingsMainInfo}>
+      <View style={styles.settingsHeader}>
+        <View style={styles.contentHandle} />
+      </View>
+    </View>
+  );
+
   const renderMainInfo = () => (
     <View style={styles.myPlantContainer}>
       <Animated.View
@@ -78,6 +88,7 @@ const MyGardenPlant = ({ navigation }) => {
       </Animated.View>
 
       <View style={styles.reminderBtnContainer}>
+        <ModalConfigPopup />
         <DateTimePicker />
       </View>
       <ScrollView style={styles.plantInfoWrapper}>
@@ -496,7 +507,9 @@ const styles = StyleSheet.create({
     color: Colors.tintColor,
     paddingHorizontal: 10,
     fontWeight: '500',
+    fontFamily: '',
   },
+
   infoBody: {
     lineHeight: 28,
     marginTop: 10,

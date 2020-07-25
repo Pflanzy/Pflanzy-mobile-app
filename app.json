@@ -14,9 +14,10 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
+    "android": {
+      "useNextNotificationsApi": true
+    },
     "ios": {
       "supportsTablet": true
     },
