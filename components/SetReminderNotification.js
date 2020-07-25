@@ -2,7 +2,7 @@ import * as Notifications from 'expo-notifications';
 
 // Receives date info from DateTimePicker & sends notification
 export default function SetReminderNotification(notificationInputInMillisec) {
-  console.warn('A data sent from DateTimePicker!', notificationInputInMillisec);
+  // console.warn('A data sent from DateTimePicker!', notificationInputInMillisec);
 
   allowsNotificationsAsync()
   requestPermissionsAsync()

@@ -19,9 +19,9 @@ const ModalConfigPopup = () => {
   const dateRetriever = (data) => setReminderDateInput(data);
   const timeRetriever = (data) => setReminderTimeInput(data);
 
-  const notificationInputInMillisec = new Date(reminderDateInput + reminderTimeInput).getTime();
+  const sumMilliSec = reminderDateInput + reminderTimeInput;
 
-  SetReminderNotification(notificationInputInMillisec);
+  SetReminderNotification(sumMilliSec || '');
 
   return (
     <View>

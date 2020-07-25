@@ -27,6 +27,7 @@ const TimePicker = ({ timeInput }) => {
     const timeOnlyInMillisec = time - now;
     // console.warn(timeOnlyInMillisec);
 
+    console.warn(timeOnlyInMillisec);
     timeInput(timeOnlyInMillisec);
 
     setReminderTimeInput(moment(time).format('h:mm a'));
