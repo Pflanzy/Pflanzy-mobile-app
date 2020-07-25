@@ -47,6 +47,7 @@ const DateTimePicker = () => {
           </LinearGradient>
         </View>
       </NeuMorph>
+
       <DateTimePickerModal
         isVisible={isDatePickerVisible}
         mode="datetime"

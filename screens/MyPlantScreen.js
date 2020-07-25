@@ -1,9 +1,7 @@
 import React, { useRef } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity as DefaultTouch } from 'react-native';
-
 import { MaterialCommunityIcons, Entypo, AntDesign, Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-
 import Svg, { Image, Circle, ClipPath } from 'react-native-svg';
 import BottomSheet from 'reanimated-bottom-sheet';
 import Animated from 'react-native-reanimated';
@@ -15,7 +13,6 @@ import ModalConfigPopup from '../components/ModalConfigPopup';
 
 const MyGardenPlant = ({ navigation }) => {
   // const navigation = useNavigation();
-
   const bsSettings = React.createRef();
   const bsInfo = React.createRef();
   const fall = new Animated.Value(1);
@@ -65,14 +62,6 @@ const MyGardenPlant = ({ navigation }) => {
     <View style={styles.settingsHandleContainer}>
       <View style={styles.settingsHeader}>
         <View style={styles.settingsHandle} />
-      </View>
-    </View>
-  );
-
-  const renderMainInfoHeader = () => (
-    <View style={styles.settingsMainInfo}>
-      <View style={styles.settingsHeader}>
-        <View style={styles.contentHandle} />
       </View>
     </View>
   );
