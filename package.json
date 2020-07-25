@@ -43,12 +43,12 @@
     "react-native-modal-datetime-picker": "^8.7.1",
     "react-native-reanimated": "~1.9.0",
     "react-native-screens": "~2.9.0",
-    "react-native-svg": "^12.1.0",
     "react-native-vector-icons": "^6.6.0",
     "react-native-web": "~0.11.7",
     "react-redux": "^7.2.0",
     "reanimated-bottom-sheet": "^1.0.0-alpha.20",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "react-native-svg": "12.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.3",

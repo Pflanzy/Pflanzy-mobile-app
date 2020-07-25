@@ -6,6 +6,7 @@ import Colors from '../constants/Colors';
 import DatePicker from './DatePicker';
 import TimePicker from './TimePicker';
 import SetReminderNotification from './SetReminderNotification';
+import PflanzyOpacity from './PflanzyOpacity';
 
 const ModalConfigPopup = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -25,7 +26,7 @@ const ModalConfigPopup = () => {
 
   return (
     <View>
-      <TouchableOpacity onPress={() => setModalOpen(true)}>
+      <PflanzyOpacity onPress={() => setModalOpen(true)}>
         <Text
           style={{
             marginBottom: 30,
@@ -37,7 +38,7 @@ const ModalConfigPopup = () => {
           }}>
           TEST REMINDER MODAL LAUNCHER!
         </Text>
-      </TouchableOpacity>
+      </PflanzyOpacity>
 
       <Modal
         isVisible={modalOpen}

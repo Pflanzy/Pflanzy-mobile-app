@@ -16,22 +16,17 @@ const MyGardenPlant = ({ navigation }) => {
   const bsSettings = React.createRef();
   const bsInfo = React.createRef();
   const fall = new Animated.Value(1);
+  // const { concat } = Animated;
 
-  // const fadeAnim = useRef(new Animated.Value(1)).current;
+  const fadeAnim = new Animated.Value(0);
+  // const degree = concat(fadeAnim, 'deg');
 
-  // const fadeOut = () => {
-  //   Animated.timing(fadeAnim, {
-  //     toValue: 0,
-  //     duration: 500,
-  //   }).start();
-  // };
-
-  // const fadeIn = () => {
-  //   Animated.timing(fadeAnim, {
-  //     toValue: 1,
-  //     duration: 500,
-  //   }).start();
-  // };
+  const fadeIn = () => {
+    fadeAnim.interpolate({
+      inputRange: [0, 180],
+      outputRange: [0, 180],
+    });
+  };
 
   const NeuMorph = ({ children }) => {
     return (
@@ -71,7 +66,7 @@ const MyGardenPlant = ({ navigation }) => {
       <Animated.View
         style={{
           alignItems: 'center',
-          // opacity: fadeAnim,
+          transform: [{ rotateX: `${fadeAnim}deg` }],
         }}>
         <Ionicons name="ios-arrow-up" size={24} color="#dbd7d3" />
       </Animated.View>
@@ -212,7 +207,15 @@ const MyGardenPlant = ({ navigation }) => {
           renderContent={renderMainInfo}
           initialSnap={0}
           enabledGestureInteraction
-          // onOpenEnd={fadeOut}
+          onOpenEnd={
+            fadeIn
+            //   () => {
+            //   fadeAnim.interpolate({
+            //     inputRange: [0, 180],
+            //     outputRange: [0, 180],
+            //   });
+            // }
+          }
           // onCloseEnd={fadeIn}
         />
       </Animated.View>
@@ -221,16 +224,6 @@ const MyGardenPlant = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  // Button styling neumorph
-
-  // inner: {
-  //   backgroundColor: '#dee9f7',
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  //   borderColor: '#e2ecfd',
-  //   borderWidth: 1,
-  // },
-
   topShadow: {
     shadowOffset: {
       width: -2,
@@ -496,7 +489,7 @@ const styles = StyleSheet.create({
     color: Colors.tintColor,
     paddingHorizontal: 10,
     fontWeight: '500',
-    fontFamily: '',
+    // fontFamily: '',
   },
 
   infoBody: {
