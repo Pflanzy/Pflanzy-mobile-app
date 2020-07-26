@@ -78,23 +78,28 @@ const MyGardenPlant = ({ navigation }) => {
           <View style={styles.smallInfoWrapper}>
             <View style={styles.smallInfoHeaderWrapper}>
               <Text style={styles.smallInfoHeader}>Poisonous</Text>
+              <AntDesign style={styles.smallInfoIcon} name="warning" size={30} />
             </View>
-            <Text style={styles.smallInfoBody}>Not poisonous for cats and dogs.</Text>
-            <AntDesign style={styles.smallInfoIcon} name="warning" size={50} />
+            <View style={styles.smallBodyContainer}>
+              <Text style={styles.smallInfoBody}>Not poisonous for cats and dogs.</Text>
+            </View>
           </View>
           <View style={styles.smallInfoWrapper}>
             <View style={styles.smallInfoHeaderWrapper}>
+              <Entypo style={styles.smallInfoIcon} name="tree" size={30} />
               <Text style={styles.smallInfoHeader}>Growth</Text>
             </View>
-            <Entypo style={styles.smallInfoIcon} name="tree" size={50} />
-            <Text style={styles.smallInfoBody}>10-20 cm</Text>
+
+            <View style={styles.smallBodyContainer}>
+              <Text style={styles.smallInfoBody}>10-20 cm</Text>
+            </View>
           </View>
         </View>
 
         <View style={styles.infoContainer}>
           <View style={styles.infoWrapper}>
             <View style={styles.infoHeaderWrapper}>
-              <Entypo name="drop" size={14} color={Colors.darkGreen} style={styles.waterDrop} />
+              <Entypo name="drop" size={14} color={Colors.tintColor} style={styles.waterDrop} />
               <Text style={styles.infoHeader}>Water</Text>
             </View>
             <Text style={styles.infoBody}>
@@ -104,7 +109,7 @@ const MyGardenPlant = ({ navigation }) => {
           </View>
           <View style={styles.infoWrapper}>
             <View style={styles.infoHeaderWrapper}>
-              <Entypo name="light-up" size={20} color={Colors.darkGreen} />
+              <Entypo name="light-up" size={20} color={Colors.tintColor} />
               <Text style={styles.infoHeader}>Light</Text>
             </View>
             <Text style={styles.infoBody}>
@@ -117,7 +122,7 @@ const MyGardenPlant = ({ navigation }) => {
               <MaterialCommunityIcons
                 name="temperature-celsius"
                 size={20}
-                color={Colors.darkGreen}
+                color={Colors.tintColor}
               />
               <Text style={styles.infoHeader}>Temperature</Text>
             </View>
@@ -132,10 +137,10 @@ const MyGardenPlant = ({ navigation }) => {
             <NeuMorph>
               <View style={styles.infoBtn}>
                 <LinearGradient
-                  colors={['#004e57', '#008080', '#004e57']}
+                  colors={['#004e57', '#027885', '#004e57']}
                   start={[0.0, 0.0]}
                   end={[1.0, 1.0]}
-                  style={{ width: 240, borderRadius: 17, padding: 10 }}>
+                  style={{ width: 240, borderRadius: 17, padding: 10, elevation: 3 }}>
                   <Text style={styles.infoBtnTxt}>More info</Text>
                 </LinearGradient>
               </View>
@@ -161,7 +166,7 @@ const MyGardenPlant = ({ navigation }) => {
       <Animated.View
         style={{
           height: '100%',
-          backgroundColor: '#e0ffea',
+          backgroundColor: '#e8fffe',
           opacity: Animated.add(0.4, Animated.multiply(fall, 1.0)),
         }}>
         <DefaultTouch style={styles.plantSettings} onPress={() => bsSettings.current.snapTo(0)}>
@@ -225,19 +230,19 @@ const styles = StyleSheet.create({
       width: -2,
       height: -2,
     },
-    shadowOpacity: 1,
+    shadowOpacity: 0.5,
     shadowRadius: 3,
     shadowColor: '#d0d1c5',
   },
 
   bottomShadow: {
     shadowOffset: {
-      width: 2,
-      height: 2,
+      width: 3,
+      height: 3,
     },
-    shadowOpacity: 1,
+    shadowOpacity: 0.8,
     shadowRadius: 3,
-    shadowColor: '#909188',
+    shadowColor: '#3d3c3b',
   },
 
   opacityContainer: {
@@ -336,7 +341,7 @@ const styles = StyleSheet.create({
   myPlantContainer: {
     display: 'flex',
     height: '100%',
-    backgroundColor: '#fafafa',
+    backgroundColor: Colors.tintColor,
     padding: 10,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -419,7 +424,7 @@ const styles = StyleSheet.create({
   smallInfoWrapper: {
     display: 'flex',
     alignItems: 'center',
-    backgroundColor: Colors.defaultWhite,
+    backgroundColor: '#e2ebe6',
     borderRadius: 15,
     width: '48%',
   },
@@ -427,12 +432,12 @@ const styles = StyleSheet.create({
   smallInfoHeader: {
     color: Colors.tintColor,
     fontSize: 20,
-    paddingHorizontal: 10,
+    paddingVertical: 10,
   },
 
   smallInfoIcon: {
     position: 'absolute',
-    top: '40%',
+    // top: '40%',
     opacity: 0.2,
     color: Colors.tintColor,
   },
@@ -443,17 +448,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    backgroundColor: Colors.defaultWhite,
+    backgroundColor: '#e2ebe6',
     paddingVertical: 10,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
   },
 
+  smallBodyContainer: {
+    backgroundColor: '#bfdee3',
+
+    borderRadius: 15,
+    paddingHorizontal: 5,
+    paddingVertical: 3,
+    marginBottom: 5,
+  },
+
   smallInfoBody: {
     textAlign: 'center',
     color: Colors.tintColor,
-    paddingVertical: 15,
-    paddingHorizontal: 5,
+    // paddingVertical: 15,
+    // paddingHorizontal: 5,
     // alignItems: 'center',
   },
 
@@ -472,10 +486,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     // justifyContent: 'center',
     // width: '100%',
-    // paddingHorizontal: 10,
-    // borderRadius: 5,
-    borderBottomColor: Colors.tintColor,
-    borderBottomWidth: 1,
+    paddingHorizontal: 3,
+    borderRadius: 5,
+    backgroundColor: '#e2ebe6',
+    // borderBottomColor: Colors.tintColor,
+    // borderBottomWidth: 1,
     paddingVertical: 3,
     flexShrink: 1,
   },
@@ -492,7 +507,7 @@ const styles = StyleSheet.create({
     lineHeight: 28,
     marginTop: 10,
     marginBottom: 25,
-    color: Colors.textGrey,
+    color: '#e2ebe6',
   },
 });
 
