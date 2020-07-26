@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import Colors from '../constants/Colors';
+import moment from 'moment';
+import { Appearance, useColorScheme } from 'react-native-appearance';
 import SetReminderNotification from './SetReminderNotification';
+
+console.log(Appearance.getColorScheme());
 
 const DateTimePicker = () => {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [dateInput, setDateInput] = useState('');
+  const colorScheme = useColorScheme();
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -16,23 +21,26 @@ const DateTimePicker = () => {
   };
 
   const handleConfirm = (date) => {
-    console.warn('A date has been picked: ', date);
+    hideDatePicker();
+
+    // console.warn('A date has been picked: ', date);
     const dateParsedToNum = date.toString();
     SetReminderNotification(dateParsedToNum);
 
-    hideDatePicker();
+    setDateInput(moment(date).format('MMMM Do, h:mm a'));
   };
 
   return (
     <TouchableOpacity onPress={showDatePicker}>
       <View style={styles.datePickerBtnContainer}>
-        <Text style={styles.datePickerBtn}>Set reminder</Text>
+        <Text style={styles.datePickerBtn}>{dateInput || '__ /__ /__ : __ :'}</Text>
       </View>
       <DateTimePickerModal
         isVisible={isDatePickerVisible}
         mode="datetime"
         onConfirm={handleConfirm}
         onCancel={hideDatePicker}
+        style={{ backgroundColor: `${colorScheme === 'light' ? 'white' : 'black'}` }}
       />
     </TouchableOpacity>
   );
@@ -42,17 +50,12 @@ export default DateTimePicker;
 
 const styles = StyleSheet.create({
   datePickerBtnContainer: {
-    width: 240,
-    borderRadius: 50,
-    backgroundColor: Colors.tintColor,
-    padding: 10,
-    marginBottom: 30,
+    width: 220,
+    marginLeft: 20,
   },
 
   datePickerBtn: {
-    textAlign: 'center',
-    fontSize: 16,
-    color: Colors.defaultWhite,
-    fontWeight: '600',
+    fontSize: 14,
+    color: 'gray',
   },
 });
