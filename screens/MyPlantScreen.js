@@ -1,10 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity as DefaultTouch } from 'react-native';
 import { MaterialCommunityIcons, Entypo, AntDesign, Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import Svg, { Image, Circle, ClipPath } from 'react-native-svg';
 import BottomSheet from 'reanimated-bottom-sheet';
-import Animated from 'react-native-reanimated';
+import Animated, { Transitioning, Transition } from 'react-native-reanimated';
 import { ScrollView } from 'react-native-gesture-handler';
 import Colors from '../constants/Colors';
 import DateTimePicker from '../components/DateTimePicker';
@@ -16,7 +16,10 @@ const MyGardenPlant = ({ navigation }) => {
   const bsSettings = React.createRef();
   const bsInfo = React.createRef();
   const fall = new Animated.Value(1);
+  const transition = <Transition.Change interpolation="easeInOut" />;
 
+  const [deg, setDeg] = useState(0);
+  const ref = useRef();
   // const fadeAnim = useRef(new Animated.Value(1)).current;
 
   // const fadeOut = () => {
@@ -68,13 +71,20 @@ const MyGardenPlant = ({ navigation }) => {
 
   const renderMainInfo = () => (
     <View style={styles.myPlantContainer}>
-      <Animated.View
+      <Transitioning.View
+        ref={ref}
+        transition={transition}
         style={{
           alignItems: 'center',
           // opacity: fadeAnim,
         }}>
-        <Ionicons name="ios-arrow-up" size={24} color="#dbd7d3" />
-      </Animated.View>
+        <Ionicons
+          name="ios-arrow-up"
+          size={24}
+          color="#dbd7d3"
+          style={{ transform: [{ rotateX: `${deg}deg` }] }}
+        />
+      </Transitioning.View>
 
       <View style={styles.reminderBtnContainer}>
         <ModalConfigPopup />
@@ -212,8 +222,14 @@ const MyGardenPlant = ({ navigation }) => {
           renderContent={renderMainInfo}
           initialSnap={0}
           enabledGestureInteraction
-          // onOpenEnd={fadeOut}
-          // onCloseEnd={fadeIn}
+          onOpenEnd={() => {
+            ref.current.animateNextTransition();
+            setDeg(180);
+          }}
+          onCloseEnd={() => {
+            ref.current.animateNextTransition();
+            setDeg(0);
+          }}
         />
       </Animated.View>
     </View>
