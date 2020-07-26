@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { Provider } from 'react-redux';
 import { StyleSheet, View, SafeAreaView, StatusBar } from 'react-native';
+import { AppearanceProvider } from 'react-native-appearance';
 import store from './store';
 import Colors from './constants/Colors';
 import useCachedResources from './hooks/useCachedResources';
@@ -29,26 +30,28 @@ export default function App(params) {
       <StatusBar barStyle="light-content" />
 
       <View style={styles.container}>
-        <Provider store={store}>
-          <NavigationContainer>
-            <Stack.Navigator
-              screenOptions={{
-                headerStyle: { backgroundColor: Colors.tintColor },
-                headerTintColor: Colors.defaultWhite,
-              }}>
-              <Stack.Screen name="Root" component={BottomTabNavigator} />
-              <Stack.Screen name="Camera" component={CameraScreen} />
-              <Stack.Screen name="IndividualPlant" component={IndividualPlantScreen} />
-              <Stack.Screen
-                name="IndividualArticle"
-                component={IndividualArticle}
-                options={({ route }) => ({ title: route.params.article.label })}
-              />
-              <Stack.Screen name="MyPlant" component={MyPlantScreen} />
-              <Stack.Screen name="Auth" component={AuthScreen} />
-            </Stack.Navigator>
-          </NavigationContainer>
-        </Provider>
+        <AppearanceProvider>
+          <Provider store={store}>
+            <NavigationContainer>
+              <Stack.Navigator
+                screenOptions={{
+                  headerStyle: { backgroundColor: Colors.tintColor },
+                  headerTintColor: Colors.defaultWhite,
+                }}>
+                <Stack.Screen name="Root" component={BottomTabNavigator} />
+                <Stack.Screen name="Camera" component={CameraScreen} />
+                <Stack.Screen name="IndividualPlant" component={IndividualPlantScreen} />
+                <Stack.Screen
+                  name="IndividualArticle"
+                  component={IndividualArticle}
+                  options={({ route }) => ({ title: route.params.article.label })}
+                />
+                <Stack.Screen name="MyPlant" component={MyPlantScreen} />
+                <Stack.Screen name="Auth" component={AuthScreen} />
+              </Stack.Navigator>
+            </NavigationContainer>
+          </Provider>
+        </AppearanceProvider>
         <StatusBar style="auto" />
       </View>
     </>

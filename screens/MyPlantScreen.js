@@ -7,7 +7,6 @@ import BottomSheet from 'reanimated-bottom-sheet';
 import Animated from 'react-native-reanimated';
 import { ScrollView } from 'react-native-gesture-handler';
 import Colors from '../constants/Colors';
-// import DateTimePicker from '../components/DateTimePicker';
 import PflanzyOpacity from '../components/PflanzyOpacity';
 import ModalConfigPopup from '../components/ModalConfigPopup';
 
@@ -46,7 +45,6 @@ const MyGardenPlant = (props) => {
       <View style={styles.settingsHeader}>
         <View style={styles.contentHandle} />
         <ModalConfigPopup />
-        {/* <DateTimePicker /> */}
       </View>
     </View>
   );
