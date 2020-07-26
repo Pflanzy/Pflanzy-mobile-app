@@ -7,12 +7,15 @@ import {
   ScrollView,
   ActivityIndicator,
   Image,
+  ImageBackground,
 } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import SearchField from '../components/SearchField';
 import IndividualCard from '../components/IndividualCard';
 import plantData from '../data/data.json';
 import cactus from '../assets/images/cactus.png';
+import photo from "../assets/images/photo-1517191434949-5e90cd67d2b6.jpeg"
+import { SearchBar } from 'react-native-elements';
 
 const SearchScreen = () => {
   const [initialData, setInitialData] = useState(
@@ -20,6 +23,7 @@ const SearchScreen = () => {
   );
   const [filteredData, setFilteredData] = useState([]);
   const [showLoading, setShowLoading] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
   useEffect(() => {
     setFilteredData(initialData);
     const myTimeOut = setTimeout(() => {
@@ -60,9 +64,16 @@ const SearchScreen = () => {
 
   return (
     <>
-      <SearchField sendData={getData} />
-      <ScrollView contentContainerStyle={styles.parentWrapper}>
-        {showLoading ? (
+
+        <ImageBackground source={photo} style={styles.photo} >
+   
+     {/*  <SearchField sendData={getData} /> */}
+     <View style={styles.search}>
+     <SearchBar round containerStyle={{backgroundColor:"transparent", borderStyle:"dashed"}} inputContainerStyle={{backgroundColor:"#8FAE93"}} searchIcon={{backgroundColor:"transparent"}} onKeyPress={() => setModalVisible(!modalVisible)}/>
+     </View>
+      </ImageBackground>
+      <View contentContainerStyle={styles.parentWrapper}>
+        {/* {showLoading ? (
           loadingFunction()
         ) : (
           <TouchableWithoutFeedback style={styles.wrapper} onPress={() => Keyboard.dismiss()}>
@@ -77,13 +88,21 @@ const SearchScreen = () => {
               )}
             </ScrollView>
           </TouchableWithoutFeedback>
-        )}
-      </ScrollView>
+        )} */}
+      </View>
     </>
   );
 };
 
 const styles = StyleSheet.create({
+  search:{
+paddingTop:100
+  },
+  photo: {
+    width:"100%",
+    height:"100%",
+    resizeMode:"cover"
+  },
   wrapper: {
     paddingTop: 10,
     paddingBottom: 20,
