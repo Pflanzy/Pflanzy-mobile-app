@@ -7,7 +7,6 @@ import BottomSheet from 'reanimated-bottom-sheet';
 import Animated, { Transitioning, Transition } from 'react-native-reanimated';
 import { ScrollView } from 'react-native-gesture-handler';
 import Colors from '../constants/Colors';
-import DateTimePicker from '../components/DateTimePicker';
 import PflanzyOpacity from '../components/PflanzyOpacity';
 import ModalConfigPopup from '../components/ModalConfigPopup';
 
@@ -16,18 +15,11 @@ const MyGardenPlant = ({ navigation }) => {
   const bsSettings = React.createRef();
   const bsInfo = React.createRef();
   const fall = new Animated.Value(1);
+
   const transition = <Transition.Change interpolation="easeInOut" />;
 
   const [deg, setDeg] = useState(0);
   const ref = useRef();
-  // const fadeAnim = useRef(new Animated.Value(1)).current;
-
-  const fadeIn = () => {
-    fadeAnim.interpolate({
-      inputRange: [0, 180],
-      outputRange: [0, 180],
-    });
-  };
 
   const NeuMorph = ({ children }) => {
     return (
@@ -80,7 +72,6 @@ const MyGardenPlant = ({ navigation }) => {
 
       <View style={styles.reminderBtnContainer}>
         <ModalConfigPopup />
-        <DateTimePicker />
       </View>
       <ScrollView style={styles.plantInfoWrapper}>
         <View style={styles.smallContainer}>

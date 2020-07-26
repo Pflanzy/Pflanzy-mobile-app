@@ -16,7 +16,7 @@ import cactus from '../assets/images/cactus.png';
 
 const SearchScreen = () => {
   const [initialData, setInitialData] = useState(
-    plantData.sort((a, b) => (a.commonName > b.commonName ? 1 : -1)),
+    plantData.sort((a, b) => (a.commonName > b.commonName ? 1 : -1))
   );
   const [filteredData, setFilteredData] = useState([]);
   const [showLoading, setShowLoading] = useState(true);
@@ -48,10 +48,12 @@ const SearchScreen = () => {
   };
   const getData = (val) => {
     if (initialData) {
-      const filteredResult = initialData
-        .filter((element) => {
-          return element.commonName.toLowerCase().startsWith(val.toLowerCase()) || element.scientificName.toLowerCase().startsWith(val.toLowerCase());;
-        })
+      const filteredResult = initialData.filter((element) => {
+        return (
+          element.commonName.toLowerCase().startsWith(val.toLowerCase()) ||
+          element.scientificName.toLowerCase().startsWith(val.toLowerCase())
+        );
+      });
       setFilteredData(filteredResult);
     }
   };
@@ -59,26 +61,24 @@ const SearchScreen = () => {
   return (
     <>
       <SearchField sendData={getData} />
-        <ScrollView contentContainerStyle={styles.parentWrapper}>
-          {showLoading ? (
-            loadingFunction()
-          ) : (
-            <TouchableWithoutFeedback
-              style={styles.wrapper}
-              onPress={() => Keyboard.dismiss()}>
-              <ScrollView>
-                {filteredData.length >0 ? (
-                  plantList()
-                ) : (
-                  <View style={styles.cactusWrapper}>
-                    <Image source={cactus} style={styles.cactusIcon} />
-                    <Text style={styles.errorMsg}>Sorry, no matching plants :)</Text>
-                  </View>
-                )}
-              </ScrollView>
-            </TouchableWithoutFeedback>
-          )}
-        </ScrollView>
+      <ScrollView contentContainerStyle={styles.parentWrapper}>
+        {showLoading ? (
+          loadingFunction()
+        ) : (
+          <TouchableWithoutFeedback style={styles.wrapper} onPress={() => Keyboard.dismiss()}>
+            <ScrollView>
+              {filteredData.length > 0 ? (
+                plantList()
+              ) : (
+                <View style={styles.cactusWrapper}>
+                  <Image source={cactus} style={styles.cactusIcon} />
+                  <Text style={styles.errorMsg}>Sorry, no matching plants :)</Text>
+                </View>
+              )}
+            </ScrollView>
+          </TouchableWithoutFeedback>
+        )}
+      </ScrollView>
     </>
   );
 };

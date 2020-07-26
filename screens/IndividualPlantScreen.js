@@ -1,7 +1,10 @@
-import { Entypo, AntDesign, FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
+import { Entypo, AntDesign, FontAwesome5, MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import * as React from 'react';
 import BottomSheet from 'reanimated-bottom-sheet';
+import firebase, { updateUser } from "../firebase"
+import { useDispatch, useSelector} from "react-redux"
 import Colors from '../constants/Colors'
+import TouchableOpacity from "../components/PflanzyOpacity"
 import {
   StyleSheet,
   TouchableWithoutFeedback,
@@ -9,12 +12,26 @@ import {
   Text,
   View,
   ImageBackground,
-  TouchableOpacity,
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
 const IndividualPlantScreen = (navigation) => {
+  const dispatch = useDispatch()
+  const userID = useSelector(state => state.id)
+
   const plant = navigation.route.params.element;
+
+  const addPlantHandler = (selectedPlant) => {
+    firebase.firestore().collection("plants").doc(userID).set({
+      plants: firebase.firestore.FieldValue.arrayUnion(selectedPlant)
+    }, { merge: true })
+    dispatch(updateUser(userID));
+    // console.log('adding plant', selectedPlant)
+    //  return dispatch({
+    //     type: "ADD_PLANT", payload: {
+    //     plant: selectedPlant
+    //   }})
+    }
   const renderContent = () => {
     return (
       <View style={styles.contentWrapper}>
@@ -23,15 +40,12 @@ const IndividualPlantScreen = (navigation) => {
             <Text style={styles.nameGeneric}>{plant.commonName}</Text>
             <Text style={styles.nameScientific}>{plant.scientificName}</Text>
           </View>
-          {/* <View style={styles.btnContainer}>
-            <TouchableOpacity style={styles.btnReminder}>
-              <Entypo name="drop" size={14} color="white" style={styles.waterDrop} />
-              <Text style={styles.btnText}>Set care reminder</Text>
+          <View style={styles.btnContainer}  >
+            <TouchableOpacity style={styles.btnReminder} onPress={() => addPlantHandler(plant)}>
+              <Ionicons name="ios-basket" size={14} color="white" style={styles.waterDrop}  />
+              <Text style={styles.btnText}>Add To My Garden</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.btnCalendar}>
-              <AntDesign name="calendar" size={22} color="white" />
-            </TouchableOpacity>
-          </View> */}
+          </View> 
           <ScrollView style={styles.contentBody}>
             <Text style={styles.text}>{plant.description}</Text>
             <View style={styles.shortInfoContainer}>
