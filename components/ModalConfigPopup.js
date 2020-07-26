@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   careOptions: {
     borderWidth: 1,
     borderColor: 'lightgray',
-    borderRadius: 20,
+    borderRadius: 11,
     paddingHorizontal: 20,
     paddingVertical: 4,
     fontSize: 12,
