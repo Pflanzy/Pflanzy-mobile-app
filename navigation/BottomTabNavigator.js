@@ -8,8 +8,8 @@ import Colors from '../constants/Colors'
 import SearchScreen from '../screens/SearchScreen';
 import MyGardenScreen from '../screens/MyGardenScreen';
 import ExploreScreen from '../screens/ExploreScreen';
-import firebase from "firebase"
-import  { signIn as SignInAnonymous, onAuthStateChanged } from '../firebase';
+
+import  firebase,{ signInAnonymous, onAuthStateChanged } from '../firebase';
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Root';
@@ -20,13 +20,12 @@ export default function BottomTabNavigator({ navigation, route }) {
   // https://reactnavigation.org/docs/en/screen-options-resolution.html
   const dispatch = useDispatch();
   useEffect(() => {
-    SignInAnonymous()
+    signInAnonymous()
       .then((response) => {
         const { uid } = response.user;
         const data = {
           id: uid,
           name: 'guest',
-          plants: [],
           isAnonymous: true,
         };
 
