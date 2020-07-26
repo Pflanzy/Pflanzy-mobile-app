@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import moment from 'moment';
+import { Appearance, useColorScheme } from 'react-native-appearance';
 import SetReminderNotification from './SetReminderNotification';
+
+console.log(Appearance.getColorScheme());
 
 const DateTimePicker = () => {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [dateInput, setDateInput] = useState('');
+  const colorScheme = useColorScheme();
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -36,6 +40,7 @@ const DateTimePicker = () => {
         mode="datetime"
         onConfirm={handleConfirm}
         onCancel={hideDatePicker}
+        style={{ backgroundColor: `${colorScheme === 'light' ? 'white' : 'black'}` }}
       />
     </TouchableOpacity>
   );
