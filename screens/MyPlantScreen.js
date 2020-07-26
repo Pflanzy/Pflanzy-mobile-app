@@ -22,19 +22,12 @@ const MyGardenPlant = ({ navigation }) => {
   const ref = useRef();
   // const fadeAnim = useRef(new Animated.Value(1)).current;
 
-  // const fadeOut = () => {
-  //   Animated.timing(fadeAnim, {
-  //     toValue: 0,
-  //     duration: 500,
-  //   }).start();
-  // };
-
-  // const fadeIn = () => {
-  //   Animated.timing(fadeAnim, {
-  //     toValue: 1,
-  //     duration: 500,
-  //   }).start();
-  // };
+  const fadeIn = () => {
+    fadeAnim.interpolate({
+      inputRange: [0, 180],
+      outputRange: [0, 180],
+    });
+  };
 
   const NeuMorph = ({ children }) => {
     return (
@@ -76,7 +69,6 @@ const MyGardenPlant = ({ navigation }) => {
         transition={transition}
         style={{
           alignItems: 'center',
-          // opacity: fadeAnim,
         }}>
         <Ionicons
           name="ios-arrow-up"
@@ -237,16 +229,6 @@ const MyGardenPlant = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  // Button styling neumorph
-
-  // inner: {
-  //   backgroundColor: '#dee9f7',
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  //   borderColor: '#e2ecfd',
-  //   borderWidth: 1,
-  // },
-
   topShadow: {
     shadowOffset: {
       width: -2,
@@ -512,7 +494,7 @@ const styles = StyleSheet.create({
     color: Colors.tintColor,
     paddingHorizontal: 10,
     fontWeight: '500',
-    fontFamily: '',
+    // fontFamily: '',
   },
 
   infoBody: {
