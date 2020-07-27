@@ -1,11 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity as DefaultTouch } from 'react-native';
 import { Entypo, AntDesign } from '@expo/vector-icons';
-
 import Svg, { Image, Circle, ClipPath } from 'react-native-svg';
 import BottomSheet from 'reanimated-bottom-sheet';
 import Animated from 'react-native-reanimated';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useSelector } from 'react-redux';
+import firebase from '../firebase';
 import Colors from '../constants/Colors';
 import PflanzyOpacity from '../components/PflanzyOpacity';
 import ModalConfigPopup from '../components/ModalConfigPopup';
@@ -15,6 +16,33 @@ const MyGardenPlant = ({ route, navigation }) => {
   const bsInfo = React.createRef();
   const fall = new Animated.Value(1);
   const { plant } = route.params;
+  const userID = useSelector((state) => state.id);
+
+  const deletePlantHandler = (selectedPlant) => {
+    firebase
+      .firestore()
+      .collection('plants')
+      .doc(userID)
+      .update({
+        plants: firebase.firestore.FieldValue.arrayRemove(selectedPlant),
+      })
+      .then(() => {
+        navigation.navigate('MyGarden');
+      });
+
+    // .set(
+    //   {
+    //     plants: firebase.firestore.FieldValue.arrayUnion(selectedPlant),
+    //   },
+    //   { merge: true }
+    // );
+    // dispatch(updateUser(userID));
+    // console.log('adding plant', selectedPlant)
+    //  return dispatch({
+    //     type: "ADD_PLANT", payload: {
+    //     plant: selectedPlant
+    //   }})
+  };
   const renderInner = () => (
     <View style={styles.settingsContainer}>
       <PflanzyOpacity style={styles.settingsBtns} onPress={() => navigation.navigate('Camera')}>
@@ -23,7 +51,7 @@ const MyGardenPlant = ({ route, navigation }) => {
       <PflanzyOpacity style={styles.settingsBtns}>
         <Text style={styles.settingsBtnTitle}>Rename Plant</Text>
       </PflanzyOpacity>
-      <PflanzyOpacity style={styles.deleteSettingsBtns}>
+      <PflanzyOpacity style={styles.deleteSettingsBtns} onPress={() => deletePlantHandler(plant)}>
         <Text style={styles.settingsBtnDelete}>Delete Plant</Text>
       </PflanzyOpacity>
       <PflanzyOpacity style={styles.cancelSettingsBtn} onPress={() => bsSettings.current.snapTo(1)}>
