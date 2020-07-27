@@ -8,7 +8,7 @@ const MyGardenScreen = () => {
   const plants = useSelector((state) => state.plants);
 
   return (
-    <ScrollView>
+    <ScrollView contentContainerStyle={styles.wrapper}>
       {plants.length > 0 ? 
       (
       <View style={styles.container}>
@@ -29,6 +29,9 @@ const MyGardenScreen = () => {
 };
 
 const styles = StyleSheet.create({
+  wrapper: {
+    marginTop: 10
+  },
   container: {
     flexDirection: 'column',
     alignItems: 'center',
