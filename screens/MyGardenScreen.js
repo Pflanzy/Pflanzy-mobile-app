@@ -6,7 +6,7 @@ import BasicCard from '../components/BasicCard';
 const MyGardenScreen = () => {
   const user = useSelector((state) => state);
 
-  console.log(user);
+
   return (
     <ScrollView>
       <View style={styles.container}>
