@@ -7,7 +7,6 @@ import {
   Ionicons,
   FontAwesome5,
 } from '@expo/vector-icons';
-import { LinearGradient } from 'expo-linear-gradient';
 import Svg, { Image, Circle, ClipPath } from 'react-native-svg';
 import BottomSheet from 'reanimated-bottom-sheet';
 import Animated, { Transitioning, Transition } from 'react-native-reanimated';
@@ -17,7 +16,6 @@ import PflanzyOpacity from '../components/PflanzyOpacity';
 import ModalConfigPopup from '../components/ModalConfigPopup';
 
 const MyGardenPlant = ({ navigation }) => {
-  // const navigation = useNavigation();
   const bsSettings = React.createRef();
   const bsInfo = React.createRef();
   const fall = new Animated.Value(1);
@@ -26,14 +24,6 @@ const MyGardenPlant = ({ navigation }) => {
 
   const [deg, setDeg] = useState(0);
   const ref = useRef();
-
-  const NeuMorph = ({ children }) => {
-    return (
-      <View style={styles.topShadow}>
-        <View style={styles.bottomShadow}>{children}</View>
-      </View>
-    );
-  };
 
   const renderInner = () => (
     <View style={styles.settingsContainer}>
@@ -90,16 +80,17 @@ const MyGardenPlant = ({ navigation }) => {
               <Text style={styles.smallInfoBody}>Not poisonous for cats and dogs.</Text>
             </View>
           </View>
+
           <View style={styles.smallInfoWrapper}>
             <View style={styles.smallInfoHeaderWrapper}>
-              <Entypo style={styles.smallInfoIcon} name="tree" size={30} />
               <Text style={styles.smallInfoHeader}>Growth:</Text>
+              <Entypo style={styles.smallInfoIcon} name="tree" size={30} />
             </View>
-
             <View style={styles.smallBodyContainer}>
               <Text style={styles.smallInfoBody}>10-20 cm</Text>
             </View>
           </View>
+
           <View style={styles.smallInfoWrapper}>
             <View style={styles.smallInfoHeaderWrapper}>
               <Text style={styles.smallInfoHeader}>Origin:</Text>
@@ -109,6 +100,7 @@ const MyGardenPlant = ({ navigation }) => {
               <Text style={styles.smallInfoBody}>Not poisonous for cats and dogs.</Text>
             </View>
           </View>
+
           <View style={styles.smallInfoWrapper}>
             <View style={styles.smallInfoHeaderWrapper}>
               <Text style={styles.smallInfoHeader}>Category:</Text>
@@ -131,6 +123,7 @@ const MyGardenPlant = ({ navigation }) => {
               ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
             </Text>
           </View>
+
           <View style={styles.infoWrapper}>
             <View style={styles.infoHeaderWrapper}>
               <Entypo name="light-up" size={20} color={Colors.tintColor} />
@@ -141,6 +134,7 @@ const MyGardenPlant = ({ navigation }) => {
               ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
             </Text>
           </View>
+
           <View style={styles.infoWrapper}>
             <View style={styles.infoHeaderWrapper}>
               <MaterialCommunityIcons
@@ -155,6 +149,7 @@ const MyGardenPlant = ({ navigation }) => {
               ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
             </Text>
           </View>
+
           <View style={styles.infoWrapper}>
             <View style={styles.infoHeaderWrapper}>
               <MaterialCommunityIcons name="pot" size={20} color={Colors.tintColor} />
@@ -165,6 +160,7 @@ const MyGardenPlant = ({ navigation }) => {
               ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
             </Text>
           </View>
+
           <View style={styles.infoWrapper}>
             <View style={styles.infoHeaderWrapper}>
               <Entypo name="bucket" size={20} color={Colors.tintColor} />
@@ -175,6 +171,7 @@ const MyGardenPlant = ({ navigation }) => {
               ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
             </Text>
           </View>
+
           <View style={styles.infoWrapper}>
             <View style={styles.infoHeaderWrapper}>
               <MaterialCommunityIcons name="spray-bottle" size={20} color={Colors.tintColor} />
@@ -185,6 +182,7 @@ const MyGardenPlant = ({ navigation }) => {
               ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
             </Text>
           </View>
+
           <View style={styles.infoWrapper}>
             <View style={styles.infoHeaderWrapper}>
               <Entypo name="water" size={20} color={Colors.tintColor} />
@@ -195,6 +193,7 @@ const MyGardenPlant = ({ navigation }) => {
               ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
             </Text>
           </View>
+
           <View style={styles.infoWrapper}>
             <View style={styles.infoHeaderWrapper}>
               <FontAwesome5 name="seedling" size={20} color={Colors.tintColor} />
@@ -205,21 +204,6 @@ const MyGardenPlant = ({ navigation }) => {
               ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
             </Text>
           </View>
-        </View>
-        <View style={styles.infoBtnContainer}>
-          <PflanzyOpacity onPress={() => navigation.navigate('IndividualPlant')}>
-            <NeuMorph>
-              <View style={styles.infoBtn}>
-                <LinearGradient
-                  colors={['#004e57', '#027885', '#004e57']}
-                  start={[0.0, 0.0]}
-                  end={[1.0, 1.0]}
-                  style={{ width: 240, borderRadius: 17, padding: 10, elevation: 3 }}>
-                  <Text style={styles.infoBtnTxt}>More info</Text>
-                </LinearGradient>
-              </View>
-            </NeuMorph>
-          </PflanzyOpacity>
         </View>
       </ScrollView>
     </View>
@@ -463,22 +447,6 @@ const styles = StyleSheet.create({
     fontWeight: '400',
   },
 
-  infoBtnContainer: {
-    width: '100%',
-    alignItems: 'center',
-  },
-
-  infoBtn: {
-    marginBottom: 30,
-  },
-
-  infoBtnTxt: {
-    textAlign: 'center',
-    fontSize: 16,
-    color: Colors.defaultWhite,
-    fontWeight: '600',
-  },
-
   reminderBtnContainer: {
     alignItems: 'center',
     marginTop: 10,
@@ -496,12 +464,23 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   smallInfoWrapper: {
-    display: 'flex',
-    alignItems: 'center',
     backgroundColor: '#e2ebe6',
     borderRadius: 15,
     width: '48%',
     marginBottom: 15,
+    height: 100,
+  },
+
+  smallInfoHeaderWrapper: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    backgroundColor: '#e2ebe6',
+    paddingVertical: 10,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
+    height: '50%',
   },
 
   smallInfoHeader: {
@@ -512,62 +491,42 @@ const styles = StyleSheet.create({
 
   smallInfoIcon: {
     position: 'absolute',
-    // top: '40%',
     opacity: 0.2,
     color: Colors.tintColor,
   },
 
-  smallInfoHeaderWrapper: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-    backgroundColor: '#e2ebe6',
-    paddingVertical: 10,
-    borderTopLeftRadius: 15,
-    borderTopRightRadius: 15,
-    borderWidth: 1,
-  },
-
   smallBodyContainer: {
     backgroundColor: '#bfdee3',
+    height: '50%',
     width: '100%',
     borderRadius: 15,
-    paddingHorizontal: 5,
-    paddingVertical: 3,
-    // marginBottom: 5,
-    borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   smallInfoBody: {
     textAlign: 'center',
     color: Colors.tintColor,
-    // paddingVertical: 15,
-    // paddingHorizontal: 5,
-    // alignItems: 'center',
   },
 
   infoContainer: {
-    marginVertical: 25,
+    marginTop: 30,
+    marginBottom: 20,
   },
 
   infoWrapper: {
     display: 'flex',
     alignItems: 'flex-start',
+    marginBottom: 15,
   },
 
   infoHeaderWrapper: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    // justifyContent: 'center',
-    // width: '100%',
     paddingHorizontal: 3,
     borderRadius: 5,
     backgroundColor: '#e2ebe6',
-    // borderBottomColor: Colors.tintColor,
-    // borderBottomWidth: 1,
     paddingVertical: 3,
     flexShrink: 1,
   },
@@ -577,7 +536,6 @@ const styles = StyleSheet.create({
     color: Colors.tintColor,
     paddingHorizontal: 10,
     fontWeight: '500',
-    // fontFamily: '',
   },
 
   infoBody: {
