@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import {
-  StyleSheet,
-  Modal,
-  ImageBackground,
-} from 'react-native';
+import { StyleSheet, Modal, ImageBackground } from 'react-native';
 import plantData from '../data/data.json';
 import photo from '../assets/images/photo-1517191434949-5e90cd67d2b6.jpeg';
 import { SearchBar } from 'react-native-elements';
@@ -13,33 +9,33 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const SearchScreen = () => {
   const dispatch = useDispatch();
-  const modalVisible = useSelector(state => state.modalReducer.open);
-  const toggleModal = () => {
-    dispatch({type:"TOGGLE"})
-  };
-  
-    return (
+  const modalVisible = useSelector((state) => state.modalReducer.open);
+  return (
     <>
       <ImageBackground source={photo} style={styles.photo}>
         <Modal visible={modalVisible} animationType="slide">
-          <SearchFieldModal  plantData={plantData} dispatch={dispatch} useSelector={useSelector}/>
-        </Modal>
-<TouchableOpacity onPress={() => dispatch({type:"TOGGLE"})}>
-
-        <SearchBar
-        disabled
-          round
-          containerStyle={{
-            backgroundColor: 'transparent',
-            borderStyle: 'dashed',
-            marginTop: 100,
-          }}
-          onPress={() => dispatch({type:"TOGGLE"})}
-          inputContainerStyle={{ backgroundColor: '#8FAE93' }}
-          searchIcon={{ backgroundColor: 'transparent' }}
-          placeholder="Search for plants"
+          <SearchFieldModal
+            plantData={plantData}
+            dispatch={dispatch}
           />
-          </TouchableOpacity>
+        </Modal>
+        <TouchableOpacity onPress={() => dispatch({ type: 'TOGGLE' })}>
+          <SearchBar
+            disabled
+            round
+            containerStyle={{
+              backgroundColor: 'transparent',
+              borderStyle: 'dashed',
+              marginTop: 80,
+              width:"90%",
+              alignSelf:"center"
+            }}
+            onPress={() => dispatch({ type: 'TOGGLE' })}
+            inputContainerStyle={{ backgroundColor: 'white' }}
+            searchIcon={{ backgroundColor: 'transparent' }}
+            placeholder="Search for plants"
+          />
+        </TouchableOpacity>
       </ImageBackground>
     </>
   );

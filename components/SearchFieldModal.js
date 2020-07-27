@@ -13,13 +13,12 @@ import {
   import IndividualCard from '../components/IndividualCard';
   import cactus from '../assets/images/cactus.png';
  import Icon from "react-native-vector-icons/AntDesign"
-const SearchFieldModal = ({plantData,useSelector,dispatch}) => {
+const SearchFieldModal = ({plantData,dispatch}) => {
     const [initialData, setInitialData] = useState(
         plantData.sort((a, b) => (a.commonName > b.commonName ? 1 : -1))
       );
       const [filteredData, setFilteredData] = useState([]);
       const [showLoading, setShowLoading] = useState(true);
-      const modalVisible = useSelector(state => state.modalReducer.open);
       useEffect(() => {
         setFilteredData(initialData);
         const myTimeOut = setTimeout(() => {
@@ -57,8 +56,8 @@ const SearchFieldModal = ({plantData,useSelector,dispatch}) => {
           setFilteredData(filteredResult);
         }
       };
-    return (<>
-    <TouchableWithoutFeedback onPress={() => dispatch({type:"TOGGLE"})} style={{paddingTop:10}}>
+    return (<View>
+    <TouchableWithoutFeedback onPress={() => dispatch({type:"TOGGLE"})} style={{paddingTop:10,paddingLeft:10}}>
         <Icon name="close" size={30} color="#8FAE93" /> 
     </TouchableWithoutFeedback>
         <SearchField sendData={getData} /> 
@@ -66,7 +65,7 @@ const SearchFieldModal = ({plantData,useSelector,dispatch}) => {
           loadingFunction()
         ) : (
           <TouchableWithoutFeedback style={styles.wrapper} onPress={() => Keyboard.dismiss()}>
-            <ScrollView>
+            <ScrollView contentContainerStyle={styles.plant}>
               {filteredData.length > 0 ? (
                 plantList()
               ) : (
@@ -78,7 +77,7 @@ const SearchFieldModal = ({plantData,useSelector,dispatch}) => {
             </ScrollView>
           </TouchableWithoutFeedback>
         )}
-        </>
+        </View>
     );
 }
 const styles = StyleSheet.create({
@@ -99,8 +98,8 @@ const styles = StyleSheet.create({
       justifyContent: 'flex-end',
       height: '55%',
     },
-    plantList: {
-      paddingBottom: -20,
+    plant: {
+      marginBottom:20
     },
     cactusWrapper: {
       justifyContent: 'center',

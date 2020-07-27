@@ -3,7 +3,6 @@ import { View, StyleSheet, Keyboard } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import Colors from '../constants/Colors';
 
-
 const SearchField = (props) => {
   const [searchValue, setSearchValue] = useState('');
 
@@ -16,26 +15,14 @@ const SearchField = (props) => {
   return (
     <View style={styles.wrapper}>
       <SearchBar
-        round
-        inputStyle={{
-          backgroundColor: 'white',
-          borderRadius: 12,
-          paddingHorizontal: 10,
-        }}
-        inputContainerStyle={{ backgroundColor: '#8FAE93' }}
-        searchIcon={{ backgroundColor: 'transparent' }}
-        containerStyle={{
-          backgroundColor: 'transparent',
-          borderStyle: 'dashed',
-          marginTop: 20,
-        }}
-        cancelButtonTitle={{ paddingHorizontal: 10 }}
-        clearIcon={{
-          color: Colors.defaultWhite,
-          size: 24,
-          paddingHorizontal: 10,
-        }}
-        rightIconContainerStyle={{ paddingLeft: 5 }}
+       inputStyle={{backgroundColor: 'white', borderRadius: 12, paddingHorizontal: 10, }}
+       inputContainerStyle={{backgroundColor: Colors.tintColor , borderTopLeftRadius: 19, borderBottomLeftRadius: 19, height: 65}}
+       containerStyle={{backgroundColor: 'none', width: '98%', borderTopWidth: 0, borderBottomWidth: 0, marginTop: 10, paddingBottom: 0}}
+       cancelButtonTitle={{paddingHorizontal: 10}}
+       searchIcon={{paddingLeft: 10, size: 24, paddingRight: 0, color: Colors.defaultWhite}}
+       clearIcon={{color: Colors.defaultWhite, size: 24, paddingHorizontal: 10}}
+       rightIconContainerStyle={{paddingLeft: 5}}
+       placeholder="Enter plant name"
         placeholder="Enter plant name"
         onChangeText={updateSearch}
         value={searchValue}
@@ -48,7 +35,8 @@ const SearchField = (props) => {
 const styles = StyleSheet.create({
   wrapper: {
     display: 'flex',
-    width: '100%',
+    width: '105%',
+    alignSelf:"flex-start"
   },
 });
 

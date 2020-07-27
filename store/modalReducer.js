@@ -3,12 +3,12 @@ const initialState = {
 };
 const modalReducer = (state = initialState, action) => {
   switch (action.type) {
-      case 'TOGGLE':
+    case 'TOGGLE':
       return {
-          open:!state.open
-      }
-      default:
-        return state;
+        open: !state.open
+      };
+    default:
+      return state;
   }
 };
 export default modalReducer;
