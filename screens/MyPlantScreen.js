@@ -1,6 +1,12 @@
 import React, { useRef, useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity as DefaultTouch } from 'react-native';
-import { MaterialCommunityIcons, Entypo, AntDesign, Ionicons } from '@expo/vector-icons';
+import {
+  MaterialCommunityIcons,
+  Entypo,
+  AntDesign,
+  Ionicons,
+  FontAwesome5,
+} from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import Svg, { Image, Circle, ClipPath } from 'react-native-svg';
 import BottomSheet from 'reanimated-bottom-sheet';
@@ -77,7 +83,7 @@ const MyGardenPlant = ({ navigation }) => {
         <View style={styles.smallContainer}>
           <View style={styles.smallInfoWrapper}>
             <View style={styles.smallInfoHeaderWrapper}>
-              <Text style={styles.smallInfoHeader}>Poisonous</Text>
+              <Text style={styles.smallInfoHeader}>Poisonous:</Text>
               <AntDesign style={styles.smallInfoIcon} name="warning" size={30} />
             </View>
             <View style={styles.smallBodyContainer}>
@@ -87,11 +93,29 @@ const MyGardenPlant = ({ navigation }) => {
           <View style={styles.smallInfoWrapper}>
             <View style={styles.smallInfoHeaderWrapper}>
               <Entypo style={styles.smallInfoIcon} name="tree" size={30} />
-              <Text style={styles.smallInfoHeader}>Growth</Text>
+              <Text style={styles.smallInfoHeader}>Growth:</Text>
             </View>
 
             <View style={styles.smallBodyContainer}>
               <Text style={styles.smallInfoBody}>10-20 cm</Text>
+            </View>
+          </View>
+          <View style={styles.smallInfoWrapper}>
+            <View style={styles.smallInfoHeaderWrapper}>
+              <Text style={styles.smallInfoHeader}>Origin:</Text>
+              <Entypo style={styles.smallInfoIcon} name="globe" size={30} />
+            </View>
+            <View style={styles.smallBodyContainer}>
+              <Text style={styles.smallInfoBody}>Not poisonous for cats and dogs.</Text>
+            </View>
+          </View>
+          <View style={styles.smallInfoWrapper}>
+            <View style={styles.smallInfoHeaderWrapper}>
+              <Text style={styles.smallInfoHeader}>Category:</Text>
+              <Entypo style={styles.smallInfoIcon} name="price-tag" size={30} />
+            </View>
+            <View style={styles.smallBodyContainer}>
+              <Text style={styles.smallInfoBody}>Not poisonous for cats and dogs.</Text>
             </View>
           </View>
         </View>
@@ -125,6 +149,56 @@ const MyGardenPlant = ({ navigation }) => {
                 color={Colors.tintColor}
               />
               <Text style={styles.infoHeader}>Temperature</Text>
+            </View>
+            <Text style={styles.infoBody}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam exercitationem
+              ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
+            </Text>
+          </View>
+          <View style={styles.infoWrapper}>
+            <View style={styles.infoHeaderWrapper}>
+              <MaterialCommunityIcons name="pot" size={20} color={Colors.tintColor} />
+              <Text style={styles.infoHeader}>Soil</Text>
+            </View>
+            <Text style={styles.infoBody}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam exercitationem
+              ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
+            </Text>
+          </View>
+          <View style={styles.infoWrapper}>
+            <View style={styles.infoHeaderWrapper}>
+              <Entypo name="bucket" size={20} color={Colors.tintColor} />
+              <Text style={styles.infoHeader}>Re-Potting</Text>
+            </View>
+            <Text style={styles.infoBody}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam exercitationem
+              ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
+            </Text>
+          </View>
+          <View style={styles.infoWrapper}>
+            <View style={styles.infoHeaderWrapper}>
+              <MaterialCommunityIcons name="spray-bottle" size={20} color={Colors.tintColor} />
+              <Text style={styles.infoHeader}>Fertilizer</Text>
+            </View>
+            <Text style={styles.infoBody}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam exercitationem
+              ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
+            </Text>
+          </View>
+          <View style={styles.infoWrapper}>
+            <View style={styles.infoHeaderWrapper}>
+              <Entypo name="water" size={20} color={Colors.tintColor} />
+              <Text style={styles.infoHeader}>Humidity</Text>
+            </View>
+            <Text style={styles.infoBody}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam exercitationem
+              ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
+            </Text>
+          </View>
+          <View style={styles.infoWrapper}>
+            <View style={styles.infoHeaderWrapper}>
+              <FontAwesome5 name="seedling" size={20} color={Colors.tintColor} />
+              <Text style={styles.infoHeader}>Propagation</Text>
             </View>
             <Text style={styles.infoBody}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam exercitationem
@@ -419,7 +493,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
-    marginBottom: 20,
+    flexWrap: 'wrap',
   },
   smallInfoWrapper: {
     display: 'flex',
@@ -427,6 +501,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#e2ebe6',
     borderRadius: 15,
     width: '48%',
+    marginBottom: 15,
   },
 
   smallInfoHeader: {
@@ -452,15 +527,17 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
+    borderWidth: 1,
   },
 
   smallBodyContainer: {
     backgroundColor: '#bfdee3',
-
+    width: '100%',
     borderRadius: 15,
     paddingHorizontal: 5,
     paddingVertical: 3,
-    marginBottom: 5,
+    // marginBottom: 5,
+    borderWidth: 1,
   },
 
   smallInfoBody: {
