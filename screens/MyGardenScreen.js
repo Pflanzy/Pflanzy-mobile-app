@@ -4,16 +4,16 @@ import { useSelector } from 'react-redux';
 import BasicCard from '../components/BasicCard';
 
 const MyGardenScreen = () => {
-  const user = useSelector((state) => state);
-  
+  const plants = useSelector((state) => state.plants);
+
   return (
     <ScrollView>
       <View style={styles.container}>
         <Text> My Garden Screen </Text>
-        {user.plants.map((plant) => {
-          return <BasicCard plant={plant} key={plant.scientificName} />;
-        })}
-        <Text>{}</Text>
+        {plants &&
+          plants.map((plant) => {
+            return <BasicCard plant={plant} key={plant.id} />;
+          })}
       </View>
     </ScrollView>
   );

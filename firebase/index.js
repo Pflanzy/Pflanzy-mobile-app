@@ -19,9 +19,13 @@ export const updateUser = (id) => {
     firebase
       .firestore()
       .collection('plants')
-      .doc(id)
+      .where('userID', '==', id)
       .onSnapshot((snapshot) => {
-        dispatch({ type: 'UPDATE_USER', payload: snapshot.data() });
+        const plants = [];
+        snapshot.forEach((plant) => {
+          plants.push({ ...plant.data(), id: plant.id });
+        });
+        dispatch({ type: 'UPDATE_PLANTS', payload: plants });
       });
   };
 };

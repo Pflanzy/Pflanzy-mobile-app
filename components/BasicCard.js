@@ -4,14 +4,13 @@ import { useNavigation } from '@react-navigation/native';
 
 function BasicCard({ plant }) {
   const navigation = useNavigation();
-
   return (
     <TouchableOpacity
       activeOpacity={0.7}
       style={styles.cardContainer}
       onPress={() =>
         navigation.navigate('MyPlant', {
-          plant,
+          plantId: plant.id,
         })
       }>
       <View style={styles.imageContainer}>
@@ -19,6 +18,7 @@ function BasicCard({ plant }) {
       </View>
       <View style={styles.detailsContainer}>
         <View style={styles.nameContainer}>
+          {plant?.custom?.title ? <Text style={styles.boldName}>{plant.custom.title} </Text> : null}
           <Text style={styles.boldName}>{plant.commonName} </Text>
           <Text style={styles.scientificName}>{plant.scientificName} </Text>
         </View>
