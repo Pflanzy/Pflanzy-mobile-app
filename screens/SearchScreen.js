@@ -19,7 +19,7 @@ const SearchScreen = () => {
             dispatch={dispatch}
           />
         </Modal>
-        <TouchableOpacity onPress={() => dispatch({ type: 'TOGGLE' })}>
+        <TouchableOpacity onPress={() => dispatch({ type: 'TOGGLE' })} activeOpacity={0.7}>
           <SearchBar
             disabled
             round
