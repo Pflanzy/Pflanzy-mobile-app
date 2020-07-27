@@ -5,31 +5,25 @@ import moment from 'moment';
 import { Appearance, useColorScheme } from 'react-native-appearance';
 import SetReminderNotification from './SetReminderNotification';
 
-console.log(Appearance.getColorScheme());
+Appearance.getColorScheme();
 
 const DateTimePicker = () => {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [dateInput, setDateInput] = useState('');
   const colorScheme = useColorScheme();
-
   const showDatePicker = () => {
     setDatePickerVisibility(true);
   };
-
   const hideDatePicker = () => {
     setDatePickerVisibility(false);
   };
-
   const handleConfirm = (date) => {
     hideDatePicker();
-
     // console.warn('A date has been picked: ', date);
     const dateParsedToNum = date.toString();
     SetReminderNotification(dateParsedToNum);
-
     setDateInput(moment(date).format('MMMM Do, h:mm a'));
   };
-
   return (
     <TouchableOpacity onPress={showDatePicker}>
       <View style={styles.datePickerBtnContainer}>
@@ -45,15 +39,12 @@ const DateTimePicker = () => {
     </TouchableOpacity>
   );
 };
-
 export default DateTimePicker;
-
 const styles = StyleSheet.create({
   datePickerBtnContainer: {
     width: 220,
     marginLeft: 20,
   },
-
   datePickerBtn: {
     fontSize: 14,
     color: 'gray',

@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Switch, TextInput } from 'react-native';
 import { MaterialCommunityIcons, Fontisto, AntDesign } from '@expo/vector-icons';
 import Modal from 'react-native-modal';
+import { LinearGradient } from 'expo-linear-gradient';
 import Colors from '../constants/Colors';
+import PflanzyOpacity from './PflanzyOpacity';
 import DateTimePicker from './DateTimePicker';
 
 const ModalConfigPopup = () => {
@@ -12,21 +14,37 @@ const ModalConfigPopup = () => {
 
   const [reminderItem, setReminderItem] = useState('');
 
+  const NeuMorph = ({ children }) => {
+    return (
+      <View style={styles.topShadow}>
+        <View style={styles.bottomShadow}>{children}</View>
+      </View>
+    );
+  };
+
   return (
     <View>
-      <TouchableOpacity onPress={() => setModalOpen(true)}>
-        <Text
-          style={{
-            marginBottom: 30,
-            paddingHorizontal: 20,
-            paddingVertical: 10,
-            backgroundColor: 'orangered',
-            borderRadius: 50,
-            color: 'white',
-          }}>
-          TEST REMINDER MODAL LAUNCHER!
-        </Text>
-      </TouchableOpacity>
+      <PflanzyOpacity onPress={() => setModalOpen(true)}>
+        <NeuMorph>
+          <View style={{ marginBottom: 25, marginTop: 10 }}>
+            <LinearGradient
+              colors={['#004e57', '#027885', '#004e57']}
+              start={[0.0, 0.0]}
+              end={[1.0, 1.0]}
+              style={{ width: 240, borderRadius: 17, padding: 10, elevation: 3 }}>
+              <Text
+                style={{
+                  textAlign: 'center',
+                  fontSize: 16,
+                  color: Colors.defaultWhite,
+                  fontWeight: '600',
+                }}>
+                Set Reminder
+              </Text>
+            </LinearGradient>
+          </View>
+        </NeuMorph>
+      </PflanzyOpacity>
 
       <Modal
         isVisible={modalOpen}
@@ -95,6 +113,26 @@ const ModalConfigPopup = () => {
 export default ModalConfigPopup;
 
 const styles = StyleSheet.create({
+  topShadow: {
+    shadowOffset: {
+      width: -2,
+      height: -2,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3,
+    shadowColor: '#d0d1c5',
+  },
+
+  bottomShadow: {
+    shadowOffset: {
+      width: 3,
+      height: 3,
+    },
+    shadowOpacity: 0.8,
+    shadowRadius: 3,
+    shadowColor: '#3d3c3b',
+  },
+
   modalContent: {
     backgroundColor: 'white',
     height: 280,

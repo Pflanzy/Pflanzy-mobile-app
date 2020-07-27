@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity as DefaultTouch } from 'react-native';
-import { Entypo, AntDesign } from '@expo/vector-icons';
+import React, { useRef, useState } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity as DefaultTouch } from 'react-native';
+import {
+  MaterialCommunityIcons,
+  Entypo,
+  AntDesign,
+  Ionicons,
+  FontAwesome5,
+} from '@expo/vector-icons';
 import Svg, { Image, Circle, ClipPath } from 'react-native-svg';
 import BottomSheet from 'reanimated-bottom-sheet';
-import Animated from 'react-native-reanimated';
+import Animated, { Transitioning, Transition } from 'react-native-reanimated';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useSelector } from 'react-redux';
 import firebase from '../firebase';
@@ -15,6 +21,12 @@ const MyGardenPlant = ({ route, navigation }) => {
   const bsSettings = React.createRef();
   const bsInfo = React.createRef();
   const fall = new Animated.Value(1);
+
+  const transition = <Transition.Change interpolation="easeInOut" />;
+
+  const [deg, setDeg] = useState(0);
+  const ref = useRef();
+
   const { plant } = route.params;
   const userID = useSelector((state) => state.id);
   const [rename, setRename] = useState(false);
@@ -49,6 +61,7 @@ const MyGardenPlant = ({ route, navigation }) => {
     //     plant: selectedPlant
     //   }})
   };
+
   const renderInner = () => (
     <View style={styles.settingsContainer}>
       <PflanzyOpacity style={styles.settingsBtns} onPress={() => navigation.navigate('Camera')}>
@@ -116,59 +129,143 @@ const MyGardenPlant = ({ route, navigation }) => {
     </View>
   );
 
-  const renderMainInfoHeader = () => (
-    <View style={styles.settingsMainInfo}>
-      <View style={styles.settingsHeader}>
-        <View style={styles.contentHandle} />
-        <ModalConfigPopup />
-      </View>
-    </View>
-  );
-
   const renderMainInfo = () => (
     <View style={styles.myPlantContainer}>
+      <Transitioning.View
+        ref={ref}
+        transition={transition}
+        style={{
+          alignItems: 'center',
+        }}>
+        <Ionicons
+          name="ios-arrow-up"
+          size={24}
+          color="#dbd7d3"
+          style={{ transform: [{ rotateX: `${deg}deg` }] }}
+        />
+      </Transitioning.View>
+
+      <View style={styles.reminderBtnContainer}>
+        <ModalConfigPopup />
+      </View>
       <ScrollView style={styles.plantInfoWrapper}>
         <View style={styles.smallContainer}>
           <View style={styles.smallInfoWrapper}>
             <View style={styles.smallInfoHeaderWrapper}>
-              <AntDesign style={styles.smallInfoIcon} name="warning" size={35} color="#006772" />
-              <Text style={styles.infoHeader}>Poisonous</Text>
+              <Text style={styles.smallInfoHeader}>Poisonous:</Text>
+              <AntDesign style={styles.smallInfoIcon} name="warning" size={30} />
             </View>
-            <Text style={styles.smallInfoBody}>{plant.poisonousForPets}</Text>
+            <View style={styles.smallBodyContainer}>
+              <Text style={styles.smallInfoBody}>{plant.poisonousForPets}</Text>
+            </View>
           </View>
+
           <View style={styles.smallInfoWrapper}>
             <View style={styles.smallInfoHeaderWrapper}>
-              <Entypo style={styles.smallInfoIcon} name="tree" size={35} color="#006772" />
-              <Text style={styles.infoHeader}>Growth</Text>
+              <Text style={styles.smallInfoHeader}>Growth:</Text>
+              <Entypo style={styles.smallInfoIcon} name="tree" size={30} />
             </View>
-            <Text style={styles.smallInfoBody}>{plant.maxGrowth}</Text>
+            <View style={styles.smallBodyContainer}>
+              <Text style={styles.smallInfoBody}>{plant.maxGrowth}</Text>
+            </View>
+          </View>
+
+          <View style={styles.smallInfoWrapper}>
+            <View style={styles.smallInfoHeaderWrapper}>
+              <Text style={styles.smallInfoHeader}>Origin:</Text>
+              <Entypo style={styles.smallInfoIcon} name="globe" size={30} />
+            </View>
+            <View style={styles.smallBodyContainer}>
+              <Text style={styles.smallInfoBody}>{plant.origin}</Text>
+            </View>
+          </View>
+
+          <View style={styles.smallInfoWrapper}>
+            <View style={styles.smallInfoHeaderWrapper}>
+              <Text style={styles.smallInfoHeader}>Category:</Text>
+              <Entypo style={styles.smallInfoIcon} name="price-tag" size={30} />
+            </View>
+            <View style={styles.smallBodyContainer}>
+              <Text style={styles.smallInfoBody}>{plant.category}</Text>
+            </View>
           </View>
         </View>
-        <View style={styles.infoWrapper}>
-          <View style={styles.infoHeaderWrapper}>
-            <Entypo name="drop" size={14} color="white" style={styles.waterDrop} />
-            <Text style={styles.infoHeader}>Water</Text>
+
+        <View style={styles.infoContainer}>
+          <View style={styles.infoWrapper}>
+            <View style={styles.infoHeaderWrapper}>
+              <Entypo name="drop" size={14} color={Colors.tintColor} style={styles.waterDrop} />
+              <Text style={styles.infoHeader}>Water</Text>
+            </View>
+            <Text style={styles.infoBody}>{plant.watering}</Text>
           </View>
-          <Text style={styles.infoBody}>{plant.watering}</Text>
+
+          <View style={styles.infoWrapper}>
+            <View style={styles.infoHeaderWrapper}>
+              <Entypo name="light-up" size={20} color={Colors.tintColor} />
+              <Text style={styles.infoHeader}>Light</Text>
+            </View>
+            <Text style={styles.infoBody}>{plant.light}</Text>
+          </View>
+
+          <View style={styles.infoWrapper}>
+            <View style={styles.infoHeaderWrapper}>
+              <MaterialCommunityIcons
+                name="temperature-celsius"
+                size={20}
+                color={Colors.tintColor}
+              />
+              <Text style={styles.infoHeader}>Temperature</Text>
+            </View>
+            <Text style={styles.infoBody}>{plant.temperature}</Text>
+          </View>
+
+          <View style={styles.infoWrapper}>
+            <View style={styles.infoHeaderWrapper}>
+              <MaterialCommunityIcons name="pot" size={20} color={Colors.tintColor} />
+              <Text style={styles.infoHeader}>Soil</Text>
+            </View>
+            <Text style={styles.infoBody}>{plant.soil}</Text>
+          </View>
+
+          <View style={styles.infoWrapper}>
+            <View style={styles.infoHeaderWrapper}>
+              <Entypo name="bucket" size={20} color={Colors.tintColor} />
+              <Text style={styles.infoHeader}>Re-Potting</Text>
+            </View>
+            <Text style={styles.infoBody}>{plant.rePotting}</Text>
+          </View>
+
+          <View style={styles.infoWrapper}>
+            <View style={styles.infoHeaderWrapper}>
+              <MaterialCommunityIcons name="spray-bottle" size={20} color={Colors.tintColor} />
+              <Text style={styles.infoHeader}>Fertilizer</Text>
+            </View>
+            <Text style={styles.infoBody}>{plant.fertilizer}</Text>
+          </View>
+
+          <View style={styles.infoWrapper}>
+            <View style={styles.infoHeaderWrapper}>
+              <Entypo name="water" size={20} color={Colors.tintColor} />
+              <Text style={styles.infoHeader}>Humidity</Text>
+            </View>
+            <Text style={styles.infoBody}>{plant.humidity}</Text>
+          </View>
+
+          <View style={styles.infoWrapper}>
+            <View style={styles.infoHeaderWrapper}>
+              <FontAwesome5 name="seedling" size={20} color={Colors.tintColor} />
+              <Text style={styles.infoHeader}>Propagation</Text>
+            </View>
+            <Text style={styles.infoBody}>{plant.propagation}</Text>
+          </View>
         </View>
-        <View style={styles.infoWrapper}>
-          <View style={styles.infoHeaderWrapper}>
-            <Entypo name="light-up" size={20} color="white" />
-            <Text style={styles.infoHeader}>Light</Text>
-          </View>
-          <Text style={styles.infoBody}>{plant.light}</Text>
-        </View>
-        <PflanzyOpacity onPress={() => navigation.navigate('IndividualPlant', { element: plant })}>
-          <View style={styles.infoBtnContainer}>
-            <Text style={styles.infoBtn}>More info</Text>
-          </View>
-        </PflanzyOpacity>
       </ScrollView>
     </View>
   );
 
   return (
-    <View style={styles.blackContainer}>
+    <View style={styles.opacityContainer}>
       <BottomSheet
         ref={bsSettings}
         snapPoints={[330, 0]}
@@ -182,7 +279,7 @@ const MyGardenPlant = ({ route, navigation }) => {
       <Animated.View
         style={{
           height: '100%',
-          backgroundColor: '#e0ffea',
+          backgroundColor: '#e8fffe',
           opacity: Animated.add(0.4, Animated.multiply(fall, 1.0)),
         }}>
         <DefaultTouch style={styles.plantSettings} onPress={() => bsSettings.current.snapTo(0)}>
@@ -224,9 +321,16 @@ const MyGardenPlant = ({ route, navigation }) => {
           ref={bsInfo}
           snapPoints={['45%', '75%']}
           renderContent={renderMainInfo}
-          renderHeader={renderMainInfoHeader}
           initialSnap={0}
           enabledGestureInteraction
+          onOpenEnd={() => {
+            ref.current.animateNextTransition();
+            setDeg(180);
+          }}
+          onCloseEnd={() => {
+            ref.current.animateNextTransition();
+            setDeg(0);
+          }}
         />
       </Animated.View>
     </View>
@@ -234,7 +338,27 @@ const MyGardenPlant = ({ route, navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  blackContainer: {
+  topShadow: {
+    shadowOffset: {
+      width: -2,
+      height: -2,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3,
+    shadowColor: '#d0d1c5',
+  },
+
+  bottomShadow: {
+    shadowOffset: {
+      width: 3,
+      height: 3,
+    },
+    shadowOpacity: 0.8,
+    shadowRadius: 3,
+    shadowColor: '#3d3c3b',
+  },
+
+  opacityContainer: {
     backgroundColor: '#2c2c2f',
   },
   settingsContainer: {
@@ -248,7 +372,8 @@ const styles = StyleSheet.create({
   settingsBtns: {
     borderRadius: 10,
     backgroundColor: Colors.defaultWhite,
-    margin: 5,
+    marginVertical: 3,
+    marginHorizontal: 5,
   },
 
   settingsBtnTitle: {
@@ -262,7 +387,8 @@ const styles = StyleSheet.create({
   deleteSettingsBtns: {
     borderRadius: 10,
     backgroundColor: Colors.defaultWhite,
-    margin: 5,
+    marginVertical: 3,
+    marginHorizontal: 5,
   },
 
   settingsBtnDelete: {
@@ -277,11 +403,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#d1cfce',
     marginHorizontal: 5,
-    // alignSelf: 'flex-start',
-    // position: 'absolute',
-    // bottom: 0,
-    // alignSelf: 'center',
-    // width: '100%',
+    marginVertical: 25,
   },
 
   settingsHandleContainer: {
@@ -298,8 +420,6 @@ const styles = StyleSheet.create({
   settingsMainInfo: {
     backgroundColor: Colors.defaultWhite,
     paddingTop: 20,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
   },
 
   settingMainInfoSeparator: {
@@ -336,8 +456,10 @@ const styles = StyleSheet.create({
   myPlantContainer: {
     display: 'flex',
     height: '100%',
-    backgroundColor: '#fff',
+    backgroundColor: Colors.tintColor,
     padding: 10,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
 
   nameContainer: {
@@ -376,49 +498,19 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     alignSelf: 'center',
   },
+
   botNameInner: {
     marginLeft: 5,
     fontWeight: '400',
   },
 
-  buttonWrapper: {
-    width: '100%',
-    marginTop: 30,
-  },
-  infoBtnContainer: {
-    borderRadius: 50,
-    backgroundColor: Colors.tintColor,
-    padding: 10,
-    marginBottom: 30,
-  },
-
-  infoBtn: {
-    textAlign: 'center',
-    fontSize: 16,
-    color: Colors.defaultWhite,
-    fontWeight: '600',
-  },
-
   reminderBtnContainer: {
-    borderRadius: 50,
-    backgroundColor: Colors.tintColor,
-    padding: 10,
-    marginBottom: 30,
-  },
-
-  reminderBtn: {
-    textAlign: 'center',
-    fontSize: 16,
-    color: Colors.defaultWhite,
-    fontWeight: '600',
+    alignItems: 'center',
+    marginTop: 10,
   },
 
   plantInfoWrapper: {
     paddingVertical: 10,
-  },
-  infoWrapper: {
-    display: 'flex',
-    alignItems: 'center',
   },
 
   smallContainer: {
@@ -426,61 +518,89 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
-    marginBottom: 20,
+    flexWrap: 'wrap',
   },
   smallInfoWrapper: {
-    display: 'flex',
-    alignItems: 'center',
-    backgroundColor: Colors.tintColor,
+    backgroundColor: '#e2ebe6',
     borderRadius: 15,
     width: '48%',
-  },
-  smallInfoIcon: {
-    position: 'absolute',
+    marginBottom: 15,
+    height: 110,
   },
 
   smallInfoHeaderWrapper: {
     display: 'flex',
-    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    backgroundColor: Colors.darkGreen,
+    backgroundColor: '#e2ebe6',
     paddingVertical: 10,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
+    height: '50%',
+  },
+
+  smallInfoHeader: {
+    color: Colors.tintColor,
+    fontSize: 20,
+    paddingVertical: 10,
+  },
+
+  smallInfoIcon: {
+    position: 'absolute',
+    opacity: 0.2,
+    color: Colors.tintColor,
+  },
+
+  smallBodyContainer: {
+    backgroundColor: '#bfdee3',
+    height: '50%',
+    width: '100%',
+    borderRadius: 15,
+    paddingHorizontal: 3,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   smallInfoBody: {
     textAlign: 'center',
-    color: Colors.textGrey,
-    margin: 5,
+    color: Colors.tintColor,
+  },
+
+  infoContainer: {
+    marginTop: 30,
+    marginBottom: 20,
+  },
+
+  infoWrapper: {
+    display: 'flex',
+    alignItems: 'flex-start',
+    marginBottom: 15,
   },
 
   infoHeaderWrapper: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-    backgroundColor: Colors.darkGreen,
-    paddingVertical: 10,
+    paddingHorizontal: 3,
     borderRadius: 5,
+    backgroundColor: '#e2ebe6',
+    paddingVertical: 3,
     flexShrink: 1,
   },
 
   infoHeader: {
     fontSize: 20,
-    color: Colors.defaultWhite,
+    color: Colors.tintColor,
+    paddingHorizontal: 10,
+    fontWeight: '500',
   },
 
   infoBody: {
     lineHeight: 28,
     marginTop: 10,
     marginBottom: 25,
-    textAlign: 'center',
-    width: '95%',
-    color: Colors.textGrey,
+    color: '#e2ebe6',
   },
 });
 
