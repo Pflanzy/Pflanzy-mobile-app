@@ -15,6 +15,7 @@ import {
   Text,
   View,
   ImageBackground,
+  Modal,
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import firebase, { updateUser } from '../firebase';
@@ -24,7 +25,7 @@ import TouchableOpacity from '../components/PflanzyOpacity';
 const IndividualPlantScreen = (navigation) => {
   const dispatch = useDispatch();
   const userID = useSelector((state) => state.id);
-
+/* const [modalVisible, setModalVisible] = useState(false); */
   const plant = navigation.route.params.element;
 
   const addPlantHandler = (selectedPlant) => {
@@ -45,16 +46,25 @@ const IndividualPlantScreen = (navigation) => {
     //     plant: selectedPlant
     //   }})
   };
+  const clickHandler = (plant) => {
+    addPlantHandler(plant)
+    setModalVisible(!modalVisible)
+  }
   const renderContent = () => {
     return (
       <View style={styles.contentWrapper}>
+        <Modal animationType="slide"
+        transparent={true}
+        /* visible={modalVisible} */>
+          
+        </Modal>
         <View style={styles.content}>
           <View>
             <Text style={styles.nameGeneric}>{plant.commonName}</Text>
             <Text style={styles.nameScientific}>{plant.scientificName}</Text>
           </View>
           <View style={styles.btnContainer}>
-            <TouchableOpacity style={styles.btnReminder} onPress={() => addPlantHandler(plant)}>
+            <TouchableOpacity style={styles.btnReminder} onPress={clickHandler(plant)} >
               <Ionicons name="ios-basket" size={14} color="white" style={styles.waterDrop} />
               <Text style={styles.btnText}>Add To My Garden</Text>
             </TouchableOpacity>
