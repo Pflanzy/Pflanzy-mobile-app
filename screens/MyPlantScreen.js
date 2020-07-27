@@ -17,7 +17,7 @@ import Colors from '../constants/Colors';
 import PflanzyOpacity from '../components/PflanzyOpacity';
 import ModalConfigPopup from '../components/ModalConfigPopup';
 
-const MyGardenPlant = ({ navigation }) => {
+const MyGardenPlant = ({ route, navigation }) => {
   const bsSettings = React.createRef();
   const bsInfo = React.createRef();
   const fall = new Animated.Value(1);
@@ -176,7 +176,7 @@ const MyGardenPlant = ({ navigation }) => {
               <Entypo style={styles.smallInfoIcon} name="globe" size={30} />
             </View>
             <View style={styles.smallBodyContainer}>
-              <Text style={styles.smallInfoBody}>Not poisonous for cats and dogs.</Text>
+              <Text style={styles.smallInfoBody}>{plant.origin}</Text>
             </View>
           </View>
 
@@ -186,7 +186,7 @@ const MyGardenPlant = ({ navigation }) => {
               <Entypo style={styles.smallInfoIcon} name="price-tag" size={30} />
             </View>
             <View style={styles.smallBodyContainer}>
-              <Text style={styles.smallInfoBody}>Not poisonous for cats and dogs.</Text>
+              <Text style={styles.smallInfoBody}>{plant.category}</Text>
             </View>
           </View>
         </View>
@@ -197,10 +197,7 @@ const MyGardenPlant = ({ navigation }) => {
               <Entypo name="drop" size={14} color={Colors.tintColor} style={styles.waterDrop} />
               <Text style={styles.infoHeader}>Water</Text>
             </View>
-            <Text style={styles.infoBody}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam exercitationem
-              ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
-            </Text>
+            <Text style={styles.infoBody}>{plant.watering}</Text>
           </View>
 
           <View style={styles.infoWrapper}>
@@ -208,10 +205,7 @@ const MyGardenPlant = ({ navigation }) => {
               <Entypo name="light-up" size={20} color={Colors.tintColor} />
               <Text style={styles.infoHeader}>Light</Text>
             </View>
-            <Text style={styles.infoBody}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam exercitationem
-              ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
-            </Text>
+            <Text style={styles.infoBody}>{plant.light}</Text>
           </View>
 
           <View style={styles.infoWrapper}>
@@ -223,10 +217,7 @@ const MyGardenPlant = ({ navigation }) => {
               />
               <Text style={styles.infoHeader}>Temperature</Text>
             </View>
-            <Text style={styles.infoBody}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam exercitationem
-              ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
-            </Text>
+            <Text style={styles.infoBody}>{plant.temperature}</Text>
           </View>
 
           <View style={styles.infoWrapper}>
@@ -234,10 +225,7 @@ const MyGardenPlant = ({ navigation }) => {
               <MaterialCommunityIcons name="pot" size={20} color={Colors.tintColor} />
               <Text style={styles.infoHeader}>Soil</Text>
             </View>
-            <Text style={styles.infoBody}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam exercitationem
-              ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
-            </Text>
+            <Text style={styles.infoBody}>{plant.soil}</Text>
           </View>
 
           <View style={styles.infoWrapper}>
@@ -245,10 +233,7 @@ const MyGardenPlant = ({ navigation }) => {
               <Entypo name="bucket" size={20} color={Colors.tintColor} />
               <Text style={styles.infoHeader}>Re-Potting</Text>
             </View>
-            <Text style={styles.infoBody}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam exercitationem
-              ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
-            </Text>
+            <Text style={styles.infoBody}>{plant.rePotting}</Text>
           </View>
 
           <View style={styles.infoWrapper}>
@@ -256,10 +241,7 @@ const MyGardenPlant = ({ navigation }) => {
               <MaterialCommunityIcons name="spray-bottle" size={20} color={Colors.tintColor} />
               <Text style={styles.infoHeader}>Fertilizer</Text>
             </View>
-            <Text style={styles.infoBody}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam exercitationem
-              ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
-            </Text>
+            <Text style={styles.infoBody}>{plant.fertilizer}</Text>
           </View>
 
           <View style={styles.infoWrapper}>
@@ -267,10 +249,7 @@ const MyGardenPlant = ({ navigation }) => {
               <Entypo name="water" size={20} color={Colors.tintColor} />
               <Text style={styles.infoHeader}>Humidity</Text>
             </View>
-            <Text style={styles.infoBody}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam exercitationem
-              ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
-            </Text>
+            <Text style={styles.infoBody}>{plant.humidity}</Text>
           </View>
 
           <View style={styles.infoWrapper}>
@@ -278,10 +257,7 @@ const MyGardenPlant = ({ navigation }) => {
               <FontAwesome5 name="seedling" size={20} color={Colors.tintColor} />
               <Text style={styles.infoHeader}>Propagation</Text>
             </View>
-            <Text style={styles.infoBody}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam exercitationem
-              ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
-            </Text>
+            <Text style={styles.infoBody}>{plant.propagation}</Text>
           </View>
         </View>
       </ScrollView>
@@ -549,7 +525,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     width: '48%',
     marginBottom: 15,
-    height: 100,
+    height: 110,
   },
 
   smallInfoHeaderWrapper: {
@@ -581,6 +557,7 @@ const styles = StyleSheet.create({
     height: '50%',
     width: '100%',
     borderRadius: 15,
+    paddingHorizontal: 3,
     alignItems: 'center',
     justifyContent: 'center',
   },
