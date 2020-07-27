@@ -6,8 +6,8 @@ const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_USER':
       return { ...action.payload.user };
-    case 'UPDATE_USER':
-      return { ...state, plants: action?.payload?.plants };
+    case 'UPDATE_PLANTS':
+      return { ...state, plants: action?.payload };
     case 'REMOVE_USER':
       break;
     case 'ADD_PLANT':

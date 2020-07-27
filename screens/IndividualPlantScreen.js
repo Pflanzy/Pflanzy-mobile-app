@@ -37,16 +37,12 @@ const IndividualPlantScreen = (navigation) => {
   const plant = navigation.route.params.element;
 
   const addPlantHandler = (selectedPlant) => {
+    // TODO: Rename plants collection
     firebase
       .firestore()
       .collection('plants')
-      .doc(userID)
-      .set(
-        {
-          plants: firebase.firestore.FieldValue.arrayUnion(selectedPlant),
-        },
-        { merge: true }
-      );
+      .add({ ...selectedPlant, userID });
+
     dispatch(updateUser(userID));
     // console.log('adding plant', selectedPlant)
     //  return dispatch({
