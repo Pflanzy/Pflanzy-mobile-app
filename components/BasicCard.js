@@ -2,22 +2,27 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-function BasicCard(props) {
+function BasicCard({ plant }) {
   const navigation = useNavigation();
 
   return (
-    <TouchableOpacity activeOpacity={0.7} style={styles.cardContainer} onPress={() => navigation.navigate('MyPlant')}>
+    <TouchableOpacity
+      activeOpacity={0.7}
+      style={styles.cardContainer}
+      onPress={() =>
+        navigation.navigate('MyPlant', {
+          plant,
+        })
+      }>
       <View style={styles.imageContainer}>
-        <Image style={styles.cardImage} source={require('../assets/images/water-lilly.jpg')} />
+        <Image style={styles.cardImage} source={{ uri: plant?.images?.imagePrimary }} />
       </View>
       <View style={styles.detailsContainer}>
         <View style={styles.nameContainer}>
-          <Text style={styles.boldName}>Water Lilly</Text>
-          <Text style={styles.scientificName}>Scientific name</Text>
+          <Text style={styles.boldName}>{plant.commonName} </Text>
+          <Text style={styles.scientificName}>{plant.scientificName} </Text>
         </View>
-        <View style={styles.passedContent}>
-          <Text>passed prop</Text>
-        </View>
+        <View style={styles.passedContent} />
       </View>
     </TouchableOpacity>
   );

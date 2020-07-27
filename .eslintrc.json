@@ -1,6 +1,8 @@
 {
   "extends": ["airbnb", "prettier", "prettier/react"],
+  "parser": "babel-eslint",
   "rules": {
+    "react/prop-types": 0,
     "react-native/no-unused-styles": 2,
     "react-native/no-color-literals": 2,
     "no-use-before-define": [
