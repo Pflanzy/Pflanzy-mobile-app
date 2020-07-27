@@ -15,44 +15,34 @@ const MyGardenPlant = ({ route, navigation }) => {
   const bsSettings = React.createRef();
   const bsInfo = React.createRef();
   const fall = new Animated.Value(1);
-  const { plant } = route.params;
-  const userID = useSelector((state) => state.id);
+  const { plantId } = route.params;
+  const plant = useSelector((state) =>
+    state.plants.find((plantToFind) => plantToFind.id === plantId)
+  );
   const [rename, setRename] = useState(false);
-  const [value, onChangeText] = useState(plant.commonName);
+  const [value, onChangeText] = useState(
+    plant?.custom?.title ? plant.custom.title : plant.commonName
+  );
 
   const renamePlant = (selectedPlant) => {
-    const userplantsRef = firebase.firestore().collection('plants').doc(userID);
+    const userplantsRef = firebase.firestore().collection('plants2').doc(selectedPlant.id);
 
-    userplantsRef.get().then((data) => {
-      const userPlants = data.data();
-      userPlants.find((userPlant) => userPlant.scientificName === selectedPlant.scientificName);
+    userplantsRef.update({
+      custom: {
+        title: value,
+      },
     });
   };
 
   const deletePlantHandler = (selectedPlant) => {
     firebase
       .firestore()
-      .collection('plants')
-      .doc(userID)
-      .update({
-        plants: firebase.firestore.FieldValue.arrayRemove(selectedPlant),
-      })
+      .collection('plants2')
+      .doc(selectedPlant.id)
+      .delete()
       .then(() => {
         navigation.navigate('MyGarden');
       });
-
-    // .set(
-    //   {
-    //     plants: firebase.firestore.FieldValue.arrayUnion(selectedPlant),
-    //   },
-    //   { merge: true }
-    // );
-    // dispatch(updateUser(userID));
-    // console.log('adding plant', selectedPlant)
-    //  return dispatch({
-    //     type: "ADD_PLANT", payload: {
-    //     plant: selectedPlant
-    //   }})
   };
   const renderInner = () => (
     <View style={styles.settingsContainer}>
@@ -95,8 +85,12 @@ const MyGardenPlant = ({ route, navigation }) => {
             }}
             onChangeText={(text) => onChangeText(text)}
             value={value}
-            placeholder={plant.commonName}
-            onSubmitEditing={() => renamePlant(plant)}
+            onSubmitEditing={() => {
+              if (value) {
+                renamePlant(plant);
+                setRename(false);
+              }
+            }}
           />
           <PflanzyOpacity onPress={() => setRename(false)}>
             <AntDesign name="closecircle" size={30} color="green" />
@@ -214,6 +208,11 @@ const MyGardenPlant = ({ route, navigation }) => {
             />
           </Svg>
           <View style={styles.nameContainer}>
+            {plant?.custom?.title && (
+              <View>
+                <Text>{plant.custom.title}</Text>
+              </View>
+            )}
             <View style={styles.commonNameContainer}>
               <Text style={styles.commonName}>{plant.commonName}</Text>
             </View>

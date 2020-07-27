@@ -28,9 +28,10 @@ const IndividualPlantScreen = (navigation) => {
   const plant = navigation.route.params.element;
 
   const addPlantHandler = (selectedPlant) => {
+    // TODO: Rename plants collection
     firebase
       .firestore()
-      .collection('plants')
+      .collection('plants2')
       .add({ ...selectedPlant, userID });
 
     dispatch(updateUser(userID));
