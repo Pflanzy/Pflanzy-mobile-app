@@ -33,6 +33,10 @@ const MyGardenPlant = ({ route, navigation }) => {
     plant?.custom?.title ? plant.custom.title : plant?.commonName
   );
 
+  const onReminderTimeSelected = (data) => {
+    console.log(data);
+  };
+
   const renamePlant = (selectedPlant) => {
     const userplantsRef = firebase.firestore().collection('plants').doc(selectedPlant.id);
 

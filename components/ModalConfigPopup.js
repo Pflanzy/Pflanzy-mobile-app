@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Switch, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Switch, TextInput, Picker } from 'react-native';
 import { MaterialCommunityIcons, Fontisto, AntDesign } from '@expo/vector-icons';
 import Modal from 'react-native-modal';
 import { LinearGradient } from 'expo-linear-gradient';
 import Colors from '../constants/Colors';
 import PflanzyOpacity from './PflanzyOpacity';
 import DateTimePicker from './DateTimePicker';
+import SetReminderNotification from './SetReminderNotification';
 
-const ModalConfigPopup = () => {
+const ModalConfigPopup = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [isEnabled, setSwitchEnabled] = useState(false);
+  const [oneTimeDate, setOneTimeDate] = useState(null);
+  const [selectedInterval, setSelectedInterval] = useState('1');
+  const [selectedPeriod, setSelectedPeriod] = useState('day');
   const toggleSwitch = () => setSwitchEnabled((previousState) => !previousState);
 
   const [reminderItem, setReminderItem] = useState('');
@@ -20,6 +24,9 @@ const ModalConfigPopup = () => {
         <View style={styles.bottomShadow}>{children}</View>
       </View>
     );
+  };
+  const onTimeSet = (date) => {
+    setOneTimeDate(date);
   };
 
   return (
@@ -56,7 +63,16 @@ const ModalConfigPopup = () => {
               <Text>Cancel</Text>
             </TouchableOpacity>
             <Text>New Reminder</Text>
-            <TouchableOpacity onPress={() => setModalOpen(false)}>
+            <TouchableOpacity
+              onPress={() => {
+                SetReminderNotification({
+                  repeat: isEnabled,
+                  notificationDate: oneTimeDate,
+                  selectedInterval,
+                  selectedPeriod,
+                });
+                setModalOpen(false);
+              }}>
               <Text style={styles.doneTextColor}>Done</Text>
             </TouchableOpacity>
           </View>
@@ -93,15 +109,39 @@ const ModalConfigPopup = () => {
               <Text style={styles.careOptions}>Repot</Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.modalRows}>
-            <AntDesign name="calendar" size={18} color={Colors.tintColor} />
-            <DateTimePicker />
-          </View>
+          {!isEnabled && (
+            <View style={styles.modalRows}>
+              <AntDesign name="calendar" size={18} color={Colors.tintColor} />
+              <DateTimePicker onTimeSet={onTimeSet} />
+            </View>
+          )}
           <View style={[styles.repeater, styles.modalRows]}>
-            <View style={styles.repeatInputSnippet}>
+            {isEnabled && (
+              <View>
+                <Picker
+                  selectedValue={selectedInterval}
+                  style={{ height: 50, width: 100 }}
+                  onValueChange={(value) => setSelectedInterval(value)}>
+                  <Picker.Item label="1" value="1" />
+                  <Picker.Item label="2" value="2" />
+                  <Picker.Item label="3" value="3" />
+                  <Picker.Item label="4" value="4" />
+                  <Picker.Item label="5" value="5" />
+                  <Picker.Item label="6" value="6" />
+                </Picker>
+                <Picker
+                  selectedValue={selectedPeriod}
+                  style={{ height: 50, width: 100 }}
+                  onValueChange={(value) => setSelectedPeriod(value)}>
+                  <Picker.Item label="Day" value="day" />
+                  <Picker.Item label="Week" value="week" />
+                </Picker>
+              </View>
+            )}
+            {/* <View style={styles.repeatInputSnippet}>
               <Fontisto name="redo" size={20} color={Colors.tintColor} />
               <Text style={styles.modalFields}>Every ... days</Text>
-            </View>
+            </View> */}
             <Switch onValueChange={toggleSwitch} value={isEnabled} />
           </View>
         </View>

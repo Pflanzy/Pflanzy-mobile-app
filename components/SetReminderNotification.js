@@ -1,11 +1,16 @@
 import * as Notifications from 'expo-notifications';
 
 // Receives date info from DateTimePicker & sends notification
-export default function SetReminderNotification(dateInputInString) {
+export default function SetReminderNotification(config) {
+  const timeIntervals = {
+    day: 24 * 60 * 60,
+    week: 7 * 24 * 60 * 60,
+  };
+
   // console.warn('A data sent from DateTimePicker!', dateInputInString);
 
-  allowsNotificationsAsync()
-  requestPermissionsAsync()
+  allowsNotificationsAsync();
+  requestPermissionsAsync();
 
   Notifications.setNotificationHandler({
     handleNotification: async () => ({
@@ -15,7 +20,7 @@ export default function SetReminderNotification(dateInputInString) {
     }),
   });
 
-  const timeLeftInSec = (new Date(dateInputInString).getTime() - Date.now()) / 1000;
+  const timeLeftInSec = (new Date(config.notificationDate).getTime() - Date.now()) / 1000;
   // console.warn(timeLeftInSec)
 
   Notifications.scheduleNotificationAsync({
@@ -24,14 +29,20 @@ export default function SetReminderNotification(dateInputInString) {
       body: "I'm so thirsty🌵...",
     },
     trigger: {
-      seconds: timeLeftInSec,
-      // repeats: true,
+      seconds: config.repeat
+        ? config.selectedInterval * timeIntervals[config.selectedPeriod]
+        : timeLeftInSec,
+      repeats: config.repeat,
     },
   });
 
+  Notifications.getAllScheduledNotificationsAsync().then((notifications) =>
+    console.log(notifications)
+  );
+
   Notifications.dismissAllNotificationsAsync();
 
-  // Notifications.cancelAllScheduledNotificationsAsync();
+  Notifications.cancelAllScheduledNotificationsAsync();
 }
 
 // Fetching information about notifications-related permissions
