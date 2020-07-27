@@ -31,13 +31,8 @@ const IndividualPlantScreen = (navigation) => {
     firebase
       .firestore()
       .collection('plants')
-      .doc(userID)
-      .set(
-        {
-          plants: firebase.firestore.FieldValue.arrayUnion(selectedPlant),
-        },
-        { merge: true }
-      );
+      .add({ ...selectedPlant, userID });
+
     dispatch(updateUser(userID));
     // console.log('adding plant', selectedPlant)
     //  return dispatch({

@@ -10,9 +10,9 @@ const MyGardenScreen = () => {
     <ScrollView>
       <View style={styles.container}>
         <Text> My Garden Screen </Text>
-        {user.plants.map((plant) => {
-          return <BasicCard plant={plant} key={plant.scientificName} />;
-        })}
+        {/* {user.plants.map((plant, i) => {
+          return <BasicCard plant={plant} key={i} />;
+        })} */}
         <Text>{}</Text>
       </View>
     </ScrollView>

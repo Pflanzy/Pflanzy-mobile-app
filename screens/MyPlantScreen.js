@@ -20,8 +20,13 @@ const MyGardenPlant = ({ route, navigation }) => {
   const [rename, setRename] = useState(false);
   const [value, onChangeText] = useState(plant.commonName);
 
-  const renamePlant = () => {
-    // Dispatch Action to add a custom name to the plant
+  const renamePlant = (selectedPlant) => {
+    const userplantsRef = firebase.firestore().collection('plants').doc(userID);
+
+    userplantsRef.get().then((data) => {
+      const userPlants = data.data();
+      userPlants.find((userPlant) => userPlant.scientificName === selectedPlant.scientificName);
+    });
   };
 
   const deletePlantHandler = (selectedPlant) => {
