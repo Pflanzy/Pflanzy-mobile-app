@@ -13,6 +13,7 @@ import firebase from '../firebase';
 import { signInValidation, signUpValidation } from '../helpers/formValidation';
 import visibleIcon from '../assets/images/visible.png';
 import invisibleIcon from '../assets/images/invisible.png';
+import Colors from '../constants/Colors'
 
 const AuthScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -110,7 +111,8 @@ const AuthScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <KeyboardAwareScrollView
-        style={{ flex: 1, width: '100%' }}
+        style={{ flex: 1, width: '100%'}}
+        contentContainerStyle={styles.contentContainer}
         keyboardShouldPersistTaps="always">
         {/* <Image style={styles.logo} source={require()} /> */}
         {displaySignup && (
@@ -206,6 +208,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
+  contentContainer: {
+    marginTop: 20,
+  },
   title: {},
   logo: {
     flex: 1,
@@ -226,7 +231,7 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
   },
   button: {
-    backgroundColor: '#788eec',
+    backgroundColor: Colors.tintColor,
     marginLeft: 30,
     marginRight: 30,
     marginTop: 20,
@@ -249,7 +254,7 @@ const styles = StyleSheet.create({
     color: '#2e2e2d',
   },
   footerLink: {
-    color: '#788eec',
+    color: Colors.tintColor,
     fontSize: 16,
   },
   passwordContainer: {
