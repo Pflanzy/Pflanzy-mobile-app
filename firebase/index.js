@@ -18,7 +18,7 @@ export const updateUser = (id) => {
   return (dispatch) => {
     firebase
       .firestore()
-      .collection('plants2')
+      .collection('plants')
       .where('userID', '==', id)
       .onSnapshot((snapshot) => {
         const plants = [];

@@ -34,7 +34,7 @@ const MyGardenPlant = ({ route, navigation }) => {
   );
 
   const renamePlant = (selectedPlant) => {
-    const userplantsRef = firebase.firestore().collection('plants2').doc(selectedPlant.id);
+    const userplantsRef = firebase.firestore().collection('plants').doc(selectedPlant.id);
 
     userplantsRef.update({
       custom: {
@@ -46,7 +46,7 @@ const MyGardenPlant = ({ route, navigation }) => {
   const deletePlantHandler = (selectedPlant) => {
     firebase
       .firestore()
-      .collection('plants2')
+      .collection('plants')
       .doc(selectedPlant.id)
       .delete()
       .then(() => {

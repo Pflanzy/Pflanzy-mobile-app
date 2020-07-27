@@ -40,7 +40,7 @@ const IndividualPlantScreen = (navigation) => {
     // TODO: Rename plants collection
     firebase
       .firestore()
-      .collection('plants2')
+      .collection('plants')
       .add({ ...selectedPlant, userID });
 
     dispatch(updateUser(userID));
