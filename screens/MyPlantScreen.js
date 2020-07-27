@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity as DefaultTouch } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity as DefaultTouch } from 'react-native';
 import { Entypo, AntDesign } from '@expo/vector-icons';
 import Svg, { Image, Circle, ClipPath } from 'react-native-svg';
 import BottomSheet from 'reanimated-bottom-sheet';
@@ -17,6 +17,12 @@ const MyGardenPlant = ({ route, navigation }) => {
   const fall = new Animated.Value(1);
   const { plant } = route.params;
   const userID = useSelector((state) => state.id);
+  const [rename, setRename] = useState(false);
+  const [value, onChangeText] = useState(plant.commonName);
+
+  const renamePlant = () => {
+    // Dispatch Action to add a custom name to the plant
+  };
 
   const deletePlantHandler = (selectedPlant) => {
     firebase
@@ -48,9 +54,51 @@ const MyGardenPlant = ({ route, navigation }) => {
       <PflanzyOpacity style={styles.settingsBtns} onPress={() => navigation.navigate('Camera')}>
         <Text style={styles.settingsBtnTitle}>Take Photo</Text>
       </PflanzyOpacity>
-      <PflanzyOpacity style={styles.settingsBtns}>
-        <Text style={styles.settingsBtnTitle}>Rename Plant</Text>
-      </PflanzyOpacity>
+      {!rename ? (
+        <PflanzyOpacity
+          style={styles.settingsBtns}
+          onPress={() => {
+            setRename(true);
+          }}>
+          <Text style={styles.settingsBtnTitle}>Rename Plant</Text>
+        </PflanzyOpacity>
+      ) : (
+        <View
+          style={{
+            padding: 0,
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            paddingHorizontal: 10,
+            paddingVertical: 5,
+            flexDirection: 'row',
+            backgroundColor: 'white',
+            width: '97%',
+            alignSelf: 'center',
+            height: 52,
+            borderRadius: 11,
+            marginVertical: 3.5,
+          }}>
+          <TextInput
+            style={{
+              width: '80%',
+              borderWidth: 1,
+              borderColor: 'green',
+              borderRadius: 11,
+              height: '100%',
+              paddingLeft: 10,
+            }}
+            onChangeText={(text) => onChangeText(text)}
+            value={value}
+            placeholder={plant.commonName}
+            onSubmitEditing={() => renamePlant(plant)}
+          />
+          <PflanzyOpacity onPress={() => setRename(false)}>
+            <AntDesign name="closecircle" size={30} color="green" />
+          </PflanzyOpacity>
+        </View>
+      )}
+
       <PflanzyOpacity style={styles.deleteSettingsBtns} onPress={() => deletePlantHandler(plant)}>
         <Text style={styles.settingsBtnDelete}>Delete Plant</Text>
       </PflanzyOpacity>
@@ -193,6 +241,8 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: Colors.tintColor,
     height: '100%',
+    display: 'flex',
+    justifyContent: 'space-evenly',
   },
 
   settingsBtns: {
