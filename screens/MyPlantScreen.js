@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity as DefaultTouch } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity as DefaultTouch } from 'react-native';
 import {
   MaterialCommunityIcons,
   Entypo,
@@ -30,7 +30,7 @@ const MyGardenPlant = ({ route, navigation }) => {
   const ref = useRef();
   const [rename, setRename] = useState(false);
   const [value, onChangeText] = useState(
-    plant?.custom?.title ? plant.custom.title : plant.commonName
+    plant?.custom?.title ? plant.custom.title : plant?.commonName
   );
 
   const renamePlant = (selectedPlant) => {
@@ -152,7 +152,7 @@ const MyGardenPlant = ({ route, navigation }) => {
               <AntDesign style={styles.smallInfoIcon} name="warning" size={30} />
             </View>
             <View style={styles.smallBodyContainer}>
-              <Text style={styles.smallInfoBody}>{plant.poisonousForPets}</Text>
+              <Text style={styles.smallInfoBody}>{plant?.poisonousForPets}</Text>
             </View>
           </View>
 
@@ -162,7 +162,7 @@ const MyGardenPlant = ({ route, navigation }) => {
               <Entypo style={styles.smallInfoIcon} name="tree" size={30} />
             </View>
             <View style={styles.smallBodyContainer}>
-              <Text style={styles.smallInfoBody}>{plant.maxGrowth}</Text>
+              <Text style={styles.smallInfoBody}>{plant?.maxGrowth}</Text>
             </View>
           </View>
 
@@ -172,7 +172,7 @@ const MyGardenPlant = ({ route, navigation }) => {
               <Entypo style={styles.smallInfoIcon} name="globe" size={30} />
             </View>
             <View style={styles.smallBodyContainer}>
-              <Text style={styles.smallInfoBody}>{plant.origin}</Text>
+              <Text style={styles.smallInfoBody}>{plant?.origin}</Text>
             </View>
           </View>
 
@@ -182,7 +182,7 @@ const MyGardenPlant = ({ route, navigation }) => {
               <Entypo style={styles.smallInfoIcon} name="price-tag" size={30} />
             </View>
             <View style={styles.smallBodyContainer}>
-              <Text style={styles.smallInfoBody}>{plant.category}</Text>
+              <Text style={styles.smallInfoBody}>{plant?.category}</Text>
             </View>
           </View>
         </View>
@@ -193,7 +193,7 @@ const MyGardenPlant = ({ route, navigation }) => {
               <Entypo name="drop" size={14} color={Colors.tintColor} style={styles.waterDrop} />
               <Text style={styles.infoHeader}>Water</Text>
             </View>
-            <Text style={styles.infoBody}>{plant.watering}</Text>
+            <Text style={styles.infoBody}>{plant?.watering}</Text>
           </View>
 
           <View style={styles.infoWrapper}>
@@ -201,7 +201,7 @@ const MyGardenPlant = ({ route, navigation }) => {
               <Entypo name="light-up" size={20} color={Colors.tintColor} />
               <Text style={styles.infoHeader}>Light</Text>
             </View>
-            <Text style={styles.infoBody}>{plant.light}</Text>
+            <Text style={styles.infoBody}>{plant?.light}</Text>
           </View>
 
           <View style={styles.infoWrapper}>
@@ -213,7 +213,7 @@ const MyGardenPlant = ({ route, navigation }) => {
               />
               <Text style={styles.infoHeader}>Temperature</Text>
             </View>
-            <Text style={styles.infoBody}>{plant.temperature}</Text>
+            <Text style={styles.infoBody}>{plant?.temperature}</Text>
           </View>
 
           <View style={styles.infoWrapper}>
@@ -221,7 +221,7 @@ const MyGardenPlant = ({ route, navigation }) => {
               <MaterialCommunityIcons name="pot" size={20} color={Colors.tintColor} />
               <Text style={styles.infoHeader}>Soil</Text>
             </View>
-            <Text style={styles.infoBody}>{plant.soil}</Text>
+            <Text style={styles.infoBody}>{plant?.soil}</Text>
           </View>
 
           <View style={styles.infoWrapper}>
@@ -229,7 +229,7 @@ const MyGardenPlant = ({ route, navigation }) => {
               <Entypo name="bucket" size={20} color={Colors.tintColor} />
               <Text style={styles.infoHeader}>Re-Potting</Text>
             </View>
-            <Text style={styles.infoBody}>{plant.rePotting}</Text>
+            <Text style={styles.infoBody}>{plant?.rePotting}</Text>
           </View>
 
           <View style={styles.infoWrapper}>
@@ -237,7 +237,7 @@ const MyGardenPlant = ({ route, navigation }) => {
               <MaterialCommunityIcons name="spray-bottle" size={20} color={Colors.tintColor} />
               <Text style={styles.infoHeader}>Fertilizer</Text>
             </View>
-            <Text style={styles.infoBody}>{plant.fertilizer}</Text>
+            <Text style={styles.infoBody}>{plant?.fertilizer}</Text>
           </View>
 
           <View style={styles.infoWrapper}>
@@ -245,7 +245,7 @@ const MyGardenPlant = ({ route, navigation }) => {
               <Entypo name="water" size={20} color={Colors.tintColor} />
               <Text style={styles.infoHeader}>Humidity</Text>
             </View>
-            <Text style={styles.infoBody}>{plant.humidity}</Text>
+            <Text style={styles.infoBody}>{plant?.humidity}</Text>
           </View>
 
           <View style={styles.infoWrapper}>
@@ -253,7 +253,7 @@ const MyGardenPlant = ({ route, navigation }) => {
               <FontAwesome5 name="seedling" size={20} color={Colors.tintColor} />
               <Text style={styles.infoHeader}>Propagation</Text>
             </View>
-            <Text style={styles.infoBody}>{plant.propagation}</Text>
+            <Text style={styles.infoBody}>{plant?.propagation}</Text>
           </View>
         </View>
       </ScrollView>
@@ -294,7 +294,7 @@ const MyGardenPlant = ({ route, navigation }) => {
               <Circle r="83%" cx="50%" />
             </ClipPath>
             <Image
-              href={plant.images.imagePrimary}
+              href={plant?.images?.imagePrimary}
               width="100%"
               height="100%"
               preserveAspectRatio="xMidYMid slice"
@@ -304,15 +304,15 @@ const MyGardenPlant = ({ route, navigation }) => {
           <View style={styles.nameContainer}>
             {plant?.custom?.title && (
               <View>
-                <Text>{plant.custom.title}</Text>
+                <Text>{plant?.custom.title}</Text>
               </View>
             )}
             <View style={styles.commonNameContainer}>
-              <Text style={styles.commonName}>{plant.commonName}</Text>
+              <Text style={styles.commonName}>{plant?.commonName}</Text>
             </View>
             <View>
               <Text style={styles.botName}>
-                Botanical name: <Text style={styles.botNameInner}>{plant.scientificName} </Text>
+                Botanical name: <Text style={styles.botNameInner}>{plant?.scientificName} </Text>
               </Text>
             </View>
           </View>
