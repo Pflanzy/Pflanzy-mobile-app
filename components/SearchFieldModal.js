@@ -13,6 +13,7 @@ import {
   import IndividualCard from '../components/IndividualCard';
   import cactus from '../assets/images/cactus.png';
  import Icon from "react-native-vector-icons/AntDesign"
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 const SearchFieldModal = ({plantData,dispatch}) => {
     const [initialData, setInitialData] = useState(
         plantData.sort((a, b) => (a.commonName > b.commonName ? 1 : -1))
@@ -58,7 +59,7 @@ const SearchFieldModal = ({plantData,dispatch}) => {
       };
     return (<View>
     <TouchableWithoutFeedback onPress={() => dispatch({type:"TOGGLE"})} style={{paddingTop:10,paddingLeft:10}}>
-        <Icon name="close" size={30} color="#8FAE93" /> 
+        <Icon name="close" size={30} color={Colors.tintColor} /> 
     </TouchableWithoutFeedback>
         <SearchField sendData={getData} /> 
     {showLoading ? (
@@ -90,8 +91,7 @@ const styles = StyleSheet.create({
       resizeMode:"cover"
     },
     wrapper: {
-      paddingTop: 10,
-      paddingBottom: 20,
+      paddingBottom: 30,
     },
     loadingContainer: {
       alignItems: 'center',
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
       height: '55%',
     },
     plant: {
-      marginBottom:20
+    paddingBottom:250,
     },
     cactusWrapper: {
       justifyContent: 'center',
