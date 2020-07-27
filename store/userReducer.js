@@ -7,7 +7,7 @@ const userReducer = (state = initialState, action) => {
     case 'ADD_USER':
       return { ...action.payload.user };
     case 'UPDATE_USER':
-      return { ...state, plants: action.payload.plants };
+      return { ...state, plants: action?.payload?.plants };
     case 'REMOVE_USER':
       break;
     case 'ADD_PLANT':

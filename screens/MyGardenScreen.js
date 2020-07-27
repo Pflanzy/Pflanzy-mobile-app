@@ -5,13 +5,14 @@ import BasicCard from '../components/BasicCard';
 
 const MyGardenScreen = () => {
   const user = useSelector((state) => state);
-
-
+  
   return (
     <ScrollView>
       <View style={styles.container}>
         <Text> My Garden Screen </Text>
-        <BasicCard />
+        {user.plants.map((plant) => {
+          return <BasicCard plant={plant} key={plant.scientificName} />;
+        })}
         <Text>{}</Text>
       </View>
     </ScrollView>

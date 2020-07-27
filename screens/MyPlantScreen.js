@@ -1,29 +1,105 @@
-import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity as DefaultTouch } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity as DefaultTouch } from 'react-native';
 import { Entypo, AntDesign } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
 import Svg, { Image, Circle, ClipPath } from 'react-native-svg';
 import BottomSheet from 'reanimated-bottom-sheet';
 import Animated from 'react-native-reanimated';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useSelector } from 'react-redux';
+import firebase from '../firebase';
 import Colors from '../constants/Colors';
 import PflanzyOpacity from '../components/PflanzyOpacity';
 import ModalConfigPopup from '../components/ModalConfigPopup';
 
-const MyGardenPlant = (props) => {
-  const navigation = useNavigation();
+const MyGardenPlant = ({ route, navigation }) => {
   const bsSettings = React.createRef();
   const bsInfo = React.createRef();
   const fall = new Animated.Value(1);
+  const { plant } = route.params;
+  const userID = useSelector((state) => state.id);
+  const [rename, setRename] = useState(false);
+  const [value, onChangeText] = useState(plant.commonName);
+
+  const renamePlant = () => {
+    // Dispatch Action to add a custom name to the plant
+  };
+
+  const deletePlantHandler = (selectedPlant) => {
+    firebase
+      .firestore()
+      .collection('plants')
+      .doc(userID)
+      .update({
+        plants: firebase.firestore.FieldValue.arrayRemove(selectedPlant),
+      })
+      .then(() => {
+        navigation.navigate('MyGarden');
+      });
+
+    // .set(
+    //   {
+    //     plants: firebase.firestore.FieldValue.arrayUnion(selectedPlant),
+    //   },
+    //   { merge: true }
+    // );
+    // dispatch(updateUser(userID));
+    // console.log('adding plant', selectedPlant)
+    //  return dispatch({
+    //     type: "ADD_PLANT", payload: {
+    //     plant: selectedPlant
+    //   }})
+  };
   const renderInner = () => (
     <View style={styles.settingsContainer}>
       <PflanzyOpacity style={styles.settingsBtns} onPress={() => navigation.navigate('Camera')}>
         <Text style={styles.settingsBtnTitle}>Take Photo</Text>
       </PflanzyOpacity>
-      <PflanzyOpacity style={styles.settingsBtns}>
-        <Text style={styles.settingsBtnTitle}>Rename Plant</Text>
-      </PflanzyOpacity>
-      <PflanzyOpacity style={styles.deleteSettingsBtns}>
+      {!rename ? (
+        <PflanzyOpacity
+          style={styles.settingsBtns}
+          onPress={() => {
+            setRename(true);
+          }}>
+          <Text style={styles.settingsBtnTitle}>Rename Plant</Text>
+        </PflanzyOpacity>
+      ) : (
+        <View
+          style={{
+            padding: 0,
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            paddingHorizontal: 10,
+            paddingVertical: 5,
+            flexDirection: 'row',
+            backgroundColor: 'white',
+            width: '97%',
+            alignSelf: 'center',
+            height: 52,
+            borderRadius: 11,
+            marginVertical: 3.5,
+          }}>
+          <TextInput
+            style={{
+              width: '80%',
+              borderWidth: 1,
+              borderColor: 'green',
+              borderRadius: 11,
+              height: '100%',
+              paddingLeft: 10,
+            }}
+            onChangeText={(text) => onChangeText(text)}
+            value={value}
+            placeholder={plant.commonName}
+            onSubmitEditing={() => renamePlant(plant)}
+          />
+          <PflanzyOpacity onPress={() => setRename(false)}>
+            <AntDesign name="closecircle" size={30} color="green" />
+          </PflanzyOpacity>
+        </View>
+      )}
+
+      <PflanzyOpacity style={styles.deleteSettingsBtns} onPress={() => deletePlantHandler(plant)}>
         <Text style={styles.settingsBtnDelete}>Delete Plant</Text>
       </PflanzyOpacity>
       <PflanzyOpacity style={styles.cancelSettingsBtn} onPress={() => bsSettings.current.snapTo(1)}>
@@ -58,14 +134,14 @@ const MyGardenPlant = (props) => {
               <AntDesign style={styles.smallInfoIcon} name="warning" size={35} color="#006772" />
               <Text style={styles.infoHeader}>Poisonous</Text>
             </View>
-            <Text style={styles.smallInfoBody}>Not poisonous for cats and dogs.</Text>
+            <Text style={styles.smallInfoBody}>{plant.poisonousForPets}</Text>
           </View>
           <View style={styles.smallInfoWrapper}>
             <View style={styles.smallInfoHeaderWrapper}>
               <Entypo style={styles.smallInfoIcon} name="tree" size={35} color="#006772" />
               <Text style={styles.infoHeader}>Growth</Text>
             </View>
-            <Text style={styles.smallInfoBody}>10-20 cm</Text>
+            <Text style={styles.smallInfoBody}>{plant.maxGrowth}</Text>
           </View>
         </View>
         <View style={styles.infoWrapper}>
@@ -73,22 +149,16 @@ const MyGardenPlant = (props) => {
             <Entypo name="drop" size={14} color="white" style={styles.waterDrop} />
             <Text style={styles.infoHeader}>Water</Text>
           </View>
-          <Text style={styles.infoBody}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam exercitationem
-            ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
-          </Text>
+          <Text style={styles.infoBody}>{plant.watering}</Text>
         </View>
         <View style={styles.infoWrapper}>
           <View style={styles.infoHeaderWrapper}>
             <Entypo name="light-up" size={20} color="white" />
             <Text style={styles.infoHeader}>Light</Text>
           </View>
-          <Text style={styles.infoBody}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nam exercitationem
-            ex ad, possimus sed? Sit accusamus rerum sapiente molestias laudantium.
-          </Text>
+          <Text style={styles.infoBody}>{plant.light}</Text>
         </View>
-        <PflanzyOpacity onPress={() => navigation.navigate('IndividualPlantPage')}>
+        <PflanzyOpacity onPress={() => navigation.navigate('IndividualPlant', { element: plant })}>
           <View style={styles.infoBtnContainer}>
             <Text style={styles.infoBtn}>More info</Text>
           </View>
@@ -131,7 +201,7 @@ const MyGardenPlant = (props) => {
               <Circle r="83%" cx="50%" />
             </ClipPath>
             <Image
-              href={require('../assets/images/water-lilly.jpg')}
+              href={plant.images.imagePrimary}
               width="100%"
               height="100%"
               preserveAspectRatio="xMidYMid slice"
@@ -140,11 +210,11 @@ const MyGardenPlant = (props) => {
           </Svg>
           <View style={styles.nameContainer}>
             <View style={styles.commonNameContainer}>
-              <Text style={styles.commonName}>Common name/Given name</Text>
+              <Text style={styles.commonName}>{plant.commonName}</Text>
             </View>
             <View>
               <Text style={styles.botName}>
-                Botanical name: <Text style={styles.botNameInner}>Spathiphyllum Wallisii</Text>
+                Botanical name: <Text style={styles.botNameInner}>{plant.scientificName} </Text>
               </Text>
             </View>
           </View>
@@ -171,6 +241,8 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: Colors.tintColor,
     height: '100%',
+    display: 'flex',
+    justifyContent: 'space-evenly',
   },
 
   settingsBtns: {
