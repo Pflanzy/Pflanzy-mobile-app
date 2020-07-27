@@ -1,10 +1,13 @@
-import { Entypo, AntDesign, FontAwesome5, MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
+import {
+  Entypo,
+  AntDesign,
+  FontAwesome5,
+  MaterialCommunityIcons,
+  Ionicons,
+} from '@expo/vector-icons';
 import React, { useRef, useState } from 'react';
 import BottomSheet from 'reanimated-bottom-sheet';
-import firebase, { updateUser } from "../firebase"
-import { useDispatch, useSelector} from "react-redux"
-import Colors from '../constants/Colors'
-import TouchableOpacity from "../components/PflanzyOpacity"
+import { useDispatch, useSelector } from 'react-redux';
 import {
   StyleSheet,
   TouchableWithoutFeedback,
@@ -14,13 +17,17 @@ import {
   ImageBackground,
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+
 import { LinearGradient } from 'expo-linear-gradient';
 import { Transitioning, Transition } from 'react-native-reanimated';
 import PflanzyOpacity from '../components/PflanzyOpacity';
 
+import firebase, { updateUser } from '../firebase';
+import Colors from '../constants/Colors';
+
 const IndividualPlantScreen = (navigation) => {
-  const dispatch = useDispatch()
-  const userID = useSelector(state => state.id)
+  const dispatch = useDispatch();
+  const userID = useSelector((state) => state.id);
 
   // arrow transition for bottom sheet
   const transition = <Transition.Change interpolation="easeInOut" />;
@@ -30,72 +37,76 @@ const IndividualPlantScreen = (navigation) => {
   const plant = navigation.route.params.element;
 
   const addPlantHandler = (selectedPlant) => {
-    firebase.firestore().collection("plants").doc(userID).set({
-      plants: firebase.firestore.FieldValue.arrayUnion(selectedPlant)
-    }, { merge: true })
+    firebase
+      .firestore()
+      .collection('plants')
+      .doc(userID)
+      .set(
+        {
+          plants: firebase.firestore.FieldValue.arrayUnion(selectedPlant),
+        },
+        { merge: true }
+      );
     dispatch(updateUser(userID));
     // console.log('adding plant', selectedPlant)
     //  return dispatch({
     //     type: "ADD_PLANT", payload: {
     //     plant: selectedPlant
     //   }})
-    }
+  };
 
-    const NeuMorph = ({ children }) => {
-      return (
-        <View style={styles.topShadow}>
-          <View style={styles.bottomShadow}>{children}</View>
-        </View>
-      );
-    };
+  const NeuMorph = ({ children }) => {
+    return (
+      <View style={styles.topShadow}>
+        <View style={styles.bottomShadow}>{children}</View>
+      </View>
+    );
+  };
 
   const renderContent = () => {
     return (
       <View style={styles.contentWrapper}>
         <View style={styles.content}>
-        <Transitioning.View
-        ref={ref}
-        transition={transition}
-        style={{
-          alignItems: 'center',
-        }}>
-        <Ionicons
-          name="ios-arrow-up"
-          size={24}
-          color="#dbd7d3"
-          style={{ transform: [{ rotateX: `${deg}deg` }] }}
-        />
-      </Transitioning.View>
+          <Transitioning.View
+            ref={ref}
+            transition={transition}
+            style={{
+              alignItems: 'center',
+            }}>
+            <Ionicons
+              name="ios-arrow-up"
+              size={24}
+              color="#dbd7d3"
+              style={{ transform: [{ rotateX: `${deg}deg` }] }}
+            />
+          </Transitioning.View>
           <View>
             <Text style={styles.nameGeneric}>{plant.commonName}</Text>
             <Text style={styles.nameScientific}>{plant.scientificName}</Text>
           </View>
-          <View style={styles.btnContainer}  >
-
-          <PflanzyOpacity onPress={() => addPlantHandler(plant)}>
-            <NeuMorph>
-              <View style={{marginBottom:30}}>
-                <LinearGradient
-                  colors={['#004e57', '#027885', '#004e57']}
-                  start={[0.0, 0.0]}
-                  end={[1.0, 1.0]}
-                  style={{ width: 240, borderRadius: 17, padding: 10, elevation: 3 }}>
-                  <Text style={{
-                  textAlign: 'center',
-                  fontSize: 16,
-                  color: Colors.defaultWhite,
-                  fontWeight: '600',
-                }}>Add To My Garden</Text>
-                </LinearGradient>
-              </View>
-            </NeuMorph>
-          </PflanzyOpacity>
-
-            {/* <TouchableOpacity style={styles.btnReminder} onPress={() => addPlantHandler(plant)}>
-              <Ionicons name="ios-basket" size={14} color="white" style={styles.waterDrop}  />
-              <Text style={styles.btnText}>Add To My Garden</Text>
-            </TouchableOpacity> */}
-          </View> 
+          <View style={styles.btnContainer}>
+            <PflanzyOpacity onPress={() => addPlantHandler(plant)}>
+              <NeuMorph>
+                <View style={{ marginBottom: 30 }}>
+                  <LinearGradient
+                    colors={['#004e57', '#027885', '#004e57']}
+                    start={[0.0, 0.0]}
+                    end={[1.0, 1.0]}
+                    style={{ width: 240, borderRadius: 17, padding: 10, elevation: 3 }}>
+                    <Text
+                      style={{
+                        textAlign: 'center',
+                        fontSize: 16,
+                        color: Colors.defaultWhite,
+                        fontWeight: '600',
+                      }}>
+                      Add To My Garden
+                    </Text>
+                  </LinearGradient>
+                </View>
+              </NeuMorph>
+            </PflanzyOpacity>
+          </View>
           <ScrollView style={styles.contentBody}>
             <Text style={styles.text}>{plant.description}</Text>
             <View style={styles.shortInfoContainer}>
@@ -117,9 +128,7 @@ const IndividualPlantScreen = (navigation) => {
               <View style={styles.shortInfoElement}>
                 <AntDesign style={styles.shortInfoIcon} name="warning" size={80} color="#006772" />
                 <Text style={styles.shortInfoHeadline}>Poisonous:</Text>
-                <Text style={styles.shortInfoText}>
-                  {plant.poisonousForPets}
-                </Text>
+                <Text style={styles.shortInfoText}>{plant.poisonousForPets}</Text>
               </View>
             </View>
             <View style={styles.infoWrapper}>
@@ -190,7 +199,7 @@ const IndividualPlantScreen = (navigation) => {
     <View style={styles.container}>
       <BottomSheet
         ref={bs}
-        snapPoints={['39%','85%']}
+        snapPoints={['39%', '85%']}
         initialSnap={0}
         renderContent={renderContent}
         onOpenEnd={() => {
@@ -203,10 +212,7 @@ const IndividualPlantScreen = (navigation) => {
         }}
       />
       <TouchableWithoutFeedback onPress={() => bs.current.snapTo(0)}>
-        <Image
-          style={styles.background}
-          source={{uri: plant?.images?.imagePrimary}}
-        />
+        <Image style={styles.background} source={{ uri: plant?.images?.imagePrimary }} />
       </TouchableWithoutFeedback>
     </View>
   );
@@ -215,7 +221,6 @@ const IndividualPlantScreen = (navigation) => {
 export default IndividualPlantScreen;
 
 const styles = StyleSheet.create({
-
   topShadow: {
     shadowOffset: {
       width: -2,
@@ -269,7 +274,7 @@ const styles = StyleSheet.create({
   btnContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    width:' 100%'
+    width: ' 100%',
   },
   btnReminder: {
     flexDirection: 'row',

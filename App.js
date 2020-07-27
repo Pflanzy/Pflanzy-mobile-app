@@ -36,6 +36,7 @@ export default function App(params) {
               <Stack.Navigator
                 screenOptions={{
                   headerStyle: { backgroundColor: Colors.tintColor },
+                  headerTitleAlign: 'center',
                   headerTintColor: Colors.defaultWhite,
                 }}>
                 <Stack.Screen name="Root" component={BottomTabNavigator} />
