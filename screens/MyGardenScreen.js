@@ -8,28 +8,26 @@ const MyGardenScreen = () => {
   const plants = useSelector((state) => state.userReducer.plants);
   return (
     <ScrollView contentContainerStyle={styles.wrapper}>
-      {plants.length > 0 ? 
-      (
-      <View style={styles.container}>
-        {plants &&
-          plants.map((plant) => {
-            return <BasicCard plant={plant} key={plant.id} />;
-          })}
-      </View>
+      {plants.length > 0 ? (
+        <View style={styles.container}>
+          {plants &&
+            plants.map((plant) => {
+              return <BasicCard plant={plant} key={plant.id} />;
+            })}
+        </View>
       ) : (
-      <View style={styles.plantsIconWrapper}>
-        <Image source={plantsIcon} style={styles.plantsIconIcon} />
-        <Text style={styles.errorMsg}>There are no plants in your garden yet.</Text>
-      </View>
-      )
-    }
+        <View style={styles.plantsIconWrapper}>
+          <Image source={plantsIcon} style={styles.plantsIconIcon} />
+          <Text style={styles.errorMsg}>There are no plants in your garden yet.</Text>
+        </View>
+      )}
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   wrapper: {
-    marginTop: 10
+    marginTop: 10,
   },
   container: {
     flexDirection: 'column',
@@ -37,13 +35,13 @@ const styles = StyleSheet.create({
   },
   plantsIconWrapper: {
     justifyContent: 'center',
-    height: 600,
+    height: 550,
     alignItems: 'center',
   },
   plantsIconIcon: {
     height: 140,
     width: 140,
-    marginBottom: 10
+    marginBottom: 10,
   },
   errorMsg: {
     fontSize: 20,
