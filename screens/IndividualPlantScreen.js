@@ -129,14 +129,9 @@ const IndividualPlantScreen = (navigation) => {
                 <Text style={styles.shortInfoText}>{plant.origin}</Text>
               </View>
               <View style={styles.shortInfoElement}>
-                <Entypo
-                  style={styles.shortInfoIcon}
-                  name="price-tag"
-                  size={80}
-                  color="#006772"
-                />
+                <Entypo style={styles.shortInfoIcon} name="price-tag" size={80} color="#006772" />
                 <Text style={styles.shortInfoHeadline}>Family:</Text>
-                <         </View>
+              </View>
               <View style={styles.shortInfoElement}>
                 <Entypo style={styles.shortInfoIcon} name="tree" size={80} color="#006772" />
                 <Text style={styles.shortInfoHeadline}>Growth:</Text>
