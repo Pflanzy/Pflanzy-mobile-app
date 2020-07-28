@@ -27,7 +27,7 @@ const SearchScreen = () => {
             containerStyle={{
               backgroundColor: 'transparent',
               borderStyle: 'dashed',
-              marginTop: 80,
+              marginTop: 50,
               width:"90%",
               alignSelf:"center"
             }}

@@ -8,12 +8,13 @@ import {
     ActivityIndicator,
     Image
   } from 'react-native';
-  import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-  import SearchField from '../components/SearchField';
-  import IndividualCard from '../components/IndividualCard';
-  import cactus from '../assets/images/cactus.png';
- import Icon from "react-native-vector-icons/AntDesign"
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import SearchField from '../components/SearchField';
+import IndividualCard from '../components/IndividualCard';
+import cactus from '../assets/images/cactus.png';
+import Icon from "react-native-vector-icons/AntDesign"
+import Colors from '../constants/Colors';
+
 const SearchFieldModal = ({plantData,dispatch}) => {
     const [initialData, setInitialData] = useState(
         plantData.sort((a, b) => (a.commonName > b.commonName ? 1 : -1))
@@ -42,7 +43,7 @@ const SearchFieldModal = ({plantData,dispatch}) => {
       const loadingFunction = () => {
         return (
           <View style={styles.loadingContainer}>
-            <ActivityIndicator size="large" color="#048243" />
+            <ActivityIndicator size="large" color={Colors.darkGreen} />
           </View>
         );
       };
@@ -57,12 +58,13 @@ const SearchFieldModal = ({plantData,dispatch}) => {
           setFilteredData(filteredResult);
         }
       };
-    return (<View>
-    <TouchableWithoutFeedback onPress={() => dispatch({type:"TOGGLE"})} style={{paddingTop:10,paddingLeft:10}}>
-        <Icon name="close" size={30} color={Colors.tintColor} /> 
-    </TouchableWithoutFeedback>
+    return (
+      <View>
+        <TouchableWithoutFeedback onPress={() => dispatch({type:"TOGGLE"})} style={{paddingTop:40,paddingLeft:20}}>
+          <Icon name="close" size={30} color={Colors.darkGreen} /> 
+        </TouchableWithoutFeedback>
         <SearchField sendData={getData} /> 
-    {showLoading ? (
+        {showLoading ? (
           loadingFunction()
         ) : (
           <TouchableWithoutFeedback style={styles.wrapper} onPress={() => Keyboard.dismiss()}>
@@ -78,7 +80,7 @@ const SearchFieldModal = ({plantData,dispatch}) => {
             </ScrollView>
           </TouchableWithoutFeedback>
         )}
-        </View>
+      </View>
     );
 }
 const styles = StyleSheet.create({
@@ -99,7 +101,8 @@ const styles = StyleSheet.create({
       height: '55%',
     },
     plant: {
-    paddingBottom:250,
+      marginTop: 8,
+      paddingBottom:250,
     },
     cactusWrapper: {
       justifyContent: 'center',
