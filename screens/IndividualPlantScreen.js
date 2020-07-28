@@ -13,10 +13,7 @@ import {
   TouchableWithoutFeedback,
   Image,
   Text,
-  View,
-  ImageBackground,
-  Modal,
-  Button,
+  View
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -85,7 +82,7 @@ const IndividualPlantScreen = (navigation) => {
               name="ios-arrow-up"
               size={24}
               color="#dbd7d3"
-              style={{ transform: [{ rotateX: `${deg}deg` }] }}
+              style={{ marginBottom: 5, transform: [{ rotateX: `${deg}deg` }] }}
             />
           </Transitioning.View>
           <View>
@@ -93,9 +90,9 @@ const IndividualPlantScreen = (navigation) => {
             <Text style={styles.nameScientific}>{plant.scientificName}</Text>
           </View>
           <View style={styles.btnContainer}>
-            <PflanzyOpacity onPress={() => addPlantHandler(plant)}>
+            <PflanzyOpacity activeOpacity={0.7} onPress={() => addPlantHandler(plant)}>
               <NeuMorph>
-                <View style={{ marginBottom: 30 }}>
+                <View style={{ marginBottom: 25 }}>
                   <LinearGradient
                     colors={['#004e57', '#027885', '#004e57']}
                     start={[0.0, 0.0]}
