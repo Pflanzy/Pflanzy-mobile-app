@@ -5,8 +5,7 @@ import BasicCard from '../components/BasicCard';
 import plantsIcon from '../assets/images/plants.png';
 
 const MyGardenScreen = () => {
-  const plants = useSelector((state) => state.plants);
-
+  const plants = useSelector((state) => state.userReducer.plants);
   return (
     <ScrollView contentContainerStyle={styles.wrapper}>
       {plants.length > 0 ? 

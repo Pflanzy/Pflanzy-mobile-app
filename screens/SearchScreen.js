@@ -1,113 +1,55 @@
-import React, { useEffect, useState } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Keyboard,
-  ScrollView,
-  ActivityIndicator,
-  Image,
-} from 'react-native';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import SearchField from '../components/SearchField';
-import IndividualCard from '../components/IndividualCard';
+import React from 'react';
+import { StyleSheet, Modal, ImageBackground } from 'react-native';
 import plantData from '../data/data.json';
-import cactus from '../assets/images/cactus.png';
+import photo from '../assets/images/photo-1517191434949-5e90cd67d2b6.jpeg';
+import { SearchBar } from 'react-native-elements';
+import SearchFieldModal from '../components/SearchFieldModal';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useDispatch, useSelector } from 'react-redux';
 
 const SearchScreen = () => {
-  const [initialData, setInitialData] = useState(
-    plantData.sort((a, b) => (a.commonName > b.commonName ? 1 : -1))
-  );
-  const [filteredData, setFilteredData] = useState([]);
-  const [showLoading, setShowLoading] = useState(true);
-  useEffect(() => {
-    setFilteredData(initialData);
-    const myTimeOut = setTimeout(() => {
-      setShowLoading(false);
-    }, 500);
-    return () => {
-      clearTimeout(myTimeOut);
-    };
-  }, []);
-  const plantList = () => {
-    return filteredData.map((element) => {
-      return (
-        <View key={element.scientificName}>
-          <IndividualCard element={element} />
-        </View>
-      );
-    });
-  };
-
-  const loadingFunction = () => {
-    return (
-      <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#048243" />
-      </View>
-    );
-  };
-  const getData = (val) => {
-    if (initialData) {
-      const filteredResult = initialData.filter((element) => {
-        return (
-          element.commonName.toLowerCase().startsWith(val.toLowerCase()) ||
-          element.scientificName.toLowerCase().startsWith(val.toLowerCase())
-        );
-      });
-      setFilteredData(filteredResult);
-    }
-  };
+  const dispatch = useDispatch();
+  const modalVisible = useSelector((state) => state.modalReducer.open);
 
   return (
     <>
-      <SearchField sendData={getData} />
-      <ScrollView contentContainerStyle={styles.parentWrapper}>
-        {showLoading ? (
-          loadingFunction()
-        ) : (
-          <TouchableWithoutFeedback style={styles.wrapper} onPress={() => Keyboard.dismiss()}>
-            <ScrollView>
-              {filteredData.length > 0 ? (
-                plantList()
-              ) : (
-                <View style={styles.cactusWrapper}>
-                  <Image source={cactus} style={styles.cactusIcon} />
-                  <Text style={styles.errorMsg}>Sorry, no matching plants :)</Text>
-                </View>
-              )}
-            </ScrollView>
-          </TouchableWithoutFeedback>
-        )}
-      </ScrollView>
+      <ImageBackground source={photo} style={styles.photo}>
+        <Modal visible={modalVisible} animationType="slide">
+          <SearchFieldModal
+            plantData={plantData}
+            dispatch={dispatch}
+          />
+        </Modal>
+        <TouchableOpacity onPress={() => dispatch({ type: 'TOGGLE' })} activeOpacity={0.7}>
+          <SearchBar
+            disabled
+            round
+            containerStyle={{
+              backgroundColor: 'transparent',
+              borderStyle: 'dashed',
+              marginTop: 80,
+              width:"90%",
+              alignSelf:"center"
+            }}
+            onPress={() => dispatch({ type: 'TOGGLE' })}
+            inputContainerStyle={{ backgroundColor: 'white' }}
+            searchIcon={{ backgroundColor: 'transparent' }}
+            placeholder="Search for plants"
+          />
+        </TouchableOpacity>
+      </ImageBackground>
     </>
   );
 };
 
 const styles = StyleSheet.create({
-  wrapper: {
-    paddingTop: 10,
-    paddingBottom: 20,
+  search: {
+    paddingTop: 100,
   },
-  loadingContainer: {
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    height: '55%',
-  },
-  plantList: {
-    paddingBottom: -20,
-  },
-  cactusWrapper: {
-    justifyContent: 'center',
-    height: 400,
-    alignItems: 'center',
-  },
-  cactusIcon: {
-    height: 100,
-    width: 100,
-  },
-  errorMsg: {
-    fontSize: 20,
-    marginTop: 10,
+  photo: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
   },
 });
 

@@ -14,6 +14,7 @@ import IndividualPlantScreen from './screens/IndividualPlantScreen';
 import IndividualArticle from './components/IndividualArticle';
 import AuthScreen from './screens/AuthScreen';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
+import FlashMessage from 'react-native-flash-message';
 
 const Stack = createStackNavigator();
 
@@ -55,6 +56,7 @@ export default function App(params) {
         </AppearanceProvider>
         <StatusBar style="auto" />
       </View>
+      <FlashMessage position="top" />
     </>
   );
 }

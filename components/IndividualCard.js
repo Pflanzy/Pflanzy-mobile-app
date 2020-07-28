@@ -1,14 +1,23 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import {  useDispatch } from 'react-redux';
 
 const ReminderCard = ({element}) => {
   const navigation = useNavigation();
+  const dispatch= useDispatch();
+  const clickHandler = () => {
+    dispatch({type:"TOGGLE"})
+    setTimeout(() => {
+      navigation.navigate('IndividualPlant', {element});
+      
+    }, 200);
+  }
   return (
     <TouchableOpacity
       activeOpacity={0.7} 
       style={styles.cardContainer}
-      onPress={() => navigation.navigate('IndividualPlant', {element})}>
+      onPress={clickHandler}>
       <View style={styles.imageContainer}>
         <Image
           style={styles.cardImage}
