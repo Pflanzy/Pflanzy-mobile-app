@@ -33,7 +33,7 @@ const SearchScreen = () => {
             }}
             onPress={() => dispatch({ type: 'TOGGLE' })}
             inputContainerStyle={{ backgroundColor: 'white' }}
-            searchIcon={{ backgroundColor: 'transparent' }}
+            searchIcon={{ backgroundColor: 'transparent', marginLeft: 10 }}
             placeholder="Search for plants"
           />
         </TouchableOpacity>

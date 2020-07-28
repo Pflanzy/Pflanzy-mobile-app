@@ -68,7 +68,7 @@ const SearchFieldModal = ({plantData,dispatch}) => {
           loadingFunction()
         ) : (
           <TouchableWithoutFeedback style={styles.wrapper} onPress={() => Keyboard.dismiss()}>
-            <ScrollView contentContainerStyle={styles.plant}>
+            <ScrollView contentContainerStyle={styles.plantList}>
               {filteredData.length > 0 ? (
                 plantList()
               ) : (
@@ -100,9 +100,9 @@ const styles = StyleSheet.create({
       justifyContent: 'flex-end',
       height: '55%',
     },
-    plant: {
+    plantList: {
       marginTop: 8,
-      paddingBottom:250,
+      paddingBottom:300,
     },
     cactusWrapper: {
       justifyContent: 'center',
