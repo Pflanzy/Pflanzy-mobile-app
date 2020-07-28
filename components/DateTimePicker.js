@@ -7,7 +7,7 @@ import SetReminderNotification from './SetReminderNotification';
 
 Appearance.getColorScheme();
 
-const DateTimePicker = () => {
+const DateTimePicker = (props) => {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [dateInput, setDateInput] = useState('');
   const colorScheme = useColorScheme();
@@ -21,7 +21,8 @@ const DateTimePicker = () => {
     hideDatePicker();
     // console.warn('A date has been picked: ', date);
     const dateParsedToNum = date.toString();
-    SetReminderNotification(dateParsedToNum);
+    // SetReminderNotification(dateParsedToNum);
+    props.onTimeSet(date);
     setDateInput(moment(date).format('MMMM Do, h:mm a'));
   };
   return (

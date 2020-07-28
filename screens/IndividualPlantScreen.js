@@ -97,7 +97,7 @@ const IndividualPlantScreen = (navigation) => {
               <NeuMorph>
                 <View style={{ marginBottom: 30 }}>
                   <LinearGradient
-                    colors={['#004e57', '#027885', '#004e57']}
+                    colors={['#004e57', '#004e57', '#004e57']}
                     start={[0.0, 0.0]}
                     end={[1.0, 1.0]}
                     style={{
@@ -129,10 +129,14 @@ const IndividualPlantScreen = (navigation) => {
                 <Text style={styles.shortInfoText}>{plant.origin}</Text>
               </View>
               <View style={styles.shortInfoElement}>
-                <Entypo style={styles.shortInfoIcon} name="price-tag" size={80} color="#006772" />
-                <Text style={styles.shortInfoHeadline}>Category:</Text>
-                <Text style={styles.shortInfoText}>{plant.category}</Text>
-              </View>
+                <Entypo
+                  style={styles.shortInfoIcon}
+                  name="price-tag"
+                  size={80}
+                  color="#006772"
+                />
+                <Text style={styles.shortInfoHeadline}>Family:</Text>
+                <         </View>
               <View style={styles.shortInfoElement}>
                 <Entypo style={styles.shortInfoIcon} name="tree" size={80} color="#006772" />
                 <Text style={styles.shortInfoHeadline}>Growth:</Text>
