@@ -85,7 +85,7 @@ const IndividualPlantScreen = (navigation) => {
               <NeuMorph>
                 <View style={{ marginBottom: 30 }}>
                   <LinearGradient
-                    colors={['#004e57', '#027885', '#004e57']}
+                    colors={['#004e57', '#004e57', '#004e57']}
                     start={[0.0, 0.0]}
                     end={[1.0, 1.0]}
                     style={{ width: 240, borderRadius: 17, padding: 10, elevation: 3 }}>
