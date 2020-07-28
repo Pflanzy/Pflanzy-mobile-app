@@ -23,7 +23,7 @@ const MyGardenPlant = ({ route, navigation }) => {
   const fall = new Animated.Value(1);
   const { plantId } = route.params;
   const plant = useSelector((state) =>
-    state.plants.find((plantToFind) => plantToFind.id === plantId)
+    state.userReducer.plants.find((plantToFind) => plantToFind.id === plantId)
   );
   const transition = <Transition.Change interpolation="easeInOut" />;
   const [deg, setDeg] = useState(0);
