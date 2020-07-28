@@ -1,24 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Keyboard,
-  ScrollView,
-  ActivityIndicator,
-  Image,
-} from 'react-native';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import SearchField from '../components/SearchField';
-import IndividualCard from '../components/IndividualCard';
-import cactus from '../assets/images/cactus.png';
+import { StyleSheet, Text, View, Keyboard, ActivityIndicator, Image } from 'react-native';
+import { TouchableWithoutFeedback, ScrollView } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import PflanzyOpacity from './PflanzyOpacity';
 import { Button } from 'react-native-elements';
+import SearchField from './SearchField';
+import IndividualCard from './IndividualCard';
+import cactus from '../assets/images/cactus.png';
+import PflanzyOpacity from './PflanzyOpacity';
+
 const SearchFieldModal = ({ plantData, dispatch }) => {
   const [initialData, setInitialData] = useState(
-    plantData.sort((a, b) => (a.commonName > b.commonName ? 1 : -1)),
+    plantData.sort((a, b) => (a.commonName > b.commonName ? 1 : -1))
   );
   const [filteredData, setFilteredData] = useState([]);
   const [showLoading, setShowLoading] = useState(true);
@@ -63,9 +56,9 @@ const SearchFieldModal = ({ plantData, dispatch }) => {
     <View>
       <Button
         onPress={() => dispatch({ type: 'TOGGLE' })}
-        buttonStyle={{paddingLeft: 10, width: 100, marginLeft: -30}}
+        buttonStyle={{ paddingLeft: 10, width: 100, marginLeft: -30 }}
         icon={<Icon name="close" size={35} color={Colors.tintColor} />}
-        type="close" 
+        type="clear"
         iconRight
       />
 
@@ -73,18 +66,14 @@ const SearchFieldModal = ({ plantData, dispatch }) => {
       {showLoading ? (
         loadingFunction()
       ) : (
-        <TouchableWithoutFeedback
-          style={styles.wrapper}
-          onPress={() => Keyboard.dismiss()}>
+        <TouchableWithoutFeedback style={styles.wrapper} onPress={() => Keyboard.dismiss()}>
           <ScrollView contentContainerStyle={styles.plant}>
             {filteredData.length > 0 ? (
               plantList()
             ) : (
               <View style={styles.cactusWrapper}>
                 <Image source={cactus} style={styles.cactusIcon} />
-                <Text style={styles.errorMsg}>
-                  Sorry, no matching plants :)
-                </Text>
+                <Text style={styles.errorMsg}>Sorry, no matching plants :)</Text>
               </View>
             )}
           </ScrollView>
