@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Keyboard, ActivityIndicator, Image } from 'react-native';
 import { TouchableWithoutFeedback, ScrollView } from 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { Button } from 'react-native-elements';
+import { AntDesign } from '@expo/vector-icons';
+import Colors from '../constants/Colors';
 import SearchField from './SearchField';
 import IndividualCard from './IndividualCard';
 import cactus from '../assets/images/cactus.png';
-import PflanzyOpacity from './PflanzyOpacity';
 
 const SearchFieldModal = ({ plantData, dispatch }) => {
   const [initialData, setInitialData] = useState(
@@ -37,7 +36,7 @@ const SearchFieldModal = ({ plantData, dispatch }) => {
   const loadingFunction = () => {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#048243" />
+        <ActivityIndicator size="large" color={Colors.darkGreen} />
       </View>
     );
   };
@@ -56,8 +55,14 @@ const SearchFieldModal = ({ plantData, dispatch }) => {
     <View>
       <Button
         onPress={() => dispatch({ type: 'TOGGLE' })}
-        buttonStyle={{ paddingLeft: 10, width: 100, marginLeft: -30 }}
-        icon={<Icon name="close" size={35} color={Colors.tintColor} />}
+        buttonStyle={{
+          paddingLeft: 40,
+          paddingTop: 35,
+          marginBottom: -10,
+          width: 100,
+          marginLeft: -30,
+        }}
+        icon={<AntDesign name="close" size={35} color={Colors.darkGreen} />}
         type="clear"
         iconRight
       />
@@ -67,7 +72,7 @@ const SearchFieldModal = ({ plantData, dispatch }) => {
         loadingFunction()
       ) : (
         <TouchableWithoutFeedback style={styles.wrapper} onPress={() => Keyboard.dismiss()}>
-          <ScrollView contentContainerStyle={styles.plant}>
+          <ScrollView contentContainerStyle={styles.plantList}>
             {filteredData.length > 0 ? (
               plantList()
             ) : (
@@ -99,8 +104,9 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     height: '55%',
   },
-  plant: {
+  plantList: {
     paddingBottom: 250,
+    marginTop: 8,
   },
   cactusWrapper: {
     justifyContent: 'center',

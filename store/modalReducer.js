@@ -5,7 +5,7 @@ const modalReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'TOGGLE':
       return {
-        open: !state.open
+        open: !state.open,
       };
     default:
       return state;
