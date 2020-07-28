@@ -16,6 +16,7 @@ import {
   View,
   ImageBackground,
   Modal,
+  Button,
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -25,11 +26,13 @@ import PflanzyOpacity from '../components/PflanzyOpacity';
 
 import firebase, { updateUser } from '../firebase';
 import Colors from '../constants/Colors';
+import { showMessage } from 'react-native-flash-message';
+import { useNavigation } from '@react-navigation/native';
 
 const IndividualPlantScreen = (navigation) => {
   const dispatch = useDispatch();
-  const userID = useSelector((state) => state.id);
-
+  const userID = useSelector((state) => state.userReducer.id);
+  const navigate = useNavigation();
   // arrow transition for bottom sheet
   const transition = <Transition.Change interpolation="easeInOut" />;
   const [deg, setDeg] = useState(0);
@@ -50,6 +53,15 @@ const IndividualPlantScreen = (navigation) => {
     //     type: "ADD_PLANT", payload: {
     //     plant: selectedPlant
     //   }})
+    showMessage({
+      message:"Plant added",
+      description:"Click here to go My Garden",
+      type: "success",
+      animated:true,
+      icon:"success",
+      renderFlashMessageIcon:"asdsadsa",
+      onPress:() =>  navigate.navigate("MyGarden")
+    });
   };
 
   const NeuMorph = ({ children }) => {
@@ -63,7 +75,6 @@ const IndividualPlantScreen = (navigation) => {
   const renderContent = () => {
     return (
       <View style={styles.contentWrapper}>
-       
         <View style={styles.content}>
           <Transitioning.View
             ref={ref}
@@ -90,7 +101,12 @@ const IndividualPlantScreen = (navigation) => {
                     colors={['#004e57', '#027885', '#004e57']}
                     start={[0.0, 0.0]}
                     end={[1.0, 1.0]}
-                    style={{ width: 240, borderRadius: 17, padding: 10, elevation: 3 }}>
+                    style={{
+                      width: 240,
+                      borderRadius: 17,
+                      padding: 10,
+                      elevation: 3,
+                    }}>
                     <Text
                       style={{
                         textAlign: 'center',
@@ -109,29 +125,55 @@ const IndividualPlantScreen = (navigation) => {
             <Text style={styles.text}>{plant.description}</Text>
             <View style={styles.shortInfoContainer}>
               <View style={styles.shortInfoElement}>
-                <Entypo style={styles.shortInfoIcon} name="globe" size={80} color="#006772" />
+                <Entypo
+                  style={styles.shortInfoIcon}
+                  name="globe"
+                  size={80}
+                  color="#006772"
+                />
                 <Text style={styles.shortInfoHeadline}>Origin:</Text>
                 <Text style={styles.shortInfoText}>{plant.origin}</Text>
               </View>
               <View style={styles.shortInfoElement}>
-                <Entypo style={styles.shortInfoIcon} name="price-tag" size={80} color="#006772" />
+                <Entypo
+                  style={styles.shortInfoIcon}
+                  name="price-tag"
+                  size={80}
+                  color="#006772"
+                />
                 <Text style={styles.shortInfoHeadline}>Category:</Text>
                 <Text style={styles.shortInfoText}>{plant.category}</Text>
               </View>
               <View style={styles.shortInfoElement}>
-                <Entypo style={styles.shortInfoIcon} name="tree" size={80} color="#006772" />
+                <Entypo
+                  style={styles.shortInfoIcon}
+                  name="tree"
+                  size={80}
+                  color="#006772"
+                />
                 <Text style={styles.shortInfoHeadline}>Growth:</Text>
                 <Text style={styles.shortInfoText}>{plant.maxGrowth}</Text>
               </View>
               <View style={styles.shortInfoElement}>
-                <AntDesign style={styles.shortInfoIcon} name="warning" size={80} color="#006772" />
+                <AntDesign
+                  style={styles.shortInfoIcon}
+                  name="warning"
+                  size={80}
+                  color="#006772"
+                />
                 <Text style={styles.shortInfoHeadline}>Poisonous:</Text>
-                <Text style={styles.shortInfoText}>{plant.poisonousForPets}</Text>
+                <Text style={styles.shortInfoText}>
+                  {plant.poisonousForPets}
+                </Text>
               </View>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
-                <MaterialCommunityIcons name="temperature-celsius" size={20} color="white" />
+                <MaterialCommunityIcons
+                  name="temperature-celsius"
+                  size={20}
+                  color="white"
+                />
                 <Text style={styles.infoHeader}>Temperature</Text>
               </View>
               <Text style={styles.infoBody}>{plant.temperature}</Text>
@@ -145,7 +187,12 @@ const IndividualPlantScreen = (navigation) => {
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
-                <Entypo name="drop" size={14} color="white" style={styles.waterDrop} />
+                <Entypo
+                  name="drop"
+                  size={14}
+                  color="white"
+                  style={styles.waterDrop}
+                />
                 <Text style={styles.infoHeader}>Water</Text>
               </View>
               <Text style={styles.infoBody}>{plant.watering}</Text>
@@ -166,7 +213,11 @@ const IndividualPlantScreen = (navigation) => {
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
-                <MaterialCommunityIcons name="spray-bottle" size={20} color="white" />
+                <MaterialCommunityIcons
+                  name="spray-bottle"
+                  size={20}
+                  color="white"
+                />
                 <Text style={styles.infoHeader}>Fertilizer</Text>
               </View>
               <Text style={styles.infoBody}>{plant.fertilizer}</Text>
@@ -210,7 +261,10 @@ const IndividualPlantScreen = (navigation) => {
         }}
       />
       <TouchableWithoutFeedback onPress={() => bs.current.snapTo(0)}>
-        <Image style={styles.background} source={{ uri: plant?.images?.imagePrimary }} />
+        <Image
+          style={styles.background}
+          source={{ uri: plant?.images?.imagePrimary }}
+        />
       </TouchableWithoutFeedback>
     </View>
   );
@@ -367,4 +421,12 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 25,
   },
+  modalWrapper: {
+    backgroundColor:"grey",
+    width:300,
+    maxHeight:"50%",
+    justifyContent:"center",
+    alignItems:"center",
+    flex:1
+  }
 });
