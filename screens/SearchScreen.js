@@ -2,10 +2,11 @@ import React from 'react';
 import { StyleSheet, Modal, ImageBackground } from 'react-native';
 import plantData from '../data/data.json';
 import photo from '../assets/images/photo-1517191434949-5e90cd67d2b6.jpeg';
-import { SearchBar } from 'react-native-elements';
+import { SearchBar, Button } from 'react-native-elements';
 import SearchFieldModal from '../components/SearchFieldModal';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
+import PflanzyOpacity from '../components/PflanzyOpacity';
 
 const SearchScreen = () => {
   const dispatch = useDispatch();
@@ -15,28 +16,36 @@ const SearchScreen = () => {
     <>
       <ImageBackground source={photo} style={styles.photo}>
         <Modal visible={modalVisible} animationType="slide">
-          <SearchFieldModal
-            plantData={plantData}
-            dispatch={dispatch}
-          />
+          <SearchFieldModal plantData={plantData} dispatch={dispatch} />
         </Modal>
-        <TouchableOpacity onPress={() => dispatch({ type: 'TOGGLE' })} activeOpacity={0.7}>
-          <SearchBar
-            disabled
-            round
-            containerStyle={{
-              backgroundColor: 'transparent',
-              borderStyle: 'dashed',
-              marginTop: 80,
-              width:"90%",
-              alignSelf:"center"
-            }}
-            onPress={() => dispatch({ type: 'TOGGLE' })}
-            inputContainerStyle={{ backgroundColor: 'white' }}
-            searchIcon={{ backgroundColor: 'transparent' }}
-            placeholder="Search for plants"
-          />
-        </TouchableOpacity>
+        <Button
+          onPress={() => dispatch({ type: 'TOGGLE' })}
+          activeOpacity={0.7}
+          buttonStyle={{
+            marginTop: 50,
+            height: '40%',
+            alignItems: 'flex-start',
+            zIndex: 1,
+          }}
+          icon={
+            <SearchBar
+              disabled
+              round
+              containerStyle={{
+                width: 350,
+                borderColor: 'transparent',
+                backgroundColor: 'transparent',
+                borderBottomColor: 'transparent',
+                borderTopColor: 'transparent',
+              }}
+              onPress={() => dispatch({ type: 'TOGGLE' })}
+              inputContainerStyle={{ backgroundColor: 'white' }}
+              searchIcon={{ backgroundColor: 'transparent' }}
+              placeholder="Search for plants"
+            />
+          }
+          type="clear"
+        />
       </ImageBackground>
     </>
   );
