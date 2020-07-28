@@ -26,10 +26,10 @@ const SearchScreen = () => {
             round
             containerStyle={{
               backgroundColor: 'transparent',
-              borderStyle: 'dashed',
               marginTop: 80,
               width:"90%",
-              alignSelf:"center"
+              alignSelf:"center",
+              
             }}
             onPress={() => dispatch({ type: 'TOGGLE' })}
             inputContainerStyle={{ backgroundColor: 'white' }}
