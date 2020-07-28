@@ -21,7 +21,7 @@ const ReminderCard = ({element}) => {
       <View style={styles.imageContainer}>
         <Image
           style={styles.cardImage}
-          source={{ uri:element?.images?.imagePrimary}}
+          source={{ uri:element.images.imagePrimary}}
         />
       </View>
       <View style={styles.detailsContainer}>
