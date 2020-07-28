@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Switch, TextInput, Picker } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Switch,
+  TextInput,
+  Picker,
+  Platform,
+} from 'react-native';
 import { MaterialCommunityIcons, Fontisto, AntDesign } from '@expo/vector-icons';
 import Modal from 'react-native-modal';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -54,10 +63,23 @@ const ModalConfigPopup = (props) => {
       </PflanzyOpacity>
 
       <Modal
+        style={{
+          // height: '100%',
+          display: 'flex',
+          justifyContent: 'flex-start',
+          width: '93%',
+          position: 'absolute',
+          top: 100,
+          alignSelf: 'center',
+          backgroundColor: 'white',
+          borderRadius: 10,
+          // padding: 20,
+          height: `${isEnabled && Platform.OS === 'ios' ? '70%' : 'auto'}`,
+        }}
         isVisible={modalOpen}
         onBackdropPress={() => setModalOpen(false)}
         backdropTransitionOutTiming={40}>
-        <View style={styles.modalContent}>
+        <View style={{ padding: 20 }}>
           <View style={styles.headerOptions}>
             <TouchableOpacity onPress={() => setModalOpen(false)}>
               <Text>Cancel</Text>
@@ -117,31 +139,52 @@ const ModalConfigPopup = (props) => {
           )}
           <View style={[styles.repeater, styles.modalRows]}>
             {isEnabled && (
-              <View style={{ flexDirection: 'row' }}>
-                <Picker
-                  selectedValue={selectedInterval}
-                  style={{ height: 50, width: 100 }}
-                  onValueChange={(value) => setSelectedInterval(value)}>
-                  <Picker.Item label="1" value="1" />
-                  <Picker.Item label="2" value="2" />
-                  <Picker.Item label="3" value="3" />
-                  <Picker.Item label="4" value="4" />
-                  <Picker.Item label="5" value="5" />
-                  <Picker.Item label="6" value="6" />
-                </Picker>
-                <Picker
-                  selectedValue={selectedPeriod}
-                  style={{ height: 50, width: 100 }}
-                  onValueChange={(value) => setSelectedPeriod(value)}>
-                  <Picker.Item label="Day" value="day" />
-                  <Picker.Item label="Week" value="week" />
-                </Picker>
+              <View>
+                <View style={{ flexDirection: 'row' }}>
+                  <AntDesign name="calendar" size={18} color="#d1cdca" />
+                  <Text style={{ marginLeft: 20, marginTop: 3, color: '#d1cdca' }}>
+                    __ /__ /__ : __ :
+                  </Text>
+                </View>
+
+                <View style={{ flexDirection: 'row' }}>
+                  <Picker
+                    selectedValue={selectedInterval}
+                    style={{ height: 50, width: 100 }}
+                    onValueChange={(value) => setSelectedInterval(value)}>
+                    <Picker.Item label="1" value="1" />
+                    <Picker.Item label="2" value="2" />
+                    <Picker.Item label="3" value="3" />
+                    <Picker.Item label="4" value="4" />
+                    <Picker.Item label="5" value="5" />
+                    <Picker.Item label="6" value="6" />
+                  </Picker>
+                  <Picker
+                    selectedValue={selectedPeriod}
+                    style={{ height: 50, width: 100 }}
+                    onValueChange={(value) => setSelectedPeriod(value)}>
+                    <Picker.Item label="Day" value="day" />
+                    <Picker.Item label="Week" value="week" />
+                  </Picker>
+                </View>
               </View>
             )}
             {/* <View style={styles.repeatInputSnippet}>
               <Fontisto name="redo" size={20} color={Colors.tintColor} />
               <Text style={styles.modalFields}>Every ... days</Text>
             </View> */}
+          </View>
+          <View
+            style={{
+              position: 'absolute',
+              right: 15,
+              top: 250,
+              flexDirection: 'row',
+              alignItems: 'center',
+              // width: '100%',
+              justifyContent: 'space-between',
+            }}>
+            <Text style={{ marginRight: 10 }}>Repeat</Text>
             <Switch onValueChange={toggleSwitch} value={isEnabled} />
           </View>
         </View>
@@ -173,12 +216,12 @@ const styles = StyleSheet.create({
     shadowColor: '#3d3c3b',
   },
 
-  modalContent: {
-    backgroundColor: 'white',
-    height: '75%',
-    borderRadius: 10,
-    padding: 20,
-  },
+  // modalContent: {
+  //   backgroundColor: 'white',
+  //   height: `${isEnabled && Platform.OS === 'ios' ? '75%' : 'auto'}`,
+  //   borderRadius: 10,
+  //   padding: 20,
+  // },
 
   headerOptions: {
     flexDirection: 'row',
