@@ -250,7 +250,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#eee',
   },
   background: {
-    height: '66%',
+    height: '69%',
     width: '100%',
   },
   contentWrapper: {
