@@ -36,13 +36,13 @@ export default function SetReminderNotification(config) {
     },
   });
 
-  Notifications.getAllScheduledNotificationsAsync().then((notifications) =>
-    console.log(notifications)
-  );
+  // Notifications.getAllScheduledNotificationsAsync().then((notifications) =>
+  //   console.log(notifications)
+  // );
 
-  Notifications.dismissAllNotificationsAsync();
+  // Notifications.dismissAllNotificationsAsync();
 
-  Notifications.cancelAllScheduledNotificationsAsync();
+  // Notifications.cancelAllScheduledNotificationsAsync();
 }
 
 // Fetching information about notifications-related permissions
