@@ -92,6 +92,7 @@ const MyGardenPlant = ({ route, navigation }) => {
             style={{
               width: '80%',
               borderWidth: 1,
+              color: 'black',
               borderColor: 'green',
               borderRadius: 11,
               height: '100%',
@@ -477,7 +478,7 @@ const styles = StyleSheet.create({
     width: '80%',
     backgroundColor: '#fff',
     position: 'absolute',
-    top: '63%',
+    top: '62%',
     alignSelf: 'center',
     borderRadius: 10,
     elevation: 3,
