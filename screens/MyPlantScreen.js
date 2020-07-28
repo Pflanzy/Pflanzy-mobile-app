@@ -178,11 +178,11 @@ const MyGardenPlant = ({ route, navigation }) => {
 
           <View style={styles.smallInfoWrapper}>
             <View style={styles.smallInfoHeaderWrapper}>
-              <Text style={styles.smallInfoHeader}>Category:</Text>
+              <Text style={styles.smallInfoHeader}>Family:</Text>
               <Entypo style={styles.smallInfoIcon} name="price-tag" size={30} />
             </View>
             <View style={styles.smallBodyContainer}>
-              <Text style={styles.smallInfoBody}>{plant?.category}</Text>
+              <Text style={styles.smallInfoBody}>{plant?.familyName}</Text>
             </View>
           </View>
         </View>

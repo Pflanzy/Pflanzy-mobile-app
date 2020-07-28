@@ -141,8 +141,8 @@ const IndividualPlantScreen = (navigation) => {
                   size={80}
                   color="#006772"
                 />
-                <Text style={styles.shortInfoHeadline}>Category:</Text>
-                <Text style={styles.shortInfoText}>{plant.category}</Text>
+                <Text style={styles.shortInfoHeadline}>Family:</Text>
+                <Text style={styles.shortInfoText}>{plant.familyName}</Text>
               </View>
               <View style={styles.shortInfoElement}>
                 <Entypo
