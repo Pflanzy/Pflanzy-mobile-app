@@ -4,8 +4,7 @@ import { useSelector } from 'react-redux';
 import BasicCard from '../components/BasicCard';
 
 const MyGardenScreen = () => {
-  const plants = useSelector((state) => state.plants);
-
+  const plants = useSelector((state) => state.userReducer.plants);
   return (
     <ScrollView>
       <View style={styles.container}>
