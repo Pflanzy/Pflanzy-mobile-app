@@ -62,7 +62,7 @@ const ModalConfigPopup = (props) => {
             <TouchableOpacity onPress={() => setModalOpen(false)}>
               <Text>Cancel</Text>
             </TouchableOpacity>
-            <Text>New Reminder</Text>
+            <Text style={{ fontSize: 16, fontWeight: '500' }}>New Reminder</Text>
             <TouchableOpacity
               onPress={() => {
                 SetReminderNotification({
@@ -117,7 +117,7 @@ const ModalConfigPopup = (props) => {
           )}
           <View style={[styles.repeater, styles.modalRows]}>
             {isEnabled && (
-              <View>
+              <View style={{ flexDirection: 'row' }}>
                 <Picker
                   selectedValue={selectedInterval}
                   style={{ height: 50, width: 100 }}
@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
 
   modalContent: {
     backgroundColor: 'white',
-    height: 280,
+    height: '75%',
     borderRadius: 10,
     padding: 20,
   },
@@ -188,8 +188,9 @@ const styles = StyleSheet.create({
 
   modalRows: {
     flexDirection: 'row',
-    paddingBottom: 8,
-    marginBottom: 8,
+    paddingVertical: 8,
+    marginTop: 10,
+    marginBottom: 10,
     alignItems: 'center',
   },
 
@@ -213,6 +214,9 @@ const styles = StyleSheet.create({
 
   modalFields: {
     marginLeft: 20,
+    fontSize: 18,
+    color: Colors.darkGreen,
+    fontWeight: '500',
   },
 
   reminderTextInput: {
