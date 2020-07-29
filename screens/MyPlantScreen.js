@@ -68,33 +68,35 @@ const MyGardenPlant = ({ route, navigation }) => {
       </PflanzyOpacity>
 
       <Modal
-        // style={{
-        //   padding: 0,
-        //   display: 'flex',
-        //   justifyContent: 'space-between',
-        //   alignItems: 'center',
-        //   paddingHorizontal: 10,
-        //   paddingVertical: 5,
-        //   flexDirection: 'row',
-        //   backgroundColor: 'white',
-        //   width: '97%',
-        //   alignSelf: 'center',
-        //   height: 52,
-        //   borderRadius: 11,
-        //   marginVertical: 3.5,
-        // }}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-evenly',
+          alignItems: 'center',
+          height: 130,
+          width: '80%',
+          position: 'absolute',
+          top: '30%',
+          alignSelf: 'center',
+          backgroundColor: '#f3f3f3',
+          borderRadius: 10,
+        }}
         isVisible={modalOpen}
         onBackdropPress={() => setModalOpen(false)}
         backdropTransitionOutTiming={40}>
         <TextInput
-          // style={{
-          //   width: '80%',
-          //   borderWidth: 1,
-          //   borderColor: 'green',
-          //   borderRadius: 11,
-          //   height: '100%',
-          //   paddingLeft: 10,
-          // }}
+          style={{
+            width: '90%',
+            borderWidth: 1,
+            borderColor: 'transparent',
+            borderRadius: 11,
+            textAlign: 'center',
+            height: '40%',
+            color: 'black',
+            margin: 20,
+            backgroundColor: Colors.defaultWhite,
+            paddingLeft: 10,
+          }}
           onChangeText={(text) => onChangeText(text)}
           value={value}
           onSubmitEditing={() => {
@@ -104,9 +106,19 @@ const MyGardenPlant = ({ route, navigation }) => {
             }
           }}
         />
-        <PflanzyOpacity onPress={() => setRename(false)}>
-          <AntDesign name="closecircle" size={30} color="green" />
-        </PflanzyOpacity>
+        <View style={styles.renameIconWrapper}>
+          <PflanzyOpacity onPress={() => setRename(false)}>
+            <AntDesign style={styles.renameIcon} name="closecircle" size={35} color="#8B0000" />
+          </PflanzyOpacity>
+          <PflanzyOpacity onSubmitEditing={value}>
+            <AntDesign
+              style={styles.renameIcon}
+              name="checkcircle"
+              size={35}
+              color={Colors.tintColor}
+            />
+          </PflanzyOpacity>
+        </View>
       </Modal>
 
       <PflanzyOpacity style={styles.deleteSettingsBtns} onPress={() => deletePlantHandler(plant)}>
@@ -395,7 +407,14 @@ const styles = StyleSheet.create({
     color: Colors.tintColor,
     fontWeight: '600',
   },
-
+  renameIconWrapper: {
+    display: 'flex',
+    flexDirection: 'row',
+    height: 60,
+  },
+  renameIcon: {
+    marginHorizontal: 20,
+  },
   deleteSettingsBtns: {
     borderRadius: 10,
     backgroundColor: Colors.defaultWhite,
