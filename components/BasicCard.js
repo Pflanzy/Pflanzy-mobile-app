@@ -14,7 +14,12 @@ function BasicCard({ plant }) {
         })
       }>
       <View style={styles.imageContainer}>
-        <Image style={styles.cardImage} source={{ uri: plant?.images?.imagePrimary }} />
+        <Image
+          style={styles.cardImage}
+          source={{
+            uri: plant?.custom?.picture ? plant.custom.picture : plant?.images?.imagePrimary,
+          }}
+        />
       </View>
       <View style={styles.detailsContainer}>
         <View style={styles.nameContainer}>

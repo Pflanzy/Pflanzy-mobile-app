@@ -34,17 +34,11 @@ const MyGardenPlant = ({ route, navigation }) => {
     plant?.custom?.title ? plant.custom.title : plant?.commonName
   );
 
-  const onReminderTimeSelected = (data) => {
-    console.log(data);
-  };
-
   const renamePlant = (selectedPlant) => {
     const userplantsRef = firebase.firestore().collection('plants').doc(selectedPlant.id);
 
     userplantsRef.update({
-      custom: {
-        title: value,
-      },
+      'custom.title': value,
     });
   };
 
@@ -61,7 +55,9 @@ const MyGardenPlant = ({ route, navigation }) => {
 
   const renderInner = () => (
     <View style={styles.settingsContainer}>
-      <PflanzyOpacity style={styles.settingsBtns} onPress={() => navigation.navigate('Camera')}>
+      <PflanzyOpacity
+        style={styles.settingsBtns}
+        onPress={() => navigation.navigate('Camera', { plantId })}>
         <Text style={styles.settingsBtnTitle}>Take Photo</Text>
       </PflanzyOpacity>
       {!rename ? (
@@ -304,7 +300,7 @@ const MyGardenPlant = ({ route, navigation }) => {
               <Circle r="83%" cx="50%" />
             </ClipPath>
             <Image
-              href={plant?.images?.imagePrimary}
+              href={plant?.custom?.picture ? plant.custom.picture : plant?.images?.imagePrimary}
               width="100%"
               height="100%"
               preserveAspectRatio="xMidYMid slice"
