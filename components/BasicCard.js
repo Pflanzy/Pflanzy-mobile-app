@@ -17,7 +17,7 @@ function BasicCard({ plant }) {
         <Image
           style={styles.cardImage}
           source={{
-            uri: plant.custom.picture ? plant.custom.picture : plant?.images?.imagePrimary,
+            uri: plant?.custom?.picture ? plant.custom.picture : plant?.images?.imagePrimary,
           }}
         />
       </View>

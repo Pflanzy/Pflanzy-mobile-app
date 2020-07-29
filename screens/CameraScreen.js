@@ -76,7 +76,6 @@ const CameraScreen = ({ route, navigation }) => {
                     navigation.navigate('MyPlant');
                   });
               }
-              console.log('photo', photo.uri);
             }}>
             {processing ? (
               <ActivityIndicator size={80} />

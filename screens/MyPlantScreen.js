@@ -294,7 +294,7 @@ const MyGardenPlant = ({ route, navigation }) => {
               <Circle r="83%" cx="50%" />
             </ClipPath>
             <Image
-              href={plant.custom.picture ? plant.custom.picture : plant?.images?.imagePrimary}
+              href={plant?.custom?.picture ? plant.custom.picture : plant?.images?.imagePrimary}
               width="100%"
               height="100%"
               preserveAspectRatio="xMidYMid slice"
