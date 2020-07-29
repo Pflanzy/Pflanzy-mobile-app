@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Modal, ImageBackground } from 'react-native';
+import { Platform, StyleSheet, Modal, ImageBackground } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import { useDispatch, useSelector } from 'react-redux';
 import plantData from '../data/data.json';
@@ -17,16 +17,6 @@ const SearchScreen = () => {
         <Modal visible={modalVisible} animationType="slide">
           <SearchFieldModal plantData={plantData} dispatch={dispatch} />
         </Modal>
-        <PflanzyOpacity
-          onPress={() => dispatch({ type: 'TOGGLE' })}
-          activeOpacity={0.7}
-          style={{
-            marginTop: 20,
-            height: '30%',
-            alignItems: 'center',
-            zIndex: 1,
-          }}
-        />
         <SearchBar
           disabled
           round
@@ -41,9 +31,18 @@ const SearchScreen = () => {
             borderTopColor: 'transparent',
           }}
           onPress={() => dispatch({ type: 'TOGGLE' })}
-          inputContainerStyle={{ backgroundColor: 'white', position: 'absolute', zIndex: 0 }}
+          inputContainerStyle={{ backgroundColor: 'white', position: 'absolute' }}
           searchIcon={{ backgroundColor: 'transparent', paddingLeft: 10 }}
           placeholder="Search for plants"
+        />
+        <PflanzyOpacity
+          onPress={() => dispatch({ type: 'TOGGLE' })}
+          activeOpacity={0.7}
+          style={{
+            marginTop: 20,
+            height: `${Platform.OS === 'ios' ? '25%' : '55%'}`,
+            alignItems: 'center',
+          }}
         />
       </ImageBackground>
     </>
@@ -58,6 +57,8 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     resizeMode: 'cover',
+    position: 'absolute',
+    zIndex: 0,
   },
 });
 
