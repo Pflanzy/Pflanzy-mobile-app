@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { Camera } from 'expo-camera';
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation, Route } from '@react-navigation/native';
+import firebase from '../firebase';
 
-const CameraScreen = () => {
+const CameraScreen = ({ route, navigation }) => {
   const [hasPermission, setHasPermission] = useState(null);
   const [cameraRef, setCameraRef] = useState(null);
+  const [processing, setProcessing] = useState(false);
   const [type, setType] = useState(Camera.Constants.Type.back);
+  const { plantId } = route.params;
 
   useEffect(() => {
     (async () => {
@@ -23,7 +27,7 @@ const CameraScreen = () => {
   return (
     <View style={{ flex: 1 }}>
       <Camera
-        style={{ flex: 1 }}
+        style={{ flex: 1, paddingBottom: 50 }}
         type={type}
         ref={(ref) => {
           setCameraRef(ref);
@@ -56,35 +60,50 @@ const CameraScreen = () => {
           <TouchableOpacity
             style={{ alignSelf: 'center' }}
             onPress={async () => {
+              setProcessing(true);
               if (cameraRef) {
                 // Taken photo is here
                 const photo = await cameraRef.takePictureAsync();
                 // We can use the uri property from photo to reach the taken picture and do what we want.
-                console.log('photo', photo.uri);
+                const userplantsRef = firebase.firestore().collection('plants').doc(plantId);
+
+                userplantsRef
+                  .update({
+                    'custom.picture': photo.uri,
+                  })
+                  .then(() => {
+                    setProcessing(false);
+                    navigation.navigate('MyPlant');
+                  });
               }
+              console.log('photo', photo.uri);
             }}>
-            <View
-              style={{
-                borderWidth: 2,
-                borderColor: 'white',
-                borderRadius: 50,
-                height: 50,
-                width: 50,
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
+            {processing ? (
+              <ActivityIndicator size={80} />
+            ) : (
               <View
                 style={{
                   borderWidth: 2,
-                  borderRadius: 50,
                   borderColor: 'white',
-                  height: 40,
-                  width: 40,
-                  backgroundColor: 'white',
-                }}
-              />
-            </View>
+                  borderRadius: 50,
+                  height: 50,
+                  width: 50,
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <View
+                  style={{
+                    borderWidth: 2,
+                    borderRadius: 50,
+                    borderColor: 'white',
+                    height: 40,
+                    width: 40,
+                    backgroundColor: 'white',
+                  }}
+                />
+              </View>
+            )}
           </TouchableOpacity>
         </View>
       </Camera>
