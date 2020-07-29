@@ -1,22 +1,35 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import 'redux';
 import { MaterialIcons, Fontisto, AntDesign, Entypo, Ionicons } from '@expo/vector-icons';
 import Modal from 'react-native-modal';
+import useSelector from 'react-redux';
 import Colors from '../constants/Colors';
 import PflanzyOpacity from './PflanzyOpacity';
 // import DateTimePicker from './DateTimePicker';
 // import SetReminderNotification from './SetReminderNotification';
 
-const ModalListPopup = (notificationList) => {
+const ModalListPopup = ({ notifications }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
+  console.log(notifications);
   return (
     <View>
       <PflanzyOpacity
         onPress={() => setModalOpen(true)}
-        style={{ flexDirection: 'row', justifyContent: 'center', paddingVertical: 20 }}>
-        <Text style={{ fontSize: 18, color: 'white', paddingRight: 10 }}>Settings</Text>
-        <Ionicons name="ios-settings" size={18} color="white" />
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'center',
+          marginLeft: 10,
+          // position: 'absolute',
+          // left: 0,
+          // top: 0,
+          // width: 50,
+          // height: 50,
+          // zIndex: 1,
+        }}>
+        {/* <Text style={{ fontSize: 14, color: 'white' }}>Manage Notifications</Text> */}
+        <Ionicons name="ios-settings" size={30} color="white" />
       </PflanzyOpacity>
 
       <Modal
@@ -36,26 +49,6 @@ const ModalListPopup = (notificationList) => {
             <View style={styles.headerAlign}>
               {/* <Ionicons name="ios-settings" size={18} color={Colors.tintColor} /> */}
               <Text style={styles.header}>Manage Each Plant:</Text>
-            </View>
-            <View style={styles.headerAlign}>
-              <MaterialIcons name="notifications-active" size={18} color={Colors.tintColor} />
-              <Text style={styles.mainObjBody}>something: other things</Text>
-              <Entypo name="cross" size={22} color="orangered" style={styles.removeIcon} />
-            </View>
-            <View style={styles.headerAlign}>
-              <MaterialIcons name="notifications-active" size={18} color={Colors.tintColor} />
-              <Text style={styles.mainObjBody}>something: other things</Text>
-              <Entypo name="cross" size={22} color="orangered" style={styles.removeIcon} />
-            </View>
-            <View style={styles.headerAlign}>
-              <MaterialIcons name="notifications-active" size={18} color={Colors.tintColor} />
-              <Text style={styles.mainObjBody}>something: other things</Text>
-              <Entypo name="cross" size={22} color="orangered" style={styles.removeIcon} />
-            </View>
-            <View style={styles.headerAlign}>
-              <MaterialIcons name="notifications-active" size={18} color={Colors.tintColor} />
-              <Text style={styles.mainObjBody}>something: other things</Text>
-              <Entypo name="cross" size={22} color="orangered" style={styles.removeIcon} />
             </View>
             <View style={styles.headerAlign}>
               <MaterialIcons name="notifications-active" size={18} color={Colors.tintColor} />

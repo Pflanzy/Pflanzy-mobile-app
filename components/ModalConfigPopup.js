@@ -17,7 +17,7 @@ import PflanzyOpacity from './PflanzyOpacity';
 import DateTimePicker from './DateTimePicker';
 import SetReminderNotification from './SetReminderNotification';
 
-const ModalConfigPopup = (props) => {
+const ModalConfigPopup = ({ plantName, plantId }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [isEnabled, setSwitchEnabled] = useState(false);
   const [oneTimeDate, setOneTimeDate] = useState(null);
@@ -42,7 +42,7 @@ const ModalConfigPopup = (props) => {
     <View>
       <PflanzyOpacity onPress={() => setModalOpen(true)}>
         <NeuMorph>
-          <View style={{ marginBottom: 25, marginTop: 10 }}>
+          <View style={{ marginBottom: 10, marginTop: 10, marginLeft: 20 }}>
             <LinearGradient
               colors={['#004e57', '#004e57', '#004e57']}
               start={[0.0, 0.0]}
@@ -92,6 +92,9 @@ const ModalConfigPopup = (props) => {
                   notificationDate: oneTimeDate,
                   selectedInterval,
                   selectedPeriod,
+                  name: plantName,
+                  plantId,
+                  reminderItem,
                 });
                 setModalOpen(false);
               }}>
@@ -100,7 +103,7 @@ const ModalConfigPopup = (props) => {
           </View>
           <View style={styles.modalRows}>
             <MaterialCommunityIcons name="flower-poppy" size={18} color={Colors.tintColor} />
-            <Text style={styles.modalFields}>Some Mysterious Wild Life...</Text>
+            <Text style={styles.modalFields}>{plantName}</Text>
           </View>
           <View style={[styles.modalRows, styles.textInputBottom]}>
             <MaterialCommunityIcons name="bell-outline" size={18} color={Colors.tintColor} />

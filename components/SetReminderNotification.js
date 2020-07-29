@@ -1,5 +1,6 @@
 import * as Notifications from 'expo-notifications';
-import ModalListPopup from './ModalListPopup';
+// import ModalListPopup from './ModalListPopup';
+import firebase from '../firebase';
 
 // Receives date info from DateTimePicker & sends notification
 export default async function SetReminderNotification(config) {
@@ -26,8 +27,8 @@ export default async function SetReminderNotification(config) {
 
   const identifier = await Notifications.scheduleNotificationAsync({
     content: {
-      title: 'Water time!',
-      body: "I'm so thirsty🌵...",
+      title: config.name,
+      body: config.reminderItem,
     },
     trigger: {
       seconds: config.repeat
@@ -40,11 +41,15 @@ export default async function SetReminderNotification(config) {
   // await Notifications.cancelScheduledNotificationAsync(identifier);
 
   Notifications.getAllScheduledNotificationsAsync().then((notifications) => {
-    console.log(notifications);
+    const userplantsRef = firebase.firestore().collection('plants').doc(config.plantId);
 
-    ModalListPopup(notifications);
+    userplantsRef.update({
+      'custom.notifications': notifications,
+    });
+
+    // ModalListPopup(notifications);
   });
-  console.warn(identifier);
+  // console.warn(identifier);
 
   // Notifications.dismissAllNotificationsAsync();
 

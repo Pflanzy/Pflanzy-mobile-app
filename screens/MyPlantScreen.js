@@ -143,13 +143,18 @@ const MyGardenPlant = ({ route, navigation }) => {
       </Transitioning.View>
 
       <View style={styles.reminderBtnContainer}>
-        <ModalConfigPopup />
+        <ModalConfigPopup
+          plantName={plant?.custom?.title ? plant.custom.title : plant?.commonName}
+          plantId={plant?.id && plant.id}
+        />
+        <ModalListPopup
+          notifications={plant?.custom?.notifications && plant.custom.notifications}
+        />
       </View>
       {/* <View style={{ flexDirection: 'row', justifyContent: 'center', paddingVertical: 20 }}>
         <Text style={{ fontSize: 18, color: 'white', paddingRight: 10 }}>Settings</Text>
         <Ionicons name="ios-settings" size={24} color="white" />
       </View> */}
-      <ModalListPopup />
       <ScrollView style={styles.plantInfoWrapper}>
         <View style={styles.smallContainer}>
           <View style={styles.smallInfoWrapper}>
@@ -512,8 +517,14 @@ const styles = StyleSheet.create({
   },
 
   reminderBtnContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center',
     marginTop: 10,
+    marginLeft: 10,
+    position: 'relative',
+    // flex: 1,
+    // backgroundColor: 'gray',
   },
 
   plantInfoWrapper: {
