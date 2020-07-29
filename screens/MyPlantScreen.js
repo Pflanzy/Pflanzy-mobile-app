@@ -16,6 +16,7 @@ import firebase from '../firebase';
 import Colors from '../constants/Colors';
 import PflanzyOpacity from '../components/PflanzyOpacity';
 import ModalConfigPopup from '../components/ModalConfigPopup';
+import ModalListPopup from '../components/ModalListPopup';
 
 const MyGardenPlant = ({ route, navigation }) => {
   const bsSettings = React.createRef();
@@ -148,6 +149,11 @@ const MyGardenPlant = ({ route, navigation }) => {
       <View style={styles.reminderBtnContainer}>
         <ModalConfigPopup />
       </View>
+      {/* <View style={{ flexDirection: 'row', justifyContent: 'center', paddingVertical: 20 }}>
+        <Text style={{ fontSize: 18, color: 'white', paddingRight: 10 }}>Settings</Text>
+        <Ionicons name="ios-settings" size={24} color="white" />
+      </View> */}
+      <ModalListPopup />
       <ScrollView style={styles.plantInfoWrapper}>
         <View style={styles.smallContainer}>
           <View style={styles.smallInfoWrapper}>

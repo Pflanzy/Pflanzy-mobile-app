@@ -1,7 +1,8 @@
 import * as Notifications from 'expo-notifications';
+import ModalListPopup from './ModalListPopup';
 
 // Receives date info from DateTimePicker & sends notification
-export default function SetReminderNotification(config) {
+export default async function SetReminderNotification(config) {
   const timeIntervals = {
     day: 24 * 60 * 60,
     week: 7 * 24 * 60 * 60,
@@ -23,7 +24,7 @@ export default function SetReminderNotification(config) {
   const timeLeftInSec = (new Date(config.notificationDate).getTime() - Date.now()) / 1000;
   // console.warn(timeLeftInSec)
 
-  Notifications.scheduleNotificationAsync({
+  const identifier = await Notifications.scheduleNotificationAsync({
     content: {
       title: 'Water time!',
       body: "I'm so thirsty🌵...",
@@ -36,9 +37,14 @@ export default function SetReminderNotification(config) {
     },
   });
 
-  // Notifications.getAllScheduledNotificationsAsync().then((notifications) =>
-  //   console.log(notifications)
-  // );
+  // await Notifications.cancelScheduledNotificationAsync(identifier);
+
+  Notifications.getAllScheduledNotificationsAsync().then((notifications) => {
+    console.log(notifications);
+
+    ModalListPopup(notifications);
+  });
+  console.warn(identifier);
 
   // Notifications.dismissAllNotificationsAsync();
 
