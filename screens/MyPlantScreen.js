@@ -12,6 +12,7 @@ import BottomSheet from 'reanimated-bottom-sheet';
 import Animated, { Transitioning, Transition } from 'react-native-reanimated';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useSelector } from 'react-redux';
+import Modal from 'react-native-modal';
 import firebase from '../firebase';
 import Colors from '../constants/Colors';
 import PflanzyOpacity from '../components/PflanzyOpacity';
@@ -32,6 +33,8 @@ const MyGardenPlant = ({ route, navigation }) => {
   const [value, onChangeText] = useState(
     plant?.custom?.title ? plant.custom.title : plant?.commonName
   );
+
+  const [modalOpen, setModalOpen] = useState(false);
 
   const renamePlant = (selectedPlant) => {
     const userplantsRef = firebase.firestore().collection('plants').doc(selectedPlant.id);
@@ -59,54 +62,52 @@ const MyGardenPlant = ({ route, navigation }) => {
         onPress={() => navigation.navigate('Camera', { plantId })}>
         <Text style={styles.settingsBtnTitle}>Take Photo</Text>
       </PflanzyOpacity>
-      {!rename ? (
-        <PflanzyOpacity
-          style={styles.settingsBtns}
-          onPress={() => {
-            setRename(true);
-          }}>
-          <Text style={styles.settingsBtnTitle}>Rename Plant</Text>
+
+      <PflanzyOpacity style={styles.settingsBtns} onPress={() => setModalOpen(true)}>
+        <Text style={styles.settingsBtnTitle}>Rename Plant</Text>
+      </PflanzyOpacity>
+
+      <Modal
+        // style={{
+        //   padding: 0,
+        //   display: 'flex',
+        //   justifyContent: 'space-between',
+        //   alignItems: 'center',
+        //   paddingHorizontal: 10,
+        //   paddingVertical: 5,
+        //   flexDirection: 'row',
+        //   backgroundColor: 'white',
+        //   width: '97%',
+        //   alignSelf: 'center',
+        //   height: 52,
+        //   borderRadius: 11,
+        //   marginVertical: 3.5,
+        // }}
+        isVisible={modalOpen}
+        onBackdropPress={() => setModalOpen(false)}
+        backdropTransitionOutTiming={40}>
+        <TextInput
+          // style={{
+          //   width: '80%',
+          //   borderWidth: 1,
+          //   borderColor: 'green',
+          //   borderRadius: 11,
+          //   height: '100%',
+          //   paddingLeft: 10,
+          // }}
+          onChangeText={(text) => onChangeText(text)}
+          value={value}
+          onSubmitEditing={() => {
+            if (value) {
+              renamePlant(plant);
+              setRename(false);
+            }
+          }}
+        />
+        <PflanzyOpacity onPress={() => setRename(false)}>
+          <AntDesign name="closecircle" size={30} color="green" />
         </PflanzyOpacity>
-      ) : (
-        <View
-          style={{
-            padding: 0,
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            paddingHorizontal: 10,
-            paddingVertical: 5,
-            flexDirection: 'row',
-            backgroundColor: 'white',
-            width: '97%',
-            alignSelf: 'center',
-            height: 52,
-            borderRadius: 11,
-            marginVertical: 3.5,
-          }}>
-          <TextInput
-            style={{
-              width: '80%',
-              borderWidth: 1,
-              borderColor: 'green',
-              borderRadius: 11,
-              height: '100%',
-              paddingLeft: 10,
-            }}
-            onChangeText={(text) => onChangeText(text)}
-            value={value}
-            onSubmitEditing={() => {
-              if (value) {
-                renamePlant(plant);
-                setRename(false);
-              }
-            }}
-          />
-          <PflanzyOpacity onPress={() => setRename(false)}>
-            <AntDesign name="closecircle" size={30} color="green" />
-          </PflanzyOpacity>
-        </View>
-      )}
+      </Modal>
 
       <PflanzyOpacity style={styles.deleteSettingsBtns} onPress={() => deletePlantHandler(plant)}>
         <Text style={styles.settingsBtnDelete}>Delete Plant</Text>
@@ -279,7 +280,17 @@ const MyGardenPlant = ({ route, navigation }) => {
           opacity: Animated.add(0.4, Animated.multiply(fall, 1.0)),
         }}>
         <DefaultTouch style={styles.plantSettings} onPress={() => bsSettings.current.snapTo(0)}>
-          <Entypo name="dots-three-vertical" size={25} color="#e0ebe2" />
+          <View
+            style={{
+              backgroundColor: '#00000070',
+              width: 40,
+              height: 40,
+              justifyContent: 'center',
+              alignItems: 'center',
+              borderRadius: 50,
+            }}>
+            <Entypo name="dots-three-vertical" size={25} color="#e0ebe2" />
+          </View>
         </DefaultTouch>
 
         <DefaultTouch
@@ -441,8 +452,6 @@ const styles = StyleSheet.create({
 
   plantSettings: {
     position: 'absolute',
-    justifyContent: 'center',
-    alignItems: 'center',
     height: 50,
     width: 50,
     top: 10,
