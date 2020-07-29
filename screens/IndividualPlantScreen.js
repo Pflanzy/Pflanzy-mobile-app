@@ -47,11 +47,7 @@ const IndividualPlantScreen = (navigation) => {
       .add({ ...selectedPlant, userID });
 
     dispatch(updateUser(userID));
-    // console.log('adding plant', selectedPlant)
-    //  return dispatch({
-    //     type: "ADD_PLANT", payload: {
-    //     plant: selectedPlant
-    //   }})
+
     showMessage({
       message: 'Plant added',
       description: 'Click here to go My Garden',

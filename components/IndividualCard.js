@@ -1,28 +1,21 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import {  useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-const ReminderCard = ({element}) => {
+const ReminderCard = ({ element }) => {
   const navigation = useNavigation();
-  const dispatch= useDispatch();
+  const dispatch = useDispatch();
   const clickHandler = () => {
-    dispatch({type:"TOGGLE"})
+    dispatch({ type: 'TOGGLE' });
     setTimeout(() => {
-      navigation.navigate('IndividualPlant', {element});
-      
+      navigation.navigate('IndividualPlant', { element });
     }, 200);
-  }
+  };
   return (
-    <TouchableOpacity
-      activeOpacity={0.7} 
-      style={styles.cardContainer}
-      onPress={clickHandler}>
+    <TouchableOpacity activeOpacity={0.7} style={styles.cardContainer} onPress={clickHandler}>
       <View style={styles.imageContainer}>
-        <Image
-          style={styles.cardImage}
-          source={{ uri:element.images.imagePrimary}}
-        />
+        <Image style={styles.cardImage} source={{ uri: element.images.imagePrimary }} />
       </View>
       <View style={styles.detailsContainer}>
         <View style={styles.nameContainer}>
@@ -30,7 +23,7 @@ const ReminderCard = ({element}) => {
           <Text style={styles.text}>{element.scientificName}</Text>
         </View>
         <View style={styles.passedContent}>
-  <Text style={styles.title}>Origin</Text>
+          <Text style={styles.title}>Origin</Text>
           <Text style={styles.text}>{element.origin}</Text>
         </View>
       </View>

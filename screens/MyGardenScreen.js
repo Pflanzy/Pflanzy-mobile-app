@@ -8,7 +8,7 @@ const MyGardenScreen = () => {
   const plants = useSelector((state) => state.userReducer.plants);
   return (
     <ScrollView contentContainerStyle={styles.wrapper}>
-      {plants.length > 0 ? (
+      {plants?.length > 0 ? (
         <View style={styles.container}>
           {plants &&
             plants.map((plant) => {
