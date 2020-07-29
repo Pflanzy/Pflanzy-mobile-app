@@ -149,6 +149,7 @@ const MyGardenPlant = ({ route, navigation }) => {
         />
         <ModalListPopup
           notifications={plant?.custom?.notifications && plant.custom.notifications}
+          plantId={plant?.id && plant.id}
         />
       </View>
       {/* <View style={{ flexDirection: 'row', justifyContent: 'center', paddingVertical: 20 }}>

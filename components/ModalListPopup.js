@@ -1,18 +1,27 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import 'redux';
-import { MaterialIcons, Fontisto, AntDesign, Entypo, Ionicons } from '@expo/vector-icons';
+import * as Notifications from 'expo-notifications';
+import { MaterialIcons, Entypo, Ionicons } from '@expo/vector-icons';
 import Modal from 'react-native-modal';
-import useSelector from 'react-redux';
+import firebase from '../firebase';
 import Colors from '../constants/Colors';
 import PflanzyOpacity from './PflanzyOpacity';
-// import DateTimePicker from './DateTimePicker';
-// import SetReminderNotification from './SetReminderNotification';
 
-const ModalListPopup = ({ notifications }) => {
+const ModalListPopup = ({ notifications, plantId }) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const deleteNotificationHandler = (notification) => {
+    Notifications.cancelScheduledNotificationAsync(identifier).then((data) => {
+      firebase
+        .firestore()
+        .collection('plants')
+        .doc(plantId)
+        .update({ 'custom.notifications': FieldValue.arrayRemove(notification) });
+    });
+  };
 
   console.log(notifications);
+  // console.log(plantId);
+
   return (
     <View>
       <PflanzyOpacity
@@ -21,12 +30,6 @@ const ModalListPopup = ({ notifications }) => {
           flexDirection: 'row',
           justifyContent: 'center',
           marginLeft: 10,
-          // position: 'absolute',
-          // left: 0,
-          // top: 0,
-          // width: 50,
-          // height: 50,
-          // zIndex: 1,
         }}>
         {/* <Text style={{ fontSize: 14, color: 'white' }}>Manage Notifications</Text> */}
         <Ionicons name="ios-settings" size={30} color="white" />
@@ -50,11 +53,22 @@ const ModalListPopup = ({ notifications }) => {
               {/* <Ionicons name="ios-settings" size={18} color={Colors.tintColor} /> */}
               <Text style={styles.header}>Manage Each Plant:</Text>
             </View>
-            <View style={styles.headerAlign}>
-              <MaterialIcons name="notifications-active" size={18} color={Colors.tintColor} />
-              <Text style={styles.mainObjBody}>something: other things</Text>
-              <Entypo name="cross" size={22} color="orangered" style={styles.removeIcon} />
-            </View>
+
+            {notifications &&
+              notifications.map((item) => {
+                return (
+                  <View key={item.identifier} style={styles.headerAlign}>
+                    <MaterialIcons name="notifications-active" size={18} color={Colors.tintColor} />
+                    <Text
+                      style={
+                        styles.mainObjBody
+                      }>{`${item.content.title}: ${item.content.body}`}</Text>
+                    <PflanzyOpacity onPress={() => deleteNotificationHandler(item)}>
+                      <Entypo name="cross" size={22} color="orangered" style={styles.removeIcon} />
+                    </PflanzyOpacity>
+                  </View>
+                );
+              })}
           </View>
         </View>
       </Modal>
