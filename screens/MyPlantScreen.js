@@ -1,5 +1,12 @@
 import React, { useRef, useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity as DefaultTouch } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity as DefaultTouch,
+  Keyboard,
+} from 'react-native';
 import {
   MaterialCommunityIcons,
   Entypo,
@@ -110,7 +117,13 @@ const MyGardenPlant = ({ route, navigation }) => {
           <PflanzyOpacity onPress={() => setRename(false)}>
             <AntDesign style={styles.renameIcon} name="closecircle" size={35} color="#8B0000" />
           </PflanzyOpacity>
-          <PflanzyOpacity onSubmitEditing={value}>
+          <PflanzyOpacity
+            // onSubmitEditing={(e) => {
+            //   onChangeText(e.nativeEvent.text);
+            // }}
+            // onChangeText={(text) => onChangeText(text)}
+            // value={value}
+            onPress={(() => setRename(false), renamePlant(plant), Keyboard.dismiss())}>
             <AntDesign
               style={styles.renameIcon}
               name="checkcircle"
