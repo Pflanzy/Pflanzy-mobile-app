@@ -542,7 +542,7 @@ const styles = StyleSheet.create({
   },
 
   smallInfoHeader: {
-    color: Colors.tintColor,
+    color: Colors.darkGreen,
     fontSize: 20,
     paddingVertical: 10,
   },
@@ -565,7 +565,7 @@ const styles = StyleSheet.create({
 
   smallInfoBody: {
     textAlign: 'center',
-    color: Colors.tintColor,
+    color: Colors.darkGreen,
   },
 
   infoContainer: {
