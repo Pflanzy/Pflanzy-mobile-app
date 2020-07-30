@@ -18,7 +18,7 @@ const SearchFieldModal = ({ plantData, dispatch }) => {
     setFilteredData(initialData);
     const myTimeOut = setTimeout(() => {
       setShowLoading(false);
-    }, 500);
+    }, 800);
     return () => {
       clearTimeout(myTimeOut);
     };
