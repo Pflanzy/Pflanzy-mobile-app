@@ -89,6 +89,7 @@ const MyGardenPlant = ({ route, navigation }) => {
             style={{
               width: '80%',
               borderWidth: 1,
+              color: 'black',
               borderColor: 'green',
               borderRadius: 11,
               height: '100%',
@@ -318,7 +319,7 @@ const MyGardenPlant = ({ route, navigation }) => {
           <View style={styles.nameContainer}>
             {plant?.custom?.title && (
               <View>
-                <Text>{plant?.custom.title}</Text>
+                <Text style={styles.customPlantName}>{plant?.custom.title}</Text>
               </View>
             )}
             <View style={styles.commonNameContainer}>
@@ -465,7 +466,7 @@ const styles = StyleSheet.create({
   },
 
   imageContainer: {
-    height: '48%',
+    height: '49%',
   },
 
   myPlantContainer: {
@@ -476,13 +477,18 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },
-
+  customPlantName: {
+    fontWeight: '600',
+    fontSize: 18,
+    color: Colors.tintColor,
+    alignSelf: 'center',
+    marginBottom: 5,
+  },
   nameContainer: {
     width: '80%',
-    height: 80,
     backgroundColor: '#fff',
     position: 'absolute',
-    top: '63%',
+    top: '62%',
     alignSelf: 'center',
     borderRadius: 10,
     elevation: 3,
@@ -499,7 +505,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: Colors.darkGreen,
     alignSelf: 'center',
-    marginBottom: 3,
+    marginBottom: 8,
   },
 
   commonNameContainer: {
@@ -532,6 +538,7 @@ const styles = StyleSheet.create({
 
   plantInfoWrapper: {
     paddingVertical: 10,
+    paddingHorizontal: 5,
   },
 
   smallContainer: {
@@ -603,10 +610,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 3,
-    borderRadius: 5,
     backgroundColor: '#e2ebe6',
-    paddingVertical: 3,
+    paddingVertical: 5,
+    paddingHorizontal: 15,
+    borderRadius: 5,
     flexShrink: 1,
   },
 
@@ -615,6 +622,7 @@ const styles = StyleSheet.create({
     color: Colors.tintColor,
     paddingHorizontal: 10,
     fontWeight: '500',
+    paddingVertical: 2,
   },
 
   infoBody: {

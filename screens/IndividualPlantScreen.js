@@ -8,16 +8,7 @@ import {
 import React, { useRef, useState } from 'react';
 import BottomSheet from 'reanimated-bottom-sheet';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  StyleSheet,
-  TouchableWithoutFeedback,
-  Image,
-  Text,
-  View,
-  ImageBackground,
-  Modal,
-  Button,
-} from 'react-native';
+import { StyleSheet, TouchableWithoutFeedback, Image, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Transitioning, Transition } from 'react-native-reanimated';
@@ -210,6 +201,7 @@ const IndividualPlantScreen = (navigation) => {
         snapPoints={['39%', '85%']}
         initialSnap={0}
         renderContent={renderContent}
+        enabledBottomClamp
         onOpenEnd={() => {
           ref.current.animateNextTransition();
           setDeg(180);
@@ -254,7 +246,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#eee',
   },
   background: {
-    height: '85%',
+    height: '69%',
     width: '100%',
   },
   contentWrapper: {
@@ -361,8 +353,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: Colors.darkGreen,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
+    paddingVertical: 5,
+    paddingHorizontal: 15,
     borderRadius: 5,
     flexShrink: 1,
   },

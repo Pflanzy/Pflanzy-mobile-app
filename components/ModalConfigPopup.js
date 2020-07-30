@@ -145,7 +145,12 @@ const ModalConfigPopup = ({ plantName, plantId }) => {
               <View>
                 <View style={{ flexDirection: 'row' }}>
                   <AntDesign name="calendar" size={18} color="#d1cdca" />
-                  <Text style={{ marginLeft: 20, marginTop: 3, color: '#d1cdca' }}>
+                  <Text
+                    style={{
+                      marginLeft: 20,
+                      marginTop: Platform.OS === 'ios' ? 3 : 0,
+                      color: '#d1cdca',
+                    }}>
                     __ /__ /__ : __ :
                   </Text>
                 </View>
@@ -181,7 +186,7 @@ const ModalConfigPopup = ({ plantName, plantId }) => {
             style={{
               position: 'absolute',
               right: 15,
-              top: 250,
+              top: Platform.OS === 'ios' ? 250 : 268,
               flexDirection: 'row',
               alignItems: 'center',
               // width: '100%',
