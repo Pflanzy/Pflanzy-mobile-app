@@ -34,7 +34,6 @@ const SearchField = (props) => {
         clearIcon={{ color: Colors.defaultWhite, size: 24, paddingHorizontal: 10 }}
         rightIconContainerStyle={{ paddingLeft: 5 }}
         placeholder="Enter plant name"
-        placeholder="Enter plant name"
         onChangeText={updateSearch}
         value={searchValue}
         onClear={() => Keyboard.dismiss()}

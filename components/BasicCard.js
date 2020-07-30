@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import Colors from '../constants/Colors';
 
 function BasicCard({ plant }) {
   const navigation = useNavigation();
@@ -36,12 +37,12 @@ function BasicCard({ plant }) {
 const styles = StyleSheet.create({
   cardContainer: {
     flexDirection: 'row',
-    backgroundColor: '#fff',
+    backgroundColor: Colors.defaultWhite,
     borderRadius: 10,
     height: 100,
     width: '92%',
     elevation: 3,
-    shadowColor: '#404040',
+    shadowColor: Colors.basicShadows,
     shadowOpacity: 0.4,
     shadowOffset: { height: 2 },
     shadowRadius: 3,

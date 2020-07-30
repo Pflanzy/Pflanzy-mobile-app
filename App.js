@@ -13,6 +13,7 @@ import CameraScreen from './screens/CameraScreen';
 import MyPlantScreen from './screens/MyPlantScreen';
 import IndividualPlantScreen from './screens/IndividualPlantScreen';
 import IndividualArticle from './components/IndividualArticle';
+import PlantRecognitionScreen from './screens/PlantRecognitionScreen';
 import AuthScreen from './screens/AuthScreen';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
 
@@ -42,6 +43,7 @@ export default function App(params) {
                 }}>
                 <Stack.Screen name="Root" component={BottomTabNavigator} />
                 <Stack.Screen name="Camera" component={CameraScreen} />
+                <Stack.Screen name="PlantRecognition" component={PlantRecognitionScreen} />
                 <Stack.Screen name="IndividualPlant" component={IndividualPlantScreen} />
                 <Stack.Screen
                   name="IndividualArticle"
