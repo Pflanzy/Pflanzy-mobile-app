@@ -37,15 +37,12 @@ const MyGardenPlant = ({ route, navigation }) => {
   const [deg, setDeg] = useState(0);
   const ref = useRef();
   const [rename, setRename] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const [value, onChangeText] = useState(
     plant?.custom?.title ? plant.custom.title : plant?.commonName
   );
-
-  const [modalOpen, setModalOpen] = useState(false);
-
   const renamePlant = (selectedPlant) => {
     const userplantsRef = firebase.firestore().collection('plants').doc(selectedPlant.id);
-
     userplantsRef.update({
       'custom.title': value,
     });
@@ -69,7 +66,6 @@ const MyGardenPlant = ({ route, navigation }) => {
         onPress={() => navigation.navigate('Camera', { plantId })}>
         <Text style={styles.settingsBtnTitle}>Take Photo</Text>
       </PflanzyOpacity>
-
       <PflanzyOpacity style={styles.settingsBtns} onPress={() => setModalOpen(true)}>
         <Text style={styles.settingsBtnTitle}>Rename Plant</Text>
       </PflanzyOpacity>
@@ -85,7 +81,7 @@ const MyGardenPlant = ({ route, navigation }) => {
           position: 'absolute',
           top: '30%',
           alignSelf: 'center',
-          backgroundColor: '#f3f3f3',
+          backgroundColor: '#ededed',
           borderRadius: 10,
         }}
         isVisible={modalOpen}
@@ -114,16 +110,21 @@ const MyGardenPlant = ({ route, navigation }) => {
           }}
         />
         <View style={styles.renameIconWrapper}>
-          <PflanzyOpacity onPress={() => setRename(false)}>
+          <PflanzyOpacity
+            onPress={() => {
+              setRename(false);
+              setModalOpen(false);
+              bsSettings.current.snapTo(1);
+            }}>
             <AntDesign style={styles.renameIcon} name="closecircle" size={35} color="#8B0000" />
           </PflanzyOpacity>
           <PflanzyOpacity
-            // onSubmitEditing={(e) => {
-            //   onChangeText(e.nativeEvent.text);
-            // }}
-            // onChangeText={(text) => onChangeText(text)}
-            // value={value}
-            onPress={(() => setRename(false), renamePlant(plant), Keyboard.dismiss())}>
+            onPress={() => {
+              setModalOpen(false);
+              Keyboard.dismiss();
+              renamePlant(plant);
+              bsSettings.current.snapTo(1);
+            }}>
             <AntDesign
               style={styles.renameIcon}
               name="checkcircle"
