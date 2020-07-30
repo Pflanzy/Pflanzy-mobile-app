@@ -110,15 +110,15 @@ const MyGardenPlant = ({ route, navigation }) => {
           }}
         />
         <View style={styles.renameIconWrapper}>
-          <PflanzyOpacity
+          <DefaultTouch
             onPress={() => {
               setRename(false);
               setModalOpen(false);
               bsSettings.current.snapTo(1);
             }}>
             <AntDesign style={styles.renameIcon} name="closecircle" size={35} color="#8B0000" />
-          </PflanzyOpacity>
-          <PflanzyOpacity
+          </DefaultTouch>
+          <DefaultTouch
             onPress={() => {
               setModalOpen(false);
               Keyboard.dismiss();
@@ -131,7 +131,7 @@ const MyGardenPlant = ({ route, navigation }) => {
               size={35}
               color={Colors.tintColor}
             />
-          </PflanzyOpacity>
+          </DefaultTouch>
         </View>
       </Modal>
 
