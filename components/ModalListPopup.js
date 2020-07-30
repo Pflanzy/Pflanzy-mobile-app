@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 import * as Notifications from 'expo-notifications';
 import { MaterialIcons, Entypo, Ionicons } from '@expo/vector-icons';
 import Modal from 'react-native-modal';
@@ -10,17 +10,16 @@ import PflanzyOpacity from './PflanzyOpacity';
 const ModalListPopup = ({ notifications, plantId }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const deleteNotificationHandler = (notification) => {
-    Notifications.cancelScheduledNotificationAsync(identifier).then((data) => {
+    Notifications.cancelScheduledNotificationAsync(notification.identifier).then(() => {
       firebase
         .firestore()
         .collection('plants')
         .doc(plantId)
-        .update({ 'custom.notifications': FieldValue.arrayRemove(notification) });
+        .update({
+          'custom.notifications': firebase.firestore.FieldValue.arrayRemove(notification),
+        });
     });
   };
-
-  console.log(notifications);
-  // console.log(plantId);
 
   return (
     <View>
@@ -51,21 +50,38 @@ const ModalListPopup = ({ notifications, plantId }) => {
           <View style={styles.mainContent}>
             <View style={styles.headerAlign}>
               {/* <Ionicons name="ios-settings" size={18} color={Colors.tintColor} /> */}
-              <Text style={styles.header}>Manage Each Plant:</Text>
+              <Text style={styles.header}>Notifications</Text>
             </View>
 
             {notifications &&
               notifications.map((item) => {
                 return (
-                  <View key={item.identifier} style={styles.headerAlign}>
-                    <MaterialIcons name="notifications-active" size={18} color={Colors.tintColor} />
-                    <Text
-                      style={
-                        styles.mainObjBody
-                      }>{`${item.content.title}: ${item.content.body}`}</Text>
-                    <PflanzyOpacity onPress={() => deleteNotificationHandler(item)}>
-                      <Entypo name="cross" size={22} color="orangered" style={styles.removeIcon} />
-                    </PflanzyOpacity>
+                  <View
+                    key={item.identifier}
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      paddingHorizontal: 10,
+                    }}>
+                    <View style={styles.headerAlign}>
+                      <MaterialIcons
+                        name="notifications-active"
+                        size={18}
+                        color={Colors.tintColor}
+                      />
+                      <Text
+                        style={
+                          styles.mainObjBody
+                        }>{`${item.content.title}: ${item.content.body}`}</Text>
+                    </View>
+                    <TouchableOpacity
+                      color="orange"
+                      title="Remove "
+                      style={{}}
+                      onPress={() => deleteNotificationHandler(item)}>
+                      <Entypo name="cross" size={30} color="orangered" style={styles.removeIcon} />
+                    </TouchableOpacity>
                   </View>
                 );
               })}
@@ -93,23 +109,24 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 16,
     color: Colors.tintColor,
-    paddingLeft: 8,
   },
 
   mainObjBody: {
     fontSize: 16,
     paddingLeft: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   headerAlign: {
+    display: 'flex',
     flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 14,
   },
 
   removeIcon: {
     marginLeft: 10,
-    paddingTop: 4,
   },
 
   //   modalRows: {

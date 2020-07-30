@@ -39,16 +39,17 @@ export default async function SetReminderNotification(config) {
   });
 
   // await Notifications.cancelScheduledNotificationAsync(identifier);
+  console.log(await Notifications.getAllScheduledNotificationsAsync());
+  const notifications = await Notifications.getAllScheduledNotificationsAsync();
+  console.log(await notifications);
+  const userplantsRef = firebase.firestore().collection('plants').doc(config.plantId);
 
-  Notifications.getAllScheduledNotificationsAsync().then((notifications) => {
-    const userplantsRef = firebase.firestore().collection('plants').doc(config.plantId);
-
-    userplantsRef.update({
-      'custom.notifications': notifications,
-    });
-
-    // ModalListPopup(notifications);
+  userplantsRef.update({
+    'custom.notifications': notifications,
   });
+
+  // ModalListPopup(notifications);
+
   // console.warn(identifier);
 
   // Notifications.dismissAllNotificationsAsync();

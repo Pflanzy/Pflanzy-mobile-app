@@ -4,6 +4,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { StyleSheet, View, SafeAreaView, StatusBar } from 'react-native';
 import { AppearanceProvider } from 'react-native-appearance';
+import FlashMessage from 'react-native-flash-message';
 import store from './store';
 import Colors from './constants/Colors';
 import useCachedResources from './hooks/useCachedResources';
@@ -14,7 +15,6 @@ import IndividualPlantScreen from './screens/IndividualPlantScreen';
 import IndividualArticle from './components/IndividualArticle';
 import AuthScreen from './screens/AuthScreen';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
-import FlashMessage from 'react-native-flash-message';
 
 const Stack = createStackNavigator();
 
