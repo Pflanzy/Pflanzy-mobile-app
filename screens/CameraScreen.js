@@ -4,6 +4,7 @@ import { Camera } from 'expo-camera';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation, Route } from '@react-navigation/native';
 import firebase from '../firebase';
+import Colors from '../constants/Colors';
 
 const CameraScreen = ({ route, navigation }) => {
   const [hasPermission, setHasPermission] = useState(null);
@@ -53,7 +54,7 @@ const CameraScreen = ({ route, navigation }) => {
             <Ionicons
               name="ios-reverse-camera"
               size={40}
-              color="white"
+              color={Colors.defaultWhite}
               style={{ marginRight: 50 }}
             />
           </TouchableOpacity>
@@ -83,7 +84,7 @@ const CameraScreen = ({ route, navigation }) => {
               <View
                 style={{
                   borderWidth: 2,
-                  borderColor: 'white',
+                  borderColor: Colors.defaultWhite,
                   borderRadius: 50,
                   height: 50,
                   width: 50,
@@ -95,10 +96,10 @@ const CameraScreen = ({ route, navigation }) => {
                   style={{
                     borderWidth: 2,
                     borderRadius: 50,
-                    borderColor: 'white',
+                    borderColor: Colors.defaultWhite,
                     height: 40,
                     width: 40,
-                    backgroundColor: 'white',
+                    backgroundColor: Colors.defaultWhite,
                   }}
                 />
               </View>
