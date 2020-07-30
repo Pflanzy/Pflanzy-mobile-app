@@ -8,16 +8,7 @@ import {
 import React, { useRef, useState } from 'react';
 import BottomSheet from 'reanimated-bottom-sheet';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  StyleSheet,
-  TouchableWithoutFeedback,
-  Image,
-  Text,
-  View,
-  ImageBackground,
-  Modal,
-  Button,
-} from 'react-native';
+import { StyleSheet, TouchableWithoutFeedback, Image, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Transitioning, Transition } from 'react-native-reanimated';
@@ -97,7 +88,7 @@ const IndividualPlantScreen = (navigation) => {
               <NeuMorph>
                 <View style={{ marginBottom: 30 }}>
                   <LinearGradient
-                    colors={['#004e57', '#004e57', '#004e57']}
+                    colors={[Colors.darkGreen, Colors.darkGreen, Colors.darkGreen]}
                     start={[0.0, 0.0]}
                     end={[1.0, 1.0]}
                     style={{
@@ -124,22 +115,22 @@ const IndividualPlantScreen = (navigation) => {
             <Text style={styles.text}>{plant.description}</Text>
             <View style={styles.shortInfoContainer}>
               <View style={styles.shortInfoElement}>
-                <Entypo style={styles.shortInfoIcon} name="globe" size={80} color={Colors.darkGreen} />
+                <Entypo style={styles.shortInfoIcon} name="globe" size={80} color="#416241" />
                 <Text style={styles.shortInfoHeadline}>Origin:</Text>
                 <Text style={styles.shortInfoText}>{plant.origin}</Text>
               </View>
               <View style={styles.shortInfoElement}>
-                <Entypo style={styles.shortInfoIcon} name="price-tag" size={80} color={Colors.darkGreen} />
+                <Entypo style={styles.shortInfoIcon} name="price-tag" size={80} color="#416241" />
                 <Text style={styles.shortInfoHeadline}>Family:</Text>
-                    <Text style={styles.shortInfoText}>{plant.familyName}</Text>
+                <Text style={styles.shortInfoText}>{plant.familyName}</Text>
               </View>
               <View style={styles.shortInfoElement}>
-                <Entypo style={styles.shortInfoIcon} name="tree" size={80} color={Colors.darkGreen} />
+                <Entypo style={styles.shortInfoIcon} name="tree" size={80} color="#416241" />
                 <Text style={styles.shortInfoHeadline}>Growth:</Text>
                 <Text style={styles.shortInfoText}>{plant.maxGrowth}</Text>
               </View>
               <View style={styles.shortInfoElement}>
-                <AntDesign style={styles.shortInfoIcon} name="warning" size={80} color={Colors.darkGreen} />
+                <AntDesign style={styles.shortInfoIcon} name="warning" size={80} color="#416241" />
                 <Text style={styles.shortInfoHeadline}>Poisonous:</Text>
                 <Text style={styles.shortInfoText}>{plant.poisonousForPets}</Text>
               </View>
@@ -293,7 +284,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: "#97BF7A",
+    backgroundColor: '#97BF7A',
     width: 240,
     padding: 10,
     marginBottom: 20,
@@ -324,7 +315,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '44%',
-    backgroundColor: "#97BF7A",
+    backgroundColor: Colors.darkGreen,
     height: 120,
     borderRadius: 10,
     margin: 9,
@@ -352,7 +343,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: "#97BF7A",
+    backgroundColor: Colors.darkGreen,
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,

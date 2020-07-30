@@ -2,7 +2,7 @@ const tintColor = '#5E8C5D';
 
 export default {
   tintColor,
-  darkGreen: '#004e57',
+  darkGreen: '#204028',
   textGrey: '#2f2f2f',
   tabIconDefault: '#ccc',
   tabIconSelected: tintColor,
@@ -17,5 +17,5 @@ export default {
   collectionLabel: '#ffc108',
   tipsLabel: '#ab3f00',
   defaultWhite: '#fff',
-  white:"white"
+  white: 'white',
 };
