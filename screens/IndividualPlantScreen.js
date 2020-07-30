@@ -124,77 +124,78 @@ const IndividualPlantScreen = (navigation) => {
             <Text style={styles.text}>{plant.description}</Text>
             <View style={styles.shortInfoContainer}>
               <View style={styles.shortInfoElement}>
-                <Entypo style={styles.shortInfoIcon} name="globe" size={80} color="#006772" />
+                <Entypo style={styles.shortInfoIcon} name="globe" size={80} color={Colors.darkGreen} />
                 <Text style={styles.shortInfoHeadline}>Origin:</Text>
                 <Text style={styles.shortInfoText}>{plant.origin}</Text>
               </View>
               <View style={styles.shortInfoElement}>
-                <Entypo style={styles.shortInfoIcon} name="price-tag" size={80} color="#006772" />
+                <Entypo style={styles.shortInfoIcon} name="price-tag" size={80} color={Colors.darkGreen} />
                 <Text style={styles.shortInfoHeadline}>Family:</Text>
+                    <Text style={styles.shortInfoText}>{plant.familyName}</Text>
               </View>
               <View style={styles.shortInfoElement}>
-                <Entypo style={styles.shortInfoIcon} name="tree" size={80} color="#006772" />
+                <Entypo style={styles.shortInfoIcon} name="tree" size={80} color={Colors.darkGreen} />
                 <Text style={styles.shortInfoHeadline}>Growth:</Text>
                 <Text style={styles.shortInfoText}>{plant.maxGrowth}</Text>
               </View>
               <View style={styles.shortInfoElement}>
-                <AntDesign style={styles.shortInfoIcon} name="warning" size={80} color="#006772" />
+                <AntDesign style={styles.shortInfoIcon} name="warning" size={80} color={Colors.darkGreen} />
                 <Text style={styles.shortInfoHeadline}>Poisonous:</Text>
                 <Text style={styles.shortInfoText}>{plant.poisonousForPets}</Text>
               </View>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
-                <MaterialCommunityIcons name="temperature-celsius" size={20} color="white" />
+                <MaterialCommunityIcons name="temperature-celsius" size={20} color={Colors.white} />
                 <Text style={styles.infoHeader}>Temperature</Text>
               </View>
               <Text style={styles.infoBody}>{plant.temperature}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
-                <Entypo name="light-up" size={20} color="white" />
+                <Entypo name="light-up" size={20} color={Colors.white} />
                 <Text style={styles.infoHeader}>Light</Text>
               </View>
               <Text style={styles.infoBody}>{plant.light}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
-                <Entypo name="drop" size={14} color="white" style={styles.waterDrop} />
+                <Entypo name="drop" size={14} color={Colors.white} style={styles.waterDrop} />
                 <Text style={styles.infoHeader}>Water</Text>
               </View>
               <Text style={styles.infoBody}>{plant.watering}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
-                <MaterialCommunityIcons name="pot" size={20} color="white" />
+                <MaterialCommunityIcons name="pot" size={20} color={Colors.white} />
                 <Text style={styles.infoHeader}>Soil</Text>
               </View>
               <Text style={styles.infoBody}>{plant.soil}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
-                <Entypo name="bucket" size={20} color="white" />
+                <Entypo name="bucket" size={20} color={Colors.white} />
                 <Text style={styles.infoHeader}>Re-Potting</Text>
               </View>
               <Text style={styles.infoBody}>{plant.rePotting}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
-                <MaterialCommunityIcons name="spray-bottle" size={20} color="white" />
+                <MaterialCommunityIcons name="spray-bottle" size={20} color={Colors.white} />
                 <Text style={styles.infoHeader}>Fertilizer</Text>
               </View>
               <Text style={styles.infoBody}>{plant.fertilizer}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
-                <Entypo name="water" size={20} color="white" />
+                <Entypo name="water" size={20} color={Colors.white} />
                 <Text style={styles.infoHeader}>Humidity</Text>
               </View>
               <Text style={styles.infoBody}>{plant.humidity}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
-                <FontAwesome5 name="seedling" size={20} color="white" />
+                <FontAwesome5 name="seedling" size={20} color={Colors.white} />
                 <Text style={styles.infoHeader}>Propagation</Text>
               </View>
               <Text style={styles.infoBody}>{plant.propagation}</Text>
@@ -292,24 +293,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Colors.darkGreen,
+    backgroundColor: "#97BF7A",
     width: 240,
     padding: 10,
     marginBottom: 20,
     borderRadius: 50,
-    borderWidth: 2,
-    borderColor: '#79C3CA',
-  },
-  btnCalendar: {
-    backgroundColor: Colors.darkGreen,
-    borderRadius: 50,
-    width: 44,
-    height: 44,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginLeft: 20,
-    paddingLeft: 2,
-    paddingTop: 1,
     borderWidth: 2,
     borderColor: '#79C3CA',
   },
@@ -336,7 +324,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '44%',
-    backgroundColor: Colors.darkGreen,
+    backgroundColor: "#97BF7A",
     height: 120,
     borderRadius: 10,
     margin: 9,
@@ -364,7 +352,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: Colors.darkGreen,
+    backgroundColor: "#97BF7A",
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,

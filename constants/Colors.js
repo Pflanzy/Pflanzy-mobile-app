@@ -1,4 +1,4 @@
-const tintColor = '#008080';
+const tintColor = '#5E8C5D';
 
 export default {
   tintColor,
@@ -17,4 +17,5 @@ export default {
   collectionLabel: '#ffc108',
   tipsLabel: '#ab3f00',
   defaultWhite: '#fff',
+  white:"white"
 };
