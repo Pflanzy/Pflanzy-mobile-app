@@ -141,12 +141,16 @@ const ModalConfigPopup = (props) => {
             {isEnabled && (
               <View>
                 <View style={{ flexDirection: 'row' }}>
-                  <AntDesign name="calendar" size={18}  />
-                  <Text style={{ marginLeft: 20, marginTop: 3 }}>
+                  <AntDesign name="calendar" size={18} color="#d1cdca" />
+                  <Text
+                    style={{
+                      marginLeft: 20,
+                      marginTop: Platform.OS === 'ios' ? 3 : 0,
+                      color: '#d1cdca',
+                    }}>
                     __ /__ /__ : __ :
                   </Text>
                 </View>
-
                 <View style={{ flexDirection: 'row' }}>
                   <Picker
                     selectedValue={selectedInterval}
@@ -178,7 +182,7 @@ const ModalConfigPopup = (props) => {
             style={{
               position: 'absolute',
               right: 15,
-              top: 250,
+              top: Platform.OS === 'ios' ? 250 : 268,
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'space-between',

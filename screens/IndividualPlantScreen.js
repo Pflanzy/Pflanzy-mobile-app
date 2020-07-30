@@ -206,6 +206,7 @@ const IndividualPlantScreen = (navigation) => {
         snapPoints={['39%', '85%']}
         initialSnap={0}
         renderContent={renderContent}
+        enabledBottomClamp
         onOpenEnd={() => {
           ref.current.animateNextTransition();
           setDeg(180);
@@ -249,7 +250,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   background: {
-    height: '85%',
+    height: '69%',
     width: '100%',
   },
   contentWrapper: {
@@ -343,8 +344,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: Colors.darkGreen,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
+    paddingVertical: 5,
+    paddingHorizontal: 15,
     borderRadius: 5,
     flexShrink: 1,
   },
