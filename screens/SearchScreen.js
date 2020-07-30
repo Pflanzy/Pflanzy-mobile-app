@@ -34,7 +34,11 @@ const SearchScreen = ({ navigation }) => {
             borderTopColor: Colors.transparent,
           }}
           onPress={() => dispatch({ type: 'TOGGLE' })}
-          inputContainerStyle={{ backgroundColor: Colors.defaultWhite, position: 'absolute', zIndex: 0 }}
+          inputContainerStyle={{
+            backgroundColor: Colors.defaultWhite,
+            position: 'absolute',
+            zIndex: 0,
+          }}
           searchIcon={{ backgroundColor: Colors.transparent, paddingLeft: 10 }}
           placeholder="Search for plants"
         />
@@ -49,7 +53,7 @@ const SearchScreen = ({ navigation }) => {
         />
         <TouchableOpacity
           style={{
-            alignSelf: 'flex-end',
+            alignSelf: 'center',
             width: 150,
             height: 150,
             backgroundColor: 'green',
@@ -75,7 +79,6 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     position: 'absolute',
     zIndex: 0,
-    alignItems: 'center',
   },
 });
 
