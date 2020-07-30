@@ -1,13 +1,15 @@
 import React from 'react';
-import { Platform, StyleSheet, Modal, ImageBackground } from 'react-native';
-import { SearchBar } from 'react-native-elements';
+import { Platform, StyleSheet, Modal, ImageBackground, View } from 'react-native';
+import { SearchBar, colors } from 'react-native-elements';
 import { useDispatch, useSelector } from 'react-redux';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import plantData from '../data/data.json';
 import photo from '../assets/images/photo-1517191434949-5e90cd67d2b6.jpeg';
 import SearchFieldModal from '../components/SearchFieldModal';
 import PflanzyOpacity from '../components/PflanzyOpacity';
 
-const SearchScreen = () => {
+const SearchScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const modalVisible = useSelector((state) => state.modalReducer.open);
 
@@ -44,6 +46,19 @@ const SearchScreen = () => {
             alignItems: 'center',
           }}
         />
+        <TouchableOpacity
+          style={{
+            alignSelf: 'flex-end',
+            width: 150,
+            height: 150,
+            backgroundColor: 'green',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: 100,
+          }}
+          onPress={() => navigation.navigate('PlantRecognition')}>
+          <FontAwesome5 name="camera" size={80} />
+        </TouchableOpacity>
       </ImageBackground>
     </>
   );
@@ -59,6 +74,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     position: 'absolute',
     zIndex: 0,
+    alignItems: 'center',
   },
 });
 
