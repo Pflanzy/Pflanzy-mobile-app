@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import moment from 'moment';
 import { Appearance, useColorScheme } from 'react-native-appearance';
-import SetReminderNotification from './SetReminderNotification';
+import Colors from '../constants/Colors';
 
 Appearance.getColorScheme();
 
@@ -48,6 +48,6 @@ const styles = StyleSheet.create({
   },
   datePickerBtn: {
     fontSize: 14,
-    color: 'gray',
+    color: Colors.gray,
   },
 });

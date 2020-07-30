@@ -24,5 +24,6 @@ export default {
   transparent: "transparent",
   topShadow: '#d0d1c5',
   reminderBackground:'#f9f9f9',
-  lightgray:'lightgray'
+  lightgray:'lightgray',
+  gray:'gray'
 };
