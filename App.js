@@ -4,6 +4,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { StyleSheet, View, SafeAreaView, StatusBar } from 'react-native';
 import { AppearanceProvider } from 'react-native-appearance';
+import FlashMessage from 'react-native-flash-message';
 import store from './store';
 import Colors from './constants/Colors';
 import useCachedResources from './hooks/useCachedResources';
@@ -12,9 +13,9 @@ import CameraScreen from './screens/CameraScreen';
 import MyPlantScreen from './screens/MyPlantScreen';
 import IndividualPlantScreen from './screens/IndividualPlantScreen';
 import IndividualArticle from './components/IndividualArticle';
+import PlantRecognitionScreen from './screens/PlantRecognitionScreen';
 import AuthScreen from './screens/AuthScreen';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
-import FlashMessage from 'react-native-flash-message';
 
 const Stack = createStackNavigator();
 
@@ -42,6 +43,7 @@ export default function App(params) {
                 }}>
                 <Stack.Screen name="Root" component={BottomTabNavigator} />
                 <Stack.Screen name="Camera" component={CameraScreen} />
+                <Stack.Screen name="PlantRecognition" component={PlantRecognitionScreen} />
                 <Stack.Screen name="IndividualPlant" component={IndividualPlantScreen} />
                 <Stack.Screen
                   name="IndividualArticle"
