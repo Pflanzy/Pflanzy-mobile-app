@@ -77,7 +77,7 @@ const MyGardenPlant = ({ route, navigation }) => {
             paddingHorizontal: 10,
             paddingVertical: 5,
             flexDirection: 'row',
-            backgroundColor: 'white',
+            backgroundColor: Colors.defaultWhite,
             width: '97%',
             alignSelf: 'center',
             height: 52,
@@ -356,7 +356,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.8,
     shadowRadius: 3,
-    shadowColor: '#3d3c3b',
+    shadowColor: Colors.shadowColor,
   },
 
   opacityContainer: {
@@ -396,20 +396,20 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingVertical: 15,
     fontSize: 16,
-    color: '#c4392d',
+    color: Colors.settingsDelete,
     fontWeight: '600',
   },
 
   cancelSettingsBtn: {
     borderRadius: 10,
-    backgroundColor: '#d1cfce',
+    backgroundColor: Colors.cancelColor,
     marginHorizontal: 5,
     marginVertical: 25,
   },
 
   settingsHandleContainer: {
     backgroundColor: Colors.tintColor,
-    shadowColor: '#333',
+    shadowColor: Colors.settingsShadow,
     shadowOffset: { width: -1, height: -3 },
     shadowRadius: 2,
     shadowOpacity: 0.4,
@@ -435,7 +435,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 6,
     borderRadius: 4,
-    backgroundColor: '#00000040',
+    backgroundColor: Colors.settingsHandle,
     marginBottom: 10,
   },
 
@@ -466,13 +466,13 @@ const styles = StyleSheet.create({
   nameContainer: {
     width: '80%',
     height: 80,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.defaultWhite,
     position: 'absolute',
     top: '63%',
     alignSelf: 'center',
     borderRadius: 10,
     elevation: 3,
-    shadowColor: '#404040',
+    shadowColor: Colors.basicShadows,
     shadowOpacity: 0.3,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 3,
@@ -491,7 +491,7 @@ const styles = StyleSheet.create({
   commonNameContainer: {
     marginBottom: 10,
     borderBottomWidth: 1,
-    borderBottomColor: '#e6e2de',
+    borderBottomColor: Colors.borderBottom,
   },
 
   botName: {
@@ -522,7 +522,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   smallInfoWrapper: {
-    backgroundColor: '#e2ebe6',
+    backgroundColor: Colors.infoMainColor,
     borderRadius: 15,
     width: '48%',
     marginBottom: 15,
@@ -534,7 +534,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    backgroundColor: '#e2ebe6',
+    backgroundColor: Colors.infoMainColor,
     paddingVertical: 10,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
@@ -585,7 +585,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 3,
     borderRadius: 5,
-    backgroundColor: '#e2ebe6',
+    backgroundColor: Colors.infoMainColor,
     paddingVertical: 3,
     flexShrink: 1,
   },
@@ -601,7 +601,7 @@ const styles = StyleSheet.create({
     lineHeight: 28,
     marginTop: 10,
     marginBottom: 25,
-    color: '#e2ebe6',
+    color: Colors.infoMainColor,
   },
 });
 

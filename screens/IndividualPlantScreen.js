@@ -146,56 +146,56 @@ const IndividualPlantScreen = (navigation) => {
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
-                <MaterialCommunityIcons name="temperature-celsius" size={20} color={Colors.white} />
+                <MaterialCommunityIcons name="temperature-celsius" size={20} color={Colors.defaultWhite} />
                 <Text style={styles.infoHeader}>Temperature</Text>
               </View>
               <Text style={styles.infoBody}>{plant.temperature}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
-                <Entypo name="light-up" size={20} color={Colors.white} />
+                <Entypo name="light-up" size={20} color={Colors.defaultWhite} />
                 <Text style={styles.infoHeader}>Light</Text>
               </View>
               <Text style={styles.infoBody}>{plant.light}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
-                <Entypo name="drop" size={14} color={Colors.white} style={styles.waterDrop} />
+                <Entypo name="drop" size={14} color={Colors.defaultWhite} style={styles.waterDrop} />
                 <Text style={styles.infoHeader}>Water</Text>
               </View>
               <Text style={styles.infoBody}>{plant.watering}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
-                <MaterialCommunityIcons name="pot" size={20} color={Colors.white} />
+                <MaterialCommunityIcons name="pot" size={20} color={Colors.defaultWhite} />
                 <Text style={styles.infoHeader}>Soil</Text>
               </View>
               <Text style={styles.infoBody}>{plant.soil}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
-                <Entypo name="bucket" size={20} color={Colors.white} />
+                <Entypo name="bucket" size={20} color={Colors.defaultWhite} />
                 <Text style={styles.infoHeader}>Re-Potting</Text>
               </View>
               <Text style={styles.infoBody}>{plant.rePotting}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
-                <MaterialCommunityIcons name="spray-bottle" size={20} color={Colors.white} />
+                <MaterialCommunityIcons name="spray-bottle" size={20} color={Colors.defaultWhite} />
                 <Text style={styles.infoHeader}>Fertilizer</Text>
               </View>
               <Text style={styles.infoBody}>{plant.fertilizer}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
-                <Entypo name="water" size={20} color={Colors.white} />
+                <Entypo name="water" size={20} color={Colors.defaultWhite} />
                 <Text style={styles.infoHeader}>Humidity</Text>
               </View>
               <Text style={styles.infoBody}>{plant.humidity}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
-                <FontAwesome5 name="seedling" size={20} color={Colors.white} />
+                <FontAwesome5 name="seedling" size={20} color={Colors.defaultWhite} />
                 <Text style={styles.infoHeader}>Propagation</Text>
               </View>
               <Text style={styles.infoBody}>{plant.propagation}</Text>
@@ -241,7 +241,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.5,
     shadowRadius: 3,
-    shadowColor: '#d0d1c5',
+    shadowColor: Colors.defaultWhite,
   },
 
   bottomShadow: {
@@ -251,12 +251,11 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.8,
     shadowRadius: 3,
-    shadowColor: '#3d3c3b',
+    shadowColor: Colors.shadowColor,
   },
 
   container: {
-    flex: 1,
-    backgroundColor: '#eee',
+    flex: 1
   },
   background: {
     height: '85%',
@@ -274,12 +273,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   nameGeneric: {
-    color: 'white',
+    color: Colors.defaultWhite,
     fontSize: 28,
     marginBottom: 10,
   },
   nameScientific: {
-    color: 'white',
+    color: Colors.defaultWhite,
     marginBottom: 20,
     fontSize: 16,
     fontStyle: 'italic',
@@ -288,23 +287,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     width: ' 100%',
-  },
-  btnReminder: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: "#97BF7A",
-    width: 240,
-    padding: 10,
-    marginBottom: 20,
-    borderRadius: 50,
-    borderWidth: 2,
-    borderColor: '#79C3CA',
-  },
-  btnText: {
-    color: 'white',
-    fontSize: 18,
-    paddingLeft: 6,
   },
   text: {
     color: Colors.defaultWhite,
@@ -334,13 +316,13 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   shortInfoHeadline: {
-    color: 'white',
+    color: Colors.defaultWhite,
     fontWeight: 'bold',
     fontSize: 16,
     marginBottom: 5,
   },
   shortInfoText: {
-    color: 'white',
+    color: Colors.defaultWhite,
     width: '90%',
     textAlign: 'center',
   },
@@ -360,21 +342,13 @@ const styles = StyleSheet.create({
   },
   infoHeader: {
     fontSize: 20,
-    color: 'white',
+    color: Colors.defaultWhite,
     marginLeft: 10,
   },
   infoBody: {
-    color: 'white',
+    color: Colors.defaultWhite,
     lineHeight: 28,
     marginTop: 10,
     marginBottom: 25,
-  },
-  modalWrapper: {
-    backgroundColor: 'grey',
-    width: 300,
-    maxHeight: '50%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
   },
 });

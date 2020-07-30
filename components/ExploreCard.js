@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import ExploreLabel from './ExploreLabel';
 import { useNavigation } from '@react-navigation/native';
+import Colors from '../constants/Colors';
 
 function ExploreCard({article}) {
   const navigation = useNavigation();
@@ -25,13 +26,13 @@ function ExploreCard({article}) {
 const styles = StyleSheet.create({
   cardContainer: {
     flexDirection: 'row-reverse',
-    backgroundColor: '#fff',
+    backgroundColor: Colors.defaultWhite,
     borderTopRightRadius: 10,
     borderBottomRightRadius: 10,
     height: 130,
     width: '93%',
     elevation: 3,
-    shadowColor: '#404040',
+    shadowColor: Colors.basicShadows,
     shadowOpacity: 0.4,
     shadowOffset: { width: 2, height: 2 },
     shadowRadius: 3,

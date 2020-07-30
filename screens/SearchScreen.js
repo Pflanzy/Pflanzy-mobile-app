@@ -6,6 +6,7 @@ import plantData from '../data/data.json';
 import photo from '../assets/images/photo-1517191434949-5e90cd67d2b6.jpeg';
 import SearchFieldModal from '../components/SearchFieldModal';
 import PflanzyOpacity from '../components/PflanzyOpacity';
+import Colors from '../constants/Colors';
 
 const SearchScreen = () => {
   const dispatch = useDispatch();
@@ -35,14 +36,14 @@ const SearchScreen = () => {
             top: 50,
             alignSelf: 'center',
             width: 350,
-            borderColor: 'transparent',
-            backgroundColor: 'transparent',
-            borderBottomColor: 'transparent',
-            borderTopColor: 'transparent',
+            borderColor: Colors.transparent,
+            backgroundColor: Colors.transparent,
+            borderBottomColor: Colors.transparent,
+            borderTopColor: Colors.transparent,
           }}
           onPress={() => dispatch({ type: 'TOGGLE' })}
-          inputContainerStyle={{ backgroundColor: 'white', position: 'absolute', zIndex: 0 }}
-          searchIcon={{ backgroundColor: 'transparent', paddingLeft: 10 }}
+          inputContainerStyle={{ backgroundColor: Colors.defaultWhite, position: 'absolute', zIndex: 0 }}
+          searchIcon={{ backgroundColor: Colors.transparent, paddingLeft: 10 }}
           placeholder="Search for plants"
         />
       </ImageBackground>

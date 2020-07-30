@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {  useDispatch } from 'react-redux';
+import { colors } from 'react-native-elements';
+import Colors from '../constants/Colors';
 
 const ReminderCard = ({element}) => {
   const navigation = useNavigation();
@@ -42,13 +44,13 @@ const styles = StyleSheet.create({
   cardContainer: {
     flexDirection: 'row',
     alignSelf: 'flex-end',
-    backgroundColor: '#fff',
+    backgroundColor: Colors.defaultWhite,
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
     maxHeight: 110,
     width: '92%',
     elevation: 3,
-    shadowColor: '#404040',
+    shadowColor: Colors.basicShadows,
     shadowOpacity: 0.4,
     shadowOffset: { width: 2, height: 2 },
     shadowRadius: 3,
