@@ -168,7 +168,7 @@ const MyGardenPlant = ({ route, navigation }) => {
       </Transitioning.View>
 
       <View style={styles.reminderBtnContainer}>
-        <ModalConfigPopup />
+        <ModalConfigPopup plant={plant}/>
       </View>
       <ScrollView style={styles.plantInfoWrapper}>
         <View style={styles.smallContainer}>
