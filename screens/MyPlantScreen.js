@@ -173,7 +173,7 @@ const MyGardenPlant = ({ route, navigation }) => {
           plantName={plant?.custom?.title ? plant.custom.title : plant?.commonName}
           plantId={plant?.id && plant.id}
         />
-        {plant?.custom?.notifications.length > 0 && (
+        {plant?.custom?.notifications?.length > 0 && (
           <ModalListPopup
             notifications={plant?.custom?.notifications && plant.custom.notifications}
             plantId={plant?.id && plant.id}
