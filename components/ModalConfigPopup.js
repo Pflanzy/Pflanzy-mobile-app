@@ -45,7 +45,7 @@ const ModalConfigPopup = ({ plant }) => {
         <NeuMorph>
           <View style={{ marginBottom: 25, marginTop: 10 }}>
             <LinearGradient
-              colors={['#004e57', '#004e57', '#004e57']}
+              colors={[Colors.darkGreen, Colors.darkGreen, Colors.darkGreen]}
               start={[0.0, 0.0]}
               end={[1.0, 1.0]}
               style={{ width: 240, borderRadius: 17, padding: 10, elevation: 3 }}>
@@ -72,7 +72,7 @@ const ModalConfigPopup = ({ plant }) => {
           position: 'absolute',
           top: 100,
           alignSelf: 'center',
-          backgroundColor: 'white',
+          backgroundColor: Colors.defaultWhite,
           borderRadius: 10,
           // padding: 20,
           height: `${isEnabled && Platform.OS === 'ios' ? '70%' : 'auto'}`,
@@ -152,7 +152,6 @@ const ModalConfigPopup = ({ plant }) => {
                     __ /__ /__ : __ :
                   </Text>
                 </View>
-
                 <View style={{ flexDirection: 'row' }}>
                   <Picker
                     selectedValue={selectedInterval}
@@ -187,7 +186,6 @@ const ModalConfigPopup = ({ plant }) => {
               top: Platform.OS === 'ios' ? 250 : 268,
               flexDirection: 'row',
               alignItems: 'center',
-              // width: '100%',
               justifyContent: 'space-between',
             }}>
             <Text style={{ marginRight: 10 }}>Repeat</Text>
@@ -209,7 +207,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.5,
     shadowRadius: 3,
-    shadowColor: '#d0d1c5',
+    shadowColor: Colors.topShadow,
   },
 
   bottomShadow: {
@@ -219,7 +217,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.8,
     shadowRadius: 3,
-    shadowColor: '#3d3c3b',
+    shadowColor: Colors.shadowColor,
   },
 
   // modalContent: {
@@ -249,7 +247,7 @@ const styles = StyleSheet.create({
 
   careOptions: {
     borderWidth: 1,
-    borderColor: 'lightgray',
+    borderColor: Colors.lightgray,
     borderRadius: 11,
     paddingHorizontal: 20,
     paddingVertical: 4,
@@ -273,9 +271,9 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     flex: 1,
     paddingLeft: 10,
-    borderColor: 'lightgray',
+    borderColor: Colors.lightgray,
     borderWidth: 1,
-    backgroundColor: '#f9f9f9',
+    backgroundColor: Colors.reminderBackground,
   },
 
   repeater: {

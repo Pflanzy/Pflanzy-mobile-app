@@ -91,6 +91,7 @@ const AccountScreen = (props) => {
 };
 
 import { StyleSheet } from 'react-native';
+import Colors from '../constants/Colors';
 
 export default StyleSheet.create({
   container: {
@@ -114,7 +115,7 @@ export default StyleSheet.create({
     height: 48,
     borderRadius: 5,
     overflow: 'hidden',
-    backgroundColor: 'white',
+    backgroundColor: Colors.defaultWhite,
     paddingLeft: 16,
     flex: 1,
     marginRight: 5,
@@ -128,7 +129,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   buttonText: {
-    color: 'white',
+    color: Colors.defaultWhite,
     fontSize: 16,
   },
   listContainer: {

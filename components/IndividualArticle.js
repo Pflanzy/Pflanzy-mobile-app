@@ -24,7 +24,7 @@ const IndividualArticle = ({route}) => {
             <Modal visible={visible} transparent={false}>
                 <ImageViewer enableSwipeDown={true} onSwipeDown={() => setVisibility(false)}  swipeDownThreshold={10} imageUrls={modalImages} index={currentIndex}/>
                 <TouchableOpacity activeOpacity={1} style={styles.closeButton} onPress={() => setVisibility(false)}>
-                    <Entypo name="circle-with-cross" size={24} color="white" />
+                    <Entypo name="circle-with-cross" size={24} color={Colors.defaultWhite} />
                 </TouchableOpacity>
             </Modal>
             <ScrollView style={styles.mainWrapper}>
@@ -119,25 +119,6 @@ const styles = StyleSheet.create({
         color: Colors.textGrey,
         marginBottom: 20,
     },
-    buttonWrapper: {
-        backgroundColor: '#004e57',
-        borderRadius: 25,
-        marginTop: 20,
-        marginBottom: 20,
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 5,
-        width: 250,
-        borderWidth: 2,
-        borderColor: '#79C3CA',
-    },
-    buttonText: {
-        color: 'white',
-        fontSize: 18,
-        marginRight: 5
-    }
 })
 
 export default IndividualArticle;

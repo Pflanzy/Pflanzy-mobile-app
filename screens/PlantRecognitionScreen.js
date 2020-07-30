@@ -4,14 +4,13 @@ import { Camera } from 'expo-camera';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation, Route } from '@react-navigation/native';
 import firebase from '../firebase';
-import Colors from '../constants/Colors';
+import plants from '../data/data.json';
 
-const CameraScreen = ({ route, navigation }) => {
+const PlantRecognitionScreen = ({ route, navigation }) => {
   const [hasPermission, setHasPermission] = useState(null);
   const [cameraRef, setCameraRef] = useState(null);
   const [processing, setProcessing] = useState(false);
   const [type, setType] = useState(Camera.Constants.Type.back);
-  const { plantId } = route.params;
 
   useEffect(() => {
     (async () => {
@@ -54,7 +53,7 @@ const CameraScreen = ({ route, navigation }) => {
             <Ionicons
               name="ios-reverse-camera"
               size={40}
-              color={Colors.defaultWhite}
+              color="white"
               style={{ marginRight: 50 }}
             />
           </TouchableOpacity>
@@ -66,16 +65,46 @@ const CameraScreen = ({ route, navigation }) => {
                 // Taken photo is here
                 const photo = await cameraRef.takePictureAsync();
                 // We can use the uri property from photo to reach the taken picture and do what we want.
-                const userplantsRef = firebase.firestore().collection('plants').doc(plantId);
+                // ImagePicker saves the taken photo to disk and returns a local URI to it
+                const localUri = photo.uri;
+                const filename = localUri.split('/').pop();
 
-                userplantsRef
-                  .update({
-                    'custom.picture': photo.uri,
-                  })
-                  .then(() => {
-                    setProcessing(false);
-                    navigation.navigate('MyPlant');
-                  });
+                // Infer the type of the image
+                const match = /\.(\w+)$/.exec(filename);
+                const imageType = match ? `image/${match[1]}` : `image`;
+
+                // Upload the image using the fetch and FormData APIs
+                const formData = new FormData();
+                // Assume "photo" is the name of the form field the server expects
+                formData.append('organs', 'flower');
+                formData.append('images', { uri: localUri, name: filename, type: imageType });
+                try {
+                  const data = await fetch(
+                    'https://my-api.plantnet.org/v2/identify/all?api-key=2a10M6Omnnm5LOhRgHN9aqGu',
+                    {
+                      method: 'POST',
+                      body: formData,
+                      headers: {
+                        'content-type': 'multipart/form-data',
+                      },
+                    }
+                  ).then((res) => res.json());
+                  const scientificName =
+                    data?.results[0]?.species?.genus?.scientificNameWithoutAuthor;
+                  const targetPlant = plants.find(
+                    (plant1) =>
+                      plant1?.scientificName.includes(scientificName) ||
+                      scientificName.includes(plant1?.scientificName)
+                  );
+                  if (targetPlant) {
+                    navigation.navigate('IndividualPlant', { element: targetPlant });
+                  } else {
+                    navigation.navigate('Search', { error: true });
+                  }
+                } catch (e) {
+                  console.log(e);
+                  navigation.navigate('Search', { error: true });
+                }
               }
             }}>
             {processing ? (
@@ -84,7 +113,7 @@ const CameraScreen = ({ route, navigation }) => {
               <View
                 style={{
                   borderWidth: 2,
-                  borderColor: Colors.defaultWhite,
+                  borderColor: 'white',
                   borderRadius: 50,
                   height: 50,
                   width: 50,
@@ -96,10 +125,10 @@ const CameraScreen = ({ route, navigation }) => {
                   style={{
                     borderWidth: 2,
                     borderRadius: 50,
-                    borderColor: Colors.defaultWhite,
+                    borderColor: 'white',
                     height: 40,
                     width: 40,
-                    backgroundColor: Colors.defaultWhite,
+                    backgroundColor: 'white',
                   }}
                 />
               </View>
@@ -111,4 +140,4 @@ const CameraScreen = ({ route, navigation }) => {
   );
 };
 
-export default CameraScreen;
+export default PlantRecognitionScreen;

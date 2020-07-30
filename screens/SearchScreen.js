@@ -1,13 +1,16 @@
 import React from 'react';
-import { Platform, StyleSheet, Modal, ImageBackground } from 'react-native';
-import { SearchBar } from 'react-native-elements';
+import { Platform, StyleSheet, Modal, ImageBackground, View } from 'react-native';
+import { SearchBar, colors } from 'react-native-elements';
 import { useDispatch, useSelector } from 'react-redux';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import plantData from '../data/data.json';
 import photo from '../assets/images/photo-1517191434949-5e90cd67d2b6.jpeg';
 import SearchFieldModal from '../components/SearchFieldModal';
 import PflanzyOpacity from '../components/PflanzyOpacity';
+import Colors from '../constants/Colors';
 
-const SearchScreen = () => {
+const SearchScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const modalVisible = useSelector((state) => state.modalReducer.open);
 
@@ -25,14 +28,14 @@ const SearchScreen = () => {
             top: 50,
             alignSelf: 'center',
             width: 350,
-            borderColor: 'transparent',
-            backgroundColor: 'transparent',
-            borderBottomColor: 'transparent',
-            borderTopColor: 'transparent',
+            borderColor: Colors.transparent,
+            backgroundColor: Colors.transparent,
+            borderBottomColor: Colors.transparent,
+            borderTopColor: Colors.transparent,
           }}
           onPress={() => dispatch({ type: 'TOGGLE' })}
-          inputContainerStyle={{ backgroundColor: 'white', position: 'absolute' }}
-          searchIcon={{ backgroundColor: 'transparent', paddingLeft: 10 }}
+          inputContainerStyle={{ backgroundColor: Colors.defaultWhite, position: 'absolute', zIndex: 0 }}
+          searchIcon={{ backgroundColor: Colors.transparent, paddingLeft: 10 }}
           placeholder="Search for plants"
         />
         <PflanzyOpacity
@@ -44,6 +47,19 @@ const SearchScreen = () => {
             alignItems: 'center',
           }}
         />
+        <TouchableOpacity
+          style={{
+            alignSelf: 'flex-end',
+            width: 150,
+            height: 150,
+            backgroundColor: 'green',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: 100,
+          }}
+          onPress={() => navigation.navigate('PlantRecognition')}>
+          <FontAwesome5 name="camera" size={80} />
+        </TouchableOpacity>
       </ImageBackground>
     </>
   );
@@ -59,6 +75,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     position: 'absolute',
     zIndex: 0,
+    alignItems: 'center',
   },
 });
 
