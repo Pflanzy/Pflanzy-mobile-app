@@ -89,23 +89,15 @@ const MyGardenPlant = ({ route, navigation }) => {
         backdropTransitionOutTiming={40}>
         <TextInput
           style={{
-            width: '90%',
-            borderWidth: 1,
-            borderColor: 'transparent',
-            padding: 0,
-            display: 'flex',
-            justifyContent: 'space-between',
-            flexDirection: 'row',
-            alignSelf: 'center',
-            alignItems: 'center',
-            paddingHorizontal: 10,
-            paddingVertical: 5,
-            borderRadius: 11,
-            textAlign: 'center',
-            height: '40%',
-            color: 'black',
-            margin: 20,
-            backgroundColor: Colors.defaultWhite,
+           width: '90%',
+           borderWidth: 1,
+           borderColor: 'transparent',
+           borderRadius: 11,
+           textAlign: 'center',
+           height: '40%',
+           color: 'black',
+           margin: 20,
+           backgroundColor: Colors.defaultWhite, 
           }}
           onChangeText={(text) => onChangeText(text)}
           value={value}
