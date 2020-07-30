@@ -12,13 +12,13 @@ import {
 import { MaterialCommunityIcons, Fontisto, AntDesign } from '@expo/vector-icons';
 import Modal from 'react-native-modal';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useSelector } from 'react-redux';
 import Colors from '../constants/Colors';
 import PflanzyOpacity from './PflanzyOpacity';
 import DateTimePicker from './DateTimePicker';
 import SetReminderNotification from './SetReminderNotification';
-import { useSelector } from 'react-redux';
 
-const ModalConfigPopup = ({plant}) => {
+const ModalConfigPopup = ({ plant }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [isEnabled, setSwitchEnabled] = useState(false);
   const [oneTimeDate, setOneTimeDate] = useState(null);
@@ -38,7 +38,7 @@ const ModalConfigPopup = ({plant}) => {
   const onTimeSet = (date) => {
     setOneTimeDate(date);
   };
-  
+
   return (
     <View>
       <PflanzyOpacity onPress={() => setModalOpen(true)}>
@@ -101,7 +101,7 @@ const ModalConfigPopup = ({plant}) => {
           </View>
           <View style={styles.modalRows}>
             <MaterialCommunityIcons name="flower-poppy" size={18} color={Colors.tintColor} />
-            <Text style={styles.modalFields}>{plant.commonName}</Text>
+            <Text style={styles.modalFields}>{plant?.commonName}</Text>
           </View>
           <View style={[styles.modalRows, styles.textInputBottom]}>
             <MaterialCommunityIcons name="bell-outline" size={18} color={Colors.tintColor} />
