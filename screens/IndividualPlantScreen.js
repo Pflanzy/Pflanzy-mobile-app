@@ -49,7 +49,6 @@ const IndividualPlantScreen = (navigation) => {
       type: 'success',
       animated: true,
       icon: 'success',
-      renderFlashMessageIcon: 'asdsadsa',
       onPress: () => navigate.navigate('MyGarden'),
     });
   };
