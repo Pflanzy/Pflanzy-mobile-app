@@ -501,7 +501,7 @@ const styles = StyleSheet.create({
 
   myPlantContainer: {
     display: 'flex',
-    height: '100%',
+    height: '101%',
     backgroundColor: Colors.tintColor,
     padding: 10,
     borderTopLeftRadius: 20,
@@ -561,7 +561,7 @@ const styles = StyleSheet.create({
   },
 
   plantInfoWrapper: {
-    paddingVertical: 10,
+    paddingTop: 10,
     paddingHorizontal: 5,
   },
 

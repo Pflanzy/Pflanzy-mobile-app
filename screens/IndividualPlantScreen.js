@@ -137,7 +137,11 @@ const IndividualPlantScreen = (navigation) => {
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
-                <MaterialCommunityIcons name="temperature-celsius" size={20} color={Colors.defaultWhite} />
+                <MaterialCommunityIcons
+                  name="temperature-celsius"
+                  size={20}
+                  color={Colors.defaultWhite}
+                />
                 <Text style={styles.infoHeader}>Temperature</Text>
               </View>
               <Text style={styles.infoBody}>{plant.temperature}</Text>
@@ -151,7 +155,12 @@ const IndividualPlantScreen = (navigation) => {
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
-                <Entypo name="drop" size={14} color={Colors.defaultWhite} style={styles.waterDrop} />
+                <Entypo
+                  name="drop"
+                  size={14}
+                  color={Colors.defaultWhite}
+                  style={styles.waterDrop}
+                />
                 <Text style={styles.infoHeader}>Water</Text>
               </View>
               <Text style={styles.infoBody}>{plant.watering}</Text>
@@ -247,14 +256,14 @@ const styles = StyleSheet.create({
   },
 
   container: {
-    flex: 1
+    flex: 1,
   },
   background: {
     height: '69%',
     width: '100%',
   },
   contentWrapper: {
-    height: '100%',
+    height: '102%',
     width: '100%',
   },
   content: {
