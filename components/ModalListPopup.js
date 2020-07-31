@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 import * as Notifications from 'expo-notifications';
 import { MaterialIcons, Entypo, Ionicons } from '@expo/vector-icons';
