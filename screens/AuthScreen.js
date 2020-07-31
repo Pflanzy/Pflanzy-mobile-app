@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
     height: 48,
     borderRadius: 5,
     overflow: 'hidden',
-    backgroundColor: 'white',
+    backgroundColor: Colors.defaultWhite,
     marginTop: 10,
     marginBottom: 10,
     marginLeft: 30,
@@ -241,7 +241,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttonTitle: {
-    color: 'white',
+    color: Colors.defaultWhite,
     fontSize: 16,
   },
   footerView: {
@@ -251,7 +251,7 @@ const styles = StyleSheet.create({
   },
   footerText: {
     fontSize: 16,
-    color: '#2e2e2d',
+    color: Colors.black,
   },
   footerLink: {
     color: Colors.tintColor,
