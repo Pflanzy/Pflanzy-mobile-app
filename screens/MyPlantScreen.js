@@ -63,7 +63,10 @@ const MyGardenPlant = ({ route, navigation }) => {
     <View style={styles.settingsContainer}>
       <PflanzyOpacity
         style={styles.settingsBtns}
-        onPress={() => navigation.navigate('Camera', { plantId })}>
+        onPress={() => {
+          navigation.navigate('Camera', { plantId });
+          bsSettings.current.snapTo(1);
+        }}>
         <Text style={styles.settingsBtnTitle}>Take Photo</Text>
       </PflanzyOpacity>
       <PflanzyOpacity style={styles.settingsBtns} onPress={() => setModalOpen(true)}>
@@ -89,15 +92,15 @@ const MyGardenPlant = ({ route, navigation }) => {
         backdropTransitionOutTiming={40}>
         <TextInput
           style={{
-           width: '90%',
-           borderWidth: 1,
-           borderColor: 'transparent',
-           borderRadius: 11,
-           textAlign: 'center',
-           height: '40%',
-           color: 'black',
-           margin: 20,
-           backgroundColor: Colors.defaultWhite, 
+            width: '90%',
+            borderWidth: 1,
+            borderColor: 'transparent',
+            borderRadius: 11,
+            textAlign: 'center',
+            height: '40%',
+            color: 'black',
+            margin: 20,
+            backgroundColor: Colors.defaultWhite,
           }}
           onChangeText={(text) => onChangeText(text)}
           value={value}
@@ -168,9 +171,9 @@ const MyGardenPlant = ({ route, navigation }) => {
       </Transitioning.View>
 
       <View style={styles.reminderBtnContainer}>
-        <ModalConfigPopup plant={plant}/>
+        <ModalConfigPopup plant={plant} />
       </View>
-      <ScrollView style={styles.plantInfoWrapper}>
+      <ScrollView contentContainerStyle={styles.plantInfoWrapper}>
         <View style={styles.smallContainer}>
           <View style={styles.smallInfoWrapper}>
             <View style={styles.smallInfoHeaderWrapper}>
@@ -356,9 +359,10 @@ const MyGardenPlant = ({ route, navigation }) => {
 
         <BottomSheet
           ref={bsInfo}
-          snapPoints={['45%', '75%']}
+          snapPoints={['45%', '78%']}
           renderContent={renderMainInfo}
           initialSnap={0}
+          enabledBottomClamp
           enabledGestureInteraction
           onOpenEnd={() => {
             ref.current.animateNextTransition();
@@ -499,7 +503,8 @@ const styles = StyleSheet.create({
     display: 'flex',
     height: '100%',
     backgroundColor: Colors.tintColor,
-    padding: 10,
+    paddingTop: 10,
+    paddingHorizontal: 10,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },
@@ -512,10 +517,9 @@ const styles = StyleSheet.create({
   },
   nameContainer: {
     width: '80%',
-    height: 80,
     backgroundColor: Colors.defaultWhite,
     position: 'absolute',
-    top: '62%',
+    top: '63%',
     alignSelf: 'center',
     borderRadius: 10,
     elevation: 3,
@@ -558,7 +562,7 @@ const styles = StyleSheet.create({
   },
 
   plantInfoWrapper: {
-    paddingVertical: 10,
+    paddingTop: 10,
     paddingHorizontal: 5,
   },
 
