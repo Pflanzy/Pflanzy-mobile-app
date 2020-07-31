@@ -263,13 +263,14 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   contentWrapper: {
-    height: '102%',
+    height: '100%',
     width: '100%',
   },
   content: {
     backgroundColor: Colors.tintColor,
     borderTopRightRadius: 80,
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingTop: 20,
     width: '100%',
     flex: 1,
   },

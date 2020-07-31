@@ -173,7 +173,7 @@ const MyGardenPlant = ({ route, navigation }) => {
       <View style={styles.reminderBtnContainer}>
         <ModalConfigPopup plant={plant} />
       </View>
-      <ScrollView style={styles.plantInfoWrapper}>
+      <ScrollView contentContainerStyle={styles.plantInfoWrapper}>
         <View style={styles.smallContainer}>
           <View style={styles.smallInfoWrapper}>
             <View style={styles.smallInfoHeaderWrapper}>
@@ -501,9 +501,10 @@ const styles = StyleSheet.create({
 
   myPlantContainer: {
     display: 'flex',
-    height: '101%',
+    height: '100%',
     backgroundColor: Colors.tintColor,
-    padding: 10,
+    paddingTop: 10,
+    paddingHorizontal: 10,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },
