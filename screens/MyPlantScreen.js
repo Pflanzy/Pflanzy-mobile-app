@@ -34,6 +34,7 @@ const MyGardenPlant = ({ route, navigation }) => {
   const plant = useSelector((state) =>
     state.userReducer.plants.find((plantToFind) => plantToFind.id === plantId)
   );
+
   const transition = <Transition.Change interpolation="easeInOut" />;
   const [deg, setDeg] = useState(0);
   const ref = useRef();

@@ -31,8 +31,8 @@ export default async function SetReminderNotification(config) {
     },
     trigger: {
       seconds: config.repeat
-        ? config.selectedInterval * timeIntervals[config.selectedPeriod]
-        : timeLeftInSec,
+        ? Math.trunc(config.selectedInterval * timeIntervals[config.selectedPeriod])
+        : Math.trunc(timeLeftInSec),
       repeats: config.repeat,
     },
   };
@@ -40,7 +40,6 @@ export default async function SetReminderNotification(config) {
 
   notificationObject = { ...notificationObject, identifier };
 
-  console.log(notificationObject);
   const userplantsRef = firebase.firestore().collection('plants').doc(config.plantId);
 
   userplantsRef.update({
