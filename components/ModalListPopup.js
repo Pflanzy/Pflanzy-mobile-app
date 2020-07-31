@@ -73,9 +73,10 @@ const ModalListPopup = ({ notifications, plantId }) => {
                       <Text
                         style={
                           styles.mainObjBody
-                        }>{`${item.content.title}: ${item.content.body}`}</Text>
+                        }>{`${item?.content?.title}: ${item?.content?.body}`}</Text>
                     </View>
                     <TouchableOpacity
+                      key="touch2"
                       color="orange"
                       title="Remove "
                       style={{}}

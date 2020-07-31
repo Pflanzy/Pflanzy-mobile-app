@@ -24,8 +24,7 @@ export default async function SetReminderNotification(config) {
 
   const timeLeftInSec = (new Date(config.notificationDate).getTime() - Date.now()) / 1000;
   // console.warn(timeLeftInSec)
-
-  const identifier = await Notifications.scheduleNotificationAsync({
+  let notificationObject = {
     content: {
       title: config.name,
       body: config.reminderItem,
@@ -36,26 +35,27 @@ export default async function SetReminderNotification(config) {
         : timeLeftInSec,
       repeats: config.repeat,
     },
-  });
+  };
+  const identifier = await Notifications.scheduleNotificationAsync(notificationObject);
 
-  // await Notifications.cancelScheduledNotificationAsync(identifier);
-  console.log(await Notifications.getAllScheduledNotificationsAsync());
-  const notifications = await Notifications.getAllScheduledNotificationsAsync();
-  console.log(await notifications);
+  notificationObject = { ...notificationObject, identifier };
+
+  console.log(notificationObject);
   const userplantsRef = firebase.firestore().collection('plants').doc(config.plantId);
 
   userplantsRef.update({
-    'custom.notifications': notifications,
+    'custom.notifications': firebase.firestore.FieldValue.arrayUnion(notificationObject),
   });
-
-  // ModalListPopup(notifications);
-
-  // console.warn(identifier);
-
-  // Notifications.dismissAllNotificationsAsync();
-
-  // Notifications.cancelAllScheduledNotificationsAsync();
 }
+// await Notifications.cancelScheduledNotificationAsync(identifier);
+
+// ModalListPopup(notifications);
+
+// console.warn(identifier);
+
+// Notifications.dismissAllNotificationsAsync();
+
+// Notifications.cancelAllScheduledNotificationsAsync();
 
 // Fetching information about notifications-related permissions
 async function allowsNotificationsAsync() {
@@ -75,3 +75,12 @@ async function requestPermissionsAsync() {
     },
   });
 }
+
+// async function getAllScheduledNotificationsAsync(config) {
+//   const notifications = await Notifications.getAllScheduledNotificationsAsync();
+//   const userplantsRef = firebase.firestore().collection('plants').doc(config.plantId);
+
+//   userplantsRef.update({
+//     'custom.notifications': notifications,
+//   });
+// }
