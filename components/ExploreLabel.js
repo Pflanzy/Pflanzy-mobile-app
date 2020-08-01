@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Colors from '../constants/Colors';
 
-function ExploreLabelComponent({label}) {
+function ExploreLabelComponent({ label }) {
   return (
     <View style={styles.mainContainer}>
       <View style={label === 'Collection' ? styles.collectionStyle : styles.tipsStyle}>

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { Camera } from 'expo-camera';
 import { Ionicons } from '@expo/vector-icons';
-import { useNavigation, Route } from '@react-navigation/native';
 import firebase from '../firebase';
 import Colors from '../constants/Colors';
 
@@ -37,7 +36,6 @@ const CameraScreen = ({ route, navigation }) => {
         }}>
         <View
           style={{
-            // flex: 1,
             backgroundColor: '#00000099',
             flexDirection: 'row',
             justifyContent: 'space-between',

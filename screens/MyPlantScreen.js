@@ -24,6 +24,7 @@ import firebase from '../firebase';
 import Colors from '../constants/Colors';
 import PflanzyOpacity from '../components/PflanzyOpacity';
 import ModalConfigPopup from '../components/ModalConfigPopup';
+import ModalListPopup from '../components/ModalListPopup';
 
 const MyGardenPlant = ({ route, navigation }) => {
   const bsSettings = React.createRef();
@@ -33,14 +34,13 @@ const MyGardenPlant = ({ route, navigation }) => {
   const plant = useSelector((state) =>
     state.userReducer.plants.find((plantToFind) => plantToFind.id === plantId)
   );
+
   const transition = <Transition.Change interpolation="easeInOut" />;
   const [deg, setDeg] = useState(0);
   const ref = useRef();
   const [rename, setRename] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-  const [value, onChangeText] = useState(
-    plant?.custom?.title ? plant.custom.title : plant?.commonName
-  );
+  const [value, onChangeText] = useState(plant?.custom?.title ?? plant?.commonName);
   const renamePlant = (selectedPlant) => {
     const userplantsRef = firebase.firestore().collection('plants').doc(selectedPlant.id);
     userplantsRef.update({
@@ -84,7 +84,7 @@ const MyGardenPlant = ({ route, navigation }) => {
           position: 'absolute',
           top: '30%',
           alignSelf: 'center',
-          backgroundColor: '#ededed',
+          backgroundColor: Colors.renameModalBg,
           borderRadius: 10,
         }}
         isVisible={modalOpen}
@@ -94,11 +94,11 @@ const MyGardenPlant = ({ route, navigation }) => {
           style={{
             width: '90%',
             borderWidth: 1,
-            borderColor: 'transparent',
+            borderColor: Colors.transparent,
             borderRadius: 11,
             textAlign: 'center',
             height: '40%',
-            color: 'black',
+            color: Colors.defaultBlack,
             margin: 20,
             backgroundColor: Colors.defaultWhite,
           }}
@@ -118,7 +118,12 @@ const MyGardenPlant = ({ route, navigation }) => {
               setModalOpen(false);
               bsSettings.current.snapTo(1);
             }}>
-            <AntDesign style={styles.renameIcon} name="closecircle" size={35} color="#8B0000" />
+            <AntDesign
+              style={styles.renameIcon}
+              name="closecircle"
+              size={35}
+              color={Colors.cancelColor}
+            />
           </DefaultTouch>
           <DefaultTouch
             onPress={() => {
@@ -165,15 +170,27 @@ const MyGardenPlant = ({ route, navigation }) => {
         <Ionicons
           name="ios-arrow-up"
           size={24}
-          color="#dbd7d3"
+          color={Colors.arrowColor}
           style={{ transform: [{ rotateX: `${deg}deg` }] }}
         />
       </Transitioning.View>
 
       <View style={styles.reminderBtnContainer}>
-        <ModalConfigPopup plant={plant} />
+        <ModalConfigPopup
+          plantName={plant?.custom?.title ? plant.custom.title : plant?.commonName}
+          plantId={plant?.id && plant.id}
+        />
+        <View style={styles.gearContainer}>
+          {plant?.custom?.notifications?.length > 0 && (
+            <ModalListPopup
+              notifications={plant?.custom?.notifications && plant.custom.notifications}
+              plantId={plant?.id && plant.id}
+            />
+          )}
+        </View>
       </View>
-      <ScrollView contentContainerStyle={styles.plantInfoWrapper}>
+
+      <ScrollView style={styles.plantInfoWrapper}>
         <View style={styles.smallContainer}>
           <View style={styles.smallInfoWrapper}>
             <View style={styles.smallInfoHeaderWrapper}>
@@ -304,20 +321,20 @@ const MyGardenPlant = ({ route, navigation }) => {
       <Animated.View
         style={{
           height: '100%',
-          backgroundColor: '#e8fffe',
+          backgroundColor: Colors.centerBgSpliter,
           opacity: Animated.add(0.4, Animated.multiply(fall, 1.0)),
         }}>
         <DefaultTouch style={styles.plantSettings} onPress={() => bsSettings.current.snapTo(0)}>
           <View
             style={{
-              backgroundColor: '#00000070',
+              backgroundColor: Colors.settingsIconBg,
               width: 40,
               height: 40,
               justifyContent: 'center',
               alignItems: 'center',
               borderRadius: 50,
             }}>
-            <Entypo name="dots-three-vertical" size={25} color="#e0ebe2" />
+            <Entypo name="dots-three-vertical" size={25} color={Colors.settingsIcon} />
           </View>
         </DefaultTouch>
 
@@ -341,11 +358,13 @@ const MyGardenPlant = ({ route, navigation }) => {
             />
           </Svg>
           <View style={styles.nameContainer}>
-            {plant?.custom?.title && (
-              <View>
-                <Text style={styles.customPlantName}>{plant?.custom.title}</Text>
-              </View>
-            )}
+            <View>
+              {plant?.custom?.title ? (
+                <Text style={styles.customPlantName}>{plant?.custom?.title}</Text>
+              ) : (
+                <View />
+              )}
+            </View>
             <View style={styles.commonNameContainer}>
               <Text style={styles.commonName}>{plant?.commonName}</Text>
             </View>
@@ -379,28 +398,8 @@ const MyGardenPlant = ({ route, navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  topShadow: {
-    shadowOffset: {
-      width: -2,
-      height: -2,
-    },
-    shadowOpacity: 0.5,
-    shadowRadius: 3,
-    shadowColor: '#d0d1c5',
-  },
-
-  bottomShadow: {
-    shadowOffset: {
-      width: 3,
-      height: 3,
-    },
-    shadowOpacity: 0.8,
-    shadowRadius: 3,
-    shadowColor: Colors.shadowColor,
-  },
-
   opacityContainer: {
-    backgroundColor: '#2c2c2f',
+    backgroundColor: Colors.settingsBgOpacity,
   },
   settingsContainer: {
     padding: 20,
@@ -443,35 +442,26 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingVertical: 15,
     fontSize: 16,
-    color: Colors.settingsDelete,
+    color: Colors.settingsDeleteTxt,
     fontWeight: '600',
   },
 
   cancelSettingsBtn: {
     borderRadius: 10,
-    backgroundColor: Colors.cancelColor,
+    backgroundColor: Colors.settingsCancelBtn,
     marginHorizontal: 5,
     marginVertical: 25,
   },
 
   settingsHandleContainer: {
     backgroundColor: Colors.tintColor,
-    shadowColor: Colors.settingsShadow,
+    shadowColor: Colors.basicShadows,
     shadowOffset: { width: -1, height: -3 },
     shadowRadius: 2,
     shadowOpacity: 0.4,
     paddingTop: 20,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-  },
-
-  settingsMainInfo: {
-    backgroundColor: Colors.defaultWhite,
-    paddingTop: 20,
-  },
-
-  settingMainInfoSeparator: {
-    paddingBottom: 20,
   },
 
   settingsHeader: {
@@ -556,9 +546,16 @@ const styles = StyleSheet.create({
     fontWeight: '400',
   },
 
+  gearContainer: {
+    width: 33,
+  },
+
   reminderBtnContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center',
     marginTop: 10,
+    position: 'relative',
   },
 
   plantInfoWrapper: {
@@ -574,7 +571,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   smallInfoWrapper: {
-    backgroundColor: Colors.infoMainColor,
+    backgroundColor: Colors.defaultWhite,
     borderRadius: 15,
     width: '48%',
     marginBottom: 15,
@@ -586,7 +583,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    backgroundColor: Colors.infoMainColor,
+    backgroundColor: Colors.defaultWhite,
     paddingVertical: 10,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
@@ -606,7 +603,7 @@ const styles = StyleSheet.create({
   },
 
   smallBodyContainer: {
-    backgroundColor: '#bfdee3',
+    backgroundColor: Colors.shortInfoBodyBg,
     height: '50%',
     width: '100%',
     borderRadius: 15,
@@ -637,7 +634,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 3,
     borderRadius: 5,
-    backgroundColor: Colors.infoMainColor,
+    backgroundColor: Colors.defaultWhite,
     paddingVertical: 3,
     flexShrink: 1,
   },
@@ -654,7 +651,7 @@ const styles = StyleSheet.create({
     lineHeight: 28,
     marginTop: 10,
     marginBottom: 25,
-    color: Colors.infoMainColor,
+    color: Colors.defaultWhite,
   },
 });
 

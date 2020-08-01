@@ -88,14 +88,14 @@ const SearchFieldModal = ({ plantData, dispatch }) => {
   );
 };
 const styles = StyleSheet.create({
-  search: {
-    paddingTop: 100,
-  },
-  photo: {
-    width: '100%',
-    height: '100%',
-    resizeMode: 'cover',
-  },
+  // search: {
+  //   paddingTop: 100,
+  // },
+  // photo: {
+  //   width: '100%',
+  //   height: '100%',
+  //   resizeMode: 'cover',
+  // },
   wrapper: {
     paddingBottom: 30,
   },
@@ -121,6 +121,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginTop: 10,
   },
-
 });
 export default SearchFieldModal;
