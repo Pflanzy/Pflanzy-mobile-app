@@ -29,3 +29,13 @@ export const updateUser = (id) => {
       });
   };
 };
+
+export const removeNotificationFb = async (notification, plantId) => {
+  firebase
+    .firestore()
+    .collection('plants')
+    .doc(plantId)
+    .update({
+      'custom.notifications': firebase.firestore.FieldValue.arrayRemove(notification),
+    });
+};

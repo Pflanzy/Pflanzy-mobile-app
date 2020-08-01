@@ -172,6 +172,26 @@ const styles = StyleSheet.create({
     color: Colors.textGrey,
     marginBottom: 20,
   },
+  
+  buttonWrapper: {
+    backgroundColor: '#004e57',
+    borderRadius: 25,
+    marginTop: 20,
+    marginBottom: 20,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 5,
+    width: 250,
+    borderWidth: 2,
+    borderColor: '#79C3CA',
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 18,
+    marginRight: 5,
+  },
 });
 
 export default IndividualArticle;

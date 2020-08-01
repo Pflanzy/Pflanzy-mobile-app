@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
-import { colors } from 'react-native-elements';
 import Colors from '../constants/Colors';
 
 const ReminderCard = ({ element }) => {

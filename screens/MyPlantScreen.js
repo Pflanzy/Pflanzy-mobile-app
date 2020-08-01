@@ -24,6 +24,7 @@ import firebase from '../firebase';
 import Colors from '../constants/Colors';
 import PflanzyOpacity from '../components/PflanzyOpacity';
 import ModalConfigPopup from '../components/ModalConfigPopup';
+import ModalListPopup from '../components/ModalListPopup';
 
 const MyGardenPlant = ({ route, navigation }) => {
   const bsSettings = React.createRef();
@@ -33,14 +34,13 @@ const MyGardenPlant = ({ route, navigation }) => {
   const plant = useSelector((state) =>
     state.userReducer.plants.find((plantToFind) => plantToFind.id === plantId)
   );
+
   const transition = <Transition.Change interpolation="easeInOut" />;
   const [deg, setDeg] = useState(0);
   const ref = useRef();
   const [rename, setRename] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-  const [value, onChangeText] = useState(
-    plant?.custom?.title ? plant.custom.title : plant?.commonName
-  );
+  const [value, onChangeText] = useState(plant?.custom?.title ?? plant?.commonName);
   const renamePlant = (selectedPlant) => {
     const userplantsRef = firebase.firestore().collection('plants').doc(selectedPlant.id);
     userplantsRef.update({
@@ -176,9 +176,21 @@ const MyGardenPlant = ({ route, navigation }) => {
       </Transitioning.View>
 
       <View style={styles.reminderBtnContainer}>
-        <ModalConfigPopup plant={plant} />
+        <ModalConfigPopup
+          plantName={plant?.custom?.title ? plant.custom.title : plant?.commonName}
+          plantId={plant?.id && plant.id}
+        />
+        <View style={styles.gearContainer}>
+          {plant?.custom?.notifications?.length > 0 && (
+            <ModalListPopup
+              notifications={plant?.custom?.notifications && plant.custom.notifications}
+              plantId={plant?.id && plant.id}
+            />
+          )}
+        </View>
       </View>
-      <ScrollView contentContainerStyle={styles.plantInfoWrapper}>
+
+      <ScrollView style={styles.plantInfoWrapper}>
         <View style={styles.smallContainer}>
           <View style={styles.smallInfoWrapper}>
             <View style={styles.smallInfoHeaderWrapper}>
@@ -346,11 +358,13 @@ const MyGardenPlant = ({ route, navigation }) => {
             />
           </Svg>
           <View style={styles.nameContainer}>
-            {plant?.custom?.title && (
-              <View>
-                <Text style={styles.customPlantName}>{plant?.custom.title}</Text>
-              </View>
-            )}
+            <View>
+              {plant?.custom?.title ? (
+                <Text style={styles.customPlantName}>{plant?.custom?.title}</Text>
+              ) : (
+                <View />
+              )}
+            </View>
             <View style={styles.commonNameContainer}>
               <Text style={styles.commonName}>{plant?.commonName}</Text>
             </View>
@@ -532,9 +546,16 @@ const styles = StyleSheet.create({
     fontWeight: '400',
   },
 
+  gearContainer: {
+    width: 33,
+  },
+
   reminderBtnContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center',
     marginTop: 10,
+    position: 'relative',
   },
 
   plantInfoWrapper: {

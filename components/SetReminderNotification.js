@@ -1,7 +1,9 @@
 import * as Notifications from 'expo-notifications';
+// import ModalListPopup from './ModalListPopup';
+import firebase from '../firebase';
 
 // Receives date info from DateTimePicker & sends notification
-export default function SetReminderNotification(config) {
+export default async function SetReminderNotification(config) {
   const timeIntervals = {
     day: 24 * 60 * 60,
     week: 7 * 24 * 60 * 60,
@@ -22,28 +24,37 @@ export default function SetReminderNotification(config) {
 
   const timeLeftInSec = (new Date(config.notificationDate).getTime() - Date.now()) / 1000;
   // console.warn(timeLeftInSec)
-
-  Notifications.scheduleNotificationAsync({
+  let notificationObject = {
     content: {
-      title: 'Water time!',
-      body: "I'm so thirsty🌵...",
+      title: config.name,
+      body: config.reminderItem,
     },
     trigger: {
       seconds: config.repeat
-        ? config.selectedInterval * timeIntervals[config.selectedPeriod]
-        : timeLeftInSec,
+        ? Math.trunc(config.selectedInterval * timeIntervals[config.selectedPeriod])
+        : Math.trunc(timeLeftInSec),
       repeats: config.repeat,
     },
+  };
+  const identifier = await Notifications.scheduleNotificationAsync(notificationObject);
+
+  notificationObject = { ...notificationObject, identifier };
+
+  const userplantsRef = firebase.firestore().collection('plants').doc(config.plantId);
+
+  userplantsRef.update({
+    'custom.notifications': firebase.firestore.FieldValue.arrayUnion(notificationObject),
   });
-
-  // Notifications.getAllScheduledNotificationsAsync().then((notifications) =>
-  //   console.log(notifications)
-  // );
-
-  // Notifications.dismissAllNotificationsAsync();
-
-  // Notifications.cancelAllScheduledNotificationsAsync();
 }
+// await Notifications.cancelScheduledNotificationAsync(identifier);
+
+// ModalListPopup(notifications);
+
+// console.warn(identifier);
+
+// Notifications.dismissAllNotificationsAsync();
+
+// Notifications.cancelAllScheduledNotificationsAsync();
 
 // Fetching information about notifications-related permissions
 async function allowsNotificationsAsync() {
@@ -63,3 +74,12 @@ async function requestPermissionsAsync() {
     },
   });
 }
+
+// async function getAllScheduledNotificationsAsync(config) {
+//   const notifications = await Notifications.getAllScheduledNotificationsAsync();
+//   const userplantsRef = firebase.firestore().collection('plants').doc(config.plantId);
+
+//   userplantsRef.update({
+//     'custom.notifications': notifications,
+//   });
+// }
