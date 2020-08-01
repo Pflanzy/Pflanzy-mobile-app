@@ -30,6 +30,7 @@ export default {
   plantIcon: '#416241',
   arrowColor: '#dbd7d3',
   settingsHandle: '#00000040',
+  cancelColor: '#8B0000',
 
   // Settings buttons
   settingsCancelBtn: '#d1cfce',
