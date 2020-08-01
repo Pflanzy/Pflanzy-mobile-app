@@ -174,17 +174,16 @@ const MyGardenPlant = ({ route, navigation }) => {
           plantName={plant?.custom?.title ? plant.custom.title : plant?.commonName}
           plantId={plant?.id && plant.id}
         />
-        {plant?.custom?.notifications?.length > 0 && (
-          <ModalListPopup
-            notifications={plant?.custom?.notifications && plant.custom.notifications}
-            plantId={plant?.id && plant.id}
-          />
-        )}
+        <View style={styles.gearContainer}>
+          {plant?.custom?.notifications?.length > 0 && (
+            <ModalListPopup
+              notifications={plant?.custom?.notifications && plant.custom.notifications}
+              plantId={plant?.id && plant.id}
+            />
+          )}
+        </View>
       </View>
-      {/* <View style={{ flexDirection: 'row', justifyContent: 'center', paddingVertical: 20 }}>
-        <Text style={{ fontSize: 18, color: 'white', paddingRight: 10 }}>Settings</Text>
-        <Ionicons name="ios-settings" size={24} color="white" />
-      </View> */}
+
       <ScrollView style={styles.plantInfoWrapper}>
         <View style={styles.smallContainer}>
           <View style={styles.smallInfoWrapper}>
@@ -538,15 +537,16 @@ const styles = StyleSheet.create({
     fontWeight: '400',
   },
 
+  gearContainer: {
+    width: 33,
+  },
+
   reminderBtnContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 10,
-    marginLeft: 10,
     position: 'relative',
-    // flex: 1,
-    // backgroundColor: 'gray',
   },
 
   plantInfoWrapper: {

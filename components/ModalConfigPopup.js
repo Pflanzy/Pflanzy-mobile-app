@@ -42,12 +42,12 @@ const ModalConfigPopup = ({ plantName, plantId }) => {
     <View>
       <PflanzyOpacity onPress={() => setModalOpen(true)}>
         <NeuMorph>
-          <View style={{ marginBottom: 10, marginTop: 10, marginLeft: 20 }}>
+          <View style={{ marginBottom: 10, marginTop: 10, marginLeft: 25 }}>
             <LinearGradient
               colors={[Colors.darkGreen, Colors.darkGreen, Colors.darkGreen]}
               start={[0.0, 0.0]}
               end={[1.0, 1.0]}
-              style={{ width: 240, borderRadius: 17, padding: 10, elevation: 3 }}>
+              style={{ width: 180, borderRadius: 17, padding: 10, elevation: 3 }}>
               <Text
                 style={{
                   textAlign: 'center',

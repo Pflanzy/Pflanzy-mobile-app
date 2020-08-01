@@ -24,7 +24,6 @@ const ModalListPopup = ({ notifications, plantId }) => {
           justifyContent: 'center',
           marginLeft: 10,
         }}>
-        {/* <Text style={{ fontSize: 14, color: 'white' }}>Manage Notifications</Text> */}
         <Ionicons name="ios-settings" size={30} color="white" />
       </PflanzyOpacity>
 
