@@ -11,6 +11,7 @@ const CameraScreen = ({ route, navigation }) => {
   const [cameraRef, setCameraRef] = useState(null);
   const [processing, setProcessing] = useState(false);
   const [type, setType] = useState(Camera.Constants.Type.back);
+  const [flash, setFlash] = useState(Camera.Constants.FlashMode.off);
   const { plantId } = route.params;
 
   useEffect(() => {
@@ -28,38 +29,52 @@ const CameraScreen = ({ route, navigation }) => {
   return (
     <View style={{ flex: 1 }}>
       <Camera
-        style={{ flex: 1, paddingBottom: 50 }}
+        style={{ flex: 1, justifyContent: 'flex-end' }}
         type={type}
+        flashMode={flash}
         ref={(ref) => {
           setCameraRef(ref);
         }}>
         <View
           style={{
-            flex: 1,
-            backgroundColor: 'transparent',
-            justifyContent: 'flex-end',
+            // flex: 1,
+            backgroundColor: '#00000099',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            paddingVertical: 15,
+            paddingHorizontal: 35,
           }}>
           <TouchableOpacity
             style={{
-              flex: 0.1,
-              alignSelf: 'flex-end',
+              width: 40,
+              alignItems: 'center',
+              paddingTop: 10,
             }}
             onPress={() => {
-              setType(
-                type === Camera.Constants.Type.back
-                  ? Camera.Constants.Type.front
-                  : Camera.Constants.Type.back
+              setFlash(
+                flash === Camera.Constants.FlashMode.off
+                  ? Camera.Constants.FlashMode.on
+                  : Camera.Constants.FlashMode.off
               );
             }}>
-            <Ionicons
-              name="ios-reverse-camera"
-              size={40}
-              color={Colors.defaultWhite}
-              style={{ marginRight: 50 }}
-            />
+            {flash === Camera.Constants.FlashMode.off ? (
+              <Ionicons
+                name="ios-flash-off"
+                size={35}
+                color={Colors.defaultWhite}
+                // style={{ paddingLeft: 30 }}
+              />
+            ) : (
+              <Ionicons
+                name="ios-flash"
+                size={35}
+                color={Colors.defaultWhite}
+                // style={{ paddingLeft: 30 }}
+              />
+            )}
           </TouchableOpacity>
           <TouchableOpacity
-            style={{ alignSelf: 'center' }}
+            // style={{ alignSelf: 'center' }}
             onPress={async () => {
               setProcessing(true);
               if (cameraRef) {
@@ -104,6 +119,27 @@ const CameraScreen = ({ route, navigation }) => {
                 />
               </View>
             )}
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              width: 40,
+              alignItems: 'center',
+              paddingTop: 10,
+            }}
+            onPress={() => {
+              setType(
+                type === Camera.Constants.Type.back
+                  ? Camera.Constants.Type.front
+                  : Camera.Constants.Type.back
+              );
+            }}>
+            <Ionicons
+              name="ios-reverse-camera"
+              size={35}
+              color={Colors.defaultWhite}
+
+              // style={{ paddingRight: 20 }}
+            />
           </TouchableOpacity>
         </View>
       </Camera>

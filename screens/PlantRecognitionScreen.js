@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { Camera } from 'expo-camera';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation, Route } from '@react-navigation/native';
+import Colors from '../constants/Colors';
 import firebase from '../firebase';
 import plants from '../data/data.json';
 
@@ -11,6 +12,7 @@ const PlantRecognitionScreen = ({ route, navigation }) => {
   const [cameraRef, setCameraRef] = useState(null);
   const [processing, setProcessing] = useState(false);
   const [type, setType] = useState(Camera.Constants.Type.back);
+  const [flash, setFlash] = useState(Camera.Constants.FlashMode.off);
 
   useEffect(() => {
     (async () => {
@@ -27,38 +29,52 @@ const PlantRecognitionScreen = ({ route, navigation }) => {
   return (
     <View style={{ flex: 1 }}>
       <Camera
-        style={{ flex: 1, paddingBottom: 50 }}
+        style={{ flex: 1, justifyContent: 'flex-end' }}
         type={type}
+        flashMode={flash}
         ref={(ref) => {
           setCameraRef(ref);
         }}>
         <View
           style={{
-            flex: 1,
-            backgroundColor: 'transparent',
-            justifyContent: 'flex-end',
+            // flex: 1,
+            backgroundColor: '#00000099',
+            // flexDirection: 'row',
+            // justifyContent: 'space-around',
+            paddingVertical: 20,
+            paddingHorizontal: 35,
+            // height: 80,
           }}>
           <TouchableOpacity
             style={{
-              flex: 0.1,
-              alignSelf: 'flex-end',
+              width: 40,
+              alignItems: 'center',
             }}
             onPress={() => {
-              setType(
-                type === Camera.Constants.Type.back
-                  ? Camera.Constants.Type.front
-                  : Camera.Constants.Type.back
+              setFlash(
+                flash === Camera.Constants.FlashMode.off
+                  ? Camera.Constants.FlashMode.on
+                  : Camera.Constants.FlashMode.off
               );
             }}>
-            <Ionicons
-              name="ios-reverse-camera"
-              size={40}
-              color="white"
-              style={{ marginRight: 50 }}
-            />
+            {flash === Camera.Constants.FlashMode.off ? (
+              <Ionicons
+                name="ios-flash-off"
+                size={35}
+                color={Colors.defaultWhite}
+                // style={{ paddingLeft: 30 }}
+              />
+            ) : (
+              <Ionicons
+                name="ios-flash"
+                size={35}
+                color={Colors.defaultWhite}
+                // style={{ paddingLeft: 30 }}
+              />
+            )}
           </TouchableOpacity>
           <TouchableOpacity
-            style={{ alignSelf: 'center' }}
+            style={{ alignSelf: 'center', position: 'absolute', top: '30%' }}
             onPress={async () => {
               setProcessing(true);
               if (cameraRef) {
@@ -113,7 +129,7 @@ const PlantRecognitionScreen = ({ route, navigation }) => {
               <View
                 style={{
                   borderWidth: 2,
-                  borderColor: 'white',
+                  borderColor: Colors.defaultWhite,
                   borderRadius: 50,
                   height: 50,
                   width: 50,
@@ -125,10 +141,10 @@ const PlantRecognitionScreen = ({ route, navigation }) => {
                   style={{
                     borderWidth: 2,
                     borderRadius: 50,
-                    borderColor: 'white',
+                    borderColor: Colors.defaultWhite,
                     height: 40,
                     width: 40,
-                    backgroundColor: 'white',
+                    backgroundColor: Colors.defaultWhite,
                   }}
                 />
               </View>
