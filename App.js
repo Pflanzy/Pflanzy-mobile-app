@@ -19,7 +19,7 @@ import LinkingConfiguration from './navigation/LinkingConfiguration';
 
 const Stack = createStackNavigator();
 
-export default function App(params) {
+export default function App() {
   // const isLoadingComplete = useCachedResources();
 
   // if (!isLoadingComplete) {

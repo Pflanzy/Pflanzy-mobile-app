@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 import * as Notifications from 'expo-notifications';
 import { MaterialIcons, Entypo, Ionicons } from '@expo/vector-icons';
 import Modal from 'react-native-modal';
-import firebase from '../firebase';
+import { removeNotificationFb } from '../firebase';
 import Colors from '../constants/Colors';
 import PflanzyOpacity from './PflanzyOpacity';
 
@@ -11,13 +11,7 @@ const ModalListPopup = ({ notifications, plantId }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const deleteNotificationHandler = (notification) => {
     Notifications.cancelScheduledNotificationAsync(notification.identifier).then(() => {
-      firebase
-        .firestore()
-        .collection('plants')
-        .doc(plantId)
-        .update({
-          'custom.notifications': firebase.firestore.FieldValue.arrayRemove(notification),
-        });
+      removeNotificationFb(notification, plantId);
     });
   };
 
@@ -73,9 +67,10 @@ const ModalListPopup = ({ notifications, plantId }) => {
                       <Text
                         style={
                           styles.mainObjBody
-                        }>{`${item.content.title}: ${item.content.body}`}</Text>
+                        }>{`${item?.content?.title}: ${item?.content?.body}`}</Text>
                     </View>
                     <TouchableOpacity
+                      key="touch2"
                       color="orange"
                       title="Remove "
                       style={{}}
