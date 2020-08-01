@@ -40,9 +40,7 @@ const MyGardenPlant = ({ route, navigation }) => {
   const ref = useRef();
   const [rename, setRename] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-  const [value, onChangeText] = useState(
-    plant?.custom?.title ? plant.custom.title : plant?.commonName
-  );
+  const [value, onChangeText] = useState(plant?.custom?.title ?? plant?.commonName);
   const renamePlant = (selectedPlant) => {
     const userplantsRef = firebase.firestore().collection('plants').doc(selectedPlant.id);
     userplantsRef.update({
@@ -355,11 +353,13 @@ const MyGardenPlant = ({ route, navigation }) => {
             />
           </Svg>
           <View style={styles.nameContainer}>
-            {plant?.custom?.title && (
-              <View>
-                <Text style={styles.customPlantName}>{plant?.custom.title}</Text>
-              </View>
-            )}
+            <View>
+              {plant?.custom?.title ? (
+                <Text style={styles.customPlantName}>{plant?.custom?.title}</Text>
+              ) : (
+                <View />
+              )}
+            </View>
             <View style={styles.commonNameContainer}>
               <Text style={styles.commonName}>{plant?.commonName}</Text>
             </View>
