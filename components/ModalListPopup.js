@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import * as Notifications from 'expo-notifications';
-import { MaterialIcons, Entypo, Ionicons } from '@expo/vector-icons';
+import { MaterialIcons, Entypo, Ionicons, AntDesign } from '@expo/vector-icons';
 import Modal from 'react-native-modal';
+import moment from 'moment';
 import { removeNotificationFb } from '../firebase';
 import Colors from '../constants/Colors';
 import PflanzyOpacity from './PflanzyOpacity';
@@ -14,6 +15,7 @@ const ModalListPopup = ({ notifications, plantId }) => {
       removeNotificationFb(notification, plantId);
     });
   };
+  const now = moment();
 
   return (
     <View>
@@ -23,8 +25,14 @@ const ModalListPopup = ({ notifications, plantId }) => {
           flexDirection: 'row',
           justifyContent: 'center',
           marginLeft: 10,
+          width: '100%',
         }}>
-        <Ionicons name="ios-settings" size={30} color="white" />
+        <AntDesign
+          style={styles.renameIcon}
+          name="clockcircle"
+          size={30}
+          color={Colors.defaultWhite}
+        />
       </PflanzyOpacity>
 
       <Modal
@@ -41,41 +49,61 @@ const ModalListPopup = ({ notifications, plantId }) => {
             />
           </PflanzyOpacity>
           <View style={styles.mainContent}>
-            <View style={styles.headerAlign}>
-              {/* <Ionicons name="ios-settings" size={18} color={Colors.tintColor} /> */}
-              <Text style={styles.header}>Notifications</Text>
-            </View>
+            <Text style={styles.header}>Notifications</Text>
 
             {notifications &&
               notifications.map((item) => {
+                console.log(moment(now).add(6546, 'seconds').fromNow());
                 return (
                   <View
                     key={item.identifier}
                     style={{
                       flexDirection: 'row',
-                      justifyContent: 'space-between',
                       alignItems: 'center',
-                      paddingHorizontal: 10,
+                      justifyContent: 'space-between',
+                      marginVertical: 5,
+                      padding: 10,
+                      paddingLeft: 40,
+                      height: 60,
+                      borderWidth: 1,
+                      borderColor: Colors.transparent,
+                      borderRadius: 11,
+                      color: Colors.defaultBlack,
+                      backgroundColor: Colors.defaultWhite,
                     }}>
+                    <MaterialIcons
+                      name="notifications-active"
+                      size={30}
+                      color={Colors.tintColor}
+                      style={{ position: 'absolute', left: 5, top: 14 }}
+                    />
                     <View style={styles.headerAlign}>
-                      <MaterialIcons
-                        name="notifications-active"
-                        size={18}
-                        color={Colors.tintColor}
-                      />
-                      <Text
-                        style={
-                          styles.mainObjBody
-                        }>{`${item?.content?.title}: ${item?.content?.body}`}</Text>
+                      <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
+                        {item?.content?.title}
+                      </Text>
+                      <Text>
+                        {`${item?.content?.body} ${moment(now)
+                          .add(item?.trigger?.seconds, 'seconds')
+                          .fromNow()}`}
+                      </Text>
                     </View>
-                    <TouchableOpacity
-                      key="touch2"
-                      color="orange"
-                      title="Remove "
-                      style={{}}
-                      onPress={() => deleteNotificationHandler(item)}>
-                      <Entypo name="cross" size={30} color="orangered" style={styles.removeIcon} />
-                    </TouchableOpacity>
+                    <View style={{}}>
+                      <TouchableOpacity
+                        key="touch2"
+                        color="orange"
+                        title="Remove "
+                        style={{ zIndex: 1 }}
+                        onPress={() => {
+                          deleteNotificationHandler(item);
+                        }}>
+                        <AntDesign
+                          style={styles.removeIcon}
+                          name="closecircle"
+                          size={35}
+                          color={Colors.cancelColor}
+                        />
+                      </TouchableOpacity>
+                    </View>
                   </View>
                 );
               })}
@@ -90,37 +118,37 @@ export default ModalListPopup;
 
 const styles = StyleSheet.create({
   modalContent: {
-    backgroundColor: 'white',
     borderRadius: 10,
-    paddingHorizontal: 10,
-    paddingVertical: 8,
+    paddingHorizontal: 15,
+    paddingVertical: 15,
+    flexDirection: 'column',
+    width: '90%',
+    position: 'absolute',
+    top: '30%',
+    alignSelf: 'center',
+    backgroundColor: Colors.renameModalBg,
   },
 
-  mainContent: {
-    padding: 10,
-  },
+  mainContent: {},
 
   header: {
-    fontSize: 16,
+    fontSize: 25,
+    fontWeight: 'bold',
     color: Colors.tintColor,
+    alignSelf: 'center',
+    marginBottom: 10,
   },
 
   mainObjBody: {
     fontSize: 16,
-    paddingLeft: 12,
-    justifyContent: 'center',
-    alignItems: 'center',
+    flex: 1,
+    textAlign: 'left',
   },
 
   headerAlign: {
-    display: 'flex',
-    flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  removeIcon: {
-    marginLeft: 10,
+    flexDirection: 'column',
+    padding: 3,
   },
 
   //   modalRows: {
