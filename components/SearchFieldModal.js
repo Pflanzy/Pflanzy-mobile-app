@@ -121,6 +121,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginTop: 10,
   },
-
 });
 export default SearchFieldModal;
