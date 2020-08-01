@@ -3,7 +3,8 @@ import { Text, View, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { Camera } from 'expo-camera';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation, Route } from '@react-navigation/native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+
+import Colors from '../constants/Colors';
 import firebase from '../firebase';
 import plants from '../data/data.json';
 
