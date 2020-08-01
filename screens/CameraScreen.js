@@ -36,7 +36,7 @@ const CameraScreen = ({ route, navigation }) => {
         <View
           style={{
             flex: 1,
-            backgroundColor: 'transparent',
+            backgroundColor: Colors.transparent,
             justifyContent: 'flex-end',
           }}>
           <TouchableOpacity

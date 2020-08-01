@@ -9,16 +9,15 @@ import {
   Picker,
   Platform,
 } from 'react-native';
-import { MaterialCommunityIcons, Fontisto, AntDesign } from '@expo/vector-icons';
+import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 import Modal from 'react-native-modal';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useSelector } from 'react-redux';
 import Colors from '../constants/Colors';
 import PflanzyOpacity from './PflanzyOpacity';
 import DateTimePicker from './DateTimePicker';
 import SetReminderNotification from './SetReminderNotification';
 
-const ModalConfigPopup = ({ plant }) => {
+const ModalConfigPopup = ({ plantName, plantId }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [isEnabled, setSwitchEnabled] = useState(false);
   const [oneTimeDate, setOneTimeDate] = useState(null);
@@ -43,12 +42,12 @@ const ModalConfigPopup = ({ plant }) => {
     <View>
       <PflanzyOpacity onPress={() => setModalOpen(true)}>
         <NeuMorph>
-          <View style={{ marginBottom: 25, marginTop: 10 }}>
+          <View style={{ marginBottom: 10, marginTop: 10, marginLeft: 25 }}>
             <LinearGradient
               colors={[Colors.darkGreen, Colors.darkGreen, Colors.darkGreen]}
               start={[0.0, 0.0]}
               end={[1.0, 1.0]}
-              style={{ width: 240, borderRadius: 17, padding: 10, elevation: 3 }}>
+              style={{ width: 180, borderRadius: 17, padding: 10, elevation: 3 }}>
               <Text
                 style={{
                   textAlign: 'center',
@@ -93,6 +92,9 @@ const ModalConfigPopup = ({ plant }) => {
                   notificationDate: oneTimeDate,
                   selectedInterval,
                   selectedPeriod,
+                  name: plantName,
+                  plantId,
+                  reminderItem,
                 });
                 setModalOpen(false);
               }}>
@@ -101,7 +103,7 @@ const ModalConfigPopup = ({ plant }) => {
           </View>
           <View style={styles.modalRows}>
             <MaterialCommunityIcons name="flower-poppy" size={18} color={Colors.tintColor} />
-            <Text style={styles.modalFields}>{plant?.commonName}</Text>
+            <Text style={styles.modalFields}>{plantName}</Text>
           </View>
           <View style={[styles.modalRows, styles.textInputBottom]}>
             <MaterialCommunityIcons name="bell-outline" size={18} color={Colors.tintColor} />
@@ -207,7 +209,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.5,
     shadowRadius: 3,
-    shadowColor: Colors.topShadow,
+    shadowColor: Colors.neoTopShadow,
   },
 
   bottomShadow: {
@@ -217,7 +219,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.8,
     shadowRadius: 3,
-    shadowColor: Colors.shadowColor,
+    shadowColor: Colors.neoBtmShadow,
   },
 
   // modalContent: {
@@ -247,7 +249,7 @@ const styles = StyleSheet.create({
 
   careOptions: {
     borderWidth: 1,
-    borderColor: Colors.lightgray,
+    borderColor: Colors.lightGray,
     borderRadius: 11,
     paddingHorizontal: 20,
     paddingVertical: 4,
@@ -271,17 +273,13 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     flex: 1,
     paddingLeft: 10,
-    borderColor: Colors.lightgray,
+    borderColor: Colors.lightGray,
     borderWidth: 1,
     backgroundColor: Colors.reminderBackground,
   },
 
   repeater: {
     justifyContent: 'space-between',
-  },
-
-  repeatInputSnippet: {
-    flexDirection: 'row',
   },
 
   doneTextColor: {

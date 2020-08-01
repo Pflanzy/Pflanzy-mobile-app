@@ -36,7 +36,7 @@ const PlantRecognitionScreen = ({ route, navigation }) => {
         <View
           style={{
             flex: 1,
-            backgroundColor: 'transparent',
+            backgroundColor: Colors.transparent,
             justifyContent: 'flex-end',
           }}>
           <TouchableOpacity
@@ -132,7 +132,7 @@ const PlantRecognitionScreen = ({ route, navigation }) => {
               <View
                 style={{
                   borderWidth: 2,
-                  borderColor: 'white',
+                  borderColor: Colors.defaultWhite,
                   borderRadius: 50,
                   height: 50,
                   width: 50,
@@ -144,10 +144,10 @@ const PlantRecognitionScreen = ({ route, navigation }) => {
                   style={{
                     borderWidth: 2,
                     borderRadius: 50,
-                    borderColor: 'white',
+                    borderColor: Colors.defaultWhite,
                     height: 40,
                     width: 40,
-                    backgroundColor: 'white',
+                    backgroundColor: Colors.defaultWhite,
                   }}
                 />
               </View>
