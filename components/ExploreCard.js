@@ -1,20 +1,23 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import ExploreLabel from './ExploreLabel';
 import { useNavigation } from '@react-navigation/native';
+import ExploreLabel from './ExploreLabel';
 import Colors from '../constants/Colors';
 
-function ExploreCard({article}) {
+function ExploreCard({ article }) {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity activeOpacity={0.7} style={styles.cardContainer} onPress={() => navigation.navigate('IndividualArticle', {article:article})}>
+    <TouchableOpacity
+      activeOpacity={0.7}
+      style={styles.cardContainer}
+      onPress={() => navigation.navigate('IndividualArticle', { article })}>
       <View style={styles.imageContainer}>
-        <Image style={styles.cardImage} source={{uri: article.images.imagePrimary}} />
+        <Image style={styles.cardImage} source={{ uri: article.images.imagePrimary }} />
       </View>
       <View style={styles.detailsContainer}>
         <View style={styles.nameContainer}>
-        <Text style={styles.headline}>{article.headline}</Text>
-      </View>
+          <Text style={styles.headline}>{article.headline}</Text>
+        </View>
         <View style={styles.passedContent}>
           <ExploreLabel label={article.label} style={styles.label} />
         </View>
@@ -66,7 +69,7 @@ const styles = StyleSheet.create({
   headline: {
     fontWeight: '300',
     fontSize: 18,
-  }
+  },
 });
 
 export default ExploreCard;

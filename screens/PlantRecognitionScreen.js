@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { Camera } from 'expo-camera';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation, Route } from '@react-navigation/native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 import firebase from '../firebase';
 import plants from '../data/data.json';
 
@@ -35,7 +36,7 @@ const PlantRecognitionScreen = ({ route, navigation }) => {
         <View
           style={{
             flex: 1,
-            backgroundColor: 'transparent',
+            backgroundColor: Colors.transparent,
             justifyContent: 'flex-end',
           }}>
           <TouchableOpacity
@@ -113,7 +114,7 @@ const PlantRecognitionScreen = ({ route, navigation }) => {
               <View
                 style={{
                   borderWidth: 2,
-                  borderColor: 'white',
+                  borderColor: Colors.defaultWhite,
                   borderRadius: 50,
                   height: 50,
                   width: 50,
@@ -125,10 +126,10 @@ const PlantRecognitionScreen = ({ route, navigation }) => {
                   style={{
                     borderWidth: 2,
                     borderRadius: 50,
-                    borderColor: 'white',
+                    borderColor: Colors.defaultWhite,
                     height: 40,
                     width: 40,
-                    backgroundColor: 'white',
+                    backgroundColor: Colors.defaultWhite,
                   }}
                 />
               </View>

@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.5,
     shadowRadius: 3,
-    shadowColor: Colors.topShadow,
+    shadowColor: Colors.neoTopShadow,
   },
 
   bottomShadow: {
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.8,
     shadowRadius: 3,
-    shadowColor: Colors.shadowColor,
+    shadowColor: Colors.neoBtmShadow,
   },
 
   // modalContent: {
@@ -247,7 +247,7 @@ const styles = StyleSheet.create({
 
   careOptions: {
     borderWidth: 1,
-    borderColor: Colors.lightgray,
+    borderColor: Colors.lightGray,
     borderRadius: 11,
     paddingHorizontal: 20,
     paddingVertical: 4,
@@ -271,7 +271,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     flex: 1,
     paddingLeft: 10,
-    borderColor: Colors.lightgray,
+    borderColor: Colors.lightGray,
     borderWidth: 1,
     backgroundColor: Colors.reminderBackground,
   },

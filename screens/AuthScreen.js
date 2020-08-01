@@ -1,19 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {
-  Image,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-  StyleSheet,
-} from 'react-native';
+import { Image, Text, TextInput, TouchableOpacity, View, StyleSheet } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import firebase from '../firebase';
 import { signInValidation, signUpValidation } from '../helpers/formValidation';
 import visibleIcon from '../assets/images/visible.png';
 import invisibleIcon from '../assets/images/invisible.png';
-import Colors from '../constants/Colors'
+import Colors from '../constants/Colors';
 
 const AuthScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -22,7 +15,7 @@ const AuthScreen = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [displaySignup, setDisplaySignup] = useState(false);
-  const [passwordVisible, setPasswordVisible]= useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmVisible, setConfirmVisible] = useState(false);
   const onFooterLinkPress = () => {
     setDisplaySignup(!displaySignup);
@@ -105,13 +98,13 @@ const AuthScreen = ({ navigation }) => {
   const toggleVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
-  const toggleConfirmVisibility = () =>  {
-    setConfirmVisible(!confirmVisible)
-  }
+  const toggleConfirmVisibility = () => {
+    setConfirmVisible(!confirmVisible);
+  };
   return (
     <View style={styles.container}>
       <KeyboardAwareScrollView
-        style={{ flex: 1, width: '100%'}}
+        style={{ flex: 1, width: '100%' }}
         contentContainerStyle={styles.contentContainer}
         keyboardShouldPersistTaps="always">
         {/* <Image style={styles.logo} source={require()} /> */}
@@ -119,7 +112,7 @@ const AuthScreen = ({ navigation }) => {
           <TextInput
             style={styles.input}
             placeholder="Full Name"
-            placeholderTextColor="#aaaaaa"
+            placeholderTextColor={Colors.placeHolderColor}
             onChangeText={(text) => setFullName(text)}
             value={fullName}
             underlineColorAndroid="transparent"
@@ -130,7 +123,7 @@ const AuthScreen = ({ navigation }) => {
         <TextInput
           style={styles.input}
           placeholder="E-mail"
-          placeholderTextColor="#aaaaaa"
+          placeholderTextColor={Colors.placeHolderColor}
           onChangeText={(text) => setEmail(text)}
           value={email}
           underlineColorAndroid="transparent"
@@ -139,7 +132,7 @@ const AuthScreen = ({ navigation }) => {
         <View style={styles.passwordContainer}>
           <TextInput
             style={styles.input}
-            placeholderTextColor="#aaaaaa"
+            placeholderTextColor={Colors.placeHolderColor}
             secureTextEntry={!passwordVisible}
             placeholder="Password"
             onChangeText={(text) => setPassword(text)}
@@ -151,49 +144,34 @@ const AuthScreen = ({ navigation }) => {
             activeOpacity={0.8}
             style={styles.visibilityBtn}
             onPress={toggleVisibility}>
-            <Image
-              source={
-                passwordVisible
-                  ? visibleIcon
-                  : invisibleIcon
-              }
-              style={styles.btnImage}
-            />
+            <Image source={passwordVisible ? visibleIcon : invisibleIcon} style={styles.btnImage} />
           </TouchableOpacity>
         </View>
         {displaySignup && (
           <View style={styles.passwordContainer}>
-          <TextInput
-            style={styles.input}
-            placeholderTextColor="#aaaaaa"
-            secureTextEntry={!confirmVisible}
-            placeholder="Confirm Password"
-            onChangeText={(text) => setConfirmPassword(text)}
-            value={confirmPassword}
-            underlineColorAndroid="transparent"
-            autoCapitalize="none"
-          />
-          <TouchableOpacity
-            activeOpacity={0.8}
-            style={styles.visibilityBtn}
-            onPress={toggleConfirmVisibility}>
-            <Image
-              source={
-                confirmVisible
-                  ? visibleIcon
-                  : invisibleIcon
-              }
-              style={styles.btnImage}
+            <TextInput
+              style={styles.input}
+              placeholderTextColor={Colors.placeHolderColor}
+              secureTextEntry={!confirmVisible}
+              placeholder="Confirm Password"
+              onChangeText={(text) => setConfirmPassword(text)}
+              value={confirmPassword}
+              underlineColorAndroid="transparent"
+              autoCapitalize="none"
             />
-          </TouchableOpacity>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              style={styles.visibilityBtn}
+              onPress={toggleConfirmVisibility}>
+              <Image
+                source={confirmVisible ? visibleIcon : invisibleIcon}
+                style={styles.btnImage}
+              />
+            </TouchableOpacity>
           </View>
         )}
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => buttonPress(displaySignup)}>
-          <Text style={styles.buttonTitle}>
-            {displaySignup ? 'SIGN UP' : 'SIGN IN'}
-          </Text>
+        <TouchableOpacity style={styles.button} onPress={() => buttonPress(displaySignup)}>
+          <Text style={styles.buttonTitle}>{displaySignup ? 'SIGN UP' : 'SIGN IN'}</Text>
         </TouchableOpacity>
         <View style={styles.footerView}>
           <Text style={styles.footerText}>{authFooterText(displaySignup)}</Text>
@@ -211,14 +189,13 @@ const styles = StyleSheet.create({
   contentContainer: {
     marginTop: 20,
   },
-  title: {},
-  logo: {
-    flex: 1,
-    height: 120,
-    width: 90,
-    alignSelf: 'center',
-    margin: 30,
-  },
+  // logo: {
+  //   flex: 1,
+  //   height: 120,
+  //   width: 90,
+  //   alignSelf: 'center',
+  //   margin: 30,
+  // },
   input: {
     height: 48,
     borderRadius: 5,
@@ -251,7 +228,7 @@ const styles = StyleSheet.create({
   },
   footerText: {
     fontSize: 16,
-    color: Colors.black,
+    color: Colors.authFooterTxt,
   },
   footerLink: {
     color: Colors.tintColor,
@@ -272,7 +249,7 @@ const styles = StyleSheet.create({
     top: -12,
     right: 3,
     height: 70,
-    width: 35
+    width: 35,
   },
 });
 

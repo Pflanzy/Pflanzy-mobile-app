@@ -15,14 +15,28 @@ const SearchField = (props) => {
   return (
     <View style={styles.wrapper}>
       <SearchBar
-       inputStyle={{backgroundColor: Colors.defaultWhite, borderRadius: 12, paddingHorizontal: 10, }}
-       inputContainerStyle={{backgroundColor: Colors.tintColor , borderTopLeftRadius: 19, borderBottomLeftRadius: 19, height: 65}}
-       containerStyle={{backgroundColor: 'none', width: '98%', borderTopWidth: 0, borderBottomWidth: 0,paddingBottom:0}}
-       cancelButtonTitle={{paddingHorizontal: 10}}
-       searchIcon={{paddingLeft: 10, size: 24, paddingRight: 0, color: Colors.defaultWhite}}
-       clearIcon={{color: Colors.defaultWhite, size: 24, paddingHorizontal: 10}}
-       rightIconContainerStyle={{paddingLeft: 5}}
-       placeholder="Enter plant name"
+        inputStyle={{
+          backgroundColor: Colors.defaultWhite,
+          borderRadius: 12,
+          paddingHorizontal: 10,
+        }}
+        inputContainerStyle={{
+          backgroundColor: Colors.tintColor,
+          borderTopLeftRadius: 19,
+          borderBottomLeftRadius: 19,
+          height: 65,
+        }}
+        containerStyle={{
+          backgroundColor: Colors.defaultWhite,
+          width: '98%',
+          borderTopWidth: 0,
+          borderBottomWidth: 0,
+          paddingBottom: 0,
+        }}
+        cancelButtonTitle={{ paddingHorizontal: 10 }}
+        searchIcon={{ paddingLeft: 10, size: 24, paddingRight: 0, color: Colors.defaultWhite }}
+        clearIcon={{ color: Colors.defaultWhite, size: 24, paddingHorizontal: 10 }}
+        rightIconContainerStyle={{ paddingLeft: 5 }}
         placeholder="Enter plant name"
         onChangeText={updateSearch}
         value={searchValue}
@@ -36,7 +50,7 @@ const styles = StyleSheet.create({
   wrapper: {
     display: 'flex',
     width: '103%',
-    alignItems:"flex-end",
+    alignItems: 'flex-end',
   },
 });
 

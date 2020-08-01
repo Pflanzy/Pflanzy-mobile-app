@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import { colors } from 'react-native-elements';
 import Colors from '../constants/Colors';
 
-
 const ReminderCard = ({ element }) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
