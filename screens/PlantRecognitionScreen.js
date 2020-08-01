@@ -2,17 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { Camera } from 'expo-camera';
 import { Ionicons } from '@expo/vector-icons';
-import { useNavigation, Route } from '@react-navigation/native';
-
-import Colors from '../constants/Colors';
-import firebase from '../firebase';
+import { showMessage } from 'react-native-flash-message';
 import plants from '../data/data.json';
+import Colors from '../constants/Colors';
 
 const PlantRecognitionScreen = ({ route, navigation }) => {
   const [hasPermission, setHasPermission] = useState(null);
   const [cameraRef, setCameraRef] = useState(null);
   const [processing, setProcessing] = useState(false);
   const [type, setType] = useState(Camera.Constants.Type.back);
+  const [stuck, setStuck] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -63,6 +62,9 @@ const PlantRecognitionScreen = ({ route, navigation }) => {
             style={{ alignSelf: 'center' }}
             onPress={async () => {
               setProcessing(true);
+              setTimeout(() => {
+                setStuck(true);
+              }, 10000);
               if (cameraRef) {
                 // Taken photo is here
                 const photo = await cameraRef.takePictureAsync();
@@ -91,6 +93,7 @@ const PlantRecognitionScreen = ({ route, navigation }) => {
                       },
                     }
                   ).then((res) => res.json());
+
                   const scientificName =
                     data?.results[0]?.species?.genus?.scientificNameWithoutAuthor;
                   const targetPlant = plants.find(
@@ -100,17 +103,31 @@ const PlantRecognitionScreen = ({ route, navigation }) => {
                   );
                   if (targetPlant) {
                     navigation.navigate('IndividualPlant', { element: targetPlant });
-                  } else {
-                    navigation.navigate('Search', { error: true });
+                    setProcessing(false);
+                  } else if (!targetPlant || stuck) {
+                    setProcessing(false);
+                    showMessage({
+                      message: 'Plant could not be found',
+                      description: 'Please try another plant',
+                      type: 'danger',
+                      animated: true,
+                      icon: 'danger',
+                    });
                   }
                 } catch (e) {
-                  console.log(e);
-                  navigation.navigate('Search', { error: true });
+                  setProcessing(false);
+                  showMessage({
+                    message: 'Plant could not be found',
+                    description: 'Please try another plant',
+                    type: 'danger',
+                    animated: true,
+                    icon: 'danger',
+                  });
                 }
               }
             }}>
             {processing ? (
-              <ActivityIndicator size={80} />
+              <ActivityIndicator size="large" color={Colors.infoMainColor} />
             ) : (
               <View
                 style={{
