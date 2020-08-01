@@ -71,7 +71,7 @@ const IndividualPlantScreen = (navigation) => {
             <Ionicons
               name="ios-arrow-up"
               size={24}
-              color="#dbd7d3"
+              color={Colors.arrowColor}
               style={{ transform: [{ rotateX: `${deg}deg` }] }}
             />
           </Transitioning.View>
@@ -111,22 +111,42 @@ const IndividualPlantScreen = (navigation) => {
             <Text style={styles.text}>{plant.description}</Text>
             <View style={styles.shortInfoContainer}>
               <View style={styles.shortInfoElement}>
-                <Entypo style={styles.shortInfoIcon} name="globe" size={80} color="#416241" />
+                <Entypo
+                  style={styles.shortInfoIcon}
+                  name="globe"
+                  size={80}
+                  color={Colors.plantIcon}
+                />
                 <Text style={styles.shortInfoHeadline}>Origin:</Text>
                 <Text style={styles.shortInfoText}>{plant.origin}</Text>
               </View>
               <View style={styles.shortInfoElement}>
-                <Entypo style={styles.shortInfoIcon} name="price-tag" size={80} color="#416241" />
+                <Entypo
+                  style={styles.shortInfoIcon}
+                  name="price-tag"
+                  size={80}
+                  color={Colors.plantIcon}
+                />
                 <Text style={styles.shortInfoHeadline}>Family:</Text>
                 <Text style={styles.shortInfoText}>{plant.familyName}</Text>
               </View>
               <View style={styles.shortInfoElement}>
-                <Entypo style={styles.shortInfoIcon} name="tree" size={80} color="#416241" />
+                <Entypo
+                  style={styles.shortInfoIcon}
+                  name="tree"
+                  size={80}
+                  color={Colors.plantIcon}
+                />
                 <Text style={styles.shortInfoHeadline}>Growth:</Text>
                 <Text style={styles.shortInfoText}>{plant.maxGrowth}</Text>
               </View>
               <View style={styles.shortInfoElement}>
-                <AntDesign style={styles.shortInfoIcon} name="warning" size={80} color="#416241" />
+                <AntDesign
+                  style={styles.shortInfoIcon}
+                  name="warning"
+                  size={80}
+                  color={Colors.plantIcon}
+                />
                 <Text style={styles.shortInfoHeadline}>Poisonous:</Text>
                 <Text style={styles.shortInfoText}>{plant.poisonousForPets}</Text>
               </View>
@@ -238,7 +258,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.5,
     shadowRadius: 3,
-    shadowColor: Colors.defaultWhite,
+    shadowColor: Colors.neoTopShadow,
   },
 
   bottomShadow: {
@@ -248,7 +268,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.8,
     shadowRadius: 3,
-    shadowColor: Colors.shadowColor,
+    shadowColor: Colors.neoBtmShadow,
   },
 
   container: {
@@ -285,23 +305,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     width: ' 100%',
-  },
-  btnReminder: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#97BF7A',
-    width: 240,
-    padding: 10,
-    marginBottom: 20,
-    borderRadius: 50,
-    borderWidth: 2,
-    borderColor: '#79C3CA',
-  },
-  btnText: {
-    color: 'white',
-    fontSize: 18,
-    paddingLeft: 6,
   },
   text: {
     color: Colors.defaultWhite,

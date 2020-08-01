@@ -84,7 +84,7 @@ const MyGardenPlant = ({ route, navigation }) => {
           position: 'absolute',
           top: '30%',
           alignSelf: 'center',
-          backgroundColor: '#ededed',
+          backgroundColor: Colors.renameModalBg,
           borderRadius: 10,
         }}
         isVisible={modalOpen}
@@ -94,11 +94,11 @@ const MyGardenPlant = ({ route, navigation }) => {
           style={{
             width: '90%',
             borderWidth: 1,
-            borderColor: 'transparent',
+            borderColor: Colors.transparent,
             borderRadius: 11,
             textAlign: 'center',
             height: '40%',
-            color: 'black',
+            color: Colors.defaultBlack,
             margin: 20,
             backgroundColor: Colors.defaultWhite,
           }}
@@ -118,7 +118,12 @@ const MyGardenPlant = ({ route, navigation }) => {
               setModalOpen(false);
               bsSettings.current.snapTo(1);
             }}>
-            <AntDesign style={styles.renameIcon} name="closecircle" size={35} color="#8B0000" />
+            <AntDesign
+              style={styles.renameIcon}
+              name="closecircle"
+              size={35}
+              color={Colors.cancelColor}
+            />
           </DefaultTouch>
           <DefaultTouch
             onPress={() => {
@@ -165,7 +170,7 @@ const MyGardenPlant = ({ route, navigation }) => {
         <Ionicons
           name="ios-arrow-up"
           size={24}
-          color="#dbd7d3"
+          color={Colors.arrowColor}
           style={{ transform: [{ rotateX: `${deg}deg` }] }}
         />
       </Transitioning.View>
@@ -316,20 +321,20 @@ const MyGardenPlant = ({ route, navigation }) => {
       <Animated.View
         style={{
           height: '100%',
-          backgroundColor: '#e8fffe',
+          backgroundColor: Colors.centerBgSpliter,
           opacity: Animated.add(0.4, Animated.multiply(fall, 1.0)),
         }}>
         <DefaultTouch style={styles.plantSettings} onPress={() => bsSettings.current.snapTo(0)}>
           <View
             style={{
-              backgroundColor: '#00000070',
+              backgroundColor: Colors.settingsIconBg,
               width: 40,
               height: 40,
               justifyContent: 'center',
               alignItems: 'center',
               borderRadius: 50,
             }}>
-            <Entypo name="dots-three-vertical" size={25} color="#e0ebe2" />
+            <Entypo name="dots-three-vertical" size={25} color={Colors.settingsIcon} />
           </View>
         </DefaultTouch>
 
@@ -394,7 +399,7 @@ const MyGardenPlant = ({ route, navigation }) => {
 
 const styles = StyleSheet.create({
   opacityContainer: {
-    backgroundColor: '#2c2c2f',
+    backgroundColor: Colors.settingsBgOpacity,
   },
   settingsContainer: {
     padding: 20,
@@ -437,20 +442,20 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingVertical: 15,
     fontSize: 16,
-    color: Colors.settingsDelete,
+    color: Colors.settingsDeleteTxt,
     fontWeight: '600',
   },
 
   cancelSettingsBtn: {
     borderRadius: 10,
-    backgroundColor: Colors.cancelColor,
+    backgroundColor: Colors.settingsCancelBtn,
     marginHorizontal: 5,
     marginVertical: 25,
   },
 
   settingsHandleContainer: {
     backgroundColor: Colors.tintColor,
-    shadowColor: Colors.settingsShadow,
+    shadowColor: Colors.basicShadows,
     shadowOffset: { width: -1, height: -3 },
     shadowRadius: 2,
     shadowOpacity: 0.4,
@@ -566,7 +571,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   smallInfoWrapper: {
-    backgroundColor: Colors.infoMainColor,
+    backgroundColor: Colors.defaultWhite,
     borderRadius: 15,
     width: '48%',
     marginBottom: 15,
@@ -578,7 +583,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    backgroundColor: Colors.infoMainColor,
+    backgroundColor: Colors.defaultWhite,
     paddingVertical: 10,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
@@ -598,7 +603,7 @@ const styles = StyleSheet.create({
   },
 
   smallBodyContainer: {
-    backgroundColor: '#bfdee3',
+    backgroundColor: Colors.shortInfoBodyBg,
     height: '50%',
     width: '100%',
     borderRadius: 15,
@@ -629,7 +634,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 3,
     borderRadius: 5,
-    backgroundColor: Colors.infoMainColor,
+    backgroundColor: Colors.defaultWhite,
     paddingVertical: 3,
     flexShrink: 1,
   },
@@ -646,7 +651,7 @@ const styles = StyleSheet.create({
     lineHeight: 28,
     marginTop: 10,
     marginBottom: 25,
-    color: Colors.infoMainColor,
+    color: Colors.defaultWhite,
   },
 });
 

@@ -34,7 +34,7 @@ const IndividualArticle = ({ route }) => {
           activeOpacity={1}
           style={styles.closeButton}
           onPress={() => setVisibility(false)}>
-          <Entypo name="circle-with-cross" size={24} color="white" />
+          <Entypo name="circle-with-cross" size={24} color={Colors.defaultWhite} />
         </TouchableOpacity>
       </Modal>
       <ScrollView style={styles.mainWrapper}>
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   closeButton: {
-    backgroundColor: 'black',
+    backgroundColor: Colors.defaultBlack,
     display: 'flex',
     alignItems: 'center',
     paddingBottom: '7%',
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
   },
   author: {
     fontSize: 14,
-    color: 'grey',
+    color: Colors.gray,
   },
   paragraph: {
     fontSize: 16,
@@ -172,6 +172,7 @@ const styles = StyleSheet.create({
     color: Colors.textGrey,
     marginBottom: 20,
   },
+  
   buttonWrapper: {
     backgroundColor: '#004e57',
     borderRadius: 25,

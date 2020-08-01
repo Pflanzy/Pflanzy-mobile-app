@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { FlatList, Keyboard, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
 import firebase from '../../firebase/config';
+import { StyleSheet } from 'react-native';
+import Colors from '../constants/Colors';
 
 const AccountScreen = (props) => {
   const [entityText, setEntityText] = useState('');
@@ -66,7 +68,7 @@ const AccountScreen = (props) => {
         <TextInput
           style={styles.input}
           placeholder="Add new entity"
-          placeholderTextColor="#aaaaaa"
+          placeholderTextColor= {Colors.placeHolderColor}
           onChangeText={(text) => setEntityText(text)}
           value={entityText}
           underlineColorAndroid="transparent"
@@ -89,9 +91,6 @@ const AccountScreen = (props) => {
     </View>
   );
 };
-
-import { StyleSheet } from 'react-native';
-import Colors from '../constants/Colors';
 
 export default StyleSheet.create({
   container: {

@@ -15,7 +15,12 @@ const SearchField = (props) => {
   return (
     <View style={styles.wrapper}>
       <SearchBar
-        inputStyle={{ backgroundColor: 'white', borderRadius: 12, paddingHorizontal: 10 }}
+        inputStyle={{
+          backgroundColor: Colors.defaultWhite,
+          borderRadius: 12,
+          paddingHorizontal: 10,
+        }}
+
         inputContainerStyle={{
           backgroundColor: Colors.tintColor,
           borderTopLeftRadius: 19,
@@ -23,7 +28,7 @@ const SearchField = (props) => {
           height: 65,
         }}
         containerStyle={{
-          backgroundColor: 'none',
+          backgroundColor: Colors.defaultWhite,
           width: '98%',
           borderTopWidth: 0,
           borderBottomWidth: 0,
