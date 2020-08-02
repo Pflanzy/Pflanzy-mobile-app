@@ -4,28 +4,28 @@ import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 import Colors from '../constants/Colors';
 
-const ReminderCard = ({ element }) => {
+const ReminderCard = ({ item }) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const clickHandler = () => {
     dispatch({ type: 'TOGGLE' });
     setTimeout(() => {
-      navigation.navigate('IndividualPlant', { element });
+      navigation.navigate('IndividualPlant', { item });
     }, 200);
   };
   return (
     <TouchableOpacity activeOpacity={0.7} style={styles.cardContainer} onPress={clickHandler}>
       <View style={styles.imageContainer}>
-        <Image style={styles.cardImage} source={{ uri: element?.images?.imagePrimary }} />
+        <Image style={styles.cardImage} source={{ uri: item?.images?.imagePrimary }} />
       </View>
       <View style={styles.detailsContainer}>
         <View style={styles.nameContainer}>
-          <Text style={styles.title}>{element?.commonName}</Text>
-          <Text style={styles.text}>{element?.scientificName}</Text>
+          <Text style={styles.title}>{item?.commonName}</Text>
+          <Text style={styles.text}>{item?.scientificName}</Text>
         </View>
         <View style={styles.passedContent}>
           <Text style={styles.title}>Origin</Text>
-          <Text style={styles.text}>{element?.origin}</Text>
+          <Text style={styles.text}>{item?.origin}</Text>
         </View>
       </View>
     </TouchableOpacity>

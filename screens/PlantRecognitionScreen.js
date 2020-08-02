@@ -38,6 +38,7 @@ const PlantRecognitionScreen = ({ route, navigation }) => {
         <View
           style={{
             backgroundColor: '#00000099',
+
             flexDirection: 'row',
             justifyContent: 'space-between',
             paddingVertical: 15,
@@ -47,7 +48,9 @@ const PlantRecognitionScreen = ({ route, navigation }) => {
             style={{
               width: 40,
               alignItems: 'center',
+
               paddingTop: 10,
+
             }}
             onPress={() => {
               setFlash(
@@ -57,12 +60,14 @@ const PlantRecognitionScreen = ({ route, navigation }) => {
               );
             }}>
             {flash === Camera.Constants.FlashMode.off ? (
+
               <Ionicons name="ios-flash-off" size={35} color={Colors.defaultWhite} />
             ) : (
               <Ionicons name="ios-flash" size={35} color={Colors.defaultWhite} />
             )}
           </TouchableOpacity>
           <TouchableOpacity
+
             onPress={async () => {
               setProcessing(true);
               setTimeout(() => {
