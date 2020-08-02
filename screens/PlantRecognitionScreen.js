@@ -38,13 +38,19 @@ const PlantRecognitionScreen = ({ route, navigation }) => {
         <View
           style={{
             backgroundColor: '#00000099',
-            paddingVertical: 20,
+
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            paddingVertical: 15,
             paddingHorizontal: 35,
           }}>
           <TouchableOpacity
             style={{
               width: 40,
               alignItems: 'center',
+
+              paddingTop: 10,
+
             }}
             onPress={() => {
               setFlash(
@@ -54,23 +60,14 @@ const PlantRecognitionScreen = ({ route, navigation }) => {
               );
             }}>
             {flash === Camera.Constants.FlashMode.off ? (
-              <Ionicons
-                name="ios-flash-off"
-                size={35}
-                color={Colors.defaultWhite}
-                // style={{ paddingLeft: 30 }}
-              />
+
+              <Ionicons name="ios-flash-off" size={35} color={Colors.defaultWhite} />
             ) : (
-              <Ionicons
-                name="ios-flash"
-                size={35}
-                color={Colors.defaultWhite}
-                // style={{ paddingLeft: 30 }}
-              />
+              <Ionicons name="ios-flash" size={35} color={Colors.defaultWhite} />
             )}
           </TouchableOpacity>
           <TouchableOpacity
-            style={{ alignSelf: 'center', position: 'absolute', top: '30%' }}
+
             onPress={async () => {
               setProcessing(true);
               setTimeout(() => {
@@ -167,6 +164,21 @@ const PlantRecognitionScreen = ({ route, navigation }) => {
                 />
               </View>
             )}
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              width: 40,
+              alignItems: 'center',
+              paddingTop: 10,
+            }}
+            onPress={() => {
+              setType(
+                type === Camera.Constants.Type.back
+                  ? Camera.Constants.Type.front
+                  : Camera.Constants.Type.back
+              );
+            }}>
+            <Ionicons name="ios-reverse-camera" size={35} color={Colors.defaultWhite} />
           </TouchableOpacity>
         </View>
       </Camera>
