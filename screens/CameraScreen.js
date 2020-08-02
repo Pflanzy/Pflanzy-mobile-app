@@ -77,7 +77,9 @@ const CameraScreen = ({ route, navigation }) => {
               setProcessing(true);
               if (cameraRef) {
                 // Taken photo is here
-                const photo = await cameraRef.takePictureAsync();
+                const photo = await cameraRef.takePictureAsync({
+                  quality: 1,
+                });
                 // We can use the uri property from photo to reach the taken picture and do what we want.
                 const userplantsRef = firebase.firestore().collection('plants').doc(plantId);
 

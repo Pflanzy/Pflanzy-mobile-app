@@ -5,6 +5,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Entypo } from '@expo/vector-icons';
 import Colors from '../constants/Colors';
 import ExploreLabel from './ExploreLabel';
+import ShareIcon from './share-app-component';
 
 const IndividualArticle = ({ route }) => {
   const { article } = route.params;
@@ -50,7 +51,8 @@ const IndividualArticle = ({ route }) => {
         </View>
         <View style={styles.content}>
           <View style={styles.labelWrapper}>
-            <ExploreLabel label={article.label} />
+            <ExploreLabel style={styles.label} label={article.label} />
+            <ShareIcon style={styles.shareIcon} />
           </View>
           <Text style={styles.headline}>{article.headline}</Text>
           <Text style={styles.author}>Author: {article.author}</Text>
@@ -149,7 +151,11 @@ const styles = StyleSheet.create({
   },
   labelWrapper: {
     marginTop: 10,
-    alignSelf: 'flex-start',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   headline: {
     fontSize: 28,
@@ -172,7 +178,7 @@ const styles = StyleSheet.create({
     color: Colors.textGrey,
     marginBottom: 20,
   },
-  
+
   buttonWrapper: {
     backgroundColor: '#004e57',
     borderRadius: 25,

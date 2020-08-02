@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, HeaderBackButton } from '@react-navigation/stack';
 import React from 'react';
 import { Provider } from 'react-redux';
 import { StyleSheet, View, SafeAreaView, StatusBar } from 'react-native';
@@ -44,7 +44,20 @@ export default function App() {
                 <Stack.Screen name="Root" component={BottomTabNavigator} />
                 <Stack.Screen name="Camera" component={CameraScreen} />
                 <Stack.Screen name="PlantRecognition" component={PlantRecognitionScreen} />
-                <Stack.Screen name="IndividualPlant" component={IndividualPlantScreen} />
+                <Stack.Screen
+                  name="IndividualPlant"
+                  component={IndividualPlantScreen}
+                  options={({ navigation }) => ({
+                    headerLeft: (props) => (
+                      <HeaderBackButton
+                        {...props}
+                        onPress={() => {
+                          navigation.navigate('Search');
+                        }}
+                      />
+                    ),
+                  })}
+                />
                 <Stack.Screen
                   name="IndividualArticle"
                   component={IndividualArticle}
