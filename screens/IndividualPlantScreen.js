@@ -28,7 +28,7 @@ const IndividualPlantScreen = (navigation) => {
   const [deg, setDeg] = useState(0);
   const ref = useRef();
 
-  const plant = navigation.route.params.element;
+  const plant = navigation.route.params.item;
 
   const addPlantHandler = (selectedPlant) => {
     // TODO: Rename plants collection
