@@ -47,22 +47,22 @@ const SearchScreen = ({ navigation }) => {
           activeOpacity={0.7}
           style={{
             marginTop: 20,
-            height: `${Platform.OS === 'ios' ? '25%' : '55%'}`,
+            height: '25%',
             alignItems: 'center',
           }}
         />
         <TouchableOpacity
           style={{
             alignSelf: 'center',
-            width: 150,
-            height: 150,
+            width: 100,
+            height: 100,
             backgroundColor: 'green',
             justifyContent: 'center',
             alignItems: 'center',
             borderRadius: 100,
           }}
           onPress={() => navigation.navigate('PlantRecognition')}>
-          <FontAwesome5 name="camera" size={80} />
+          <FontAwesome5 name="camera" size={55} />
         </TouchableOpacity>
       </ImageBackground>
     </>
@@ -79,6 +79,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     position: 'absolute',
     zIndex: 0,
+    justifyContent: 'space-evenly',
   },
 });
 
