@@ -1,46 +1,46 @@
 import React from 'react';
-import { StyleSheet, View, ScrollView, Text, Image } from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 import { useSelector } from 'react-redux';
 import BasicCard from '../components/BasicCard';
-import plantsIcon from '../assets/images/plants.png';
+import { OptimizedFlatList } from 'react-native-optimized-flatlist';
+import Colors from '../constants/Colors';
 
 const MyGardenScreen = () => {
   const plants = useSelector((state) => state.userReducer.plants);
+  const renderItem = ({item}) => {
+    return <BasicCard plant={item}/>
+  }
   return (
-    <ScrollView contentContainerStyle={styles.wrapper}>
+    <View style={styles.container}>
       {plants?.length > 0 ? (
-        <View style={styles.container}>
-          {plants &&
-            plants.map((plant) => {
-              return <BasicCard plant={plant} key={plant.id} />;
-            })}
-        </View>
+         <OptimizedFlatList data={plants} renderItem={renderItem} />
       ) : (
         <View style={styles.plantsIconWrapper}>
-          <Image source={plantsIcon} style={styles.plantsIconIcon} />
+          <Image source={{uri:"https://media1.tenor.com/images/22e52165d824572fa4ece1ee968aa6f6/tenor.gif?itemid=16288922"}} style={styles.plantsIcon} />
           <Text style={styles.errorMsg}>There are no plants in your garden yet.</Text>
         </View>
       )}
-    </ScrollView>
+    </View>
+
   );
 };
 
 const styles = StyleSheet.create({
-  wrapper: {
-    marginTop: 10,
-  },
   container: {
-    flexDirection: 'column',
-    alignItems: 'center',
+    justifyContent:"center",
+    alignItems:"center",
+    backgroundColor:Colors.lightPink,
+    minHeight:"100%",
+    minWidth:400
   },
   plantsIconWrapper: {
     justifyContent: 'center',
     height: 550,
     alignItems: 'center',
   },
-  plantsIconIcon: {
-    height: 140,
-    width: 140,
+  plantsIcon: {
+    height: 250,
+    width: 250,
     marginBottom: 10,
   },
   errorMsg: {

@@ -11,6 +11,7 @@ export default {
   centerBgSpliter: '#e8fffe',
   settingsIcon: '#e0ebe2',
   settingsIconBg: '#00000070',
+  lightPink:"#FBEFE3",
 
   // Text colours
   textGrey: '#2f2f2f',
