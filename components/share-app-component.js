@@ -1,12 +1,12 @@
 import React from 'react';
-import { Ionicons, EvilIcons } from '@expo/vector-icons';
+import { EvilIcons } from '@expo/vector-icons';
 import { TouchableOpacity, Share, StyleSheet } from 'react-native';
 
 export default ShareIcon = () => {
   const onShare = async () => {
     try {
       const result = await Share.share({
-        message: 'Spread the word about Pflanzy :)',
+        message: 'Pflanzy',
       });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
@@ -23,13 +23,7 @@ export default ShareIcon = () => {
   };
   return (
     <TouchableOpacity onPress={onShare}>
-      <EvilIcons style={styles.icon} name="share-apple" size={50} />
+      <EvilIcons name="share-apple" size={40} />
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({
-  icon: {
-    margin: 10,
-  },
-});
