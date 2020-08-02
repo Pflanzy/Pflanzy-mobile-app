@@ -56,12 +56,14 @@ const CameraScreen = ({ route, navigation }) => {
               );
             }}>
             {flash === Camera.Constants.FlashMode.off ? (
+
               <Ionicons name="ios-flash-off" size={35} color={Colors.defaultWhite} />
             ) : (
               <Ionicons name="ios-flash" size={35} color={Colors.defaultWhite} />
             )}
           </TouchableOpacity>
           <TouchableOpacity
+
             onPress={async () => {
               setProcessing(true);
               if (cameraRef) {
@@ -122,7 +124,9 @@ const CameraScreen = ({ route, navigation }) => {
                   : Camera.Constants.Type.back
               );
             }}>
+
             <Ionicons name="ios-reverse-camera" size={35} color={Colors.defaultWhite} />
+
           </TouchableOpacity>
         </View>
       </Camera>
