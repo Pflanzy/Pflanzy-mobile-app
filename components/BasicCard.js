@@ -10,7 +10,7 @@ function BasicCard({ plant }) {
       activeOpacity={0.7}
       style={styles.cardContainer}
       onPress={() =>
-        navigation.navigate('MyPlant', {
+        navigation.navigate('My Plant', {
           plantId: plant.id,
         })
       }>

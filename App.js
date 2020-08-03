@@ -63,7 +63,7 @@ export default function App() {
                   component={IndividualArticle}
                   options={({ route }) => ({ title: route.params.article.label })}
                 />
-                <Stack.Screen name="MyPlant" component={MyPlantScreen} />
+                <Stack.Screen name="My Plant" component={MyPlantScreen} />
                 <Stack.Screen name="Auth" component={AuthScreen} />
               </Stack.Navigator>
             </NavigationContainer>
