@@ -29,7 +29,6 @@ function ExploreCard({ article }) {
 const styles = StyleSheet.create({
   cardContainer: {
     flexDirection: 'row-reverse',
-    backgroundColor: Colors.defaultWhite,
     borderTopRightRadius: 10,
     borderBottomRightRadius: 10,
     height: 130,
@@ -40,6 +39,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 2, height: 2 },
     shadowRadius: 3,
     marginVertical: 10,
+    backgroundColor: 'rgba(255, 255, 255, 0.85)',
   },
   imageContainer: {
     borderTopRightRadius: 50,
