@@ -75,8 +75,8 @@ const IndividualPlantScreen = (navigation) => {
             />
           </Transitioning.View>
           <View>
-            <Text style={styles.nameGeneric}>{plant.commonName}</Text>
-            <Text style={styles.nameScientific}>{plant.scientificName}</Text>
+            <Text style={styles.nameGeneric}>{plant?.commonName}</Text>
+            <Text style={styles.nameScientific}>{plant?.scientificName}</Text>
           </View>
           <View style={styles.btnContainer}>
             <PflanzyOpacity onPress={() => addPlantHandler(plant)}>
@@ -107,7 +107,7 @@ const IndividualPlantScreen = (navigation) => {
             </PflanzyOpacity>
           </View>
           <ScrollView style={styles.contentBody}>
-            <Text style={styles.text}>{plant.description}</Text>
+            <Text style={styles.text}>{plant?.description}</Text>
             <View style={styles.shortInfoContainer}>
               <View style={styles.shortInfoElement}>
                 <Entypo
@@ -117,7 +117,7 @@ const IndividualPlantScreen = (navigation) => {
                   color={Colors.plantIcon}
                 />
                 <Text style={styles.shortInfoHeadline}>Origin:</Text>
-                <Text style={styles.shortInfoText}>{plant.origin}</Text>
+                <Text style={styles.shortInfoText}>{plant?.origin}</Text>
               </View>
               <View style={styles.shortInfoElement}>
                 <Entypo
@@ -127,7 +127,7 @@ const IndividualPlantScreen = (navigation) => {
                   color={Colors.plantIcon}
                 />
                 <Text style={styles.shortInfoHeadline}>Family:</Text>
-                <Text style={styles.shortInfoText}>{plant.familyName}</Text>
+                <Text style={styles.shortInfoText}>{plant?.familyName}</Text>
               </View>
               <View style={styles.shortInfoElement}>
                 <Entypo
@@ -137,7 +137,7 @@ const IndividualPlantScreen = (navigation) => {
                   color={Colors.plantIcon}
                 />
                 <Text style={styles.shortInfoHeadline}>Growth:</Text>
-                <Text style={styles.shortInfoText}>{plant.maxGrowth}</Text>
+                <Text style={styles.shortInfoText}>{plant?.maxGrowth}</Text>
               </View>
               <View style={styles.shortInfoElement}>
                 <AntDesign
@@ -147,7 +147,7 @@ const IndividualPlantScreen = (navigation) => {
                   color={Colors.plantIcon}
                 />
                 <Text style={styles.shortInfoHeadline}>Poisonous:</Text>
-                <Text style={styles.shortInfoText}>{plant.poisonousForPets}</Text>
+                <Text style={styles.shortInfoText}>{plant?.poisonousForPets}</Text>
               </View>
             </View>
             <View style={styles.infoWrapper}>
@@ -159,14 +159,14 @@ const IndividualPlantScreen = (navigation) => {
                 />
                 <Text style={styles.infoHeader}>Temperature</Text>
               </View>
-              <Text style={styles.infoBody}>{plant.temperature}</Text>
+              <Text style={styles.infoBody}>{plant?.temperature}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
                 <Entypo name="light-up" size={20} color={Colors.defaultWhite} />
                 <Text style={styles.infoHeader}>Light</Text>
               </View>
-              <Text style={styles.infoBody}>{plant.light}</Text>
+              <Text style={styles.infoBody}>{plant?.light}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
@@ -178,42 +178,42 @@ const IndividualPlantScreen = (navigation) => {
                 />
                 <Text style={styles.infoHeader}>Water</Text>
               </View>
-              <Text style={styles.infoBody}>{plant.watering}</Text>
+              <Text style={styles.infoBody}>{plant?.watering}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
                 <MaterialCommunityIcons name="pot" size={20} color={Colors.defaultWhite} />
                 <Text style={styles.infoHeader}>Soil</Text>
               </View>
-              <Text style={styles.infoBody}>{plant.soil}</Text>
+              <Text style={styles.infoBody}>{plant?.soil}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
                 <Entypo name="bucket" size={20} color={Colors.defaultWhite} />
                 <Text style={styles.infoHeader}>Re-Potting</Text>
               </View>
-              <Text style={styles.infoBody}>{plant.rePotting}</Text>
+              <Text style={styles.infoBody}>{plant?.rePotting}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
                 <MaterialCommunityIcons name="spray-bottle" size={20} color={Colors.defaultWhite} />
                 <Text style={styles.infoHeader}>Fertilizer</Text>
               </View>
-              <Text style={styles.infoBody}>{plant.fertilizer}</Text>
+              <Text style={styles.infoBody}>{plant?.fertilizer}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
                 <Entypo name="water" size={20} color={Colors.defaultWhite} />
                 <Text style={styles.infoHeader}>Humidity</Text>
               </View>
-              <Text style={styles.infoBody}>{plant.humidity}</Text>
+              <Text style={styles.infoBody}>{plant?.humidity}</Text>
             </View>
             <View style={styles.infoWrapper}>
               <View style={styles.infoHeaderWrapper}>
                 <FontAwesome5 name="seedling" size={20} color={Colors.defaultWhite} />
                 <Text style={styles.infoHeader}>Propagation</Text>
               </View>
-              <Text style={styles.infoBody}>{plant.propagation}</Text>
+              <Text style={styles.infoBody}>{plant?.propagation}</Text>
             </View>
           </ScrollView>
         </View>
