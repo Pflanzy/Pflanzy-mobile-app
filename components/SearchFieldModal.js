@@ -6,15 +6,15 @@ import {
   Keyboard,
   ActivityIndicator,
   Image,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
 } from 'react-native';
 import { Button } from 'react-native-elements';
 import { AntDesign } from '@expo/vector-icons';
+import { OptimizedFlatList } from 'react-native-optimized-flatlist';
 import Colors from '../constants/Colors';
 import SearchField from './SearchField';
 import IndividualCard from './IndividualCard';
 import cactus from '../assets/images/cactus.png';
-import {OptimizedFlatList} from "react-native-optimized-flatlist"
 
 const SearchFieldModal = ({ plantData, dispatch }) => {
   const initialData = plantData.sort((a, b) => (a.commonName > b.commonName ? 1 : -1));
@@ -48,9 +48,9 @@ const SearchFieldModal = ({ plantData, dispatch }) => {
       setFilteredData(filteredResult);
     }
   };
-  const renderItem = ({item}) => {
-  return  <IndividualCard item={item} />
-  }
+  const renderItem = ({ item }) => {
+    return <IndividualCard item={item} />;
+  };
   return (
     <View>
       <Button
@@ -71,26 +71,22 @@ const SearchFieldModal = ({ plantData, dispatch }) => {
       {showLoading ? (
         loadingFunction()
       ) : (
-        <TouchableWithoutFeedback
-          style={styles.wrapper}
-          onPress={() => Keyboard.dismiss()}>
-            {filteredData.length > 0 ? (
-              <View style={styles.plantList}>
+        <TouchableWithoutFeedback style={styles.wrapper} onPress={() => Keyboard.dismiss()}>
+          {filteredData.length > 0 ? (
+            <View style={styles.plantList}>
               <OptimizedFlatList
                 data={filteredData}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.scientificName}
-                />
-                </View>
-            ) : (
-              <View style={styles.cactusWrapper}>
-                <Image source={cactus} style={styles.cactusIcon} />
-                <Text style={styles.errorMsg}>
-                  Sorry, no matching plants :)
-                </Text>
-              </View>
-            )}
-          
+                style={styles.flatListWrapper}
+              />
+            </View>
+          ) : (
+            <View style={styles.cactusWrapper}>
+              <Image source={cactus} style={styles.cactusIcon} />
+              <Text style={styles.errorMsg}>Sorry, no matching plants :)</Text>
+            </View>
+          )}
         </TouchableWithoutFeedback>
       )}
     </View>
@@ -99,6 +95,10 @@ const SearchFieldModal = ({ plantData, dispatch }) => {
 const styles = StyleSheet.create({
   wrapper: {
     paddingBottom: 30,
+  },
+  flatListWrapper: {
+    marginTop: 10,
+    marginBottom: 30,
   },
   loadingContainer: {
     alignItems: 'center',

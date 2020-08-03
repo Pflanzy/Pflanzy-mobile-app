@@ -81,7 +81,12 @@ const ModalConfigPopup = ({ plantName, plantId }) => {
         backdropTransitionOutTiming={40}>
         <View style={{ padding: 20 }}>
           <View style={styles.headerOptions}>
-            <TouchableOpacity onPress={() => setModalOpen(false)}>
+            <TouchableOpacity
+              onPress={() => {
+                setModalOpen(false);
+                setReminderItem('');
+                setSwitchEnabled(false);
+              }}>
               <Text>Cancel</Text>
             </TouchableOpacity>
             <Text style={{ fontSize: 16, fontWeight: '500' }}>New Reminder</Text>
@@ -97,6 +102,8 @@ const ModalConfigPopup = ({ plantName, plantId }) => {
                   reminderItem,
                 });
                 setModalOpen(false);
+                setReminderItem('');
+                setSwitchEnabled(false);
               }}>
               <Text style={styles.doneTextColor}>Done</Text>
             </TouchableOpacity>
