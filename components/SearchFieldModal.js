@@ -52,7 +52,7 @@ const SearchFieldModal = ({ plantData, dispatch }) => {
     return <IndividualCard item={item} />;
   };
   return (
-    <View>
+    <View style={styles.mainWrapper}>
       <Button
         onPress={() => dispatch({ type: 'TOGGLE' })}
         buttonStyle={{
@@ -93,6 +93,10 @@ const SearchFieldModal = ({ plantData, dispatch }) => {
   );
 };
 const styles = StyleSheet.create({
+  mainWrapper: {
+    backgroundColor: Colors.tintColor,
+    minHeight: '100%',
+  },
   wrapper: {
     paddingBottom: 30,
   },
