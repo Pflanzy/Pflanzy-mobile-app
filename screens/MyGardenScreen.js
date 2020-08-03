@@ -3,21 +3,20 @@ import { StyleSheet, View, ScrollView, Text, Image, ImageBackground } from 'reac
 import { useSelector } from 'react-redux';
 import BasicCard from '../components/BasicCard';
 import Colors from '../constants/Colors';
-import background from '../assets/images/plant-background-1.jpg';
+import background from '../assets/images/plant-background-2.jpg';
 
 const MyGardenScreen = () => {
   const plants = useSelector((state) => state.userReducer.plants);
   return (
     <View style={{ minHeight: '100%' }}>
+      <ImageBackground source={background} style={styles.background} />
       <ScrollView contentContainerStyle={styles.wrapperWhenPlants}>
         {plants?.length > 0 ? (
-          <ImageBackground source={background} style={styles.background}>
-            <View style={styles.container}>
-              {plants.map((plant) => {
-                return <BasicCard plant={plant} key={plant.id} />;
-              })}
-            </View>
-          </ImageBackground>
+          <View style={styles.container}>
+            {plants.map((plant) => {
+              return <BasicCard plant={plant} key={plant.id} />;
+            })}
+          </View>
         ) : (
           <View style={styles.wrapperWhenNoPlants}>
             <Image
@@ -36,13 +35,10 @@ const MyGardenScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  wrapper: {
-    marginTop: 10,
-    backgroundColor: Colors.lightPink,
-  },
   container: {
     flexDirection: 'column',
     alignItems: 'center',
+    marginVertical: 10,
   },
   wrapperWhenNoPlants: {
     justifyContent: 'center',
@@ -65,7 +61,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     position: 'absolute',
     zIndex: 0,
-    // opacity: 0.3,
+    opacity: 0.6,
   },
 });
 
