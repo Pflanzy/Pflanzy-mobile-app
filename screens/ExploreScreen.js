@@ -16,12 +16,16 @@ const ExploreScreen = () => {
         data={exploreData}
         renderItem={renderItem}
         keyExtractor={(item) => item.id.toString()}
+        contentContainerStyle={styles.flatList}
       />
     </>
   );
 };
 
 const styles = StyleSheet.create({
+  flatList: {
+    paddingVertical: 10,
+  },
   background: {
     width: '100%',
     height: '100%',

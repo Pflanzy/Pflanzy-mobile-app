@@ -78,7 +78,7 @@ const SearchFieldModal = ({ plantData, dispatch }) => {
                 data={filteredData}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.scientificName}
-                style={styles.flatListWrapper}
+                contentContainerStyle={styles.flatList}
               />
             </View>
           ) : (
@@ -100,9 +100,9 @@ const styles = StyleSheet.create({
   wrapper: {
     paddingBottom: 30,
   },
-  flatListWrapper: {
-    marginTop: 10,
-    marginBottom: 30,
+  flatList: {
+    paddingTop: 10,
+    paddingBottom: 30,
   },
   loadingContainer: {
     alignItems: 'center',
