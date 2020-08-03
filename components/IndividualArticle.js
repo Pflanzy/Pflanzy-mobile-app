@@ -41,7 +41,7 @@ const IndividualArticle = ({ route }) => {
         </TouchableOpacity>
       </Modal>
 
-      <ScrollView style={styles.mainWrapper}>
+      <ScrollView>
         <View style={styles.imageWrapper}>
           <TouchableOpacity
             activeOpacity={0.7}
@@ -135,10 +135,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     position: 'absolute',
     zIndex: 0,
-    opacity: 0.3,
-  },
-  mainWrapper: {
-    backgroundColor: 'rgba(255, 255, 255, 0.6)',
+    opacity: 0.2,
   },
   image: {
     width: '100%',
