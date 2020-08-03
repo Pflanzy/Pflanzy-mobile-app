@@ -10,26 +10,26 @@ const MyGardenScreen = () => {
   return (
     <View style={{ minHeight: '100%' }}>
       <ImageBackground source={background} style={styles.background} />
-      <ScrollView contentContainerStyle={styles.wrapperWhenPlants}>
-        {plants?.length > 0 ? (
+      {plants?.length > 0 ? (
+        <ScrollView contentContainerStyle={styles.wrapperWhenPlants}>
           <View style={styles.container}>
             {plants.map((plant) => {
               return <BasicCard plant={plant} key={plant.id} />;
             })}
           </View>
-        ) : (
-          <View style={styles.wrapperWhenNoPlants}>
-            <Image
-              source={{
-                uri:
-                  'https://media1.tenor.com/images/22e52165d824572fa4ece1ee968aa6f6/tenor.gif?itemid=16288922',
-              }}
-              style={styles.plantsIconIcon}
-            />
-            <Text style={styles.errorMsg}>There are no plants in your garden yet.</Text>
-          </View>
-        )}
-      </ScrollView>
+        </ScrollView>
+      ) : (
+        <View style={styles.wrapperWhenNoPlants}>
+          <Image
+            source={{
+              uri:
+                'https://media1.tenor.com/images/22e52165d824572fa4ece1ee968aa6f6/tenor.gif?itemid=16288922',
+            }}
+            style={styles.plantsIconIcon}
+          />
+          <Text style={styles.errorMsg}>There are no plants in your garden yet.</Text>
+        </View>
+      )}
     </View>
   );
 };
