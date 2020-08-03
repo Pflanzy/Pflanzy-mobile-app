@@ -9,14 +9,14 @@ import photo from '../assets/images/photo-1517191434949-5e90cd67d2b6.jpeg';
 import SearchFieldModal from '../components/SearchFieldModal';
 import PflanzyOpacity from '../components/PflanzyOpacity';
 import Colors from '../constants/Colors';
-
+import InitialSlide from "../components/InitialSlide"
 const SearchScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const modalVisible = useSelector((state) => state.modalReducer.open);
 
   return (
     <>
-      <ImageBackground source={photo} style={styles.photo}>
+     {/*  <ImageBackground source={photo} style={styles.photo}>
         <Modal visible={modalVisible} animationType="slide">
           <SearchFieldModal plantData={plantData} dispatch={dispatch} />
         </Modal>
@@ -67,7 +67,8 @@ const SearchScreen = ({ navigation }) => {
             <FontAwesome5 name="camera" size={55} />
           </TouchableOpacity>
         </View>
-      </ImageBackground>
+      </ImageBackground> */}
+      <InitialSlide/>
     </>
   );
 };

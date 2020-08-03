@@ -48,6 +48,7 @@
     "react-native-reanimated": "~1.9.0",
     "react-native-screens": "~2.9.0",
     "react-native-svg": "12.1.0",
+    "react-native-swiper": "^1.6.0-rc.3",
     "react-native-vector-icons": "^6.6.0",
     "react-native-web": "~0.11.7",
     "react-redux": "^7.2.0",
