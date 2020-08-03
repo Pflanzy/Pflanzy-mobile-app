@@ -30,7 +30,7 @@ const CameraScreen = ({ route, navigation }) => {
         'custom.picture': pickerResult.uri,
       })
       .then(() => {
-        navigation.navigate('MyPlant');
+        navigation.navigate('My Plant');
       });
   };
 
@@ -104,7 +104,7 @@ const CameraScreen = ({ route, navigation }) => {
                   })
                   .then(() => {
                     setProcessing(false);
-                    navigation.navigate('MyPlant');
+                    navigation.navigate('My Plant');
                   });
               }
             }}>

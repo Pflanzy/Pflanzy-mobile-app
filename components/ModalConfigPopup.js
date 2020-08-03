@@ -63,23 +63,22 @@ const ModalConfigPopup = ({ plantName, plantId }) => {
       </PflanzyOpacity>
 
       <Modal
-        style={{
-          // height: '100%',
-          display: 'flex',
-          justifyContent: 'flex-start',
-          width: '93%',
-          position: 'absolute',
-          top: 100,
-          alignSelf: 'center',
-          backgroundColor: Colors.defaultWhite,
-          borderRadius: 10,
-          // padding: 20,
-          height: `${isEnabled && Platform.OS === 'ios' ? '70%' : 'auto'}`,
-        }}
+        style={{ width: '93%', alignSelf: 'center' }}
         isVisible={modalOpen}
         onBackdropPress={() => setModalOpen(false)}
         backdropTransitionOutTiming={40}>
-        <View style={{ padding: 20 }}>
+        <View
+          style={{
+            display: 'flex',
+            justifyContent: 'flex-start',
+            width: '100%',
+            position: 'absolute',
+            top: 100,
+            backgroundColor: Colors.defaultWhite,
+            borderRadius: 10,
+            padding: 20,
+            height: `${isEnabled && Platform.OS === 'ios' ? '70%' : 'auto'}`,
+          }}>
           <View style={styles.headerOptions}>
             <TouchableOpacity
               onPress={() => {
