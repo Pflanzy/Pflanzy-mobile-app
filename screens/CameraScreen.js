@@ -3,7 +3,6 @@ import { Text, View, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { Camera } from 'expo-camera';
 import { Ionicons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
-import Icon from 'react-native-ionicons';
 import firebase from '../firebase';
 import Colors from '../constants/Colors';
 
