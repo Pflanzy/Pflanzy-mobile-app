@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { ScrollView, View, Text, Image, StyleSheet, Modal, Button } from 'react-native';
+import { ScrollView, View, Text, Image, StyleSheet, Modal, ImageBackground } from 'react-native';
 import ImageViewer from 'react-native-image-zoom-viewer';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Entypo } from '@expo/vector-icons';
 import Colors from '../constants/Colors';
 import ExploreLabel from './ExploreLabel';
 import ShareIcon from './share-app-component';
+import background from '../assets/images/plant-background-1.jpg';
 
 const IndividualArticle = ({ route }) => {
   const { article } = route.params;
@@ -23,6 +24,7 @@ const IndividualArticle = ({ route }) => {
 
   return (
     <>
+      <ImageBackground source={background} style={styles.background} />
       <Modal visible={visible} transparent={false}>
         <ImageViewer
           enableSwipeDown
@@ -38,7 +40,8 @@ const IndividualArticle = ({ route }) => {
           <Entypo name="circle-with-cross" size={24} color={Colors.defaultWhite} />
         </TouchableOpacity>
       </Modal>
-      <ScrollView style={styles.mainWrapper}>
+
+      <ScrollView>
         <View style={styles.imageWrapper}>
           <TouchableOpacity
             activeOpacity={0.7}
@@ -125,6 +128,14 @@ const styles = StyleSheet.create({
   },
   none: {
     display: 'none',
+  },
+  background: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+    position: 'absolute',
+    zIndex: 0,
+    opacity: 0.2,
   },
   image: {
     width: '100%',
