@@ -32,9 +32,8 @@ const recognizePlant = async (photo, navigation, setProcessing, stuck) => {
         plant1?.scientificName.includes(scientificName) ||
         scientificName.includes(plant1?.scientificName)
     );
-    console.log(targetPlant);
     if (targetPlant) {
-      navigation.navigate('IndividualPlant', { element: targetPlant });
+      navigation.navigate('IndividualPlant', { item: targetPlant });
       setProcessing(false);
     } else if (!targetPlant || stuck) {
       setProcessing(false);

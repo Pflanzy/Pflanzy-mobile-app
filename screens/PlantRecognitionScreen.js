@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { Camera } from 'expo-camera';
 import { Ionicons } from '@expo/vector-icons';
-import { showMessage } from 'react-native-flash-message';
-import plants from '../data/data.json';
+import * as ImagePicker from 'expo-image-picker';
+import recognizePlant from '../helpers/recognizePlant';
 import Colors from '../constants/Colors';
 
 const PlantRecognitionScreen = ({ route, navigation }) => {
@@ -13,6 +13,19 @@ const PlantRecognitionScreen = ({ route, navigation }) => {
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [flash, setFlash] = useState(Camera.Constants.FlashMode.off);
   const [stuck, setStuck] = useState(false);
+
+  const openImagePickerAsync = async () => {
+    const permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
+
+    if (permissionResult.granted === false) {
+      alert('Permission to access camera roll is required!');
+      return;
+    }
+
+    const pickerResult = await ImagePicker.launchImageLibraryAsync();
+    setProcessing(true);
+    recognizePlant(pickerResult, navigation, setProcessing);
+  };
 
   useEffect(() => {
     (async () => {
@@ -35,6 +48,11 @@ const PlantRecognitionScreen = ({ route, navigation }) => {
         ref={(ref) => {
           setCameraRef(ref);
         }}>
+        <View style={{ position: 'absolute', bottom: 100, left: 35 }}>
+          <TouchableOpacity onPress={openImagePickerAsync}>
+            <Ionicons name="ios-images" size={50} color={Colors.defaultWhite} />
+          </TouchableOpacity>
+        </View>
         <View
           style={{
             backgroundColor: '#00000099',
@@ -50,7 +68,6 @@ const PlantRecognitionScreen = ({ route, navigation }) => {
               alignItems: 'center',
 
               paddingTop: 10,
-
             }}
             onPress={() => {
               setFlash(
@@ -60,14 +77,12 @@ const PlantRecognitionScreen = ({ route, navigation }) => {
               );
             }}>
             {flash === Camera.Constants.FlashMode.off ? (
-
               <Ionicons name="ios-flash-off" size={35} color={Colors.defaultWhite} />
             ) : (
               <Ionicons name="ios-flash" size={35} color={Colors.defaultWhite} />
             )}
           </TouchableOpacity>
           <TouchableOpacity
-
             onPress={async () => {
               setProcessing(true);
               setTimeout(() => {
@@ -78,60 +93,7 @@ const PlantRecognitionScreen = ({ route, navigation }) => {
                 await cameraRef.takePictureAsync({
                   skipProcessing: true,
                   onPictureSaved: async (photo) => {
-                    const localUri = photo.uri;
-                    const filename = localUri.split('/').pop();
-
-                    // Infer the type of the image
-                    const match = /\.(\w+)$/.exec(filename);
-                    const imageType = match ? `image/${match[1]}` : `image`;
-
-                    // Upload the image using the fetch and FormData APIs
-                    const formData = new FormData();
-                    // Assume "photo" is the name of the form field the server expects
-                    formData.append('organs', 'flower');
-                    formData.append('images', { uri: localUri, name: filename, type: imageType });
-                    try {
-                      const data = await fetch(
-                        'https://my-api.plantnet.org/v2/identify/all?api-key=2a10M6Omnnm5LOhRgHN9aqGu',
-                        {
-                          method: 'POST',
-                          body: formData,
-                          headers: {
-                            'content-type': 'multipart/form-data',
-                          },
-                        }
-                      ).then((res) => res.json());
-
-                      const scientificName =
-                        data?.results[0]?.species?.genus?.scientificNameWithoutAuthor;
-                      const targetPlant = plants.find(
-                        (plant1) =>
-                          plant1?.scientificName.includes(scientificName) ||
-                          scientificName.includes(plant1?.scientificName)
-                      );
-                      if (targetPlant) {
-                        navigation.navigate('IndividualPlant', { element: targetPlant });
-                        setProcessing(false);
-                      } else if (!targetPlant || stuck) {
-                        setProcessing(false);
-                        showMessage({
-                          message: 'Plant could not be found',
-                          description: 'Please try another plant',
-                          type: 'danger',
-                          animated: true,
-                          icon: 'danger',
-                        });
-                      }
-                    } catch (e) {
-                      setProcessing(false);
-                      showMessage({
-                        message: 'Plant could not be found',
-                        description: 'Please try another plant',
-                        type: 'danger',
-                        animated: true,
-                        icon: 'danger',
-                      });
-                    }
+                    recognizePlant(photo, navigation, setProcessing, stuck);
                   },
                 });
                 // We can use the uri property from photo to reach the taken picture and do what we want.
