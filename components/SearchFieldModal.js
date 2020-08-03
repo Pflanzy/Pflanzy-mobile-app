@@ -94,6 +94,7 @@ const SearchFieldModal = ({ plantData, dispatch }) => {
 const styles = StyleSheet.create({
   mainWrapper: {
     backgroundColor: Colors.tintColor,
+    minHeight: '100%',
   },
   wrapper: {
     paddingBottom: 30,

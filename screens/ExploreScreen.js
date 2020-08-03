@@ -3,7 +3,7 @@ import { ImageBackground, StyleSheet } from 'react-native';
 import { OptimizedFlatList } from 'react-native-optimized-flatlist';
 import ExploreCard from '../components/ExploreCard';
 import exploreData from '../data/browse.json';
-import background from '../assets/images/plant-background-3.jpg';
+import background from '../assets/images/plant-background-2.jpg';
 
 const ExploreScreen = () => {
   const renderItem = ({ item }) => {
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     position: 'absolute',
     zIndex: 0,
-    opacity: 0.6,
+    opacity: 0.9,
   },
 });
 

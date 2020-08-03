@@ -64,27 +64,27 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '70%',
-    marginTop: 15,
+    marginTop: 18,
   },
   nameContainer: {
     alignSelf: 'flex-start',
     justifyContent: 'center',
     marginLeft: 10,
-    marginRight: 10,
+    marginRight: 2,
   },
   passedContent: {
     alignSelf: 'flex-start',
     justifyContent: 'space-evenly',
   },
   title: {
-    fontSize: 17,
+    fontSize: 18,
     fontWeight: '200',
     marginBottom: 3,
     width: 120,
   },
   text: {
     fontWeight: '200',
-    fontSize: 12,
+    fontSize: 13,
     width: 100,
   },
 });

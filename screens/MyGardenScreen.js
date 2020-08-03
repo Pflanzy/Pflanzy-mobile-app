@@ -3,7 +3,7 @@ import { StyleSheet, View, ScrollView, Text, Image, ImageBackground } from 'reac
 import { useSelector } from 'react-redux';
 import BasicCard from '../components/BasicCard';
 import Colors from '../constants/Colors';
-import background from '../assets/images/plant-background-2.jpg';
+import background from '../assets/images/plant-background-3.jpg';
 
 const MyGardenScreen = () => {
   const plants = useSelector((state) => state.userReducer.plants);
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     position: 'absolute',
     zIndex: 0,
-    opacity: 0.6,
+    opacity: 0.8,
   },
 });
 

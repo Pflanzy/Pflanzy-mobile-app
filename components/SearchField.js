@@ -20,15 +20,14 @@ const SearchField = (props) => {
           borderRadius: 12,
           paddingHorizontal: 10,
         }}
-
         inputContainerStyle={{
-          backgroundColor: Colors.tintColor,
+          backgroundColor: Colors.darkGreen,
           borderTopLeftRadius: 19,
           borderBottomLeftRadius: 19,
           height: 65,
         }}
         containerStyle={{
-          backgroundColor: Colors.defaultWhite,
+          backgroundColor: Colors.tintColor,
           width: '98%',
           borderTopWidth: 0,
           borderBottomWidth: 0,
