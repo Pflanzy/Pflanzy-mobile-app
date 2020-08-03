@@ -48,6 +48,7 @@ const SearchScreen = ({ navigation }) => {
           activeOpacity={0.7}
           style={styles.touchableArea}
         />
+
         <View style={styles.cameraButtonWrapper}>
           <TouchableOpacity
             style={styles.cameraButton}
