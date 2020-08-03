@@ -51,19 +51,21 @@ const SearchScreen = ({ navigation }) => {
             alignItems: 'center',
           }}
         />
-        <TouchableOpacity
-          style={{
-            alignSelf: 'center',
-            width: 100,
-            height: 100,
-            backgroundColor: 'green',
-            justifyContent: 'center',
-            alignItems: 'center',
-            borderRadius: 100,
-          }}
-          onPress={() => navigation.navigate('PlantRecognition')}>
-          <FontAwesome5 name="camera" size={55} />
-        </TouchableOpacity>
+        <View style={{ position: 'absolute', top: '55%', alignSelf: 'center' }}>
+          <TouchableOpacity
+            style={{
+              alignSelf: 'center',
+              width: 100,
+              height: 100,
+              backgroundColor: 'green',
+              justifyContent: 'center',
+              alignItems: 'center',
+              borderRadius: 100,
+            }}
+            onPress={() => navigation.navigate('PlantRecognition')}>
+            <FontAwesome5 name="camera" size={55} />
+          </TouchableOpacity>
+        </View>
       </ImageBackground>
     </>
   );
@@ -79,7 +81,6 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     position: 'absolute',
     zIndex: 0,
-    justifyContent: 'space-evenly',
   },
 });
 
