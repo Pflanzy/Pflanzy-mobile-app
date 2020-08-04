@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Image, Text, TextInput, TouchableOpacity, View, StyleSheet } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import firebase from '../firebase';
+import firebase, { onAuthStateChanged, updateUser } from '../firebase';
 import { signInValidation, signUpValidation } from '../helpers/formValidation';
 import visibleIcon from '../assets/images/visible.png';
 import invisibleIcon from '../assets/images/invisible.png';
@@ -51,8 +51,6 @@ const AuthScreen = ({ navigation }) => {
               alert('User does not exist anymore.');
               return;
             }
-            const user = firestoreDocument.data();
-            dispatch({ type: 'ADD_USER', payload: { user } });
             navigation.navigate('Root');
           })
           .catch((error) => {
@@ -64,35 +62,69 @@ const AuthScreen = ({ navigation }) => {
       });
   };
 
+  console.log();
   const signupHandler = () => {
     if (password !== confirmPassword) {
       alert("Passwords don't match.");
       return;
     }
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then((response) => {
-        const { uid } = response.user;
-        const data = {
-          id: uid,
-          email,
-          fullName,
-        };
-        const usersRef = firebase.firestore().collection('users');
-        usersRef
-          .doc(uid)
-          .set(data)
-          .then(() => {
-            navigation.navigate('Root');
-          })
-          .catch((error) => {
-            alert(error);
-          });
-      })
-      .catch((error) => {
-        signUpValidation(error, password, email, fullName);
-      });
+
+    const credential = firebase.auth.EmailAuthProvider.credential(email, password);
+
+    onAuthStateChanged((currentUser) => {
+      currentUser.linkAndRetrieveDataWithCredential(credential).then(
+        function (usercred) {
+          const { user } = usercred;
+
+          console.log(user);
+          const data = {
+            fullName,
+            email,
+            isAnonymous: false,
+          };
+          const usersRef = firebase.firestore().collection('users');
+          usersRef
+            .doc(user.uid)
+            .update(data)
+            .then(() => {
+              dispatch({ type: 'ADD_USER', payload: { user: data } });
+              dispatch(updateUser(user.uid));
+              navigation.navigate('MyGarden', { userData: data });
+            })
+            .catch((error) => {
+              signUpValidation(error, password, email, fullName);
+            });
+        },
+        function (error) {
+          console.log('Error upgrading anonymous account', error);
+        }
+      );
+    });
+
+    // firebase
+    //   .auth()
+    //   .createUserWithEmailAndPassword(email, password)
+    //   .then((response) => {
+    //     const { uid } = response.user;
+    //     const data = {
+    //       id: uid,
+    //       email,
+    //       fullName,
+    //     };
+    //     const usersRef = firebase.firestore().collection('users');
+    //     usersRef
+    //       .doc(uid)
+    //       .set(data)
+    //       .then(() => {
+    //         navigation.navigate('Root');
+    //       })
+    //       .catch((error) => {
+    //         alert(error);
+    //       });
+    //   })
+    //   .catch((error) => {
+    //     signUpValidation(error, password, email, fullName);
+    //   });
   };
 
   const toggleVisibility = () => {

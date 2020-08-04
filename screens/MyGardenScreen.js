@@ -5,7 +5,8 @@ import BasicCard from '../components/BasicCard';
 import Colors from '../constants/Colors';
 import background from '../assets/images/plant-background-3.jpg';
 
-const MyGardenScreen = () => {
+const MyGardenScreen = ({ navigation, route }) => {
+  const user = route?.params?.userData;
   const plants = useSelector((state) => state.userReducer.plants);
   return (
     <View style={{ minHeight: '100%' }}>

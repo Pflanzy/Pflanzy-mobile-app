@@ -72,7 +72,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         onPress={() => {
           navigation.navigate('Auth');
         }}>
-        <Text style={styles.signUpButtonText}>SIGN UP</Text>
+        <Text style={styles.signUpButtonText}>Manage Account</Text>
       </TouchableOpacity>
     ),
   });
