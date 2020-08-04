@@ -1,6 +1,6 @@
 # Pflanzy-mobile-app
 
-<p align="center"><img src="https://st.depositphotos.com/1169502/2025/v/450/depositphotos_20257115-stock-illustration-abstract-eco-green-plant-with.jpg" /></p>
+<p align="center"><img src="demo_pics/pflanzy.png" /></p>
 <br>
 
 <strong><em>An informative room plants app based on React Native</em></strong> </p>
