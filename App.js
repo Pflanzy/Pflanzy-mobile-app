@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { StyleSheet, View, SafeAreaView, StatusBar } from 'react-native';
 import { AppearanceProvider } from 'react-native-appearance';
 import FlashMessage from 'react-native-flash-message';
+import { MaterialIcons } from '@expo/vector-icons';
 import store from './store';
 import Colors from './constants/Colors';
 import useCachedResources from './hooks/useCachedResources';
@@ -41,15 +42,24 @@ export default function App() {
                   headerTitleAlign: 'center',
                   headerTintColor: Colors.defaultWhite,
                 }}>
-                <Stack.Screen name="Root" component={BottomTabNavigator} />
+                <Stack.Screen
+                  name="Root"
+                  component={BottomTabNavigator}
+                  options={{
+                    headerShown: false,
+                  }}
+                />
                 <Stack.Screen name="Camera" component={CameraScreen} />
-                <Stack.Screen name="PlantRecognition" component={PlantRecognitionScreen} />
+                <Stack.Screen name="Plant Recognition" component={PlantRecognitionScreen} />
                 <Stack.Screen
                   name="IndividualPlant"
                   component={IndividualPlantScreen}
                   options={({ navigation }) => ({
+                    headerTitle: false,
+                    headerTransparent: true,
                     headerLeft: (props) => (
                       <HeaderBackButton
+                        style={{ backgroundColor: Colors.tintColor, borderRadius: 50 }}
                         {...props}
                         onPress={() => {
                           navigation.navigate('Search');
