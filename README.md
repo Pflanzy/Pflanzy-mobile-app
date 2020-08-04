@@ -1,4 +1,4 @@
-## Pflanzy-mobile-app
+# Pflanzy-mobile-app
 
 ![Drag Racing](https://st.depositphotos.com/1169502/2025/v/450/depositphotos_20257115-stock-illustration-abstract-eco-green-plant-with.jpg)
 
@@ -6,7 +6,7 @@
 
 Pflanzy is a React Native based phone-app, oriented to find relevant information on how to grow room plants correctly and allow others benefit from your own knowledge.
 
-### Demo
+## Demo
 
 This are some examples of how the app should look, once installed.
 
@@ -27,7 +27,7 @@ This are some examples of how the app should look, once installed.
 ![Explore](demo_pics/explore.jpg)
 ![Explore_article](demo_pics/explore_article.jpg)
 
-### Getting started
+## Getting started
 
 1. Download and install the developer tool [Expo](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=es) to run the app.
 
@@ -44,7 +44,7 @@ This are some examples of how the app should look, once installed.
 
 5) Enjoy!
 
-### Contributing
+## Contributing
 
 1. Fork it (https://github.com/Pflanzy/Pflanzy-mobile-app)
 2. Create your feature branch (git checkout -b feature/myContribution)
@@ -52,6 +52,6 @@ This are some examples of how the app should look, once installed.
 4. Push to the branch (git push origin feature/myContribution)
 5. Create a new Pull Request
 
-### License
+## License
 
 MIT © [Pflanzy](https://github.com/Pflanzy/Pflanzy-mobile-app/blob/master/license)

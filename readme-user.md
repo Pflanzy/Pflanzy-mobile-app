@@ -4,7 +4,7 @@
 
 Your app to find relevant information on how to grow your room plants properly and allow others benefit from your own knowledge.
 
-### What can I do with Pflanzy?
+## What can I do with Pflanzy?
 
 Once the app is installed, you will find yourself in our main screen.
 
@@ -61,7 +61,7 @@ You may also find interesting the "Explore" section, where you will find many ar
 <img src="demo_pics/explore.jpg" width="200px">
 <img src="demo_pics/explore_article.jpg" width="200px">
 
-### Installation
+## Installation
 
 1. Download and install the developer tool [Expo](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=es) to run the app.
 
@@ -69,6 +69,6 @@ You may also find interesting the "Explore" section, where you will find many ar
 
 3. And that's all. We are hopping you enjoy the experience!
 
-### License
+## License
 
 MIT © [Pflanzy](https://github.com/Pflanzy/Pflanzy-mobile-app/blob/master/license)
