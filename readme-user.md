@@ -1,6 +1,7 @@
 # Pflanzy
 
-<div style="text-align:center"><img src="https://st.depositphotos.com/1169502/2025/v/450/depositphotos_20257115-stock-illustration-abstract-eco-green-plant-with.jpg" /></div>
+<p align="center"><img src="https://st.depositphotos.com/1169502/2025/v/450/depositphotos_20257115-stock-illustration-abstract-eco-green-plant-with.jpg" /></p>
+<br>
 
 Your app to find relevant information on how to grow your room plants properly and allow others benefit from your own knowledge.
 
@@ -41,6 +42,7 @@ Or more detailed information.
 
 <img src="demo_pics/plant_details_example_3.jpg" width="200px">
 </p>
+
 You can also "click" in "Add To My Garden" to save the plant as a favorite.
 
 <img src="demo_pics/individual_plant.jpg" width="200px">
@@ -58,6 +60,7 @@ Here there some new options, as set reminder or the possibility to rename your p
 
 <img src="demo_pics/my_plant_options.jpg" width="200px">
 </p>
+
 You may also find interesting the "Explore" section, where you will find many articles with interesting tips for our plants.
 
 <img src="demo_pics/explore.jpg" width="200px">
