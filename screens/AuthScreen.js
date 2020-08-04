@@ -62,7 +62,6 @@ const AuthScreen = ({ navigation }) => {
       });
   };
 
-  console.log();
   const signupHandler = () => {
     if (password !== confirmPassword) {
       alert("Passwords don't match.");
