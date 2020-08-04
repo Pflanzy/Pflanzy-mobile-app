@@ -41,6 +41,7 @@ Or more detailed information.
 
 <img src="demo_pics/plant_details_example_3.jpg" width="200px">
 </p>
+
 You can also "click" in "Add To My Garden" to save the plant as a favorite.
 
 <img src="demo_pics/individual_plant.jpg" width="200px">
@@ -58,6 +59,7 @@ Here there some new options, as set reminder or the possibility to rename your p
 
 <img src="demo_pics/my_plant_options.jpg" width="200px">
 </p>
+
 You may also find interesting the "Explore" section, where you will find many articles with interesting tips for our plants.
 
 <img src="demo_pics/explore.jpg" width="200px">
