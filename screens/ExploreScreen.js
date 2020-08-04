@@ -1,6 +1,5 @@
 import React from 'react';
-import { ImageBackground, StyleSheet } from 'react-native';
-import { OptimizedFlatList } from 'react-native-optimized-flatlist';
+import { ImageBackground, StyleSheet, FlatList } from 'react-native';
 import ExploreCard from '../components/ExploreCard';
 import exploreData from '../data/browse.json';
 import background from '../assets/images/plant-background-2.jpg';
@@ -12,7 +11,7 @@ const ExploreScreen = () => {
   return (
     <>
       <ImageBackground source={background} style={styles.background} />
-      <OptimizedFlatList
+      <FlatList
         data={exploreData}
         renderItem={renderItem}
         keyExtractor={(item) => item.id.toString()}
