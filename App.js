@@ -46,7 +46,7 @@ export default function App() {
                   name="Root"
                   component={BottomTabNavigator}
                   options={{
-                    headerShown: false,
+                    headerStyle: { backgroundColor: Colors.transparent },
                   }}
                 />
                 <Stack.Screen name="Camera" component={CameraScreen} />
