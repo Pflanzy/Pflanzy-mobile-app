@@ -1,8 +1,9 @@
 # Pflanzy-mobile-app
 
-![Drag Racing](https://st.depositphotos.com/1169502/2025/v/450/depositphotos_20257115-stock-illustration-abstract-eco-green-plant-with.jpg)
+<div style="text-align: center"><img src="https://st.depositphotos.com/1169502/2025/v/450/depositphotos_20257115-stock-illustration-abstract-eco-green-plant-with.jpg" /></div>
+<p style="text-align: center;">
 
-<p style="text-align: center;"> <strong><em>An informative room plants app based on React Native</em></strong> </p>
+<strong><em>An informative room plants app based on React Native</em></strong> </p>
 
 Pflanzy is a React Native based phone-app, oriented to find relevant information on how to grow room plants correctly and allow others benefit from your own knowledge.
 
