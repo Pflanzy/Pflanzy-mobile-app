@@ -613,7 +613,11 @@
     "origin": "Africa",
     "poisonousForPets": "Toxic for pets",
     "images": {
+<<<<<<< HEAD
+      "imagePrimary": "https://cdn.shopify.com/s/files/1/0662/5489/products/Zamioculcas_zamiifolia_-_ZZ_plant_-_pistils_nursery_308c3a03-ad5a-4ed3-be9d-fb9439dd9ed4.jpg?v=1553629579",
+=======
       "imagePrimary": "https://cdn.shopify.com/s/files/1/0662/5489/products/Zamioculcas_zamiifolia_-_ZZ_plant_-_pistils_nursery_308c3a03-ad5a-4ed3-be9d-fb9439dd9ed4_1056x1376.jpg?v=1568788626",
+>>>>>>> master
       "imageSecondary": "https://www.houseplantsexpert.com/image-files/zz_plant.png",
       "imageTernary": "https://www.houseplantsexpert.com/assets/images/zamioculas_zamifolia.jpg"
     },
@@ -1857,7 +1861,7 @@
       "imageTernary": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Lithops_karasmontana_bella.jpg"
     },
     "temperature": "Due to its origin, the Lithop furelli can handle a broad range of temperatures. However, the plant will thrive better at a more consistent temperature of around 65°F -75°F.",
-    "description": "Known as living stones, this decorative plant is unique and eye catching. The Lithops fulleri is simple to look after, suitable for home gardeners of all levels. Lithops fulleri are also known as living stones and they are a member of the Aizoaceae succulent plant. They are native to South Africa. The species is extremely distinct with its creamy, gray color. A near stemless plant that grows beautiful leaves during summer and autumn. A relatively easy plant to grow due to its ability to handle a wide spectrum of temperatures.",
+    "description": "Known as living stones, this decorative plant is unique and eye catching. The Lithops fulleri is simple to look after, suitable for home gardeners of all levels. Lithops fulleri are also known as living stones and they are a member of the Aizoaceae succulent plant familyName. They are native to South Africa. The species is extremely distinct with its creamy, gray color. A near stemless plant that grows beautiful leaves during summer and autumn. A relatively easy plant to grow due to its ability to handle a wide spectrum of temperatures.",
     "light": "The plant will benefit from plenty of light and this means that it should be facing south or west in order to receive as much light as possible. It is important for the plant to receive the maximum amount of light during the winter months when it's growing.",
     "watering": "Following new growth after the winter months, the plant can then be watered. The plant benefits from the pot drying out before being watered again and during the summer months it should be watered every couple of weeks or more. During the winter months the plant can be kept dry.",
     "soil": "The Lithop Fulleri prefers a soil that is sandy and gritty and therefore drains well as they can rot if drainage is not sufficient. Cactus potting mix is a good soil.",
@@ -2193,7 +2197,7 @@
       "Foliage Plants"
     ],
     "maxGrowth": "Height over 10 ft tall",
-    "origin": "South Mexico to Colombia",
+    "origin": "South Mexico to Columbia",
     "poisonousForPets": "Non-toxic for pets",
     "images": {
       "imagePrimary": "https://res.cloudinary.com/bloomnation/c_pad,d_vendor:global:catalog:product:image.png,f_auto,fl_preserve_transparency,q_auto/v1592965328/vendor/2455/catalog/product/2/0/20200623065001_file_5ef24ed951685_5ef2565e37726.jpg",

@@ -1,4 +1,4 @@
-## Pflanzy-mobile-app
+# Pflanzy-mobile-app
 
 ![Drag Racing](https://st.depositphotos.com/1169502/2025/v/450/depositphotos_20257115-stock-illustration-abstract-eco-green-plant-with.jpg)
 
@@ -6,28 +6,47 @@
 
 Pflanzy is a React Native based phone-app, oriented to find relevant information on how to grow room plants correctly and allow others benefit from your own knowledge.
 
-### Demo
+## Demo
 
 This are some examples of how the app should look, once installed.
 
-![Main](demo_pics/main.jpg)
-![Sign_up](demo_pics/sing-up.jpg)
-![Sign_in](demo_pics/sign-in.jpg)
-![Search](demo_pics/plant_search.jpg)
-![Take_your_pic](demo_pics/taking_a_pic.jpg)
-![Individual_plant](demo_pics/individual_plant.jpg)
-![Description](demo_pics/plant_description.jpg)
-![Basic_info](demo_pics/plant_basic_info.jpg)
-![Detailed_info](demo_pics/plant_details_example_1.jpg)
-![Some_more_info](demo_pics/plant_details_example_3.jpg)
-![My_plant](demo_pics/my_plant.jpg)
-![Set_reminder](demo_pics/Set_reminder.jpg)
-![My_plant_options](demo_pics/my_plant_options.jpg)
-![My_garden](demo_pics/my_garden.jpg)
-![Explore](demo_pics/explore.jpg)
-![Explore_article](demo_pics/explore_article.jpg)
+<p float="left">
+<img src="demo_pics/main.jpg" width="200px">
 
-### Getting started
+<img src="demo_pics/sign-in.jpg" width="200px">
+
+<img src="demo_pics/sing-up.jpg" width="200px">
+
+<img src="demo_pics/plant_search.jpg" width="200px">
+
+<img src="demo_pics/taking_a_pic.jpg" width="200px">
+
+<img src="demo_pics/plant_description.jpg" width="200px">
+
+<img src="demo_pics/plant_basic_info.jpg" width="200px">
+
+<img src="demo_pics/plant_details_example_1.jpg" width="200px">
+
+<img src="demo_pics/plant_details_example_3.jpg" width="200px">
+
+<img src="demo_pics/individual_plant.jpg" width="200px">
+
+<img src="demo_pics/my_garden.jpg" width="200px">
+
+<img src="demo_pics/my_plant.jpg" width="200px">
+
+<img src="demo_pics/Set_reminder.jpg" width="200px">
+
+<img src="demo_pics/my_plant_options.jpg" width="200px">
+
+<img src="demo_pics/explore.jpg" width="200px">
+<img src="demo_pics/explore_article.jpg" width="200px">
+</p>
+## Framework used
+
+- React Native
+
+## Getting started
 
 1. Download and install the developer tool [Expo](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=es) to run the app.
 
@@ -44,7 +63,7 @@ This are some examples of how the app should look, once installed.
 
 5) Enjoy!
 
-### Contributing
+## Contributing
 
 1. Fork it (https://github.com/Pflanzy/Pflanzy-mobile-app)
 2. Create your feature branch (git checkout -b feature/myContribution)
@@ -52,6 +71,6 @@ This are some examples of how the app should look, once installed.
 4. Push to the branch (git push origin feature/myContribution)
 5. Create a new Pull Request
 
-### License
+## License
 
 MIT © [Pflanzy](https://github.com/Pflanzy/Pflanzy-mobile-app/blob/master/license)
