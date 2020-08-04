@@ -10,7 +10,7 @@ function BasicCard({ plant }) {
       activeOpacity={0.7}
       style={styles.cardContainer}
       onPress={() =>
-        navigation.navigate('MyPlant', {
+        navigation.navigate('My Plant', {
           plantId: plant.id,
         })
       }>
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     shadowOffset: { height: 2 },
     shadowRadius: 3,
     marginVertical: 10,
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
   },
   imageContainer: {
     borderTopLeftRadius: 50,

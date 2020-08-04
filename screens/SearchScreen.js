@@ -1,6 +1,6 @@
 import React from 'react';
-import { Platform, StyleSheet, Modal, ImageBackground, View } from 'react-native';
-import { SearchBar, colors } from 'react-native-elements';
+import { StyleSheet, Modal, ImageBackground, View } from 'react-native';
+import { SearchBar } from 'react-native-elements';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -46,25 +46,15 @@ const SearchScreen = ({ navigation }) => {
         <PflanzyOpacity
           onPress={() => dispatch({ type: 'TOGGLE' })}
           activeOpacity={0.7}
-          style={{
-            marginTop: 20,
-            height: '25%',
-            alignItems: 'center',
-          }}
+          style={styles.touchableArea}
         />
-        <View style={{ position: 'absolute', top: '55%', alignSelf: 'center' }}>
+
+        <View style={styles.cameraButtonWrapper}>
           <TouchableOpacity
-            style={{
-              alignSelf: 'center',
-              width: 100,
-              height: 100,
-              backgroundColor: 'green',
-              justifyContent: 'center',
-              alignItems: 'center',
-              borderRadius: 100,
-            }}
+            style={styles.cameraButton}
+            activeOpacity={0.8}
             onPress={() => navigation.navigate('PlantRecognition')}>
-            <FontAwesome5 name="camera" size={55} />
+            <FontAwesome5 name="camera" size={50} color={Colors.defaultWhite} />
           </TouchableOpacity>
         </View>
       </ImageBackground>
@@ -75,6 +65,28 @@ const SearchScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   search: {
     paddingTop: 100,
+  },
+  touchableArea: {
+    marginTop: 20,
+    height: '25%',
+    alignItems: 'center',
+  },
+  cameraButtonWrapper: {
+    position: 'absolute',
+    top: '50%',
+    alignSelf: 'center',
+  },
+  cameraButton: {
+    alignSelf: 'center',
+    width: 107,
+    height: 107,
+    backgroundColor: Colors.darkGreen,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 100,
+    borderWidth: 6,
+    borderColor: Colors.tintColor,
+    opacity: 0.92,
   },
   photo: {
     width: '100%',

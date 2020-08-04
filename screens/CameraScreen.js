@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { Camera } from 'expo-camera';
 import { Ionicons } from '@expo/vector-icons';
+import * as ImagePicker from 'expo-image-picker';
 import firebase from '../firebase';
 import Colors from '../constants/Colors';
 
@@ -12,6 +13,26 @@ const CameraScreen = ({ route, navigation }) => {
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [flash, setFlash] = useState(Camera.Constants.FlashMode.off);
   const { plantId } = route.params;
+
+  const openImagePickerAsync = async () => {
+    const permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
+
+    if (permissionResult.granted === false) {
+      alert('Permission to access camera roll is required!');
+      return;
+    }
+
+    const pickerResult = await ImagePicker.launchImageLibraryAsync();
+    const userplantsRef = firebase.firestore().collection('plants').doc(plantId);
+
+    userplantsRef
+      .update({
+        'custom.picture': pickerResult.uri,
+      })
+      .then(() => {
+        navigation.navigate('My Plant');
+      });
+  };
 
   useEffect(() => {
     (async () => {
@@ -34,6 +55,11 @@ const CameraScreen = ({ route, navigation }) => {
         ref={(ref) => {
           setCameraRef(ref);
         }}>
+        <View style={{ position: 'absolute', bottom: 100, left: 35 }}>
+          <TouchableOpacity onPress={openImagePickerAsync}>
+            <Ionicons name="ios-images" size={50} color={Colors.defaultWhite} />
+          </TouchableOpacity>
+        </View>
         <View
           style={{
             backgroundColor: '#00000099',
@@ -56,14 +82,12 @@ const CameraScreen = ({ route, navigation }) => {
               );
             }}>
             {flash === Camera.Constants.FlashMode.off ? (
-
               <Ionicons name="ios-flash-off" size={35} color={Colors.defaultWhite} />
             ) : (
               <Ionicons name="ios-flash" size={35} color={Colors.defaultWhite} />
             )}
           </TouchableOpacity>
           <TouchableOpacity
-
             onPress={async () => {
               setProcessing(true);
               if (cameraRef) {
@@ -80,7 +104,7 @@ const CameraScreen = ({ route, navigation }) => {
                   })
                   .then(() => {
                     setProcessing(false);
-                    navigation.navigate('MyPlant');
+                    navigation.navigate('My Plant');
                   });
               }
             }}>
@@ -124,9 +148,7 @@ const CameraScreen = ({ route, navigation }) => {
                   : Camera.Constants.Type.back
               );
             }}>
-
             <Ionicons name="ios-reverse-camera" size={35} color={Colors.defaultWhite} />
-
           </TouchableOpacity>
         </View>
       </Camera>

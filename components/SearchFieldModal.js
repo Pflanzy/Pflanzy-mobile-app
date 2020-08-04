@@ -52,7 +52,7 @@ const SearchFieldModal = ({ plantData, dispatch }) => {
     return <IndividualCard item={item} />;
   };
   return (
-    <View>
+    <View style={styles.mainWrapper}>
       <Button
         onPress={() => dispatch({ type: 'TOGGLE' })}
         buttonStyle={{
@@ -78,7 +78,7 @@ const SearchFieldModal = ({ plantData, dispatch }) => {
                 data={filteredData}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.scientificName}
-                style={styles.flatListWrapper}
+                contentContainerStyle={styles.flatList}
               />
             </View>
           ) : (
@@ -93,12 +93,16 @@ const SearchFieldModal = ({ plantData, dispatch }) => {
   );
 };
 const styles = StyleSheet.create({
+  mainWrapper: {
+    backgroundColor: Colors.tintColor,
+    minHeight: '100%',
+  },
   wrapper: {
     paddingBottom: 30,
   },
-  flatListWrapper: {
-    marginTop: 10,
-    marginBottom: 30,
+  flatList: {
+    paddingTop: 10,
+    paddingBottom: 30,
   },
   loadingContainer: {
     alignItems: 'center',

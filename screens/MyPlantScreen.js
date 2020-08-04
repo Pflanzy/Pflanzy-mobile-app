@@ -26,7 +26,7 @@ import PflanzyOpacity from '../components/PflanzyOpacity';
 import ModalConfigPopup from '../components/ModalConfigPopup';
 import ModalListPopup from '../components/ModalListPopup';
 
-const MyGardenPlant = ({ route, navigation }) => {
+const MyPlantScreen = ({ route, navigation }) => {
   const bsSettings = React.createRef();
   const bsInfo = React.createRef();
   const fall = new Animated.Value(1);
@@ -655,4 +655,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MyGardenPlant;
+export default MyPlantScreen;
