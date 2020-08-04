@@ -8,7 +8,7 @@ Your app to find relevant information on how to grow your room plants properly a
 
 Once the app is installed, you will find yourself in our main screen.
 
-![Main](demo_pics/main.jpg)
+![Main,20%](demo_pics/main.jpg)
 
 One of the first options you will face is to sign in.
 
