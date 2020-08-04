@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.defaultWhite,
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
-    maxHeight: 110,
+    maxHeight: 115,
     width: '92%',
     elevation: 3,
     shadowColor: Colors.basicShadows,
@@ -63,18 +63,19 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '70%',
-    marginTop: 18,
+    width: '60%',
+    marginTop:18,
   },
   nameContainer: {
     alignSelf: 'flex-start',
     justifyContent: 'center',
     marginLeft: 10,
-    marginRight: 2,
+    marginRight: 10,
   },
   passedContent: {
     alignSelf: 'flex-start',
     justifyContent: 'space-evenly',
+    paddingRight:4
   },
   title: {
     fontSize: 18,
@@ -86,6 +87,7 @@ const styles = StyleSheet.create({
     fontWeight: '200',
     fontSize: 13,
     width: 100,
+    paddingRight:8
   },
 });
 export default ReminderCard;

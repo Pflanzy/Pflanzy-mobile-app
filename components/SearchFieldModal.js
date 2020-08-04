@@ -7,10 +7,10 @@ import {
   ActivityIndicator,
   Image,
   TouchableWithoutFeedback,
+  FlatList
 } from 'react-native';
 import { Button } from 'react-native-elements';
 import { AntDesign } from '@expo/vector-icons';
-import { OptimizedFlatList } from 'react-native-optimized-flatlist';
 import Colors from '../constants/Colors';
 import SearchField from './SearchField';
 import IndividualCard from './IndividualCard';
@@ -24,7 +24,7 @@ const SearchFieldModal = ({ plantData, dispatch }) => {
     setFilteredData(initialData);
     const myTimeOut = setTimeout(() => {
       setShowLoading(false);
-    }, 800);
+    }, 2000);
     return () => {
       clearTimeout(myTimeOut);
     };
@@ -74,7 +74,7 @@ const SearchFieldModal = ({ plantData, dispatch }) => {
         <TouchableWithoutFeedback style={styles.wrapper} onPress={() => Keyboard.dismiss()}>
           {filteredData.length > 0 ? (
             <View style={styles.plantList}>
-              <OptimizedFlatList
+              <FlatList
                 data={filteredData}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.scientificName}
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   loadingContainer: {
     alignItems: 'center',
     justifyContent: 'flex-end',
-    height: '55%',
+    height: '40%',
   },
   plantList: {
     paddingBottom: 285,
