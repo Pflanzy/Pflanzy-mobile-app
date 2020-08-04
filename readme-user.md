@@ -1,6 +1,7 @@
 # Pflanzy
 
 <div style="text-align: center"><img src="https://st.depositphotos.com/1169502/2025/v/450/depositphotos_20257115-stock-illustration-abstract-eco-green-plant-with.jpg" /></div>
+<br>
 
 Your app to find relevant information on how to grow your room plants properly and allow others benefit from your own knowledge.
 
