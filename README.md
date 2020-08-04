@@ -41,6 +41,10 @@ This are some examples of how the app should look, once installed.
 <img src="demo_pics/explore.jpg" width="200px">
 <img src="demo_pics/explore_article.jpg" width="200px">
 
+## Framework used
+
+- React Native
+
 ## Getting started
 
 1. Download and install the developer tool [Expo](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=es) to run the app.
