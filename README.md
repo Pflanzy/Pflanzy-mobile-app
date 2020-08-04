@@ -10,6 +10,7 @@ Pflanzy is a React Native based phone-app, oriented to find relevant information
 
 This are some examples of how the app should look, once installed.
 
+<p float="left">
 <img src="demo_pics/main.jpg" width="200px">
 
 <img src="demo_pics/sign-in.jpg" width="200px">
@@ -40,7 +41,7 @@ This are some examples of how the app should look, once installed.
 
 <img src="demo_pics/explore.jpg" width="200px">
 <img src="demo_pics/explore_article.jpg" width="200px">
-
+</p>
 ## Framework used
 
 - React Native
