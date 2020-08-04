@@ -57,9 +57,16 @@ export default function App() {
                   options={({ navigation }) => ({
                     headerTitle: false,
                     headerTransparent: true,
+                    headerBackTitleVisible: false,
                     headerLeft: (props) => (
                       <HeaderBackButton
-                        style={{ backgroundColor: Colors.tintColor, borderRadius: 50 }}
+                        style={{
+                          backgroundColor: Colors.tintColor,
+                          borderRadius: 17,
+                          width: 35,
+                          height: 35,
+                          marginLeft: 10,
+                        }}
                         {...props}
                         onPress={() => {
                           navigation.navigate('Search');
