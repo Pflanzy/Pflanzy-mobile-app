@@ -613,11 +613,7 @@
     "origin": "Africa",
     "poisonousForPets": "Toxic for pets",
     "images": {
-<<<<<<< HEAD
-      "imagePrimary": "https://cdn.shopify.com/s/files/1/0662/5489/products/Zamioculcas_zamiifolia_-_ZZ_plant_-_pistils_nursery_308c3a03-ad5a-4ed3-be9d-fb9439dd9ed4.jpg?v=1553629579",
-=======
       "imagePrimary": "https://cdn.shopify.com/s/files/1/0662/5489/products/Zamioculcas_zamiifolia_-_ZZ_plant_-_pistils_nursery_308c3a03-ad5a-4ed3-be9d-fb9439dd9ed4_1056x1376.jpg?v=1568788626",
->>>>>>> master
       "imageSecondary": "https://www.houseplantsexpert.com/image-files/zz_plant.png",
       "imageTernary": "https://www.houseplantsexpert.com/assets/images/zamioculas_zamifolia.jpg"
     },
