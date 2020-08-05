@@ -5,7 +5,7 @@
 <p align="center"><img src="assets/images/pflanzy-logo.svg" width="300px" /></p>
 <br>
 
-Pflanzy is a native Application for iOS and Android which was developed with React Native using one code base. The app allows you to look up numerous types of house plants, add plants to your garden, set up reminders with notifications such as water, fertilizer and re-potting, personalize your plant by renaming it and adding a picture of it as well as browse through various interesting articles about house plants.
+Pflanzy is a native Application for iOS and Android which was developed with React Native using one code base. The app allows you to look up numerous types of house plants, add plants to your garden, set up reminders with notifications such as water, fertilizer, and re-potting, personalize your plant by renaming it and adding a picture of it, as well as browse through various interesting articles about house plants.
 
 ## Demo
 
@@ -13,8 +13,8 @@ This are some examples of how the app should look, once installed.
 
 <p float="left">
 <img src="demo_pics/SearchScreen.PNG" width="200px">
-<img src="demo_pics/SignUpScreen.PNG" width="200px">
 <img src="demo_pics/MyGardenEmpty.PNG" width="200px">
+<img src="demo_pics/PlantRecognition.PNG" width="200px">
 <img src="demo_pics/SearchModal.PNG" width="200px">
 <img src="demo_pics/IndividualPlant.PNG" width="200px">
 <img src="demo_pics/IndividualPlantExtended.PNG" width="200px">
