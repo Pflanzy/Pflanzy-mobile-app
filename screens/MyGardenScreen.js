@@ -1,15 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-  ScrollView,
-  Text,
-  Image,
-  ImageBackground,
-  Platform,
-  Modal,
-  T,
-} from 'react-native';
+import { StyleSheet, View, ScrollView, Text, Image, ImageBackground, Modal } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { LinearGradient } from 'expo-linear-gradient';
 import BottomSheet from 'reanimated-bottom-sheet';
@@ -39,11 +29,14 @@ const MyGardenScreen = ({ navigation }) => {
   };
 
   const renderHeader = () => (
-    <View style={styles.settingsHandleContainer}>
-      <View style={styles.settingsHeader}>
-        <View style={styles.settingsHandle} />
+    <>
+      <PflanzyOpacity style={{ height: 500 }} onPress={() => bsSettings.current.snapTo(1)} />
+      <View style={styles.settingsHandleContainer}>
+        <View style={styles.settingsHeader}>
+          <View style={styles.settingsHandle} />
+        </View>
       </View>
-    </View>
+    </>
   );
 
   const addPlantSettings = () => (
@@ -54,7 +47,7 @@ const MyGardenScreen = ({ navigation }) => {
           navigation.navigate('PlantRecognition');
           bsSettings.current.snapTo(1);
         }}>
-        <Text style={styles.settingsBtnTitle}>Snap to Identify</Text>
+        <Text style={styles.settingsBtnTitle}>Snap to identify</Text>
       </PflanzyOpacity>
       <PflanzyOpacity
         style={styles.settingsBtns}
@@ -75,7 +68,7 @@ const MyGardenScreen = ({ navigation }) => {
     <>
       <BottomSheet
         ref={bsSettings}
-        snapPoints={[230, 0]}
+        snapPoints={[740, 0]}
         renderContent={addPlantSettings}
         renderHeader={renderHeader}
         initialSnap={1}
@@ -124,9 +117,7 @@ const MyGardenScreen = ({ navigation }) => {
                 <View
                   style={{
                     alignSelf: 'flex-end',
-                    position: 'relative',
-                    top: Platform.OS === 'ios' ? -50 : 0,
-                    right: 15,
+                    margin: 20,
                   }}>
                   <LinearGradient
                     colors={[Colors.darkGreen, Colors.darkGreen, Colors.darkGreen]}
@@ -146,14 +137,18 @@ const MyGardenScreen = ({ navigation }) => {
                 </View>
               </NeuMorph>
             </PflanzyOpacity>
-            <Image
-              source={{
-                uri:
-                  'https://media1.tenor.com/images/22e52165d824572fa4ece1ee968aa6f6/tenor.gif?itemid=16288922',
-              }}
-              style={styles.plantsIconIcon}
-            />
-            <Text style={styles.errorMsg}>There are no plants in your garden yet.</Text>
+            <PflanzyOpacity activeOpacity={1} onPress={() => bsSettings.current.snapTo(1)}>
+              <View style={styles.imageWrapper}>
+                <Image
+                  source={{
+                    uri:
+                      'https://media1.tenor.com/images/22e52165d824572fa4ece1ee968aa6f6/tenor.gif?itemid=16288922',
+                  }}
+                  style={styles.plantsIconIcon}
+                />
+                <Text style={styles.errorMsg}>There are no plants in your garden yet.</Text>
+              </View>
+            </PflanzyOpacity>
           </View>
         )}
       </Animated.View>
@@ -162,10 +157,6 @@ const MyGardenScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  // opacityContainer: {
-  //   backgroundColor: Colors.settingsBgOpacity,
-  // },
-
   topShadow: {
     shadowOffset: {
       width: -2,
@@ -218,10 +209,6 @@ const styles = StyleSheet.create({
 
   settingsHandleContainer: {
     backgroundColor: Colors.tintColor,
-    shadowColor: Colors.basicShadows,
-    shadowOffset: { width: -1, height: -3 },
-    shadowRadius: 2,
-    shadowOpacity: 0.4,
     paddingTop: 20,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -247,14 +234,16 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   wrapperWhenNoPlants: {
-    justifyContent: 'center',
     minHeight: '100%',
-    // alignItems: 'center',
     backgroundColor: Colors.lightPink,
   },
+  imageWrapper: {
+    height: '90%',
+    justifyContent: 'center',
+  },
   plantsIconIcon: {
-    height: 350,
-    width: 350,
+    height: 320,
+    width: 320,
     marginBottom: 10,
     alignSelf: 'center',
   },
