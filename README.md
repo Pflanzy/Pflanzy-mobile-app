@@ -1,52 +1,51 @@
 # Pflanzy-mobile-app
 
-<p align="center"><img src="demo_pics/pflanzy.png" /></p>
+<strong>Find relevant information on how to grow house plants correctly and get reminded when your plants need care - All in one place</strong> </p>
+
+<p align="center"><img src="assets/images/pflanzy-logo.svg" width="300px" /></p>
 <br>
 
-<strong><em>An informative room plants app based on React Native</em></strong> </p>
-
-Pflanzy is a React Native based phone-app, oriented to find relevant information on how to grow room plants correctly and allow others benefit from your own knowledge.
+Pflanzy is a native Application for iOS and Android which was developed with React Native using one code base. The app allows you to look up numerous types of house plants, add plants to your garden, set up reminders with notifications such as water, fertilizer, and re-potting, personalize your plant by renaming it and adding a picture of it, as well as browse through various interesting articles about house plants.
 
 ## Demo
 
 This are some examples of how the app should look, once installed.
 
 <p float="left">
-<img src="demo_pics/main.jpg" width="200px">
-
-<img src="demo_pics/sign-in.jpg" width="200px">
-
-<img src="demo_pics/sing-up.jpg" width="200px">
-
-<img src="demo_pics/plant_search.jpg" width="200px">
-
-<img src="demo_pics/taking_a_pic.jpg" width="200px">
-
-<img src="demo_pics/plant_description.jpg" width="200px">
-
-<img src="demo_pics/plant_basic_info.jpg" width="200px">
-
-<img src="demo_pics/plant_details_example_1.jpg" width="200px">
-
-<img src="demo_pics/plant_details_example_3.jpg" width="200px">
-
-<img src="demo_pics/individual_plant.jpg" width="200px">
-
-<img src="demo_pics/my_garden.jpg" width="200px">
-
-<img src="demo_pics/my_plant.jpg" width="200px">
-
-<img src="demo_pics/Set_reminder.jpg" width="200px">
-
-<img src="demo_pics/my_plant_options.jpg" width="200px">
-
-<img src="demo_pics/explore.jpg" width="200px">
-<img src="demo_pics/explore_article.jpg" width="200px">
+<img src="demo_pics/SearchScreen.PNG" width="200px">
+<img src="demo_pics/MyGardenEmpty.PNG" width="200px">
+<img src="demo_pics/PlantRecognition.PNG" width="200px">
+<img src="demo_pics/SearchModal.PNG" width="200px">
+<img src="demo_pics/IndividualPlant.PNG" width="200px">
+<img src="demo_pics/IndividualPlantExtended.PNG" width="200px">
+<img src="demo_pics/PlantAdded.PNG" width="200px">
+<img src="demo_pics/MyGardenWithPlants.PNG" width="200px">
+<img src="demo_pics/MyPlant.PNG" width="200px">
+<img src="demo_pics/MyPlantOptions.PNG" width="200px">
+<img src="demo_pics/RenameModal.PNG" width="200px">
+<img src="demo_pics/MyPlantRenamed.PNG" width="200px">
+<img src="demo_pics/ReminderModal.PNG" width="200px">
+<img src="demo_pics/Notifications.PNG" width="200px">
+<img src="demo_pics/ExploreScreen.PNG" width="200px">
+<img src="demo_pics/Article.PNG" width="200px">
+<img src="demo_pics/PhotoViewer.PNG" width="200px">
 </p>
 
-## Framework used
+## Motivation
+
+- Final Project for one-year course at DCI Berlin
+- A team which is passionate about house plants
+- Desire to help others take care of their plants
+- Curiosity for mobile development
+- Ambition to learn React native
+- Possibility to develop a native app for iOS and Android with one code base
+
+## Technologies used
 
 - React Native
+- Redux
+- Expo
+- Firebase
 
 ## Getting started
 
@@ -57,13 +56,14 @@ This are some examples of how the app should look, once installed.
 > \$ git clone https://github.com/Pflanzy/Pflanzy-mobile-app
 
 3. Install and run npm:
+
    > \$ npm install -g expo-cli
    >
    > \$ npm run start
 
-4) Scan the QR code you will get with Expo once installed.
+4. Scan the QR code you will get with Expo once installed.
 
-5) Enjoy!
+5. Enjoy!
 
 ## Contributing
 
@@ -75,4 +75,4 @@ This are some examples of how the app should look, once installed.
 
 ## License
 
-MIT © [Pflanzy](https://github.com/Pflanzy/Pflanzy-mobile-app/blob/master/license)
+MIT © [Pflanzy](https://github.com/Pflanzy/Pflanzy-mobile-app/blob/master/LICENSE)
