@@ -43,17 +43,7 @@ export default function App() {
                   headerTitleAlign: 'center',
                   headerTintColor: Colors.defaultWhite,
                 }}>
-                <Stack.Screen
-                  name="Root"
-                  component={BottomTabNavigator}
-                  options={{
-                    headerStyle: { backgroundColor: Colors.transparent },
-                    headerTitle: false,
-                    headerTransparent: true,
-                    headerBackTitleVisible: false,
-                    headerShown: false,
-                  }}
-                />
+                <Stack.Screen name="Search" component={BottomTabNavigator} />
                 <Stack.Screen
                   options={({ navigation }) => ({
                     headerTitle: false,
