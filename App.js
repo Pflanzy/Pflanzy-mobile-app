@@ -133,6 +133,10 @@ export default function App() {
                     headerLeft: (props) => (
                       <HeaderBackButton
                         style={{
+                          backgroundColor: Colors.tintColor,
+                          borderRadius: 17,
+                          width: 35,
+                          height: 35,
                           marginLeft: 10,
                         }}
                         {...props}
