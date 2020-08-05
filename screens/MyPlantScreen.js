@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity as DefaultTouch,
   Keyboard,
+  Platform,
 } from 'react-native';
 import {
   MaterialCommunityIcons,
@@ -412,7 +413,7 @@ const styles = StyleSheet.create({
   settingsBtns: {
     borderRadius: 10,
     backgroundColor: Colors.defaultWhite,
-    marginVertical: 3,
+    marginVertical: Platform.OS === 'ios' ? 3 : 7,
     marginHorizontal: 5,
   },
 
@@ -434,7 +435,7 @@ const styles = StyleSheet.create({
   deleteSettingsBtns: {
     borderRadius: 10,
     backgroundColor: Colors.defaultWhite,
-    marginVertical: 3,
+    marginVertical: Platform.OS === 'ios' ? 3 : 7,
     marginHorizontal: 5,
   },
 

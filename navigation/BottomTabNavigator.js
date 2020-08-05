@@ -65,16 +65,16 @@ export default function BottomTabNavigator({ navigation, route }) {
       alignSelf: 'center',
     },
     headerTintColor: Colors.defaultWhite,
-    headerRight: () => (
-      <TouchableOpacity
-        activeOpacity={0.7}
-        style={styles.signUpButton}
-        onPress={() => {
-          navigation.navigate('Auth');
-        }}>
-        <Text style={styles.signUpButtonText}>SIGN UP</Text>
-      </TouchableOpacity>
-    ),
+    // headerRight: () => (
+    //   <TouchableOpacity
+    //     activeOpacity={0.7}
+    //     style={styles.signUpButton}
+    //     onPress={() => {
+    //       navigation.navigate('Auth');
+    //     }}>
+    //     <Text style={styles.signUpButtonText}>SIGN UP</Text>
+    //   </TouchableOpacity>
+    // ),
   });
 
   return (

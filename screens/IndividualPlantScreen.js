@@ -274,7 +274,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   background: {
-    height: '69%',
+    height: '64%',
     width: '100%',
   },
   contentWrapper: {
@@ -283,7 +283,7 @@ const styles = StyleSheet.create({
   },
   content: {
     backgroundColor: Colors.tintColor,
-    borderTopRightRadius: 80,
+    borderTopRightRadius: 50,
     paddingHorizontal: 20,
     paddingTop: 20,
     width: '100%',

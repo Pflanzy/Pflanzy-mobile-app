@@ -24,6 +24,7 @@ This are some examples of how the app should look, once installed.
 <img src="demo_pics/MyPlantOptions.PNG" width="200px">
 <img src="demo_pics/RenameModal.PNG" width="200px">
 <img src="demo_pics/MyPlantRenamed.PNG" width="200px">
+<img src="demo_pics/ReminderModal.PNG" width="200px">
 <img src="demo_pics/Notifications.PNG" width="200px">
 <img src="demo_pics/ExploreScreen.PNG" width="200px">
 <img src="demo_pics/Article.PNG" width="200px">

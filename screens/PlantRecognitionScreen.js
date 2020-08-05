@@ -48,6 +48,20 @@ const PlantRecognitionScreen = ({ route, navigation }) => {
         ref={(ref) => {
           setCameraRef(ref);
         }}>
+        <View style={{ position: 'absolute', top: -60, alignSelf: 'center' }}>
+          <Text style={{ marginTop: 100, color: Colors.defaultWhite, alignSelf: 'center' }}>
+            Please take a picture of your house plant
+          </Text>
+          <View
+            style={{
+              width: 300,
+              height: 350,
+              borderWidth: 2,
+              borderColor: Colors.defaultWhite,
+              marginTop: 30,
+            }}
+          />
+        </View>
         <View style={{ position: 'absolute', bottom: 100, left: 35 }}>
           <TouchableOpacity onPress={openImagePickerAsync}>
             <Ionicons name="ios-images" size={50} color={Colors.defaultWhite} />
