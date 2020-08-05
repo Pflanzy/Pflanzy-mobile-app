@@ -21,6 +21,7 @@ import LinkingConfiguration from './navigation/LinkingConfiguration';
 const Stack = createStackNavigator();
 
 export default function App() {
+  console.disableYellowBox = true;
   // const isLoadingComplete = useCachedResources();
 
   // if (!isLoadingComplete) {
@@ -42,15 +43,55 @@ export default function App() {
                   headerTitleAlign: 'center',
                   headerTintColor: Colors.defaultWhite,
                 }}>
+                <Stack.Screen name="Search" component={BottomTabNavigator} />
                 <Stack.Screen
-                  name="Root"
-                  component={BottomTabNavigator}
-                  options={{
-                    headerStyle: { backgroundColor: Colors.transparent },
-                  }}
+                  options={({ navigation }) => ({
+                    headerTitle: false,
+                    headerTransparent: true,
+                    headerBackTitleVisible: false,
+                    headerLeft: (props) => (
+                      <HeaderBackButton
+                        style={{
+                          backgroundColor: Colors.settingsIconBg,
+                          borderRadius: 17,
+                          width: 35,
+                          height: 35,
+                          marginLeft: 10,
+                        }}
+                        {...props}
+                        onPress={() => {
+                          navigation.goBack();
+                        }}
+                      />
+                    ),
+                  })}
+                  name="Camera"
+                  component={CameraScreen}
                 />
-                <Stack.Screen name="Camera" component={CameraScreen} />
-                <Stack.Screen name="Plant Recognition" component={PlantRecognitionScreen} />
+                <Stack.Screen
+                  options={({ navigation }) => ({
+                    headerTitle: false,
+                    headerTransparent: true,
+                    headerBackTitleVisible: false,
+                    headerLeft: (props) => (
+                      <HeaderBackButton
+                        style={{
+                          backgroundColor: Colors.settingsIconBg,
+                          borderRadius: 17,
+                          width: 35,
+                          height: 35,
+                          marginLeft: 10,
+                        }}
+                        {...props}
+                        onPress={() => {
+                          navigation.goBack();
+                        }}
+                      />
+                    ),
+                  })}
+                  name="Plant Recognition"
+                  component={PlantRecognitionScreen}
+                />
                 <Stack.Screen
                   name="IndividualPlant"
                   component={IndividualPlantScreen}
@@ -61,7 +102,7 @@ export default function App() {
                     headerLeft: (props) => (
                       <HeaderBackButton
                         style={{
-                          backgroundColor: Colors.tintColor,
+                          backgroundColor: Colors.settingsIconBg,
                           borderRadius: 17,
                           width: 35,
                           height: 35,
@@ -78,9 +119,51 @@ export default function App() {
                 <Stack.Screen
                   name="IndividualArticle"
                   component={IndividualArticle}
-                  options={({ route }) => ({ title: route.params.article.label })}
+                  options={({ navigation }) => ({
+                    headerTitle: false,
+                    headerTransparent: true,
+                    headerBackTitleVisible: false,
+                    headerLeft: (props) => (
+                      <HeaderBackButton
+                        style={{
+                          backgroundColor: Colors.settingsIconBg,
+                          borderRadius: 17,
+                          width: 35,
+                          height: 35,
+                          marginLeft: 10,
+                        }}
+                        {...props}
+                        onPress={() => {
+                          navigation.goBack();
+                        }}
+                      />
+                    ),
+                  })}
                 />
-                <Stack.Screen name="My Plant" component={MyPlantScreen} />
+                <Stack.Screen
+                  name="My Plant"
+                  component={MyPlantScreen}
+                  options={({ navigation }) => ({
+                    headerTitle: false,
+                    headerTransparent: true,
+                    headerBackTitleVisible: false,
+                    headerLeft: (props) => (
+                      <HeaderBackButton
+                        style={{
+                          backgroundColor: Colors.settingsIconBg,
+                          borderRadius: 17,
+                          width: 35,
+                          height: 35,
+                          marginLeft: 10,
+                        }}
+                        {...props}
+                        onPress={() => {
+                          navigation.goBack();
+                        }}
+                      />
+                    ),
+                  })}
+                />
                 <Stack.Screen name="Auth" component={AuthScreen} />
               </Stack.Navigator>
             </NavigationContainer>

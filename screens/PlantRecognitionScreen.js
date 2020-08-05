@@ -23,8 +23,10 @@ const PlantRecognitionScreen = ({ route, navigation }) => {
     }
 
     const pickerResult = await ImagePicker.launchImageLibraryAsync();
-    setProcessing(true);
-    recognizePlant(pickerResult, navigation, setProcessing);
+    if (!pickerResult.cancelled) {
+      setProcessing(true);
+      recognizePlant(pickerResult, navigation, setProcessing);
+    }
   };
 
   useEffect(() => {

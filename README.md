@@ -53,7 +53,7 @@ These are screenshots of an almost complete user journey on iOS.
 
 2. Clone our [Pflanzy](git@github.com:Pflanzy/Pflanzy-mobile-app.git) repository.
 
-> \$ git clone https://github.com/Pflanzy/Pflanzy-mobile-app
+   > \$ git clone https://github.com/Pflanzy/Pflanzy-mobile-app
 
 3. Install and run npm:
 
