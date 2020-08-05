@@ -123,7 +123,26 @@ export default function App() {
                   component={IndividualArticle}
                   options={({ route }) => ({ title: route.params.article.label })}
                 />
-                <Stack.Screen name="My Plant" component={MyPlantScreen} />
+                <Stack.Screen
+                  name="My Plant"
+                  component={MyPlantScreen}
+                  options={({ navigation }) => ({
+                    headerTitle: false,
+                    headerTransparent: true,
+                    headerBackTitleVisible: false,
+                    headerLeft: (props) => (
+                      <HeaderBackButton
+                        style={{
+                          marginLeft: 10,
+                        }}
+                        {...props}
+                        onPress={() => {
+                          navigation.goBack();
+                        }}
+                      />
+                    ),
+                  })}
+                />
                 <Stack.Screen name="Auth" component={AuthScreen} />
               </Stack.Navigator>
             </NavigationContainer>
