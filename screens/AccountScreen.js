@@ -27,7 +27,7 @@ const AccountScreen = (props) => {
           setEntities(newEntities);
         },
         (error) => {
-          console.log(error);
+         alert(error)
         }
       );
   }, []);

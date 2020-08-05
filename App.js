@@ -21,6 +21,7 @@ import LinkingConfiguration from './navigation/LinkingConfiguration';
 const Stack = createStackNavigator();
 
 export default function App() {
+  console.disableYellowBox = true;
   // const isLoadingComplete = useCachedResources();
 
   // if (!isLoadingComplete) {
@@ -47,10 +48,52 @@ export default function App() {
                   component={BottomTabNavigator}
                   options={{
                     headerStyle: { backgroundColor: Colors.transparent },
+                    headerTitle: false,
+                    headerTransparent: true,
+                    headerBackTitleVisible: false,
+                    headerShown: false,
                   }}
                 />
-                <Stack.Screen name="Camera" component={CameraScreen} />
-                <Stack.Screen name="Plant Recognition" component={PlantRecognitionScreen} />
+                <Stack.Screen
+                  options={({ navigation }) => ({
+                    headerTitle: false,
+                    headerTransparent: true,
+                    headerBackTitleVisible: false,
+                    headerLeft: (props) => (
+                      <HeaderBackButton
+                        style={{
+                          marginLeft: 10,
+                        }}
+                        {...props}
+                        onPress={() => {
+                          navigation.goBack();
+                        }}
+                      />
+                    ),
+                  })}
+                  name="Camera"
+                  component={CameraScreen}
+                />
+                <Stack.Screen
+                  options={({ navigation }) => ({
+                    headerTitle: false,
+                    headerTransparent: true,
+                    headerBackTitleVisible: false,
+                    headerLeft: (props) => (
+                      <HeaderBackButton
+                        style={{
+                          marginLeft: 10,
+                        }}
+                        {...props}
+                        onPress={() => {
+                          navigation.goBack();
+                        }}
+                      />
+                    ),
+                  })}
+                  name="Plant Recognition"
+                  component={PlantRecognitionScreen}
+                />
                 <Stack.Screen
                   name="IndividualPlant"
                   component={IndividualPlantScreen}
