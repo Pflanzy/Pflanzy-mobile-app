@@ -53,7 +53,7 @@ const SearchScreen = ({ navigation }) => {
           <TouchableOpacity
             style={styles.cameraButton}
             activeOpacity={0.8}
-            onPress={() => navigation.navigate('PlantRecognition')}>
+            onPress={() => navigation.navigate('Plant Recognition')}>
             <FontAwesome5 name="camera" size={50} color={Colors.defaultWhite} />
           </TouchableOpacity>
         </View>
