@@ -23,15 +23,16 @@ const CameraScreen = ({ route, navigation }) => {
     }
 
     const pickerResult = await ImagePicker.launchImageLibraryAsync();
-    const userplantsRef = firebase.firestore().collection('plants').doc(plantId);
-
-    userplantsRef
-      .update({
-        'custom.picture': pickerResult.uri,
-      })
-      .then(() => {
-        navigation.navigate('My Plant');
-      });
+    if (!pickerResult.cancelled) {
+      const userplantsRef = firebase.firestore().collection('plants').doc(plantId);
+      userplantsRef
+        .update({
+          'custom.picture': pickerResult.uri,
+        })
+        .then(() => {
+          navigation.navigate('My Plant');
+        });
+    }
   };
 
   useEffect(() => {

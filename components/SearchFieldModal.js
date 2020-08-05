@@ -7,7 +7,7 @@ import {
   ActivityIndicator,
   Image,
   TouchableWithoutFeedback,
-  FlatList
+  FlatList,
 } from 'react-native';
 import { Button } from 'react-native-elements';
 import { AntDesign } from '@expo/vector-icons';
