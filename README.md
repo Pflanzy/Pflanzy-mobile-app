@@ -9,7 +9,7 @@ Pflanzy is a native Application for iOS and Android which was developed with Rea
 
 ## Demo
 
-This are some examples of how the app should look, once installed.
+These are screenshots of an almost complete user journey on iOS.
 
 <p float="left">
 <img src="demo_pics/SearchScreen.PNG" width="200px">
