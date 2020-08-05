@@ -44,7 +44,7 @@ const MyGardenScreen = ({ navigation }) => {
       <PflanzyOpacity
         style={styles.settingsBtns}
         onPress={() => {
-          navigation.navigate('PlantRecognition');
+          navigation.navigate('Plant Recognition');
           bsSettings.current.snapTo(1);
         }}>
         <Text style={styles.settingsBtnTitle}>Snap to identify</Text>
