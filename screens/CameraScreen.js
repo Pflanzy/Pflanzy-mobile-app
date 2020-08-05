@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { Camera } from 'expo-camera';
 import { Ionicons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
+import * as ImageManipulator from 'expo-image-manipulator';
 import firebase from '../firebase';
 import Colors from '../constants/Colors';
 
@@ -93,9 +94,26 @@ const CameraScreen = ({ route, navigation }) => {
               setProcessing(true);
               if (cameraRef) {
                 // Taken photo is here
-                const photo = await cameraRef.takePictureAsync({
-                  quality: 1,
+                let photo = await cameraRef.takePictureAsync({
+                  exif: true,
                 });
+                photo = await ImageManipulator.manipulateAsync(
+                  photo.uri,
+                  [
+                    {
+                      rotate: 0,
+                    },
+                    {
+                      resize: {
+                        width: photo.width,
+                        height: photo.height,
+                      },
+                    },
+                  ],
+                  {
+                    compress: 1,
+                  }
+                );
                 // We can use the uri property from photo to reach the taken picture and do what we want.
                 const userplantsRef = firebase.firestore().collection('plants').doc(plantId);
 
