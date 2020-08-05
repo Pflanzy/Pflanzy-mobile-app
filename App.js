@@ -62,6 +62,10 @@ export default function App() {
                     headerLeft: (props) => (
                       <HeaderBackButton
                         style={{
+                          backgroundColor: Colors.settingsIconBg,
+                          borderRadius: 17,
+                          width: 35,
+                          height: 35,
                           marginLeft: 10,
                         }}
                         {...props}
@@ -82,6 +86,10 @@ export default function App() {
                     headerLeft: (props) => (
                       <HeaderBackButton
                         style={{
+                          backgroundColor: Colors.settingsIconBg,
+                          borderRadius: 17,
+                          width: 35,
+                          height: 35,
                           marginLeft: 10,
                         }}
                         {...props}
@@ -104,7 +112,7 @@ export default function App() {
                     headerLeft: (props) => (
                       <HeaderBackButton
                         style={{
-                          backgroundColor: Colors.tintColor,
+                          backgroundColor: Colors.settingsIconBg,
                           borderRadius: 17,
                           width: 35,
                           height: 35,
@@ -133,7 +141,7 @@ export default function App() {
                     headerLeft: (props) => (
                       <HeaderBackButton
                         style={{
-                          backgroundColor: Colors.tintColor,
+                          backgroundColor: Colors.settingsIconBg,
                           borderRadius: 17,
                           width: 35,
                           height: 35,
