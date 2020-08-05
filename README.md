@@ -54,7 +54,7 @@ This are some examples of how the app should look, once installed.
 
 2. Clone our [Pflanzy](git@github.com:Pflanzy/Pflanzy-mobile-app.git) repository.
 
-> \$ git clone https://github.com/Pflanzy/Pflanzy-mobile-app
+   > \$ git clone https://github.com/Pflanzy/Pflanzy-mobile-app
 
 3. Install and run npm:
    > \$ npm install -g expo-cli
