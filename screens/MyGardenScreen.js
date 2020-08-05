@@ -50,10 +50,18 @@ const MyGardenScreen = ({ navigation }) => {
     <View style={styles.settingsContainer}>
       <PflanzyOpacity
         style={styles.settingsBtns}
-        onPress={() => navigation.navigate('PlantRecognition')}>
+        onPress={() => {
+          navigation.navigate('PlantRecognition');
+          bsSettings.current.snapTo(1);
+        }}>
         <Text style={styles.settingsBtnTitle}>Snap to Identify</Text>
       </PflanzyOpacity>
-      <PflanzyOpacity style={styles.settingsBtns} onPress={() => dispatch({ type: 'TOGGLE' })}>
+      <PflanzyOpacity
+        style={styles.settingsBtns}
+        onPress={() => {
+          dispatch({ type: 'TOGGLE' });
+          bsSettings.current.snapTo(1);
+        }}>
         <Text style={styles.settingsBtnTitle}>Search by name</Text>
       </PflanzyOpacity>
 
