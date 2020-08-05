@@ -329,13 +329,13 @@ const MyPlantScreen = ({ route, navigation }) => {
           <View
             style={{
               backgroundColor: Colors.settingsIconBg,
-              width: 37,
-              height: 37,
+              width: 35,
+              height: 35,
               justifyContent: 'center',
               alignItems: 'center',
               borderRadius: 50,
             }}>
-            <Entypo name="dots-three-vertical" size={22} color={Colors.settingsIcon} />
+            <Entypo name="dots-three-vertical" size={22} color={Colors.defaultWhite} />
           </View>
         </DefaultTouch>
 
@@ -481,7 +481,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     height: 50,
     width: 50,
-    top: 7,
+    top: Platform.OS === 'ios' ? 5 : 10,
     right: 5,
     zIndex: 100,
   },
