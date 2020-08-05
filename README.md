@@ -14,7 +14,7 @@ These are screenshots of an almost complete user journey on iOS.
 <p float="left">
 <img src="demo_pics/SearchScreen.PNG" width="200px">
 <img src="demo_pics/MyGardenEmpty.PNG" width="200px">
-<img src="demo_pics/PlantRecognition.PNG" width="200px">
+<img src="demo_pics/Recognition.PNG" width="200px">
 <img src="demo_pics/SearchModal.PNG" width="200px">
 <img src="demo_pics/IndividualPlant.PNG" width="200px">
 <img src="demo_pics/IndividualPlantExtended.PNG" width="200px">
