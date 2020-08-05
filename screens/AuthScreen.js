@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     overflow: 'hidden',
     backgroundColor: Colors.defaultWhite,
-    color: 'black',
+    color: Colors.defaultBlack,
     marginTop: 10,
     marginBottom: 10,
     marginLeft: 30,
