@@ -4,10 +4,10 @@
     "slug": "Pflanzy",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/pflanzy-logo.svg",
+    "icon": "./assets/images/pflanzy-icon.png",
     "scheme": "myapp",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/images/pflanzy-logo-white.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -23,7 +23,7 @@
       "userInterfaceStyle": "automatic"
     },
     "web": {
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/pflanzy-icon.png"
     },
     "description": ""
   }
