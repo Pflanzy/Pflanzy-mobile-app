@@ -57,6 +57,7 @@ export default function App() {
                           width: 35,
                           height: 35,
                           marginLeft: 10,
+                          marginTop: 13,
                         }}
                         {...props}
                         onPress={() => {
@@ -81,6 +82,7 @@ export default function App() {
                           width: 35,
                           height: 35,
                           marginLeft: 10,
+                          marginTop: 13,
                         }}
                         {...props}
                         onPress={() => {
@@ -107,6 +109,7 @@ export default function App() {
                           width: 35,
                           height: 35,
                           marginLeft: 10,
+                          marginTop: 13,
                         }}
                         {...props}
                         onPress={() => {
@@ -131,6 +134,7 @@ export default function App() {
                           width: 35,
                           height: 35,
                           marginLeft: 10,
+                          marginTop: 13,
                         }}
                         {...props}
                         onPress={() => {
@@ -155,6 +159,7 @@ export default function App() {
                           width: 35,
                           height: 35,
                           marginLeft: 10,
+                          marginTop: 13,
                         }}
                         {...props}
                         onPress={() => {
