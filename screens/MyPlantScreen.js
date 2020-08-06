@@ -346,7 +346,7 @@ const MyPlantScreen = ({ route, navigation }) => {
             bsSettings.current.snapTo(1);
           }}
           activeOpacity={1}>
-          <Svg height="90%" width="100%">
+          <Svg height="87%" width="100%">
             <ClipPath id="clip">
               <Circle r="85%" cx="50%" />
             </ClipPath>
@@ -487,7 +487,7 @@ const styles = StyleSheet.create({
   },
 
   imageContainer: {
-    height: '58%',
+    height: '55%',
   },
 
   myPlantContainer: {
