@@ -340,13 +340,13 @@ const MyPlantScreen = ({ route, navigation }) => {
         </DefaultTouch>
 
         <DefaultTouch
-          style={styles.imageContainer}
+          style={{ height: Platform.OS === 'ios' ? '59%' : '55%' }}
           onPress={() => {
             bsInfo.current.snapTo(0);
             bsSettings.current.snapTo(1);
           }}
           activeOpacity={1}>
-          <Svg height="87%" width="100%">
+          <Svg height="90%" width="100%">
             <ClipPath id="clip">
               <Circle r="85%" cx="50%" />
             </ClipPath>
@@ -484,10 +484,6 @@ const styles = StyleSheet.create({
     top: Platform.OS === 'ios' ? 11 : 16,
     right: 0,
     zIndex: 100,
-  },
-
-  imageContainer: {
-    height: '55%',
   },
 
   myPlantContainer: {
