@@ -4,7 +4,7 @@
     "slug": "Pflanzy",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/pflanzy-logo.svg",
+    "icon": "./assets/images/pflanzy-small-logo.png",
     "scheme": "myapp",
     "splash": {
       "image": "./assets/images/splash.png",
